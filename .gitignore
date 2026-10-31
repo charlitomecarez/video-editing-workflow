@@ -1,0 +1,21 @@
+# Media (never commit footage or renders)
+*.mp4
+*.mov
+*.m4v
+*.mkv
+*.avi
+*.mts
+*.wav
+*.mp3
+*.m4a
+*.aac
+*.flac
+*.srt
+projects/**
+!projects/README.md
+
+# Kdenlive / OS / Python junk
+*.kdenlive.backup*
+*_proxy*
+.DS_Store
+__pycache__/
