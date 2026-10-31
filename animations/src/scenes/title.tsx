@@ -19,7 +19,13 @@ export default makeScene2D(function* (view) {
       lineWidth={8}
       scale={0}
     >
-      <Txt ref={label} text="Your topic" fill={brand.fg} fontFamily={brand.fontHeading} fontSize={120} />
+      <Txt
+        ref={label}
+        text="Your topic"
+        fill={brand.fg}
+        fontFamily={brand.fontHeading}
+        fontSize={120}
+      />
     </Rect>,
   );
 

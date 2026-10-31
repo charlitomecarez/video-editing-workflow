@@ -1,0 +1,19 @@
+# Dependencies, lockfiles, build output
+node_modules/
+package-lock.json
+.venv/
+animations/output/
+animations/dist/
+graphics/out/
+
+# Generated
+animations/src/brand.ts
+*_teleprompter.html
+
+# Mustache templates: {{...}} inside CSS/HTML breaks the parser
+graphics/templates/**/*.html
+
+# User content: scripts, project notes, reference reports
+projects/
+references/
+video-scripts/

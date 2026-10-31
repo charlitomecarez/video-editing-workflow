@@ -6,7 +6,7 @@
     "avg_shot_seconds": 1,
     "structure": [
       ["Hook", 0.15, "One line or one striking visual. Get straight to it."],
-      ["Value", 0.70, "One single tip or reveal."],
+      ["Value", 0.7, "One single tip or reveal."],
       ["Payoff", 0.15, "Punchline that loops back to the hook."]
     ]
   }

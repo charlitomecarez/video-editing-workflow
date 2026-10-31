@@ -8,6 +8,7 @@ description: Use when the user has recorded their raw video (or voiceover) from 
 Tool: `python3 tools/rough_cut.py projects/<video>`. Settings: `[rough_cut]` in config. It never touches the original footage.
 
 ## What the tool does
+
 - Transcribes the recording with Whisper (word timings, cached in `roughcut/transcript.json`).
 - Matches speech to the script's Hear column / Voiceover lines. Repeated lines: the **last full take** wins. False starts and chatter between takes are removed. Unscripted speech between lines (ad-libs) is kept with an orange guide unless `adlibs = "drop"`.
 - Cuts pauses longer than `max_pause` inside lines and leaves `pad` around each line.
@@ -15,12 +16,14 @@ Tool: `python3 tools/rough_cut.py projects/<video>`. Settings: `[rough_cut]` in 
 - Writes `roughcut/report.md`, `roughcut/roughcut.srt` (captions on the cut timeline) and `roughcut/preview.mp4` (low-res render with Kdenlive's own engine).
 
 ## Inputs it looks for
+
 - **Recording:** the one file in `footage/` (not `broll/`), or `audio/voice.*` for voice-only videos. It prefers `<name>_prep.mp4` for video and `<name>_clean.wav` for audio when they exist. Several recordings → ask which, then pass `--source`.
 - **Materials by script row:** `graphics/NN-*.png|jpg|svg` and `footage/broll/NN-*.mp4|mov`. NN = the `#` column in av-table scripts, or the line number of the voiceover in sections scripts (`tools/script_text.py <script> --json` shows rows). Several files on one row share the row's time in name order.
 - **`any-*` B-roll:** goes to the bin's "Unplaced B-roll" folder. To place it, look at a frame of each (`ffmpeg -ss 1 -i clip.mp4 -frames:v 1 /tmp/x.png`), pick the script row whose See/Hear fits best, and pass `--place any-name.mp4=07`. Explain your picks.
 - **Music:** `audio/music*` (first match), looped, lowered to `music_level_db`, faded out.
 
 ## Process
+
 1. Check the project: script has narration, one recording, list the materials and which rows they map to. Mention any file whose number doesn't match a script row.
 2. If `graphics/` is missing graphics the See column asks for, offer to run `/graphics` first so they get placed too (they're already named `NN-*.png`).
 3. Run the tool. The first run transcribes (about as long as the recording), so say so.
@@ -28,10 +31,12 @@ Tool: `python3 tools/rough_cut.py projects/<video>`. Settings: `[rough_cut]` in 
 5. Report (below). If many lines are "not found": wrong script, heavy paraphrasing (try `--threshold 0.6`), or a different language (set `[rough_cut].language`).
 
 ## Rebuilding
+
 - The `.kdenlive` file won't be overwritten without `--force`. Before rebuilding, check whether the user has edited it in Kdenlive; if so, back it up (`cp x.kdenlive x.backup-<date>.kdenlive`) or ask.
 - To use an earlier take, the user tells you the row; the report lists every take's raw time. Easiest fix is in Kdenlive (drag the clip's edges in the Clip Monitor); explain it step by step.
 
 ## Report to the user
+
 - Length: cut vs raw, lines found / total, ad-libs kept, removed bits (one line each with why).
 - Lines not found, and lines with a low match (red guides) - the user should listen to those.
 - What's on V2 and what's left in the bin.

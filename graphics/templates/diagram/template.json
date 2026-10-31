@@ -7,5 +7,7 @@
     "diagram": "Mermaid text (\\n for new lines) or a path to a .mmd file",
     "title": "Optional heading above the diagram"
   },
-  "defaults": { "diagram": "flowchart LR\\n  A[Request] --> B{Cache?}\\n  B -- hit --> C[Response]\\n  B -- miss --> D[Server] --> C" }
+  "defaults": {
+    "diagram": "flowchart LR\\n  A[Request] --> B{Cache?}\\n  B -- hit --> C[Response]\\n  B -- miss --> D[Server] --> C"
+  }
 }

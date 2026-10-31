@@ -9,7 +9,12 @@ export default makeScene2D(function* (view) {
 
   view.add(
     <Rect layout padding={50} radius={24} fill={brand.bg2}>
-      <Code ref={code} fontSize={44} fontFamily={brand.fontCode} code={'const user = await getUser(id);'} />
+      <Code
+        ref={code}
+        fontSize={44}
+        fontFamily={brand.fontCode}
+        code={'const user = await getUser(id);'}
+      />
     </Rect>,
   );
 

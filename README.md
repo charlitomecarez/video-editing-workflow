@@ -17,13 +17,13 @@ tools/doctor.sh                                  # check everything is installed
 
 What gets installed:
 
-| Area | Tools |
-|---|---|
-| Editing | Kdenlive, FFmpeg, auto-editor |
-| Subtitles | Whisper |
-| Recording | OBS Studio, teleprompter (browser), Piper (draft AI voice) |
-| Graphics | Playwright + Chrome (HTML → PNG), Shiki (code highlighting), Mermaid (diagrams), rembg (background removal) |
-| Animation | Motion Canvas |
+| Area      | Tools                                                                                                       |
+| --------- | ----------------------------------------------------------------------------------------------------------- |
+| Editing   | Kdenlive, FFmpeg, auto-editor                                                                               |
+| Subtitles | Whisper                                                                                                     |
+| Recording | OBS Studio, teleprompter (browser), Piper (draft AI voice)                                                  |
+| Graphics  | Playwright + Chrome (HTML → PNG), Shiki (code highlighting), Mermaid (diagrams), rembg (background removal) |
+| Animation | Motion Canvas                                                                                               |
 
 Python tools live in `.venv/` (Python 3.12 via uv) and Node packages in `node_modules/` and `animations/node_modules/`. Nothing is installed system-wide except the Homebrew packages.
 `ffmpeg-full` (installed alongside the normal FFmpeg) is used to burn captions into videos and reels.
@@ -32,21 +32,21 @@ Python tools live in `.venv/` (Python 3.12 via uv) and Node packages in `node_mo
 
 Open Claude Code in this folder:
 
-| Command | What it does |
-|---|---|
-| `/new "idea"` | Idea → title → project folder → full script → shot list |
-| `/topics food` | Researched, ranked topic ideas saved to `topics/ideas.md` |
-| `/script "title"` | Full script with hooks, voiceover, B-roll and post captions |
-| `/edit projects/<video>` | Inspects and preps footage, then walks you through Kdenlive |
-| `/roughcut projects/<video>` | Raw recording + script → Kdenlive project with the best takes, graphics, B-roll and music placed |
-| `/publish export/final.mp4` | Captions, thumbnails, titles and hashtags for each platform |
-| `/analyze references/video.mp4` | Breaks down a reference video's cuts, pacing and structure |
-| `/record projects/<video>` | Length check, draft AI voice, teleprompter, then audio cleanup |
-| `/graphics projects/<video>` | All slates, code cards and diagrams from the script's See column |
-| `/thumbnail projects/<video>` | 3 thumbnail concepts rendered and reviewed |
-| `/animate "idea"` | A Motion Canvas animation scene |
-| `/reel projects/<video>` | 60-second vertical summary reel cut from the finished long video |
-| `/punchup script.md` | Adds your personality and humor to a script, then removes the cringe |
+| Command                         | What it does                                                                                     |
+| ------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `/new "idea"`                   | Idea → title → project folder → full script → shot list                                          |
+| `/topics food`                  | Researched, ranked topic ideas saved to `topics/ideas.md`                                        |
+| `/script "title"`               | Full script with hooks, voiceover, B-roll and post captions                                      |
+| `/edit projects/<video>`        | Inspects and preps footage, then walks you through Kdenlive                                      |
+| `/roughcut projects/<video>`    | Raw recording + script → Kdenlive project with the best takes, graphics, B-roll and music placed |
+| `/publish export/final.mp4`     | Captions, thumbnails, titles and hashtags for each platform                                      |
+| `/analyze references/video.mp4` | Breaks down a reference video's cuts, pacing and structure                                       |
+| `/record projects/<video>`      | Length check, draft AI voice, teleprompter, then audio cleanup                                   |
+| `/graphics projects/<video>`    | All slates, code cards and diagrams from the script's See column                                 |
+| `/thumbnail projects/<video>`   | 3 thumbnail concepts rendered and reviewed                                                       |
+| `/animate "idea"`               | A Motion Canvas animation scene                                                                  |
+| `/reel projects/<video>`        | 60-second vertical summary reel cut from the finished long video                                 |
+| `/punchup script.md`            | Adds your personality and humor to a script, then removes the cringe                             |
 
 Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics`, `voiceover`, `personality-voice`, `rough-cut` and `reel-cutdown`.
 
@@ -77,38 +77,39 @@ tools/graphic --list                                            # thumbnails, co
 tools/graphic thumbnail-tech --set "text=Is it *fast?*" --set icon=logo.png --open
 tools/cutout.sh photo.jpg                                       # remove a photo's background
 cd animations && npm start                                      # Motion Canvas animation editor
+npm run format                                                  # tidy JS/TS/JSON/Markdown with Prettier
 ```
 
 Every tool takes `--help`. Defaults come from the config, and flags override them for a single run.
 
 ## Configuration
 
-| File | Purpose |
-|---|---|
-| `config.toml` | All defaults: creator profile, quality, loudness, silence detection, subtitles, caption style, vertical mode... |
-| `config.local.toml` | Your personal overrides (git-ignored) |
-| `styles/custom/*.json` | Your own editing styles (can `extend` built-in ones) |
-| `personality/` + `[personality]` | Your on-camera voice: humor toolkit, humor level, profanity, anti-cringe blocklist |
-| `[brand]` in config | Colors, fonts, logo and code theme for every graphic and animation |
-| `graphics/templates/` | Thumbnail and graphic templates (HTML, easy to add your own) |
-| `topics/niches.json`, `topics/formats.json` | Topic generator niches and title formats |
+| File                                        | Purpose                                                                                                         |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `config.toml`                               | All defaults: creator profile, quality, loudness, silence detection, subtitles, caption style, vertical mode... |
+| `config.local.toml`                         | Your personal overrides (git-ignored)                                                                           |
+| `styles/custom/*.json`                      | Your own editing styles (can `extend` built-in ones)                                                            |
+| `personality/` + `[personality]`            | Your on-camera voice: humor toolkit, humor level, profanity, anti-cringe blocklist                              |
+| `[brand]` in config                         | Colors, fonts, logo and code theme for every graphic and animation                                              |
+| `graphics/templates/`                       | Thumbnail and graphic templates (HTML, easy to add your own)                                                    |
+| `topics/niches.json`, `topics/formats.json` | Topic generator niches and title formats                                                                        |
 
 The full reference is in [docs/configuration.md](docs/configuration.md).
 
 ## Layout
 
-| Folder | Contents |
-|---|---|
-| `workflow/` | Step-by-step process ([WORKFLOW.md](workflow/WORKFLOW.md)) |
-| `docs/` | [Kdenlive guide](docs/kdenlive-guide.md), [platform specs](docs/platform-specs.md), [hooks library](docs/hooks-library.md), [configuration](docs/configuration.md), [tech explainer style](docs/tech-explainer-style.md), [graphics](docs/graphics.md), [voice & recording](docs/voice-and-recording.md), [animations](docs/animations.md) |
-| `styles/` | Editing styles ([STYLES.md](styles/STYLES.md)) |
-| `topics/` | Topic generator, niches, title formats, saved ideas |
-| `video-scripts/` | Scripts not tied to a project yet |
-| `tools/` | Generators, config loader, footage, voice and graphics tools |
-| `graphics/templates/` | Graphic templates (thumbnails, covers, code cards, slates, lower thirds, diagrams) |
-| `animations/` | Motion Canvas project (animated code, diagrams, titles) |
-| `templates/` | Reusable Kdenlive project templates |
-| `personality/` | Your voice profile, inspirations and recurring bits |
-| `references/` | Reference videos to study (media not committed) and their analysis reports |
-| `projects/` | One folder per video (media is not committed, so back it up separately) |
-| `.claude/` | Claude Code skills and slash commands |
+| Folder                | Contents                                                                                                                                                                                                                                                                                                                                   |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `workflow/`           | Step-by-step process ([WORKFLOW.md](workflow/WORKFLOW.md))                                                                                                                                                                                                                                                                                 |
+| `docs/`               | [Kdenlive guide](docs/kdenlive-guide.md), [platform specs](docs/platform-specs.md), [hooks library](docs/hooks-library.md), [configuration](docs/configuration.md), [tech explainer style](docs/tech-explainer-style.md), [graphics](docs/graphics.md), [voice & recording](docs/voice-and-recording.md), [animations](docs/animations.md) |
+| `styles/`             | Editing styles ([STYLES.md](styles/STYLES.md))                                                                                                                                                                                                                                                                                             |
+| `topics/`             | Topic generator, niches, title formats, saved ideas                                                                                                                                                                                                                                                                                        |
+| `video-scripts/`      | Scripts not tied to a project yet                                                                                                                                                                                                                                                                                                          |
+| `tools/`              | Generators, config loader, footage, voice and graphics tools                                                                                                                                                                                                                                                                               |
+| `graphics/templates/` | Graphic templates (thumbnails, covers, code cards, slates, lower thirds, diagrams)                                                                                                                                                                                                                                                         |
+| `animations/`         | Motion Canvas project (animated code, diagrams, titles)                                                                                                                                                                                                                                                                                    |
+| `templates/`          | Reusable Kdenlive project templates                                                                                                                                                                                                                                                                                                        |
+| `personality/`        | Your voice profile, inspirations and recurring bits                                                                                                                                                                                                                                                                                        |
+| `references/`         | Reference videos to study (media not committed) and their analysis reports                                                                                                                                                                                                                                                                 |
+| `projects/`           | One folder per video (media is not committed, so back it up separately)                                                                                                                                                                                                                                                                    |
+| `.claude/`            | Claude Code skills and slash commands                                                                                                                                                                                                                                                                                                      |

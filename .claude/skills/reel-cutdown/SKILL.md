@@ -10,6 +10,7 @@ The reel is **only clips from the long video**: no new recording, no new voiceov
 Tool: `tools/reel.py` (`transcript` and `build`). Settings: `[reel]` in config.
 
 ## Process
+
 1. **Find the source:** the final long-form export, usually `projects/<video>/export/final.mp4` (ask if there are several).
 2. **Transcript:** `python3 tools/reel.py transcript <final.mp4>`. It runs Whisper if no `.srt` exists, which can take a while for long videos, so say so. Also read `script.md` to understand the video's structure and main promise.
 3. **Pick segments.** The reel must work as a standalone 60-second summary:
@@ -27,7 +28,9 @@ Tool: `tools/reel.py` (`transcript` and `build`). Settings: `[reel]` in config.
 8. **Post text:** a short caption (hook first, then "full video on my channel"), plus 3-5 hashtags for each short-form platform in `[creator].platforms`. Add it to the Post section of `script.md` under a "Reel" heading.
 
 ## Report to the user
+
 A table of segments (time range, length, what's said), the total length, the output files (`reel.mp4`, `reel_captioned.mp4` if captions were burned, `reel.srt`, `cover.png`), and one line on why this hook was chosen. If captions couldn't be burned in, tell them to import `reel.srt` in Kdenlive or install `ffmpeg-full`.
 
 ## Making it better in Kdenlive (optional)
+
 For more control, the user can open `reel.mp4` in a vertical Kdenlive project (1080x1920), import `reel.srt` on the subtitle track, and add punch-in zooms or a stronger hook graphic.

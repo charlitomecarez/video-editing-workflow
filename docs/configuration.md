@@ -3,18 +3,19 @@
 Almost everything is configurable without touching code.
 
 ## Where settings live
-| File | What | Committed? |
-|---|---|---|
-| `config.toml` | Defaults for every tool | Yes |
-| `config.local.toml` | **Your** overrides (only the keys you change) | No (git-ignored) |
-| `styles/styles.json` | Built-in editing styles | Yes |
-| `styles/custom/*.json` | Your own styles | Yes |
-| `topics/niches.json` | Niches and sub-topics for the topic generator | Yes |
-| `topics/formats.json` | Title templates for the topic generator | Yes |
-| `graphics/templates/*/` | Graphic templates (`template.html` + `template.json`) | Yes |
-| `animations/src/scenes/` | Motion Canvas scenes | Yes |
-| `.claude/skills/*/SKILL.md` | How Claude helps with each part of the workflow | Yes |
-| `.claude/commands/*.md` | Slash commands (`/new`, `/topics`, `/script`, `/punchup`, `/record`, `/edit`, `/graphics`, `/animate`, `/thumbnail`, `/reel`, `/publish`, `/analyze`) | Yes |
+
+| File                        | What                                                                                                                                                  | Committed?       |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| `config.toml`               | Defaults for every tool                                                                                                                               | Yes              |
+| `config.local.toml`         | **Your** overrides (only the keys you change)                                                                                                         | No (git-ignored) |
+| `styles/styles.json`        | Built-in editing styles                                                                                                                               | Yes              |
+| `styles/custom/*.json`      | Your own styles                                                                                                                                       | Yes              |
+| `topics/niches.json`        | Niches and sub-topics for the topic generator                                                                                                         | Yes              |
+| `topics/formats.json`       | Title templates for the topic generator                                                                                                               | Yes              |
+| `graphics/templates/*/`     | Graphic templates (`template.html` + `template.json`)                                                                                                 | Yes              |
+| `animations/src/scenes/`    | Motion Canvas scenes                                                                                                                                  | Yes              |
+| `.claude/skills/*/SKILL.md` | How Claude helps with each part of the workflow                                                                                                       | Yes              |
+| `.claude/commands/*.md`     | Slash commands (`/new`, `/topics`, `/script`, `/punchup`, `/record`, `/edit`, `/graphics`, `/animate`, `/thumbnail`, `/reel`, `/publish`, `/analyze`) | Yes              |
 
 **Precedence:** command-line flag → `config.local.toml` → `config.toml`
 
@@ -26,32 +27,34 @@ tools/doctor.sh                                   # check that everything is val
 ```
 
 ## Config sections
-| Section | Controls | Used by |
-|---|---|---|
-| `[personality]` | profile file, humor level (0-5), joke density, profanity, dark humor, meme cutaways, joke targets, cringe blocklist, intensifier limits | `/script`, `/punchup`, `tools/cringe_check.py` |
-| `[creator]` | name, audience, tone, language, platforms, default niches, words to avoid | `/topics`, `/script`, topic generator, script Post/Results sections |
-| `[paths]` | where projects, scripts and ideas live | all Python tools |
-| `[project]` | subfolders for new projects, date prefix | `tools/new_project.py` |
-| `[topics]` | default count and style | `topics/topic_generator.py` |
-| `[script]` | default style, layout (`sections` / `av-table` / `auto`), speaking rate, number of hooks, included sections, checklist | `tools/script_generator.py` |
-| `[prep]` | fps, quality (crf), speed (preset), loudness, audio bitrate | `tools/prep.sh` |
-| `[silence]` | margin, threshold, export type | `tools/cut-silence.sh` |
-| `[subtitles]` | Whisper model, language, format, line width and count | `tools/subtitles.sh` |
-| `[captions]` | burned-in font, size, colors, outline, position | `tools/burn-captions.sh` |
-| `[vertical]` | crop/blur mode, size, blur strength | `tools/vertical.sh` |
-| `[thumbnails]` | number of frames, width | `tools/thumbnails.sh` |
-| `[analyze]` | scene threshold, minimum shot length, save frames | `tools/analyze_cuts.py` |
-| `[brand]` | colors, fonts, web fonts, code theme, logo | `tools/graphic`, Motion Canvas (`animations/`) |
-| `[graphics]` | browser (chrome / chromium), output folder, render scale | `tools/graphic` |
-| `[cutout]` | background-removal model | `tools/cutout.sh` |
-| `[tts]` | Piper voice, speed, sentence pause, voices folder | `tools/voice-draft.sh` |
-| `[clean_voice]` | highpass, denoise strength, de-esser, compressor, loudness | `tools/clean-voice.sh` |
-| `[teleprompter]` | font size, speed, mirror, line width, reading line | `tools/teleprompter.py` |
-| `[rough_cut]` | line match strictness, padding, max pause, ad-libs keep/drop, graphic timing, music level and fade, preview render, Whisper model, guide colors | `tools/rough_cut.py` |
-| `[reel]` | max/target length, size, blur or crop, clip padding, hook text style and timing, burned captions, transcript language | `tools/reel.py` |
-| `[render]` | quality for re-encoding tools | vertical, burn-captions |
+
+| Section          | Controls                                                                                                                                        | Used by                                                             |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `[personality]`  | profile file, humor level (0-5), joke density, profanity, dark humor, meme cutaways, joke targets, cringe blocklist, intensifier limits         | `/script`, `/punchup`, `tools/cringe_check.py`                      |
+| `[creator]`      | name, audience, tone, language, platforms, default niches, words to avoid                                                                       | `/topics`, `/script`, topic generator, script Post/Results sections |
+| `[paths]`        | where projects, scripts and ideas live                                                                                                          | all Python tools                                                    |
+| `[project]`      | subfolders for new projects, date prefix                                                                                                        | `tools/new_project.py`                                              |
+| `[topics]`       | default count and style                                                                                                                         | `topics/topic_generator.py`                                         |
+| `[script]`       | default style, layout (`sections` / `av-table` / `auto`), speaking rate, number of hooks, included sections, checklist                          | `tools/script_generator.py`                                         |
+| `[prep]`         | fps, quality (crf), speed (preset), loudness, audio bitrate                                                                                     | `tools/prep.sh`                                                     |
+| `[silence]`      | margin, threshold, export type                                                                                                                  | `tools/cut-silence.sh`                                              |
+| `[subtitles]`    | Whisper model, language, format, line width and count                                                                                           | `tools/subtitles.sh`                                                |
+| `[captions]`     | burned-in font, size, colors, outline, position                                                                                                 | `tools/burn-captions.sh`                                            |
+| `[vertical]`     | crop/blur mode, size, blur strength                                                                                                             | `tools/vertical.sh`                                                 |
+| `[thumbnails]`   | number of frames, width                                                                                                                         | `tools/thumbnails.sh`                                               |
+| `[analyze]`      | scene threshold, minimum shot length, save frames                                                                                               | `tools/analyze_cuts.py`                                             |
+| `[brand]`        | colors, fonts, web fonts, code theme, logo                                                                                                      | `tools/graphic`, Motion Canvas (`animations/`)                      |
+| `[graphics]`     | browser (chrome / chromium), output folder, render scale                                                                                        | `tools/graphic`                                                     |
+| `[cutout]`       | background-removal model                                                                                                                        | `tools/cutout.sh`                                                   |
+| `[tts]`          | Piper voice, speed, sentence pause, voices folder                                                                                               | `tools/voice-draft.sh`                                              |
+| `[clean_voice]`  | highpass, denoise strength, de-esser, compressor, loudness                                                                                      | `tools/clean-voice.sh`                                              |
+| `[teleprompter]` | font size, speed, mirror, line width, reading line                                                                                              | `tools/teleprompter.py`                                             |
+| `[rough_cut]`    | line match strictness, padding, max pause, ad-libs keep/drop, graphic timing, music level and fade, preview render, Whisper model, guide colors | `tools/rough_cut.py`                                                |
+| `[reel]`         | max/target length, size, blur or crop, clip padding, hook text style and timing, burned captions, transcript language                           | `tools/reel.py`                                                     |
+| `[render]`       | quality for re-encoding tools                                                                                                                   | vertical, burn-captions                                             |
 
 ## Adding a style
+
 Create `styles/custom/<anything>.json`. Use `extends` to copy an existing style and change only what's different:
 
 ```json
@@ -72,11 +75,14 @@ A style without `extends` needs every field: `name, aspect, resolution, fps, tar
 Check it with `python3 tools/vwconfig.py style food-short`.
 
 ## Adding niches and title formats
+
 - `topics/niches.json`: `"niche": ["sub-topic", ...]`. Sub-topics should read naturally after "tips for ___" (for example "budget meals", "home workouts").
 - `topics/formats.json`: add to `short` or `long`. Use `{t}` for the topic and `{year}` for the current year.
 
 ## Per-run overrides
+
 Every shell tool takes flags (`--help` lists them):
+
 ```bash
 tools/cut-silence.sh clip.mp4 --margin 0.35s --threshold 6%
 tools/subtitles.sh clip.mp4 --model medium --language tl

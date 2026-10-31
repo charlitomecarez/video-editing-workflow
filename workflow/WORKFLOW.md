@@ -8,6 +8,7 @@ Shortcut: `/new "your idea"` in Claude Code covers steps 1-3.
 ```bash
 python3 topics/topic_generator.py --niche food -n 10 --save
 ```
+
 Or `/topics food` in Claude Code for ranked, researched ideas. Ideas are saved to `topics/ideas.md`. Tick one off when you use it.
 
 ## 2. Create the project
@@ -15,6 +16,7 @@ Or `/topics food` in Claude Code for ranked, researched ideas. Ideas are saved t
 ```bash
 python3 tools/new_project.py "Your chosen title" --style short-form --script
 ```
+
 This creates `projects/<date>-<title>/` with `footage/ audio/ graphics/ export/ thumbnails/`, a `notes.md` and a `script.md`. Pick a style from [`styles/STYLES.md`](../styles/STYLES.md).
 
 ## 3. Write the script
@@ -37,10 +39,12 @@ Patterns are in [`docs/hooks-library.md`](../docs/hooks-library.md). Your voice 
 ## 5. Prep footage
 
 Copy your clips into `projects/<video>/footage/`, then:
+
 ```bash
 tools/prep.sh projects/<video>/footage/*.MOV                    # edit-friendly, levelled audio
 tools/cut-silence.sh projects/<video>/footage/talk_prep.mp4     # pauses removed -> .kdenlive
 ```
+
 Or run `/edit projects/<video>`.
 
 ## 5b. Graphics and animations
@@ -52,14 +56,17 @@ Or run `/edit projects/<video>`.
 ## 5c. Auto rough cut
 
 Put B-roll in `footage/broll/` and images in `graphics/`, named with the script row they belong to (`05-typing.mp4`, `08-error.png`; `any-name.mp4` for "wherever it fits"). Music goes in `audio/music.mp3`. Then:
+
 ```bash
 python3 tools/rough_cut.py projects/<video>
 ```
+
 Or run `/roughcut projects/<video>`. It transcribes the recording, keeps the last full take of each script line, drops false starts and long pauses, and builds `<video>-roughcut.kdenlive`: graphics/B-roll on V2 when each line is spoken, recording on V1, voice on A1, music on A2, a guide per section. Read `roughcut/report.md` and watch `roughcut/preview.mp4` first.
 
 ## 6. Edit in Kdenlive
 
 Follow [`docs/kdenlive-guide.md`](../docs/kdenlive-guide.md):
+
 1. Open `<video>-roughcut.kdenlive` (from 5c), or the `_cut.kdenlive` file, or start a new project with the style's profile.
 2. Review the auto cuts and fix any that are too tight.
 3. Add B-roll, text, music and transitions per the script's editing notes.
@@ -70,6 +77,7 @@ Follow [`docs/kdenlive-guide.md`](../docs/kdenlive-guide.md):
 ```bash
 tools/subtitles.sh projects/<video>/export/draft.mp4 --language en
 ```
+
 - **Editable:** in Kdenlive, Project → Subtitles → Import Subtitle File.
 - **Burned in (short-form):** `tools/burn-captions.sh projects/<video>/export/final.mp4`
 

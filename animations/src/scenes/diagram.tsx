@@ -5,9 +5,24 @@ import {brand} from '../brand';
 
 function Box(props: {x: number; label: string; refTo: ReturnType<typeof createRef<Rect>>}) {
   return (
-    <Rect ref={props.refTo} x={props.x} width={420} height={180} radius={20}
-      fill={brand.bg2} stroke={brand.accent} lineWidth={6} scale={0}>
-      <Txt text={props.label} fill={brand.fg} fontFamily={brand.fontBody} fontWeight={700} fontSize={56} />
+    <Rect
+      ref={props.refTo}
+      x={props.x}
+      width={420}
+      height={180}
+      radius={20}
+      fill={brand.bg2}
+      stroke={brand.accent}
+      lineWidth={6}
+      scale={0}
+    >
+      <Txt
+        text={props.label}
+        fill={brand.fg}
+        fontFamily={brand.fontBody}
+        fontWeight={700}
+        fontSize={56}
+      />
     </Rect>
   );
 }
@@ -22,8 +37,18 @@ export default makeScene2D(function* (view) {
     <>
       <Box x={-450} label="Client" refTo={client} />
       <Box x={450} label="Server" refTo={server} />
-      <Line ref={arrow} points={[[-230, 0], [230, 0]]} stroke={brand.accent2}
-        lineWidth={10} endArrow arrowSize={28} end={0} />
+      <Line
+        ref={arrow}
+        points={[
+          [-230, 0],
+          [230, 0],
+        ]}
+        stroke={brand.accent2}
+        lineWidth={10}
+        endArrow
+        arrowSize={28}
+        end={0}
+      />
     </>,
   );
 

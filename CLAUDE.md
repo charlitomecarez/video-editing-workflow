@@ -3,6 +3,7 @@
 This repo holds the workflow, editing styles and tools for making videos with Kdenlive on macOS.
 
 ## Map
+
 - Config: `config.toml` (defaults) + `config.local.toml` (user overrides, git-ignored). Read with `python3 tools/vwconfig.py show|get|styles|style`.
 - Workflow: `workflow/WORKFLOW.md`
 - Styles: `styles/styles.json`, `styles/custom/*.json` (support `extends`), guide in `styles/STYLES.md`
@@ -23,6 +24,7 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/roughcut`, `/reel`
 
 ## Rules
+
 - Every spoken word follows the personality profile (`personality-voice` skill). Never copy other creators' catchphrases, bits or show names, only techniques.
 - Always respect config. Read `[creator]` before writing anything creative. Never hardcode settings that exist in config.
 - Never modify or delete original footage. Tools write new suffixed files and refuse to overwrite unless `FORCE=1`.
