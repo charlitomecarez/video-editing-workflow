@@ -3,6 +3,8 @@
 My video workflow: topic ideas → script → film → edit in **Kdenlive** → subtitles → post → review results.
 It's built to be used with Claude Code, and almost everything is configurable.
 
+📖 **[Read the Handbook](https://claude.ai/artifact/NySxVJqmBG24KeWFLKfWKn)**: the full guide to setup, the pipeline, commands, styles, personality, graphics, voice, animation and configuration.
+
 ## Setup (macOS)
 
 ```bash
