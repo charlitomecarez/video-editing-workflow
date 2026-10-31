@@ -61,11 +61,12 @@ def build(topic, style_key, s, total, cfg, fmt_override=None):
         out += ["## Script", ""]
         if fmt == "av-table":
             out += [
-                "_One row per beat. **See** = what's on screen (graphic, code, meme, clip), "
+                "_One row per beat. **#** = row number (name your files `05-...` to put them on row 5), "
+                "**See** = what's on screen (graphic, code, meme, clip), "
                 "**Hear** = the voiceover line, **Notes** = asset source/link, SFX, timing._",
                 "",
             ]
-        t = 0.0
+        t, row_n = 0.0, 0
         for section, pct, note in s["structure"]:
             dur = total * pct
             out += [
@@ -76,8 +77,9 @@ def build(topic, style_key, s, total, cfg, fmt_override=None):
             if fmt == "av-table":
                 # One row per visual, capped so long sections stay readable
                 rows = max(2, min(20, round(dur / s["avg_shot_seconds"])))
-                out += ["| See (on screen) | Hear (voiceover) | Notes |", "|---|---|---|"]
-                out += ["| | | |"] * rows + [""]
+                out += ["| # | See (on screen) | Hear (voiceover) | Notes |", "|---|---|---|---|"]
+                out += [f"| {row_n + i + 1:02} | | | |" for i in range(rows)] + [""]
+                row_n += rows
             else:
                 out += [
                     "**Voiceover / dialogue:**",

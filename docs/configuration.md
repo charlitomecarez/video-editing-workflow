@@ -47,6 +47,7 @@ tools/doctor.sh                                   # check that everything is val
 | `[tts]` | Piper voice, speed, sentence pause, voices folder | `tools/voice-draft.sh` |
 | `[clean_voice]` | highpass, denoise strength, de-esser, compressor, loudness | `tools/clean-voice.sh` |
 | `[teleprompter]` | font size, speed, mirror, line width, reading line | `tools/teleprompter.py` |
+| `[rough_cut]` | line match strictness, padding, max pause, ad-libs keep/drop, graphic timing, music level and fade, preview render, Whisper model, guide colors | `tools/rough_cut.py` |
 | `[reel]` | max/target length, size, blur or crop, clip padding, hook text style and timing, burned captions, transcript language | `tools/reel.py` |
 | `[render]` | quality for re-encoding tools | vertical, burn-captions |
 

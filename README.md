@@ -38,6 +38,7 @@ Open Claude Code in this folder:
 | `/topics food` | Researched, ranked topic ideas saved to `topics/ideas.md` |
 | `/script "title"` | Full script with hooks, voiceover, B-roll and post captions |
 | `/edit projects/<video>` | Inspects and preps footage, then walks you through Kdenlive |
+| `/roughcut projects/<video>` | Raw recording + script → Kdenlive project with the best takes, graphics, B-roll and music placed |
 | `/publish export/final.mp4` | Captions, thumbnails, titles and hashtags for each platform |
 | `/analyze references/video.mp4` | Breaks down a reference video's cuts, pacing and structure |
 | `/record projects/<video>` | Length check, draft AI voice, teleprompter, then audio cleanup |
@@ -47,7 +48,7 @@ Open Claude Code in this folder:
 | `/reel projects/<video>` | 60-second vertical summary reel cut from the finished long video |
 | `/punchup script.md` | Adds your personality and humor to a script, then removes the cringe |
 
-Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics`, `voiceover` and `personality-voice` and `reel-cutdown`.
+Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics`, `voiceover`, `personality-voice`, `rough-cut` and `reel-cutdown`.
 
 ## Using the tools directly
 
@@ -58,6 +59,7 @@ python3 tools/script_generator.py "Title" --style tutorial      # script templat
 
 tools/prep.sh projects/<video>/footage/*.MOV                    # edit-friendly footage
 tools/cut-silence.sh projects/<video>/footage/clip_prep.mp4     # pauses removed -> .kdenlive
+python3 tools/rough_cut.py projects/<video>                     # best takes + graphics + music -> .kdenlive
 tools/subtitles.sh projects/<video>/export/final.mp4            # .srt with Whisper
 tools/burn-captions.sh projects/<video>/export/final.mp4        # captions burned in
 tools/vertical.sh projects/<video>/export/final.mp4 --mode blur # 9:16 version

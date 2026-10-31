@@ -27,6 +27,27 @@ Higher video tracks appear on top. Put B-roll and text on V2 and V3 above your m
 10. **Color and audio polish:** see the effects table below.
 11. **Render:** Project → Render → MP4-H264/AAC → Render to File → save into `export/`.
 
+## Polishing an auto rough cut
+
+`tools/rough_cut.py` (or `/roughcut`) gives you `<video>-roughcut.kdenlive` with everything already on the timeline:
+
+| Track | What's on it |
+|---|---|
+| V2 Graphics | your `graphics/NN-*` and `footage/broll/NN-*` files, each starting when row NN is spoken |
+| V1 Recording | camera or screen recording, best take of each line |
+| A1 Voice | your voice (the cleaned version if you ran clean-voice.sh) |
+| A2 Music | `audio/music.*`, already quieter and faded out |
+
+Colored flags on the ruler are **guides**: purple = script section, orange = ad-lib (something you said that isn't in the script), red = check this. Jump between them with Timeline → Guides, or the Guides panel (View → Guides).
+
+1. Double-click the `.kdenlive` file (or Kdenlive → File → Open).
+2. Press **Space** and watch it once from start to finish. Don't fix anything yet, just note the times.
+3. Ad-lib you don't want: click the clip on V1, press **Delete**, then right-click the empty gap → **Remove Space**. Do the same on A1 if the audio clip stays behind (V1 and A1 clips are grouped, so usually both go).
+4. A graphic shows too early or late: drag it left/right on V2. Drag its edges to make it shorter or longer.
+5. Add life: right-click a graphic → Add Effect → Transform, or use the Pop In from the edit checklist.
+6. Captions: Project → Subtitles → Import Subtitle File → `roughcut/roughcut.srt`.
+7. Save with **File → Save As** under a new name (for example `<video>.kdenlive`), so rebuilding the rough cut never overwrites your edits.
+
 ## Keyframes (animating anything)
 1. Select a clip with an effect (for example Transform).
 2. In the effect panel, click the keyframe button (◇) to add a keyframe at the playhead.

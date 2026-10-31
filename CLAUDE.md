@@ -14,12 +14,13 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Voice: `tools/script_text.py`, `tools/voice-draft.sh` (Piper), `tools/clean-voice.sh`, `tools/teleprompter.py`
 - Animations: `animations/` (Motion Canvas; scenes in `animations/src/scenes/`, brand synced to `src/brand.ts`)
 - Setup: `tools/setup.sh` installs everything; `tools/doctor.sh` checks. Python tools are in `.venv/` (run `.venv/bin/...`), Node in `node_modules/`.
+- Rough cut: `tools/rough_cut.py projects/<video>` matches the raw recording to the script (last full take wins), places `graphics/NN-*` and `footage/broll/NN-*` on V2 by script row, music on A2, and writes `<video>-roughcut.kdenlive` + `roughcut/` (report, srt, preview). `[rough_cut]` in config.
 - Reels: `tools/reel.py` (transcript → reel.json → build) cuts a ≤60 s vertical summary from the long-form export into `projects/<video>/reel/`
 - Footage tools: `tools/prep.sh`, `cut-silence.sh`, `subtitles.sh`, `burn-captions.sh`, `vertical.sh`, `thumbnails.sh`, `doctor.sh`, `analyze_cuts.py` (all take `--help`)
 - Personality: `personality/` (profile, inspirations, recurring bits), `[personality]` in config, `tools/cringe_check.py`
 - Docs: `docs/kdenlive-guide.md`, `docs/platform-specs.md`, `docs/hooks-library.md`, `docs/configuration.md`, `docs/tech-explainer-style.md`, `docs/graphics.md`, `docs/voice-and-recording.md`, `docs/animations.md`
-- Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing, reference-analysis, graphics-thumbnails, motion-graphics, voiceover, personality-voice, reel-cutdown)
-- Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/reel`
+- Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing, reference-analysis, graphics-thumbnails, motion-graphics, voiceover, personality-voice, rough-cut, reel-cutdown)
+- Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/roughcut`, `/reel`
 
 ## Rules
 - Every spoken word follows the personality profile (`personality-voice` skill). Never copy other creators' catchphrases, bits or show names, only techniques.

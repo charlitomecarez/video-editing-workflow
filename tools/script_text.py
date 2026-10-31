@@ -7,7 +7,7 @@
 Examples:
   python3 tools/script_text.py projects/x/script.md               # plain text, one line per beat
   python3 tools/script_text.py projects/x/script.md --sections    # with "## Section" headings
-  python3 tools/script_text.py projects/x/script.md --json        # [{section, text}] for other tools
+  python3 tools/script_text.py projects/x/script.md --json        # [{row, section, text, see}] for other tools
   python3 tools/script_text.py projects/x/script.md --stats       # word count vs target per section
 
 Used by tools/voice-draft.sh and tools/teleprompter.py.
@@ -30,7 +30,13 @@ def split_row(line):
 
 
 def extract(md):
-    beats, section, target, in_script, in_vo, hear_col = [], None, None, False, False, None
+    """Beats in order: {row, section, target, text, see}.
+
+    row = the script row number: the "#" column when the table has one, otherwise
+    the running count of table rows (or of voiceover lines in the sections format).
+    """
+    beats, section, target, in_script, in_vo = [], None, None, False, False
+    cols, n = None, 0
     for line in md.splitlines():
         if line.startswith("## "):
             in_script = line.strip() == "## Script"
@@ -40,27 +46,40 @@ def extract(md):
             continue
         m = HEAD.match(line)
         if m:
-            section, target, in_vo, hear_col = m.group(1).strip(), (int(m.group(5)) if m.group(5) else None), False, None
+            section, target, in_vo, cols = m.group(1).strip(), (int(m.group(5)) if m.group(5) else None), False, None
             continue
         s = line.strip()
         if s.startswith("|"):
             cells = split_row(s)
-            if hear_col is None:
-                hear_col = next((i for i, c in enumerate(cells) if c.lower().startswith("hear")), None)
+            if cols is None:
+                low = [c.lower() for c in cells]
+                cols = {
+                    "hear": next((i for i, c in enumerate(low) if c.startswith("hear")), None),
+                    "see": next((i for i, c in enumerate(low) if c.startswith("see")), None),
+                    "num": next((i for i, c in enumerate(low) if c in ("#", "no", "no.", "row")), None),
+                }
                 continue
             if set(s) <= set("|-: "):
                 continue
-            if hear_col is not None and hear_col < len(cells) and cells[hear_col]:
-                beats.append({"section": section, "target": target, "text": cells[hear_col].strip('"“” ')})
+            n += 1
+            cell = lambda k: cells[cols[k]] if cols[k] is not None and cols[k] < len(cells) else ""  # noqa: E731
+            num = cell("num")
+            row = int(num) if num.isdigit() else n
+            if cell("hear"):
+                beats.append({"row": row, "section": section, "target": target,
+                              "text": cell("hear").strip('"“” '), "see": cell("see")})
             continue
         if s.startswith("**"):
             in_vo = s.lower().startswith("**voiceover")
             rest = re.sub(r"^\*\*[^*]+\*\*\s*", "", s)
             if in_vo and rest:
-                beats.append({"section": section, "target": target, "text": rest})
+                n += 1
+                beats.append({"row": n, "section": section, "target": target, "text": rest, "see": ""})
             continue
         if in_vo and s and not s.startswith("_"):
-            beats.append({"section": section, "target": target, "text": s.lstrip("-* ").strip('"“” ')})
+            n += 1
+            beats.append({"row": n, "section": section, "target": target,
+                          "text": s.lstrip("-* ").strip('"“” '), "see": ""})
     return beats
 
 

@@ -9,6 +9,7 @@ opt()  { printf "  \033[33m-\033[0m %s\n      optional: %s\n" "$1" "$2"; }
 
 echo "Apps"
 [[ -d /Applications/kdenlive.app ]] && pass "Kdenlive" || fail "Kdenlive not found" "brew install --cask kdenlive"
+[[ -x /Applications/kdenlive.app/Contents/MacOS/melt ]] && pass "melt (Kdenlive's render engine, used for rough cut previews)" || opt "melt not found" "reinstall Kdenlive, or set [rough_cut].melt"
 [[ -d /Applications/OBS.app ]] && pass "OBS Studio (screen recording)" || opt "OBS Studio not found" "brew install --cask obs"
 [[ -d "/Applications/Google Chrome.app" ]] && pass "Google Chrome (graphics engine)" || opt "No Google Chrome" "set [graphics].browser = \"chromium\" and run: npx playwright install chromium"
 

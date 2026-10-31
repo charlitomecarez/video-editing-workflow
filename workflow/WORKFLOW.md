@@ -29,7 +29,7 @@ Patterns are in [`docs/hooks-library.md`](../docs/hooks-library.md). Your voice 
 ## 4. Film
 
 - Follow the shot list, grouped by location.
-- Film each line 2-3 times and keep the best take.
+- Flubbed a line? Pause, then say the **whole line** again. The rough cut keeps the last full take.
 - Record 10 seconds of room silence (useful for noise reduction).
 - Film extra B-roll. You always need more than you think.
 - Vertical styles: frame inside the safe zones ([`docs/platform-specs.md`](../docs/platform-specs.md)).
@@ -49,10 +49,18 @@ Or run `/edit projects/<video>`.
 - `/animate "..."` creates Motion Canvas scenes for anything that should move (animated code, diagrams).
 - Clean the voiceover: `tools/clean-voice.sh audio/voice.wav`, then `tools/cut-silence.sh audio/voice_clean.wav --margin 0.1s`.
 
+## 5c. Auto rough cut
+
+Put B-roll in `footage/broll/` and images in `graphics/`, named with the script row they belong to (`05-typing.mp4`, `08-error.png`; `any-name.mp4` for "wherever it fits"). Music goes in `audio/music.mp3`. Then:
+```bash
+python3 tools/rough_cut.py projects/<video>
+```
+Or run `/roughcut projects/<video>`. It transcribes the recording, keeps the last full take of each script line, drops false starts and long pauses, and builds `<video>-roughcut.kdenlive`: graphics/B-roll on V2 when each line is spoken, recording on V1, voice on A1, music on A2, a guide per section. Read `roughcut/report.md` and watch `roughcut/preview.mp4` first.
+
 ## 6. Edit in Kdenlive
 
 Follow [`docs/kdenlive-guide.md`](../docs/kdenlive-guide.md):
-1. Open the `_cut.kdenlive` file, or start a new project with the style's profile.
+1. Open `<video>-roughcut.kdenlive` (from 5c), or the `_cut.kdenlive` file, or start a new project with the style's profile.
 2. Review the auto cuts and fix any that are too tight.
 3. Add B-roll, text, music and transitions per the script's editing notes.
 4. Work through the edit checklist in `script.md`.

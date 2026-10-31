@@ -10,7 +10,7 @@ Run `tools/graphic --list` to see the current templates and fields.
 
 ## Always
 - Read `[brand]` from config first. Use brand colors and fonts, and don't hardcode new ones in templates. Use `var(--accent)` etc.
-- Put outputs in the project: `projects/<video>/thumbnails/` for thumbnails and covers, and `projects/<video>/graphics/NN-name.png` for in-video graphics (numbered in script order).
+- Put outputs in the project: `projects/<video>/thumbnails/` for thumbnails and covers, and `projects/<video>/graphics/NN-name.png` for in-video graphics (NN = the script row from the `#` column, so `/roughcut` places each one when its line is spoken).
 - Look at every rendered PNG (Read the image) before telling the user it's done. Check that the text fits, nothing is cut off, it's readable small, and the composition is balanced.
 - Never use another creator's logo, face or branding as if it were the user's own. Product logos used to discuss a technology are fine.
 

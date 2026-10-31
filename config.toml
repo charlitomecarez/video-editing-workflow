@@ -237,6 +237,44 @@ caption_margin_v = 70
 # Whisper language for the transcript ("" = use [subtitles].language)
 language = ""
 
+[rough_cut]
+# Auto rough cut: raw recording + script -> Kdenlive project (tools/rough_cut.py, /roughcut)
+# How closely a take must match its script line (0-1). Lower = more forgiving of ad-libbed wording.
+match_threshold = 0.72
+# Seconds kept before/after each line so words aren't clipped
+pad = 0.12
+# Pauses inside a line longer than this are cut (seconds). 0 = keep all pauses
+max_pause = 0.6
+# Things you say that aren't in the script: "keep" (with an orange guide so you can decide) or "drop"
+adlibs = "keep"
+# Ad-libs shorter than this (not counting um/uh/okay) are treated as filler and removed
+adlib_min_words = 3
+# How many words ahead to look for each line (raise it if you do lots of retakes)
+search_words = 400
+# Shortest time a graphic stays on screen (seconds)
+min_graphic_seconds = 1.5
+# Hold a graphic until the next one if the gap is shorter than this (avoids flashing back to camera)
+fill_gaps_under = 1.0
+# Music from audio/music.* on A2: looped to the video length, lowered, faded out
+music = true
+music_level_db = -20
+music_fade_seconds = 2.0
+# Low-res preview video rendered with Kdenlive's melt (roughcut/preview.mp4)
+preview = true
+preview_height = 540
+# Path to melt ("" = the one inside Kdenlive.app)
+melt = ""
+# Whisper settings ("" = use [subtitles])
+model = ""
+language = ""
+
+[rough_cut.guide_categories]
+# Kdenlive guide categories, 0-8. Default colors: 0 purple, 1 blue, 2 teal, 3 green, 4 lime,
+# 5 yellow, 6 orange, 7 coral, 8 red. The rough cut names them so they're easy to filter.
+section = 0
+adlib = 6
+warning = 8
+
 [render]
 crf = 18
 preset = "medium"
