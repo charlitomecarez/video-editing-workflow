@@ -28,10 +28,20 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:60]
 
 
-def build(topic, style_key, s, total, cfg):
+def script_format(s, sc, override=None):
+    fmt = override or sc.get("format", "auto")
+    if fmt == "auto":
+        fmt = s.get("script_format", "sections")
+    if fmt not in ("sections", "av-table"):
+        raise SystemExit(f"Unknown script format '{fmt}' (use sections or av-table)")
+    return fmt
+
+
+def build(topic, style_key, s, total, cfg, fmt_override=None):
     sc, cr = cfg["script"], cfg["creator"]
     inc = set(sc["include"])
-    wps = sc["words_per_second"]
+    wps = s.get("words_per_second", sc["words_per_second"])
+    fmt = script_format(s, sc, fmt_override)
     out = [
         f"# {topic}",
         "",
@@ -47,6 +57,12 @@ def build(topic, style_key, s, total, cfg):
         out += ["## Hook options", ""] + [f"{i}. " for i in range(1, sc["hook_options"] + 1)] + [""]
     if "script" in inc:
         out += ["## Script", ""]
+        if fmt == "av-table":
+            out += [
+                "_One row per beat. **See** = what's on screen (graphic, code, meme, clip), "
+                "**Hear** = the voiceover line, **Notes** = asset source/link, SFX, timing._",
+                "",
+            ]
         t = 0.0
         for section, pct, note in s["structure"]:
             dur = total * pct
@@ -54,13 +70,21 @@ def build(topic, style_key, s, total, cfg):
                 f"### {section} ({ts(t)}–{ts(t + dur)}, ~{round(dur)}s, ~{round(dur * wps)} words)",
                 f"_{note}_",
                 "",
-                "**Voiceover / dialogue:**",
-                "",
-                "**On-screen text:**",
-                "",
-                "**Shots / B-roll:**",
-                "",
             ]
+            if fmt == "av-table":
+                # One row per visual, capped so long sections stay readable
+                rows = max(2, min(20, round(dur / s["avg_shot_seconds"])))
+                out += ["| See (on screen) | Hear (voiceover) | Notes |", "|---|---|---|"]
+                out += ["| | | |"] * rows + [""]
+            else:
+                out += [
+                    "**Voiceover / dialogue:**",
+                    "",
+                    "**On-screen text:**",
+                    "",
+                    "**Shots / B-roll:**",
+                    "",
+                ]
             t += dur
     if "shot_list" in inc:
         out += [
@@ -81,8 +105,10 @@ def build(topic, style_key, s, total, cfg):
             f"- **Music:** {s['music']}",
             f"- **Transitions:** {s['transitions']}",
             f"- **Color:** {s['color']}",
-            "",
         ]
+        out += [f"- **Visuals:** {s['visuals']}"] if s.get("visuals") else []
+        out += [f"- **Sound effects:** {s['sound_effects']}"] if s.get("sound_effects") else []
+        out += [""]
     if "checklist" in inc:
         out += ["## Edit checklist", "", f"- [ ] Kdenlive profile: {s['resolution']} @ {s['fps']} fps"]
         out += [f"- [ ] {item}" for item in sc["checklist"]] + [""]
@@ -108,13 +134,15 @@ def main():
     p.add_argument("topic")
     p.add_argument("--style", default=cfg["script"]["default_style"], choices=sorted(styles))
     p.add_argument("--seconds", type=int, help="override the style's target length")
+    p.add_argument("--format", choices=["sections", "av-table"],
+                   help="script layout (default: [script].format, or the style's script_format)")
     p.add_argument("--project", help="save as script.md inside this project folder")
     p.add_argument("--stdout", action="store_true", help="print instead of saving")
     p.add_argument("--force", action="store_true", help="overwrite an existing file")
     a = p.parse_args()
 
     s = styles[a.style]
-    md = build(a.topic, a.style, s, a.seconds or s["target_seconds"], cfg)
+    md = build(a.topic, a.style, s, a.seconds or s["target_seconds"], cfg, a.format)
     if a.stdout:
         print(md)
         return

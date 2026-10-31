@@ -12,7 +12,7 @@ Almost everything is configurable without touching code.
 | `topics/niches.json` | Niches and sub-topics for the topic generator | Yes |
 | `topics/formats.json` | Title templates for the topic generator | Yes |
 | `.claude/skills/*/SKILL.md` | How Claude helps with each part of the workflow | Yes |
-| `.claude/commands/*.md` | Slash commands (`/topics`, `/script`, `/edit`, `/publish`) | Yes |
+| `.claude/commands/*.md` | Slash commands (`/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`) | Yes |
 
 **Precedence:** command-line flag → `config.local.toml` → `config.toml`
 
@@ -30,13 +30,14 @@ tools/doctor.sh                                   # check that everything is val
 | `[paths]` | where projects, scripts and ideas live | all Python tools |
 | `[project]` | subfolders for new projects, date prefix | `tools/new_project.py` |
 | `[topics]` | default count and style | `topics/topic_generator.py` |
-| `[script]` | default style, speaking rate, number of hooks, included sections, checklist | `tools/script_generator.py` |
+| `[script]` | default style, layout (`sections` / `av-table` / `auto`), speaking rate, number of hooks, included sections, checklist | `tools/script_generator.py` |
 | `[prep]` | fps, quality (crf), speed (preset), loudness, audio bitrate | `tools/prep.sh` |
 | `[silence]` | margin, threshold, export type | `tools/cut-silence.sh` |
 | `[subtitles]` | Whisper model, language, format, line width and count | `tools/subtitles.sh` |
 | `[captions]` | burned-in font, size, colors, outline, position | `tools/burn-captions.sh` |
 | `[vertical]` | crop/blur mode, size, blur strength | `tools/vertical.sh` |
 | `[thumbnails]` | number of frames, width | `tools/thumbnails.sh` |
+| `[analyze]` | scene threshold, minimum shot length, save frames | `tools/analyze_cuts.py` |
 | `[render]` | quality for re-encoding tools | vertical, burn-captions |
 
 ## Adding a style
@@ -52,6 +53,8 @@ Create `styles/custom/<anything>.json`. Use `extends` to copy an existing style 
   }
 }
 ```
+
+Optional style fields: `words_per_second` (overrides `[script]`), `script_format` (`sections` or `av-table`), `visuals`, `sound_effects`.
 
 A style without `extends` needs every field: `name, aspect, resolution, fps, target_seconds, avg_shot_seconds, captions, music, transitions, color, structure`. `structure` is a list of `[section, fraction_of_length, note]`, and the fractions should add up to 1.0.
 

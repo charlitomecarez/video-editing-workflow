@@ -1,9 +1,73 @@
 {
-  "tech": ["AI tools", "budget smartphones", "productivity apps", "home office setups", "coding for beginners", "smart home gadgets"],
-  "fitness": ["home workouts", "running", "meal prep", "building muscle", "stretching routines", "gym anxiety"],
-  "food": ["budget meals", "street food", "Filipino recipes", "air fryer recipes", "coffee at home", "5-ingredient dinners"],
-  "travel": ["budget travel", "hidden beaches", "solo travel", "weekend trips", "packing light", "local food tours"],
-  "finance": ["saving money", "side hustles", "budgeting", "investing for beginners", "emergency funds", "freelancing"],
-  "lifestyle": ["morning routines", "minimalism", "room makeovers", "study habits", "self-improvement", "daily vlogs"],
-  "creator": ["video editing", "growing on TikTok", "YouTube thumbnails", "filming with a phone", "content ideas", "Kdenlive tips"]
+  "tech": [
+    "AI tools",
+    "budget smartphones",
+    "productivity apps",
+    "home office setups",
+    "coding for beginners",
+    "smart home gadgets"
+  ],
+  "fitness": [
+    "home workouts",
+    "running",
+    "meal prep",
+    "building muscle",
+    "stretching routines",
+    "gym anxiety"
+  ],
+  "food": [
+    "budget meals",
+    "street food",
+    "Filipino recipes",
+    "air fryer recipes",
+    "coffee at home",
+    "5-ingredient dinners"
+  ],
+  "travel": [
+    "budget travel",
+    "hidden beaches",
+    "solo travel",
+    "weekend trips",
+    "packing light",
+    "local food tours"
+  ],
+  "finance": [
+    "saving money",
+    "side hustles",
+    "budgeting",
+    "investing for beginners",
+    "emergency funds",
+    "freelancing"
+  ],
+  "lifestyle": [
+    "morning routines",
+    "minimalism",
+    "room makeovers",
+    "study habits",
+    "self-improvement",
+    "daily vlogs"
+  ],
+  "creator": [
+    "video editing",
+    "growing on TikTok",
+    "YouTube thumbnails",
+    "filming with a phone",
+    "content ideas",
+    "Kdenlive tips"
+  ],
+  "programming": [
+    "JavaScript frameworks",
+    "Rust",
+    "Python",
+    "TypeScript",
+    "AI coding tools",
+    "databases",
+    "Linux",
+    "Docker",
+    "Git",
+    "web performance",
+    "APIs",
+    "open-source tools",
+    "terminal tools"
+  ]
 }

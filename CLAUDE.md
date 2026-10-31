@@ -8,11 +8,12 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Styles: `styles/styles.json`, `styles/custom/*.json` (support `extends`), guide in `styles/STYLES.md`
 - Topics: `topics/topic_generator.py`, `topics/niches.json`, `topics/formats.json`, saved to `topics/ideas.md`
 - Scripts: `tools/script_generator.py` → `video-scripts/` or `projects/<video>/script.md`
+- References: `references/` (videos to study, git-ignored; reports committed)
 - Projects: `tools/new_project.py` → `projects/<date>-<slug>/`
-- Footage tools: `tools/prep.sh`, `cut-silence.sh`, `subtitles.sh`, `burn-captions.sh`, `vertical.sh`, `thumbnails.sh`, `doctor.sh` (all take `--help`)
-- Docs: `docs/kdenlive-guide.md`, `docs/platform-specs.md`, `docs/hooks-library.md`, `docs/configuration.md`
-- Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing)
-- Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`
+- Footage tools: `tools/prep.sh`, `cut-silence.sh`, `subtitles.sh`, `burn-captions.sh`, `vertical.sh`, `thumbnails.sh`, `doctor.sh`, `analyze_cuts.py` (all take `--help`)
+- Docs: `docs/kdenlive-guide.md`, `docs/platform-specs.md`, `docs/hooks-library.md`, `docs/configuration.md`, `docs/tech-explainer-style.md`
+- Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing, reference-analysis)
+- Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`
 
 ## Rules
 - Always respect config. Read `[creator]` before writing anything creative. Never hardcode settings that exist in config.

@@ -9,6 +9,9 @@ The machine-readable versions live in [`styles.json`](styles.json). The script g
 | `vlog` | Day-in-the-life, travel | 16:9, 1080p, 24 fps | ~10 min | ~3 s |
 | `tutorial` | How-tos, screen recordings | 16:9, 1080p, 30 fps | ~7 min | ~6 s |
 | `cinematic` | Montages, travel films, promos | 16:9, 24 fps | ~90 s | ~2.5 s |
+| `tech-explainer` | Faceless, graphics-driven tech explainers | 16:9, 1080p, 30 fps | ~2.5 min | ~1.8 s |
+| `tech-explainer-short` | Vertical version of the above | 9:16, 1080x1920, 30 fps | ~50 s | ~1.3 s |
+| `short-form-15s` (custom) | Ultra-short single-tip videos | 9:16, 30 fps | ~15 s | ~1 s |
 
 ## short-form
 - **Hook in 1-3 seconds.** No intros and no "hey guys."
@@ -40,6 +43,13 @@ The machine-readable versions live in [`styles.json`](styles.json). The script g
 - Go from wide to close to detail, then repeat.
 - Use speed ramps on movement (Time Remap).
 - Apply one LUT or grade to every clip for a consistent look.
+
+## tech-explainer
+- Writing first. The edit is simple: *a thing pops on screen, the narrator talks about it, next thing.*
+- 3-column script (See | Hear | Notes). Visuals land on the exact spoken word.
+- Dark background, logos, code, diagrams and memes popping in over 3-5 frames.
+- About 3 words per second voiceover, a visual change every 1-2 s, hard cuts only.
+- Full guide: [docs/tech-explainer-style.md](../docs/tech-explainer-style.md)
 
 ## Kdenlive effects cheat sheet
 | Want | Effect |

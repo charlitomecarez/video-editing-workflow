@@ -42,7 +42,12 @@ style = "short-form"
 
 [script]
 default_style = "short-form"
-# Average speaking rate, used to size voiceover per section (2.3-2.8 is typical)
+# Layout: "sections" (voiceover / on-screen text / B-roll per section),
+# "av-table" (3-column See | Hear | Notes table per section), or
+# "auto" (use the style's script_format, else sections)
+format = "auto"
+# Average speaking rate, used to size voiceover per section (2.3-2.8 is typical).
+# A style can override it with its own words_per_second.
 words_per_second = 2.5
 hook_options = 3
 # Sections to include in generated scripts
@@ -108,6 +113,15 @@ blur_strength = 20
 [thumbnails]
 count = 12
 width = 1280
+
+[analyze]
+# Scene-change sensitivity for tools/analyze_cuts.py (0-1). Lower = detects more cuts.
+# 0.3 suits most edits; try 0.2 for subtle cuts, 0.4 if motion causes false cuts.
+threshold = 0.3
+# Cuts closer together than this (seconds) are merged (flashes, glitches)
+min_shot = 0.15
+# Save one frame per shot for a visual breakdown
+save_frames = false
 
 [render]
 crf = 18

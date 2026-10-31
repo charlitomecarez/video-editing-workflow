@@ -86,7 +86,7 @@ def main(argv):
             return 1
     elif cmd == "styles":
         for k, s in load_styles().items():
-            print(f"{k:16} {s['name']}")
+            print(f"{k:22} {s['name']}")
     elif cmd == "style" and rest:
         styles = load_styles()
         if rest[0] not in styles:

@@ -24,8 +24,9 @@ Open Claude Code in this folder:
 | `/script "title"` | Full script with hooks, voiceover, B-roll and post captions |
 | `/edit projects/<video>` | Inspects and preps footage, then walks you through Kdenlive |
 | `/publish export/final.mp4` | Captions, thumbnails, titles and hashtags for each platform |
+| `/analyze references/video.mp4` | Breaks down a reference video's cuts, pacing and structure |
 
-Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research` and `publishing`.
+Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing` and `reference-analysis`.
 
 ## Using the tools directly
 
@@ -40,6 +41,7 @@ tools/subtitles.sh projects/<video>/export/final.mp4            # .srt with Whis
 tools/burn-captions.sh projects/<video>/export/final.mp4        # captions burned in
 tools/vertical.sh projects/<video>/export/final.mp4 --mode blur # 9:16 version
 tools/thumbnails.sh projects/<video>/export/final.mp4           # thumbnail candidates
+python3 tools/analyze_cuts.py references/video.mp4 --frames     # study a reference video's editing
 ```
 
 Every tool takes `--help`. Defaults come from the config, and flags override them for a single run.
@@ -60,10 +62,11 @@ The full reference is in [docs/configuration.md](docs/configuration.md).
 | Folder | Contents |
 |---|---|
 | `workflow/` | Step-by-step process ([WORKFLOW.md](workflow/WORKFLOW.md)) |
-| `docs/` | [Kdenlive guide](docs/kdenlive-guide.md), [platform specs](docs/platform-specs.md), [hooks library](docs/hooks-library.md), [configuration](docs/configuration.md) |
+| `docs/` | [Kdenlive guide](docs/kdenlive-guide.md), [platform specs](docs/platform-specs.md), [hooks library](docs/hooks-library.md), [configuration](docs/configuration.md), [tech explainer style](docs/tech-explainer-style.md) |
 | `styles/` | Editing styles ([STYLES.md](styles/STYLES.md)) |
 | `topics/` | Topic generator, niches, title formats, saved ideas |
 | `video-scripts/` | Scripts not tied to a project yet |
 | `tools/` | Generators, config loader and footage tools |
+| `references/` | Reference videos to study (media not committed) and their analysis reports |
 | `projects/` | One folder per video (media is not committed, so back it up separately) |
 | `.claude/` | Claude Code skills and slash commands |

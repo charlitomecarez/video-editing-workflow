@@ -19,6 +19,14 @@ description: Use when writing, rewriting or punching up a video script, hooks, v
 5. Fill in the shot list, numbered in filming order (group shots by location).
 6. Fill in the Post section for each platform (see `docs/platform-specs.md` for caption and tag limits).
 
+## Script formats
+- `sections`: voiceover, on-screen text and B-roll per section.
+- `av-table` (3 columns: **See | Hear | Notes**): one row per beat. Change the See column whenever the Hear line names something new, and put asset links, sources and SFX in Notes. Used by `tech-explainer` styles (or `--format av-table`).
+- The style's `words_per_second` overrides the config value (tech-explainer is ~3.0).
+
+## Tech explainers
+Follow `docs/tech-explainer-style.md`. Research comes first: verify facts against official docs and mark anything unverified `[CHECK]`. Include at least one real opinion or "when not to use it". Add a nerdy joke every 15-20 seconds. Never reuse another channel's catchphrases or show names.
+
 ## Writing rules
 - Write for the ear: short sentences and everyday words, in the configured language and tone. "Taglish" means natural Tagalog-English code-switching.
 - One idea per sentence and one point per shot.

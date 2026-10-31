@@ -31,3 +31,10 @@ projects/**
 *_proxy*
 .DS_Store
 __pycache__/
+
+# References: keep reports and notes, not the videos or frames
+references/**
+!references/**/
+!references/**/*.md
+!references/**/*.csv
+!references/**/*.srt

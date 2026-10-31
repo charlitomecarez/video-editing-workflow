@@ -14,7 +14,9 @@
     "{t} myths you still believe",
     "Cheap vs expensive {t}",
     "Things I'd never do with {t}",
-    "The trick for {t} pros don't share"
+    "The trick for {t} pros don't share",
+    "{t} explained in 60 seconds",
+    "This {t} feature is criminally underrated"
   ],
   "long": [
     "The complete beginner's guide to {t}",
@@ -28,6 +30,11 @@
     "{t} explained simply",
     "A full day trying {t}",
     "Beginner vs pro: {t}",
-    "The truth about {t} nobody talks about"
+    "The truth about {t} nobody talks about",
+    "{t} explained in 2 minutes",
+    "{t}: the good, the bad and the ugly",
+    "Why everyone is switching to {t}",
+    "I built something with {t} so you don't have to",
+    "{t} vs the alternatives: which one should you pick?"
   ]
 }
