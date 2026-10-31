@@ -24,7 +24,7 @@ What gets installed:
 | Animation | Motion Canvas |
 
 Python tools live in `.venv/` (Python 3.12 via uv) and Node packages in `node_modules/` and `animations/node_modules/`. Nothing is installed system-wide except the Homebrew packages.
-Optional: `brew install ffmpeg-full` for `tools/burn-captions.sh`.
+`ffmpeg-full` (installed alongside the normal FFmpeg) is used to burn captions into videos and reels.
 
 ## Using it with Claude Code
 

@@ -9,7 +9,7 @@ step() { printf "\n\033[1m==> %s\033[0m\n" "$1"; }
 command -v brew >/dev/null || { echo "Install Homebrew first: https://brew.sh"; exit 1; }
 
 step "Command-line tools (Homebrew)"
-for f in ffmpeg auto-editor openai-whisper uv node; do
+for f in ffmpeg ffmpeg-full auto-editor openai-whisper uv node; do
   if brew list --formula "$f" >/dev/null 2>&1 || { [[ $f == node ]] && command -v node >/dev/null; }; then
     echo "  ✓ $f"
   else

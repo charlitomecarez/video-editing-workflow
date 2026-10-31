@@ -18,7 +18,11 @@ need_file() {
 ffmpeg_libass() {
   local c
   for c in ffmpeg "$(brew --prefix ffmpeg-full 2>/dev/null)/bin/ffmpeg"; do
-    if command -v "$c" >/dev/null 2>&1 && "$c" -hide_banner -filters 2>/dev/null | grep -q " subtitles "; then
+    command -v "$c" >/dev/null 2>&1 || continue
+    # Capture first: piping into grep -q trips pipefail when ffmpeg gets SIGPIPE
+    local filters
+    filters=$("$c" -hide_banner -filters 2>/dev/null || true)
+    if [[ "$filters" == *" subtitles "* ]]; then
       command -v "$c"; return 0
     fi
   done
