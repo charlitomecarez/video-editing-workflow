@@ -1,0 +1,10 @@
+{
+  "description": "Name / source label for the bottom-left of the screen. Transparent PNG.",
+  "size": "1920x1080",
+  "transparent": true,
+  "fields": {
+    "title": "Main line, e.g. a name or 'Source:'",
+    "sub": "Second line, e.g. a role or URL"
+  },
+  "defaults": { "title": "Your Name", "sub": "Your Channel" }
+}

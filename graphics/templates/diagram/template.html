@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;box-sizing:border-box}
+  html,body{width:100%;height:100%;background:transparent}
+  .wrap{position:absolute;inset:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px}
+  h1{font-family:var(--font-heading);font-size:72px;color:var(--fg);-webkit-text-stroke:8px #000;paint-order:stroke fill}
+  #diagram{flex:1;width:100%;display:flex;align-items:center;justify-content:center;min-height:0}
+  #diagram .node rect,#diagram .node polygon,#diagram .node circle{stroke-width:3px!important}
+  #diagram .edgePath path,#diagram .flowchart-link{stroke-width:3px!important}
+  #diagram .edgeLabel{padding:4px 10px}
+  #diagram svg{max-width:100%!important;width:100%;height:100%}
+</style></head><body>
+<div class="wrap">{{#title}}<h1>{{title}}</h1>{{/title}}<div id="diagram"></div></div>
+</body></html>

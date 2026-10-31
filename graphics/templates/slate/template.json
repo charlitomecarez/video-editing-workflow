@@ -1,0 +1,13 @@
+{
+  "description": "Keyword / label that pops on screen (the 'thing flies in' graphic). Transparent PNG.",
+  "size": "1920x1080",
+  "transparent": true,
+  "fields": {
+    "text": "The keyword or short phrase. *word* = accent color",
+    "sub": "Optional smaller line under it",
+    "icon": "Optional image above the text (logo, icon)",
+    "style": "pill (default), plain or box",
+    "pos": "center (default), top or bottom"
+  },
+  "defaults": { "text": "Keyword", "style": "pill", "pos": "center" }
+}

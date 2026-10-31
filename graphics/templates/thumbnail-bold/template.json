@@ -1,0 +1,14 @@
+{
+  "description": "Classic YouTube thumbnail: background photo, cut-out subject, huge outlined text.",
+  "size": "1280x720",
+  "fields": {
+    "text": "Main text (3-5 words). *word* = accent color, \\n = new line",
+    "bg": "Background image (a frame from tools/thumbnails.sh, or any photo)",
+    "subject": "Cut-out PNG of you or an object (make it with tools/cutout.sh)",
+    "side": "Where the subject goes: right (default) or left",
+    "badge": "Small label in the corner, e.g. NEW or 2026",
+    "logo": "Logo image (defaults to [brand].logo)",
+    "dim": "Background darkness 0-1 (default 0.45)"
+  },
+  "defaults": { "text": "Your *big*\\nidea here", "side": "right", "dim": "0.45" }
+}

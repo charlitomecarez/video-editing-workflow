@@ -38,3 +38,14 @@ references/**
 !references/**/*.md
 !references/**/*.csv
 !references/**/*.srt
+
+# Dependencies and generated files
+node_modules/
+.venv/
+.voices/
+graphics/out/
+animations/output/
+animations/dist/
+*_teleprompter.html
+*_draft-vo*.wav
+animations/src/brand.ts

@@ -8,7 +8,7 @@ description: Use when preparing a finished video for posting (export settings, t
 ## Before posting
 1. Check the export with `ffprobe`: resolution, fps and duration must fit the platform limits in `docs/platform-specs.md`.
 2. Short-form: burn captions (`tools/burn-captions.sh`) unless the platform's own captions will be used.
-3. Thumbnails: `tools/thumbnails.sh <final.mp4>`, then help pick a frame. Good thumbnails show a clear face or emotion, one subject, high contrast and 3-5 words of text at most.
+3. Thumbnails: use the `graphics-thumbnails` skill (`tools/thumbnails.sh` for frames, `tools/cutout.sh` for subjects, `tools/graphic thumbnail-*` / `cover-vertical` to compose). Good thumbnails show a clear face or emotion, one subject, high contrast and 3-5 words of text at most.
 4. Fill in the script's Post section for each platform in `[creator].platforms`:
    - Title/caption: put the hook first and keep the important words at the start
    - Hashtags: 3-5 specific ones plus 1-2 broad ones. No banned or irrelevant tags.

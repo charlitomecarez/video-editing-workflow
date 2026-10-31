@@ -1,0 +1,11 @@
+{
+  "description": "Cover image for Reels / TikTok / Shorts (1080x1920). Text stays inside the safe zone and the 4:5 profile-grid crop.",
+  "size": "1080x1920",
+  "fields": {
+    "text": "Cover text (2-6 words). *word* = accent color, \\n = new line",
+    "bg": "Background image (a frame from your video)",
+    "sub": "Optional small line, e.g. 'Part 2'",
+    "dim": "Background darkness 0-1 (default 0.35)"
+  },
+  "defaults": { "text": "Your *hook*\\ngoes here", "dim": "0.35" }
+}

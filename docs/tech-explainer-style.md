@@ -46,7 +46,8 @@ Rules for the table:
 - Record the whole script in one go with a decent USB mic, in a small room with soft furnishings (closets work great).
 - Speak a bit faster and with more energy than feels natural. The target is about 3 words per second.
 - Leave a short pause and redo any line you flub, then run `tools/cut-silence.sh voice.wav --margin 0.1s` to tighten it automatically.
-- Clean it in Kdenlive with Noise suppressor for voice → Compressor → Loudness.
+- Clean it: `tools/clean-voice.sh voice.wav` (or in Kdenlive: Noise suppressor for voice → Compressor → Loudness).
+- Read from the teleprompter: `python3 tools/teleprompter.py script.md`. Make a draft AI voice to time things first: `tools/voice-draft.sh script.md`.
 - An AI voice is an option, but your own voice builds a stronger connection with viewers and is more distinctive.
 
 ## Step 4: Gather assets (from the Notes column)
@@ -61,6 +62,8 @@ Rules for the table:
 | SFX | Freesound, Pixabay (check licenses) |
 
 Keep them in `projects/<video>/graphics/` with names matching the script rows (`03-benchmark.png`).
+
+**Make most of them automatically:** `/graphics projects/<video>` reads your See column and renders the slates (`slate`), code (`code-card`) and diagrams (`diagram`) in your brand colors. Animated code and diagrams come from Motion Canvas (`/animate`). See [graphics.md](graphics.md) and [animations.md](animations.md).
 
 ## Step 5: Edit in Kdenlive
 1. **Profile:** HD 1080p 30 fps (or Vertical 1080x1920 for the short).

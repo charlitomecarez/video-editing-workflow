@@ -123,6 +123,63 @@ min_shot = 0.15
 # Save one frame per shot for a visual breakdown
 save_frames = false
 
+[brand]
+# Used by every graphic template (tools/graphic) and the Motion Canvas animations.
+bg = "#0d1117"        # main background
+bg2 = "#161b22"       # secondary background (diagram boxes, panels)
+fg = "#ffffff"        # text
+accent = "#ffd400"    # highlight color (*word* in text fields)
+accent2 = "#00e5ff"   # second accent (glows, lines)
+# Any installed font, or a web font loaded via font_css
+font_heading = "Arial Black, Impact, sans-serif"
+font_body = "Helvetica Neue, Arial, sans-serif"
+font_code = "Menlo, SF Mono, monospace"
+# Optional web fonts, e.g. "https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap"
+# (then set font_heading = "Montserrat, sans-serif")
+font_css = ""
+# Shiki theme for code cards: github-dark, dracula, one-dark-pro, tokyo-night, nord...
+code_theme = "github-dark"
+# Path to your logo (relative to the repo), added to templates with a logo slot
+logo = ""
+
+[graphics]
+# chrome = use your installed Google Chrome; chromium = Playwright's bundled browser
+browser = "chrome"
+output_dir = "graphics/out"
+# 2 = render at double resolution (sharper, bigger files)
+scale = 1
+
+[cutout]
+# Background-removal model for tools/cutout.sh:
+#   u2net (general), isnet-general-use (sharper edges), u2net_human_seg (people),
+#   birefnet-portrait (best for people, slower)
+model = "isnet-general-use"
+
+[tts]
+# Draft voiceover with Piper (tools/voice-draft.sh). Hear voices: https://rhasspy.github.io/piper-samples/
+# e.g. en_US-lessac-medium, en_US-ryan-high, en_GB-alan-medium, en_US-amy-medium
+voice = "en_US-lessac-medium"
+# 1.0 normal, 1.15 faster (tech-explainer pace), 0.9 slower
+speed = 1.1
+# Pause between sentences in seconds
+sentence_pause = 0.15
+voices_dir = ".voices"
+
+[clean_voice]
+# tools/clean-voice.sh
+highpass = 80         # Hz, cuts rumble and hum
+denoise = 12          # dB of noise reduction: 6 light, 12 normal, 20 strong
+deess = false         # tame harsh "s" sounds
+compress = true       # even out loud and quiet parts
+loudness = -16        # LUFS for the voice track (music and mix get leveled at export)
+
+[teleprompter]
+font_size = 56
+speed = 40            # scroll speed in px per second
+mirror = false        # true for glass/beam-splitter teleprompters
+line_width = 32       # characters per line
+guide_position = 30   # reading line, % from top of screen
+
 [render]
 crf = 18
 preset = "medium"

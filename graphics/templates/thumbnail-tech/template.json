@@ -1,0 +1,15 @@
+{
+  "description": "Tech explainer thumbnail: dark background, big glowing logo or icon, short punchy text.",
+  "size": "1280x720",
+  "fields": {
+    "text": "Short text (1-4 words). *word* = accent color, \\n = new line",
+    "icon": "Big logo / icon image of the technology (PNG or SVG)",
+    "emoji": "Optional big emoji next to the text, e.g. 🔥 or 🤯",
+    "sub": "Optional small line under the text",
+    "glow": "Glow color behind the icon (default: accent2)"
+  },
+  "defaults": {
+    "text": "Is it\\n*worth it?*",
+    "glow": "var(--accent2)"
+  }
+}

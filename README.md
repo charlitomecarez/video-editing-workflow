@@ -6,12 +6,23 @@ It's built to be used with Claude Code, and almost everything is configurable.
 ## Setup (macOS)
 
 ```bash
-brew install --cask kdenlive
-brew install ffmpeg auto-editor openai-whisper
-brew install ffmpeg-full                         # optional: only for tools/burn-captions.sh
-cp config.local.example.toml config.local.toml   # then edit with your name, niches, language...
+tools/setup.sh                                   # installs everything (safe to re-run)
+cp config.local.example.toml config.local.toml   # then edit: your name, niches, language, brand colors...
 tools/doctor.sh                                  # check everything is installed and valid
 ```
+
+What gets installed:
+
+| Area | Tools |
+|---|---|
+| Editing | Kdenlive, FFmpeg, auto-editor |
+| Subtitles | Whisper |
+| Recording | OBS Studio, teleprompter (browser), Piper (draft AI voice) |
+| Graphics | Playwright + Chrome (HTML → PNG), Shiki (code highlighting), Mermaid (diagrams), rembg (background removal) |
+| Animation | Motion Canvas |
+
+Python tools live in `.venv/` (Python 3.12 via uv) and Node packages in `node_modules/` and `animations/node_modules/`. Nothing is installed system-wide except the Homebrew packages.
+Optional: `brew install ffmpeg-full` for `tools/burn-captions.sh`.
 
 ## Using it with Claude Code
 
@@ -25,8 +36,12 @@ Open Claude Code in this folder:
 | `/edit projects/<video>` | Inspects and preps footage, then walks you through Kdenlive |
 | `/publish export/final.mp4` | Captions, thumbnails, titles and hashtags for each platform |
 | `/analyze references/video.mp4` | Breaks down a reference video's cuts, pacing and structure |
+| `/record projects/<video>` | Length check, draft AI voice, teleprompter, then audio cleanup |
+| `/graphics projects/<video>` | All slates, code cards and diagrams from the script's See column |
+| `/thumbnail projects/<video>` | 3 thumbnail concepts rendered and reviewed |
+| `/animate "idea"` | A Motion Canvas animation scene |
 
-Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing` and `reference-analysis`.
+Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics` and `voiceover`.
 
 ## Using the tools directly
 
@@ -42,6 +57,15 @@ tools/burn-captions.sh projects/<video>/export/final.mp4        # captions burne
 tools/vertical.sh projects/<video>/export/final.mp4 --mode blur # 9:16 version
 tools/thumbnails.sh projects/<video>/export/final.mp4           # thumbnail candidates
 python3 tools/analyze_cuts.py references/video.mp4 --frames     # study a reference video's editing
+
+python3 tools/teleprompter.py projects/<video>/script.md        # read while recording
+tools/voice-draft.sh projects/<video>/script.md                 # draft AI voiceover for timing
+tools/clean-voice.sh projects/<video>/audio/voice.wav           # denoise + level a recording
+
+tools/graphic --list                                            # thumbnails, code cards, slates, diagrams...
+tools/graphic thumbnail-tech --set "text=Is it *fast?*" --set icon=logo.png --open
+tools/cutout.sh photo.jpg                                       # remove a photo's background
+cd animations && npm start                                      # Motion Canvas animation editor
 ```
 
 Every tool takes `--help`. Defaults come from the config, and flags override them for a single run.
@@ -53,6 +77,8 @@ Every tool takes `--help`. Defaults come from the config, and flags override the
 | `config.toml` | All defaults: creator profile, quality, loudness, silence detection, subtitles, caption style, vertical mode... |
 | `config.local.toml` | Your personal overrides (git-ignored) |
 | `styles/custom/*.json` | Your own editing styles (can `extend` built-in ones) |
+| `[brand]` in config | Colors, fonts, logo and code theme for every graphic and animation |
+| `graphics/templates/` | Thumbnail and graphic templates (HTML, easy to add your own) |
 | `topics/niches.json`, `topics/formats.json` | Topic generator niches and title formats |
 
 The full reference is in [docs/configuration.md](docs/configuration.md).
@@ -62,11 +88,14 @@ The full reference is in [docs/configuration.md](docs/configuration.md).
 | Folder | Contents |
 |---|---|
 | `workflow/` | Step-by-step process ([WORKFLOW.md](workflow/WORKFLOW.md)) |
-| `docs/` | [Kdenlive guide](docs/kdenlive-guide.md), [platform specs](docs/platform-specs.md), [hooks library](docs/hooks-library.md), [configuration](docs/configuration.md), [tech explainer style](docs/tech-explainer-style.md) |
+| `docs/` | [Kdenlive guide](docs/kdenlive-guide.md), [platform specs](docs/platform-specs.md), [hooks library](docs/hooks-library.md), [configuration](docs/configuration.md), [tech explainer style](docs/tech-explainer-style.md), [graphics](docs/graphics.md), [voice & recording](docs/voice-and-recording.md), [animations](docs/animations.md) |
 | `styles/` | Editing styles ([STYLES.md](styles/STYLES.md)) |
 | `topics/` | Topic generator, niches, title formats, saved ideas |
 | `video-scripts/` | Scripts not tied to a project yet |
-| `tools/` | Generators, config loader and footage tools |
+| `tools/` | Generators, config loader, footage, voice and graphics tools |
+| `graphics/templates/` | Graphic templates (thumbnails, covers, code cards, slates, lower thirds, diagrams) |
+| `animations/` | Motion Canvas project (animated code, diagrams, titles) |
+| `templates/` | Reusable Kdenlive project templates |
 | `references/` | Reference videos to study (media not committed) and their analysis reports |
 | `projects/` | One folder per video (media is not committed, so back it up separately) |
 | `.claude/` | Claude Code skills and slash commands |

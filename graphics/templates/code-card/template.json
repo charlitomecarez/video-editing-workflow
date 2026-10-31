@@ -1,0 +1,21 @@
+{
+  "description": "Syntax-highlighted code in an editor window. Transparent PNG, ready to drop onto a Kdenlive track.",
+  "size": "1920x1080",
+  "transparent": true,
+  "selector": ".card",
+  "code": true,
+  "fields": {
+    "code": "Code text (\\n for new lines) or a path to a code file",
+    "lang": "Language: ts, js, python, rust, bash... (auto from file extension)",
+    "title": "Window title (defaults to the file name)",
+    "theme": "Shiki theme (default: [brand].code_theme), e.g. github-dark, dracula, one-dark-pro",
+    "size": "Font size in px (default 34)",
+    "width": "Card width in px (default auto, max 1760)",
+    "frame": "card (default: PNG cropped to the card) or full (1920x1080 transparent frame, card centered, so every card lines up the same in Kdenlive)"
+  },
+  "defaults": {
+    "code": "console.log('hello world')",
+    "lang": "js",
+    "size": "34"
+  }
+}

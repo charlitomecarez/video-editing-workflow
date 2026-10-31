@@ -22,6 +22,10 @@ This creates `projects/<date>-<title>/` with `footage/ audio/ graphics/ export/ 
 `/script "Your chosen title"` fills in the hooks, voiceover, B-roll, shot list and post captions.
 Patterns are in [`docs/hooks-library.md`](../docs/hooks-library.md).
 
+## 3b. Prepare to record
+
+`/record projects/<video>` checks the script length, offers a draft AI voice (`tools/voice-draft.sh`) and opens the teleprompter (`tools/teleprompter.py`). See [`docs/voice-and-recording.md`](../docs/voice-and-recording.md), including the OBS setup for screen recordings.
+
 ## 4. Film
 
 - Follow the shot list, grouped by location.
@@ -38,6 +42,12 @@ tools/prep.sh projects/<video>/footage/*.MOV                    # edit-friendly,
 tools/cut-silence.sh projects/<video>/footage/talk_prep.mp4     # pauses removed -> .kdenlive
 ```
 Or run `/edit projects/<video>`.
+
+## 5b. Graphics and animations
+
+- `/graphics projects/<video>` renders the slates, code cards and diagrams from the script into `graphics/`.
+- `/animate "..."` creates Motion Canvas scenes for anything that should move (animated code, diagrams).
+- Clean the voiceover: `tools/clean-voice.sh audio/voice.wav`, then `tools/cut-silence.sh audio/voice_clean.wav --margin 0.1s`.
 
 ## 6. Edit in Kdenlive
 
@@ -60,6 +70,10 @@ tools/subtitles.sh projects/<video>/export/draft.mp4 --language en
 - Project → Render → **MP4-H264/AAC** → save into `export/`.
 - Vertical copy: `tools/vertical.sh export/final.mp4 --mode blur`
 - Watch the full render once before posting.
+
+## 8b. Thumbnail
+
+`/thumbnail projects/<video>` creates 3 concepts with `tools/graphic` (plus `tools/cutout.sh` for cut-out subjects). See [`docs/graphics.md`](../docs/graphics.md).
 
 ## 9. Post
 

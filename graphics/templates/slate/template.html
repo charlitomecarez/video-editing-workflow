@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;box-sizing:border-box}
+  html,body{width:100%;height:100%;background:transparent}
+  .wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;gap:26px;padding:110px}
+  .pos-center{justify-content:center}.pos-top{justify-content:flex-start}.pos-bottom{justify-content:flex-end}
+  .icon{max-height:260px;max-width:500px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.5))}
+  .text{font-family:var(--font-heading);font-size:110px;line-height:1;color:var(--fg);text-align:center}
+  .style-pill .text{background:var(--bg);padding:26px 60px;border-radius:999px;border:6px solid var(--accent);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .style-box .text{background:var(--accent);color:#000;padding:22px 50px;border-radius:12px;transform:rotate(-2deg);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .style-box .text .hl{color:#fff}
+  .style-plain .text{-webkit-text-stroke:10px #000;paint-order:stroke fill;text-shadow:0 10px 30px rgba(0,0,0,.6)}
+  .sub{font-family:var(--font-body);font-weight:700;font-size:48px;color:var(--fg);background:rgba(0,0,0,.65);padding:10px 28px;border-radius:12px}
+</style></head><body>
+<div class="wrap pos-{{pos}} style-{{style}}">
+  {{#icon}}<img class="icon" src="{{{icon}}}">{{/icon}}
+  <div class="text">{{text}}</div>
+  {{#sub}}<div class="sub">{{sub}}</div>{{/sub}}
+</div></body></html>

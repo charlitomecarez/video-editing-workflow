@@ -11,6 +11,8 @@ Almost everything is configurable without touching code.
 | `styles/custom/*.json` | Your own styles | Yes |
 | `topics/niches.json` | Niches and sub-topics for the topic generator | Yes |
 | `topics/formats.json` | Title templates for the topic generator | Yes |
+| `graphics/templates/*/` | Graphic templates (`template.html` + `template.json`) | Yes |
+| `animations/src/scenes/` | Motion Canvas scenes | Yes |
 | `.claude/skills/*/SKILL.md` | How Claude helps with each part of the workflow | Yes |
 | `.claude/commands/*.md` | Slash commands (`/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`) | Yes |
 
@@ -38,6 +40,12 @@ tools/doctor.sh                                   # check that everything is val
 | `[vertical]` | crop/blur mode, size, blur strength | `tools/vertical.sh` |
 | `[thumbnails]` | number of frames, width | `tools/thumbnails.sh` |
 | `[analyze]` | scene threshold, minimum shot length, save frames | `tools/analyze_cuts.py` |
+| `[brand]` | colors, fonts, web fonts, code theme, logo | `tools/graphic`, Motion Canvas (`animations/`) |
+| `[graphics]` | browser (chrome / chromium), output folder, render scale | `tools/graphic` |
+| `[cutout]` | background-removal model | `tools/cutout.sh` |
+| `[tts]` | Piper voice, speed, sentence pause, voices folder | `tools/voice-draft.sh` |
+| `[clean_voice]` | highpass, denoise strength, de-esser, compressor, loudness | `tools/clean-voice.sh` |
+| `[teleprompter]` | font size, speed, mirror, line width, reading line | `tools/teleprompter.py` |
 | `[render]` | quality for re-encoding tools | vertical, burn-captions |
 
 ## Adding a style

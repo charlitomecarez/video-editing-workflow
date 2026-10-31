@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Render graphics (thumbnails, code cards, slates, covers, diagrams). See: tools/graphic --help
+DIR="$(cd "$(dirname "$0")/.." && pwd)"
+[[ -d "$DIR/node_modules/playwright" ]] || { echo "Graphics engine not installed. Run: tools/setup.sh" >&2; exit 1; }
+exec node "$DIR/tools/graphics/render.mjs" "$@"
