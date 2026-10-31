@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;font-family:var(--font-body);color:var(--fg);
+    background:var(--bg);background-image:radial-gradient(ellipse at center,rgba(255,255,255,.05),transparent 65%)}
+  .stripe{position:absolute;left:0;top:0;bottom:0;width:22px;background:var(--team)}
+  .photo{position:absolute;left:0;top:0;bottom:0;width:46%}
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,var(--bg) 100%)}
+  .panel{position:absolute;top:0;bottom:0;right:0;left:0;padding:110px 130px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+  .has-photo .panel{left:44%;padding-left:60px;padding-right:100px}
+  .tag{align-self:flex-start;font-family:var(--font-heading);font-size:30px;letter-spacing:.14em;color:#fff;background:var(--team);padding:8px 22px;border-radius:6px}
+  .title{font-family:var(--font-heading);font-size:96px;line-height:1.02}
+  .sub{font-size:40px;font-weight:600;opacity:.8}
+  .rows{margin-top:30px}
+  .grid{display:flex;flex-wrap:wrap;gap:28px}
+  .grid .item{flex:1 1 0;min-width:220px;background:rgba(255,255,255,.06);border-top:8px solid var(--team);border-radius:16px;padding:28px 26px 24px}
+  .grid .v{font-family:var(--font-heading);font-size:140px;line-height:1}
+  .grid .l{font-weight:800;font-size:36px;letter-spacing:.08em;opacity:.75;margin-top:8px}
+  .list .item{display:flex;justify-content:space-between;align-items:baseline;gap:40px;padding:24px 0;border-bottom:2px solid rgba(255,255,255,.12)}
+  .list .item:last-child{border-bottom:0}
+  .list .v{font-family:var(--font-heading);font-size:62px;line-height:1.1}
+  .list .l{font-size:42px;font-weight:600;opacity:.85;text-align:right}
+  .list .l.num{font-family:var(--font-heading);font-size:72px;line-height:1;opacity:1;color:var(--accent)}
+  .footer{position:absolute;right:60px;bottom:40px;font-size:26px;opacity:.55}
+  .hl{color:var(--accent)}
+</style></head><body style="--team:{{color}}" class="{{#photo}}has-photo{{/photo}}">
+<template id="src">{{rows}}</template>
+{{#photo}}<div class="photo"><img src="{{{photo}}}" style="object-position:{{photo_pos}}"></div>{{/photo}}
+<div class="panel">
+  {{#tag}}<div class="tag">{{tag}}</div>{{/tag}}
+  <div class="title">{{title}}</div>
+  {{#sub}}<div class="sub">{{sub}}</div>{{/sub}}
+  <div class="rows {{layout}}" id="rows"></div>
+</div>
+{{#footer}}<div class="footer">{{footer}}</div>{{/footer}}
+<script>
+  if (!getComputedStyle(document.body).getPropertyValue("--team").trim())
+    document.body.style.setProperty("--team", "var(--accent)");
+  const box = document.getElementById("rows");
+  for (const item of document.getElementById("src").innerHTML.split(";").map((s) => s.trim()).filter(Boolean)) {
+    const [v, l = ""] = item.split("|");
+    box.insertAdjacentHTML("beforeend", `<div class="item"><div class="v">${v.trim()}</div><div class="l${/^([\d.,/-]+|([WL] ?)+)$/.test(l.trim()) ? " num" : ""}">${l.trim()}</div></div>`);
+  }
+  const n = box.children.length;
+  if (box.classList.contains("list") && n > 4) box.style.setProperty("zoom", String(4.6 / n));
+</script>
+</body></html>

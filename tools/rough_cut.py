@@ -26,6 +26,7 @@ place them with --place FILE=ROW. Settings: [rough_cut] in config.toml.
 import argparse
 import difflib
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -44,6 +45,21 @@ IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".svg", ".bmp", ".tif", ".tiff"}
 FILLERS = {"um", "uh", "uhm", "erm", "ah", "oh", "hmm", "mm", "eh", "like", "okay", "ok", "so"}
 NUM = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen " \
       "sixteen seventeen eighteen nineteen twenty".split()
+TENS = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
+
+
+def num_words(n):
+    """42 -> ['forty', 'two'], 145 -> ['one', 'hundred', 'forty', 'five'], 2918 -> ['two', 'thousand', ...].
+    So '42 points' from Whisper matches 'forty-two points' in the script."""
+    if n <= 20:
+        return [NUM[n]]
+    if n < 100:
+        return [TENS[n // 10]] + ([NUM[n % 10]] if n % 10 else [])
+    if n < 1000:
+        return [NUM[n // 100], "hundred"] + (num_words(n % 100) if n % 100 else [])
+    if n < 1_000_000:
+        return num_words(n // 1000) + ["thousand"] + (num_words(n % 1000) if n % 1000 else [])
+    return [str(n)]
 
 
 def log(*a):
@@ -59,10 +75,11 @@ def norm_tokens(text):
         t = t.replace(a, b)
     t = re.sub(r"\*+", "", t)              # markdown emphasis
     t = re.sub(r"'", "", t)                # don't -> dont
+    t = re.sub(r"(?<=\d),(?=\d{3}\b)", "", t)  # 2,918 -> 2918
     t = re.sub(r"[^\w\s]", " ", t)
     out = []
     for w in t.split():
-        out.append(NUM[int(w)] if w.isdigit() and int(w) <= 20 else w)
+        out.extend(num_words(int(w)) if w.isdigit() else [w])
     return out
 
 
@@ -198,14 +215,14 @@ def pick_source(proj, explicit):
 def transcribe(audio, outdir, rc, cfg):
     cache = outdir / "transcript.json"
     meta = outdir / "transcript.source"
-    stamp = f"{audio.resolve()}|{audio.stat().st_mtime_ns}"
+    lang = rc.get("language") or cfg["subtitles"]["language"]
+    stamp = f"{audio.resolve()}|{audio.stat().st_mtime_ns}|{lang}"
     if cache.exists() and meta.exists() and meta.read_text() == stamp:
         log(f"Using cached transcript: {cache}")
         return json.loads(cache.read_text())
     if not shutil.which("whisper"):
         raise SystemExit("Missing 'whisper'. Run tools/doctor.sh for install help.")
     model = rc.get("model") or cfg["subtitles"]["model"]
-    lang = rc.get("language") or cfg["subtitles"]["language"]
     log(f"Transcribing {audio.name} with Whisper (model={model} language={lang or 'auto'}). "
         "This takes about as long as the recording on a laptop.")
     tmp = outdir / "_whisper"
@@ -240,6 +257,21 @@ def align(beats, words, rc):
     btoks = [norm_tokens(b["text"]) for b in beats]
     horizon = rc.get("search_words", 400)
 
+    # Whisper misspells names and non-English words ("Mayami", "pinanot"). Snap a transcript
+    # word to the closest script word when they're nearly the same. Only used for matching.
+    cutoff = rc.get("fuzzy_words", 0.8)
+    vocab = sorted({t for bt in btoks for t in bt})
+    known, snapped = set(vocab), {}
+
+    def snap(t):
+        if not cutoff or t in known or len(t) < 3:
+            return t
+        if t not in snapped:
+            snapped[t] = (difflib.get_close_matches(t, vocab, 1, cutoff) or [t])[0]
+        return snapped[t]
+
+    toks = [snap(t) for t in toks]
+
     pos = 0
     for k, b in enumerate(beats):
         b["takes"], b["take"] = [], None
@@ -262,6 +294,50 @@ def align(beats, words, rc):
         if b["take"]:
             b["w0"], b["w1"] = owner[b["take"].i], owner[b["take"].j - 1] + 1
             b["source"] = (words[b["w0"]]["s"], words[b["w1"] - 1]["e"])
+
+    # Lines read in order: speech between two found lines that matches the missing line(s) between
+    # them is that line, even if Whisper garbled it too much for the normal match. Flagged for a check.
+    min_r = rc.get("infer_between", 0.4)
+    if min_r:
+        found_idx = [k for k, b in enumerate(beats) if b["take"]]
+        for p_, n_ in zip([-1] + found_idx, found_idx + [len(beats)]):
+            gap_beats = beats[p_ + 1:n_]
+            if not gap_beats or p_ < 0 or n_ >= len(beats):
+                continue
+            a_w, z_w = beats[p_]["w1"], beats[n_]["w0"]
+            if z_w <= a_w:
+                continue
+            utts = split_utterances(words, a_w, z_w, 0.45)
+            ut = [[snap(t) for t in norm_tokens(" ".join(w["w"] for w in words[a:z]))] for a, z in utts]
+            m, kb = len(utts), len(gap_beats)
+            gt = [btoks[beats.index(b)] for b in gap_beats]
+            # best[i][j]: best total score using utterances[i:] for gap_beats[j:]; each beat takes a run of utterances
+            best = [[0.0] * (kb + 1) for _ in range(m + 1)]
+            choice = [[None] * (kb + 1) for _ in range(m + 1)]
+            for i in range(m - 1, -1, -1):
+                for j in range(kb - 1, -1, -1):
+                    opts = [(best[i + 1][j], ("skip_u",)), (best[i][j + 1], ("skip_b",))]
+                    run = []
+                    for e in range(i + 1, m + 1):
+                        run = run + ut[e - 1]
+                        r = ratio(gt[j], run)
+                        if r >= min_r:
+                            opts.append((r + best[e][j + 1], ("take", e, r)))
+                    best[i][j], choice[i][j] = max(opts, key=lambda o: o[0])
+            i = j = 0
+            while i < m and j < kb:
+                c = choice[i][j]
+                if c[0] == "skip_u":
+                    i += 1
+                elif c[0] == "skip_b":
+                    j += 1
+                else:
+                    b = gap_beats[j]
+                    b["w0"], b["w1"] = utts[i][0], utts[c[1] - 1][1]
+                    b["source"] = (words[b["w0"]]["s"], words[b["w1"] - 1]["e"])
+                    b["take"] = Take(c[2], None, None)
+                    b["takes"], b["inferred"] = [b["take"]], True
+                    i, j = c[1], j + 1
 
     # Speech between consecutive chosen takes
     adlibs, dropped = [], []
@@ -307,9 +383,32 @@ def split_utterances(words, a, z, gap):
     return out
 
 
-def pieces_for(words, w0, w1, rc):
-    """Source time ranges for words[w0:w1], with long internal pauses cut out."""
+def loudness_envelope(audio):
+    """Loudness in dB per 10 ms frame of the recording (for snapping cuts to quiet moments)."""
+    import array
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(audio), "-ac", "1", "-ar", "16000", "-f", "s16le", "-"],
+                         capture_output=True, check=True).stdout
+    a = array.array("h")
+    a.frombytes(raw[: len(raw) // 2 * 2])
+    hop, env = 160, []
+    for i in range(0, len(a) - hop, hop):
+        seg = a[i:i + hop]
+        env.append(20 * math.log10(math.sqrt(sum(x * x for x in seg) / hop) / 32768 + 1e-9))
+    return env
+
+
+def quietest(env, lo, hi):
+    """Time (s) of the quietest 10 ms frame between lo and hi."""
+    i, j = max(0, int(lo * 100)), min(len(env), int(hi * 100))
+    return min(range(i, j), key=lambda k: env[k]) / 100 if j > i else lo
+
+
+def pieces_for(words, w0, w1, rc, env=None):
+    """Source time ranges for words[w0:w1], with long internal pauses cut out.
+    With env, each cut moves to the quietest moment nearby (Whisper word times are often
+    0.1-0.2 s off, which cuts words mid-syllable), but never into the neighbouring word."""
     pad, max_pause = rc["pad"], rc["max_pause"]
+    win = rc.get("snap_to_quiet", 0) if env else 0
     spans, a = [], w0
     for i in range(w0 + 1, w1):
         if max_pause and words[i]["s"] - words[i - 1]["e"] > max_pause:
@@ -324,6 +423,11 @@ def pieces_for(words, w0, w1, rc):
             s = max(s, (words[a - 1]["e"] + words[a]["s"]) / 2)
         if z < len(words):
             e = min(e, (words[z - 1]["e"] + words[z]["s"]) / 2)
+        if win:
+            lo = max(s - win, words[a - 1]["e"] if a > 0 else 0.0)
+            hi = min(e + win, words[z]["s"] if z < len(words) else e + win)
+            s = quietest(env, lo, s + 0.03) if lo < s + 0.03 else s
+            e = quietest(env, e - 0.03, hi) if hi > e - 0.03 else e
         out.append((max(0.0, s), e, a, z))
     return out
 
@@ -334,7 +438,9 @@ ROW_RE = re.compile(r"^(\d{1,3})(?:[-_ .]|$)")
 ANY_RE = re.compile(r"^any(?:[-_ ]|$)", re.I)
 
 
-def scan_materials(proj, places):
+def scan_materials(proj, places, tag="placeholder-"):
+    """Row materials. A placeholder (`NN-placeholder-what.png`) is skipped as soon as its
+    replacement (`NN-what.<any ext>`, in graphics/ or footage/broll/) exists."""
     found = []
     for d, kind in ((proj / "graphics", "graphic"), (proj / "footage" / "broll", "broll")):
         if not d.is_dir():
@@ -350,7 +456,18 @@ def scan_materials(proj, places):
             if row is None and not ANY_RE.match(f.name):
                 continue   # thumbnail photos etc.
             found.append({"path": f, "row": row, "kind": "image" if ext in IMAGE_EXT else "video", "name": f.name})
-    return found
+    if not tag:
+        return found
+    real = {m["path"].stem for m in found if tag not in m["path"].stem}
+    out = []
+    for m in found:
+        pm = re.match(rf"^(\d{{1,3}}(?:-\d+)?-){re.escape(tag)}(.+)$", m["path"].stem)
+        if pm:
+            if pm.group(1) + pm.group(2) in real:
+                continue   # replaced by the real asset
+            m["placeholder"] = pm.group(1) + pm.group(2)
+        out.append(m)
+    return out
 
 
 # ---------------------------------------------------------------- Kdenlive / MLT XML
@@ -588,6 +705,7 @@ def s_to_srt(t):
 
 
 def mmss(t):
+    t = round(t, 1)   # so 59.96 shows as 1:00.0, not 0:60.0
     return f"{int(t // 60)}:{t % 60:04.1f}"
 
 
@@ -653,7 +771,10 @@ def render_preview(melt, kdenlive, out, total, fps, height, size):
     last = total - 1
     with open(errlog, "w") as err:
         proc = subprocess.Popen([melt, str(kdenlive), f"out={last}", "-consumer", f"avformat:{out}",
-                                 f"width={pw}", f"height={height}", "vcodec=libx264", "preset=veryfast", "crf=26",
+                                 f"width={pw}", f"height={height}",
+                                 # Without these melt writes 25 fps and drops frames when it falls behind
+                                 f"frame_rate_num={fps_fraction(fps)[0]}", f"frame_rate_den={fps_fraction(fps)[1]}",
+                                 "real_time=-1", "vcodec=libx264", "preset=veryfast", "crf=26",
                                  "acodec=aac", "ab=128k", "terminate_on_pause=1"],
                                 stdin=subprocess.DEVNULL, stdout=err, stderr=err)
         want, deadline = total / fps - 0.2, time.time() + max(180, 30 * total / fps)
@@ -695,6 +816,12 @@ def main():
                    help="put a material on a script row, e.g. any-server-room.mp4=07 (repeatable)")
     p.add_argument("--threshold", type=float, help=f"line match strictness 0-1 (default {rc['match_threshold']})")
     p.add_argument("--adlibs", choices=["keep", "drop"], help=f"default {rc['adlibs']}")
+    p.add_argument("--language", help="Whisper language code for this video, e.g. tl or en "
+                   "(default: [rough_cut].language, then [subtitles].language, then auto)")
+    p.add_argument("--graphic-seconds", type=float, help="longest a graphic stays on screen, 0 = until the next "
+                   "one (default: the style's graphic_seconds, then [rough_cut].max_graphic_seconds)")
+    p.add_argument("--name", help="output name: <folder>-<name>.kdenlive (default: roughcut). Use a new name "
+                   "to keep an earlier version, e.g. --name faceless")
     p.add_argument("--no-music", action="store_true")
     p.add_argument("--no-preview", action="store_true")
     p.add_argument("--retranscribe", action="store_true", help="ignore the cached transcript")
@@ -718,7 +845,13 @@ def main():
     styles = load_styles()
     sm = re.search(r"\(`([\w-]+)`\)", md)
     style = styles.get(sm.group(1), {}) if sm else {}
+    # A style can carry its own [rough_cut] settings (e.g. tighter pauses); command-line flags still win.
+    for k, v in style.get("rough_cut", {}).items():
+        if not (k == "match_threshold" and a.threshold is not None) and not (k == "adlibs" and a.adlibs):
+            rc[k] = v
     video, audio = pick_source(proj, a.source)
+    if not rc.get("use_video", True):
+        video = None   # faceless: keep the recording's audio, black background instead of the camera
     pv = probe(video) if video else None
     if style.get("resolution"):
         size = tuple(int(v) for v in style["resolution"].lower().split("x"))
@@ -727,10 +860,13 @@ def main():
     else:
         size = (1920, 1080)
     fps = float(style.get("fps") or 30)
+    # Talking-head styles want the camera back between graphics; faceless ones hold each graphic.
+    max_graphic = next(v for v in (a.graphic_seconds, style.get("graphic_seconds"),
+                                   rc.get("max_graphic_seconds", 0)) if v is not None)
 
     outdir = proj / "roughcut"
     outdir.mkdir(exist_ok=True)
-    kd = proj / f"{proj.name}-roughcut.kdenlive"
+    kd = proj / f"{proj.name}-{a.name or 'roughcut'}.kdenlive"
     if kd.exists() and not a.force:
         raise SystemExit(f"{kd.relative_to(proj.parent)} exists. Use --force to rebuild it "
                          "(save your own edits under a different name first).")
@@ -739,6 +875,8 @@ def main():
         + (f" | voice: {audio.relative_to(proj)}" if audio != video else ""))
     if a.retranscribe:
         (outdir / "transcript.source").unlink(missing_ok=True)
+    if a.language:
+        rc["language"] = a.language
     words = transcribe(audio, outdir, rc, cfg)
     if not words:
         raise SystemExit("Whisper didn't hear any speech in the recording.")
@@ -756,10 +894,11 @@ def main():
 
     src_dur = probe(audio)["duration"]
     src_frames = round((pv["duration"] if pv else src_dur) * fps)
+    env = loudness_envelope(audio) if rc.get("snap_to_quiet") else None
     clips, pos = [], 0
     for s in segs:
         s["pos0"] = pos
-        for (ts, te, w0, w1) in pieces_for(words, s["w0"], s["w1"], rc):
+        for (ts, te, w0, w1) in pieces_for(words, s["w0"], s["w1"], rc, env):
             fin, fout = round(ts * fps), min(round(te * fps) - 1, src_frames - 1)
             if fout < fin:
                 continue
@@ -772,6 +911,24 @@ def main():
             s["adlib"]["t0"] = s["pos0"]
     total = pos
 
+    def cue_frame(cue, b):
+        """Timeline frame where the cue words are spoken inside beat b, or None."""
+        want = " ".join(norm_tokens(cue))
+        n = max(1, len(want.split()))
+        best = (0.0, None)
+        for k in range(b["w0"], b["w1"]):
+            got = " ".join(t for w in words[k:k + n] for t in norm_tokens(w["w"]))
+            r = difflib.SequenceMatcher(None, want, got).ratio()
+            if r > best[0]:
+                best = (r, k)
+        if best[0] < 0.6:
+            return None
+        k = best[1]
+        for c in clips:
+            if c["w0"] <= k < c["w1"]:
+                return max(c["pos"], c["pos"] + round(words[k]["s"] * fps) - c["in"])
+        return None
+
     # Materials -> V2
     places = {}
     for item in a.place:
@@ -779,7 +936,7 @@ def main():
             raise SystemExit(f"--place needs FILE=ROW, got {item}")
         f, r = item.rsplit("=", 1)
         places[Path(f).name] = int(r)
-    mats = scan_materials(proj, places)
+    mats = scan_materials(proj, places, rc.get("placeholder_tag", "placeholder-"))
     by_row = {}
     unplaced = []
     for m in mats:
@@ -798,18 +955,39 @@ def main():
             start, end = b["t0"], b["t1"]
         else:
             later = [r for r in beat_rows if r > row]
+            earlier = [r for r in beat_rows if r < row]
             start = row_beat[later[0]]["t0"] if later else max(0, total - min_f)
             end = start + min_f
+            # Unmatched speech sits between the neighbouring found lines: use that gap if there is one
+            if earlier and later and row_beat[later[0]]["t0"] - row_beat[earlier[-1]]["t1"] >= min_f:
+                start, end = row_beat[earlier[-1]]["t1"], row_beat[later[0]]["t0"]
             why = "not spoken in the recording" if any(x["row"] == row for x in beats) else "no voiceover on that row"
             notes.append(f"Row {row:02} ({', '.join(i['name'] for i in items)}): {why}, placed at {mmss(start / fps)} for "
                          f"{rc['min_graphic_seconds']}s. Check it.")
         span = max(end - start, min_f * len(items))
         each = span // len(items)
+        # Default: share the row evenly. A cue in the See column (`file.png` ... on "word") puts
+        # that file exactly where the word is spoken.
+        starts = [start + n * each for n in range(len(items))]
+        if b and b.get("see"):
+            cues = dict(re.findall(r'`([^`]+)`[^`]*?\bon "([^"]+)"', b["see"]))
+            cued = [cue_frame(cues[it["name"]], b) if it["name"] in cues else None for it in items]
+            # Use the cues only when every cued file was found and they stay apart; else split evenly
+            if any(it["name"] in cues for it in items) and all(
+                    f is not None for it, f in zip(items, cued) if it["name"] in cues):
+                trial = [f if f is not None else s0 for f, s0 in zip(cued, starts)]
+                order = sorted(range(len(items)), key=lambda n: trial[n])
+                trial_sorted = [trial[n] for n in order]
+                if all(y - x >= min_f for x, y in zip(trial_sorted, trial_sorted[1:])):
+                    items, starts = [items[n] for n in order], trial_sorted
+        row_end = start + span
         for n, it in enumerate(items):
-            s0 = start + n * each
-            dur = each if n < len(items) - 1 else span - n * each
+            s0 = starts[n]
+            dur = (starts[n + 1] if n < len(items) - 1 else row_end) - s0
             if it["kind"] == "video":
                 dur = min(dur, it["src_frames"])
+            if max_graphic:
+                dur = min(dur, round(max_graphic * fps))
             overlays.append({**it, "pos": s0, "dur": max(1, dur)})
     overlays.sort(key=lambda o: (o["pos"], o["row"]))
     # Every overlay gets at least min_graphic_seconds: push the next one later if needed
@@ -899,6 +1077,12 @@ def main():
     L += ["", "## Graphics & B-roll on V2", ""]
     L += [f"- {mmss(o['pos'] / fps)}–{mmss((o['pos'] + o['dur']) / fps)}: `{o['name']}` (row {o['row']:02})" for o in overlays] \
         or ["- none (name files `05-name.png` / `05-name.mp4` to put them on row 05)"]
+    still = [o for o in overlays if o.get("placeholder")]
+    if still:
+        L += ["", "## Placeholders still in the video", "",
+              "Add the real asset with the name shown (any image or video extension) in `graphics/` or "
+              "`footage/broll/`, then rebuild. The placeholder is skipped automatically.", ""]
+        L += [f"- {mmss(o['pos'] / fps)}: `{o['name']}` → add `{o['placeholder']}.*`" for o in still]
     if unplaced:
         L += ["", "## In the bin, not placed (\"Unplaced B-roll\" folder)", ""]
         L += [f"- `{u['name']}`: drag it onto the timeline, or rebuild with `--place {u['name']}=ROW`" for u in unplaced]

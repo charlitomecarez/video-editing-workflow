@@ -25,7 +25,7 @@ description: Use when writing, rewriting or punching up a video script, hooks, v
 ## Script formats
 
 - `sections`: voiceover, on-screen text and B-roll per section.
-- `av-table` (3 columns: **See | Hear | Notes**): one row per beat. Change the See column whenever the Hear line names something new, and put asset links, sources and SFX in Notes. Used by `tech-explainer` styles (or `--format av-table`).
+- `av-table` (3 columns: **See | Hear | Notes**): one row per beat. Change the See column whenever the Hear line names something new, and put asset links, sources and SFX in Notes. If a beat needs an asset the user has to find or record (a meme, a screen recording, a photo), say so in Notes as `PLACEHOLDER: <what>`; `/graphics` turns those into placeholder cards (see `docs/graphics.md`). Used by `tech-explainer` styles (or `--format av-table`).
 - The style's `words_per_second` overrides the config value (tech-explainer is ~3.0).
 
 ## Tech explainers
@@ -47,4 +47,4 @@ Run `python3 tools/cringe_check.py <script>` and fix everything it flags.
 
 ## Output
 
-Save the filled script, then show the user the hook options and the total word count vs target.
+Save the filled script, then run `python3 tools/script_view.py <script>` so it opens as a readable page, and show the user the hook options and the total word count vs target. The .md stays the source: after any edit, run script_view again.

@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(--fg);font-family:var(--font-body);
+    display:flex;align-items:center;justify-content:center;
+    background-image:radial-gradient(ellipse at center,rgba(255,255,255,.05),transparent 65%)}
+  .wrap{display:flex;flex-direction:column;align-items:center;gap:34px;transform:rotate(calc(var(--tilt) * 1deg));padding:0 120px;text-align:center}
+  .text{font-family:var(--font-heading);line-height:1.02;letter-spacing:-.01em}
+  .hl{color:var(--hc)}
+  .sub{font-size:46px;font-weight:700;opacity:.8;max-width:1500px}
+  .v-big .text{font-size:190px}
+  .v-chapter .text{font-size:120px;text-transform:uppercase;text-shadow:7px 0 0 rgba(255,0,80,.55),-7px 0 0 rgba(0,229,255,.55)}
+  .v-chapter .wrap::before{content:"";width:120px;height:10px;background:var(--hc);border-radius:5px}
+  .v-placeholder .wrap{border:8px dashed var(--accent);border-radius:30px;padding:70px 110px;max-width:1600px}
+  .v-placeholder .wrap::before{content:"PLACEHOLDER · REPLACE ME";font:900 34px var(--font-body);letter-spacing:.2em;color:#000;background:var(--accent);padding:10px 24px;border-radius:8px}
+  .v-placeholder .text{font-size:84px}
+</style></head><body class="v-{{variant}}" style="--tilt:{{tilt}};--hc:{{color}}">
+<div class="wrap"><div class="text">{{text}}</div>{{#sub}}<div class="sub">{{sub}}</div>{{/sub}}</div>
+<script>
+  if (!getComputedStyle(document.body).getPropertyValue("--hc").trim()) document.body.style.setProperty("--hc", "var(--accent)");
+  // Shrink long text so it always fits
+  const t = document.querySelector(".text");
+  for (let i = 0; i < 40 && (t.scrollWidth > 1700 || t.getBoundingClientRect().height > 760); i++)
+    t.style.fontSize = parseFloat(getComputedStyle(t).fontSize) * 0.92 + "px";
+</script>
+</body></html>

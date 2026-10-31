@@ -50,6 +50,7 @@ Or run `/edit projects/<video>`.
 ## 5b. Graphics and animations
 
 - `/graphics projects/<video>` renders the slates, code cards and diagrams from the script into `graphics/`.
+- Anything that can't be generated (memes, your own screen recordings, photos you don't have yet) gets a yellow **placeholder** card named `NN-placeholder-<what>.png`, so the rough cut is complete right away. Later, save the real file as `NN-<what>.jpg` / `.mov` and run `/roughcut` again: it replaces the placeholder automatically. The to-do list is in the script's **Assets you still need to add** section. See `docs/graphics.md` → Placeholders.
 - `/animate "..."` creates Motion Canvas scenes for anything that should move (animated code, diagrams).
 - Clean the voiceover: `tools/clean-voice.sh audio/voice.wav`, then `tools/cut-silence.sh audio/voice_clean.wav --margin 0.1s`.
 

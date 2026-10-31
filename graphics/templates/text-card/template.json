@@ -1,0 +1,17 @@
+{
+  "description": "Full-frame text on the dark brand background: a big punchline or number, a chapter title, or a clearly marked placeholder for a meme you still need to add.",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "text": "The text. *word* = highlight color, \\n = new line",
+    "sub": "Optional smaller line under it",
+    "variant": "big (default: huge text), chapter (section title with a glitch shadow) or placeholder (yellow dashed card describing an asset to add later; name the file NN-placeholder-<what>.png and the rough cut swaps in NN-<what>.<ext> once it exists)",
+    "color": "Highlight color for *words* (hex, default brand accent)",
+    "tilt": "Rotation in degrees, e.g. -2 (default 0)"
+  },
+  "defaults": {
+    "text": "Big *text*",
+    "variant": "big",
+    "tilt": "0"
+  }
+}

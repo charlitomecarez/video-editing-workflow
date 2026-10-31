@@ -31,6 +31,7 @@ projects/**
 
 # Kdenlive / OS / Python junk
 *.kdenlive.bak*
+*_backup[0-9]*.kdenlive
 *_proxy*
 .DS_Store
 __pycache__/
@@ -50,5 +51,6 @@ graphics/out/
 animations/output/
 animations/dist/
 *_teleprompter.html
+*_view.html
 *_draft-vo*.wav
 animations/src/brand.ts

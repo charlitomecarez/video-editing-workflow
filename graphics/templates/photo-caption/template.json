@@ -1,0 +1,14 @@
+{
+  "description": "A photo with a bold meme-style caption: full-bleed, or pasted as a tilted card on the dark background (the 'receipt' look).",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "photo": "The photo",
+    "caption": "Bold outlined caption (keep it short). *word* = accent color",
+    "mode": "full (default: photo fills the frame) or card (photo as a tilted card on the dark background)",
+    "photo_pos": "Which part of the photo to keep in full mode, CSS object-position (default center)",
+    "tilt": "Card rotation in degrees (default -2)",
+    "dim": "Darken the photo 0-1 so the caption reads (default 0.15)"
+  },
+  "defaults": { "mode": "full", "photo_pos": "center", "tilt": "-2", "dim": "0.15" }
+}

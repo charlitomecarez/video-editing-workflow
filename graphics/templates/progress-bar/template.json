@@ -1,0 +1,18 @@
+{
+  "description": "Progress toward a number (a record, a goal): a bar from start to target with the current value marked and the gap called out.",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "title": "Title. *word* = accent color",
+    "sub": "Optional line under the title",
+    "value": "Current number, e.g. 2918",
+    "value_label": "Who/what the current number is, e.g. Klay Thompson",
+    "target": "Target number, e.g. 2973",
+    "target_label": "Who/what the target is, e.g. Ray Allen (3rd all-time)",
+    "start": "Where the bar starts (default 0). Raise it to zoom in on a small gap; the start number is printed on the bar so it stays honest.",
+    "gap_label": "Text for the gap (default: '<difference> to go')",
+    "color": "Bar color (hex, default brand accent)",
+    "footer": "Optional small line at the bottom"
+  },
+  "defaults": { "title": "Chasing the record", "value": "70", "value_label": "Now", "target": "100", "target_label": "Record", "start": "0" }
+}

@@ -12,17 +12,26 @@ Text fields: `*word*` turns a word the accent color, and `\n` starts a new line.
 
 ## Templates
 
-| Template         | Size                  | Use                                                                              |
-| ---------------- | --------------------- | -------------------------------------------------------------------------------- |
-| `thumbnail-bold` | 1280x720              | Classic YouTube thumbnail: photo background, cut-out subject, huge outlined text |
-| `thumbnail-tech` | 1280x720              | Dark tech thumbnail: big glowing logo, punchy text, optional emoji               |
-| `cover-vertical` | 1080x1920             | Reels / TikTok / Shorts cover, text kept in the safe zone and the 4:5 grid crop  |
-| `code-card`      | transparent           | Syntax-highlighted code in an editor window (Shiki, 200+ languages)              |
-| `slate`          | 1920x1080 transparent | The "thing pops on screen" keyword or label (pill, box or plain style)           |
-| `lower-third`    | 1920x1080 transparent | Name or source label, bottom-left                                                |
-| `diagram`        | 1920x1080 transparent | Mermaid diagram (flowcharts, sequence diagrams...) in brand colors               |
+| Template         | Size                  | Use                                                                               |
+| ---------------- | --------------------- | --------------------------------------------------------------------------------- |
+| `thumbnail-bold` | 1280x720              | Classic YouTube thumbnail: photo background, cut-out subject, huge outlined text  |
+| `thumbnail-tech` | 1280x720              | Dark tech thumbnail: big glowing logo, punchy text, optional emoji                |
+| `cover-vertical` | 1080x1920             | Reels / TikTok / Shorts cover, text kept in the safe zone and the 4:5 grid crop   |
+| `code-card`      | transparent           | Syntax-highlighted code in an editor window (Shiki, 200+ languages)               |
+| `slate`          | 1920x1080 transparent | The "thing pops on screen" keyword or label (pill, box or plain style)            |
+| `lower-third`    | 1920x1080 transparent | Name or source label, bottom-left                                                 |
+| `diagram`        | 1920x1080 transparent | Mermaid diagram (flowcharts, sequence diagrams...) in brand colors                |
+| `scoreboard`     | 1920x1080             | Final score or matchup in team colors, optional photo background                  |
+| `stat-card`      | 1920x1080             | Big numbers (grid) or a two-column list, optional photo on the left               |
+| `bar-chart`      | 1920x1080             | Two series side by side (e.g. points per quarter), one bar can be highlighted     |
+| `progress-bar`   | 1920x1080             | Progress toward a number (a record or goal) with the gap called out               |
+| `text-card`      | 1920x1080             | Big punchline or number, chapter title, or a dashed PLACEHOLDER for a meme to add |
+| `photo-caption`  | 1920x1080             | A photo full-frame or as a tilted card, with a bold meme-style caption            |
+| `fact-card`      | 1920x1080             | A "receipt": headline, highlighted words and the source, on a tilted paper card   |
 
-Transparent PNGs go straight onto a track above your footage in Kdenlive.
+Transparent PNGs go straight onto a track above your footage in Kdenlive. The data templates (`scoreboard`, `stat-card`, `bar-chart`, `progress-bar`) are full-frame cards: they cover the footage while they're on screen.
+
+List fields use `;` between items and `|` inside an item, e.g. `--set "rows=31|PTS;18|REB;10|AST"` (stat-card) or `--set "a_values=42;19;27;37"` (bar-chart).
 
 ## Thumbnails, step by step
 
@@ -113,6 +122,42 @@ tools/graphic --batch projects/my-video/graphics/jobs.json
 ```
 
 Paths in a batch file are relative to the batch file. In Claude Code, `/graphics projects/my-video` writes this file from the See column of your script and renders everything.
+
+## Placeholders (assets you'll add later)
+
+Some visuals can't be generated: memes, reaction GIFs, your own screen recordings, photos you don't have yet, real game clips. Instead of leaving a hole in the edit, put a **placeholder** there: a yellow dashed card that says exactly what goes in that spot. The rough cut is complete and watchable from day one, and you swap in the real assets whenever you have them.
+
+**Make one** (it's a `text-card` with `variant=placeholder`, named `NN-placeholder-<what>.png`):
+
+```bash
+tools/graphic text-card --set variant=placeholder \
+  --set "text=MEME: someone asleep on the couch while the game is on" \
+  --out projects/my-video/graphics/05-placeholder-meme-asleep.png
+```
+
+In a batch file:
+
+```json
+{
+  "template": "text-card",
+  "set": { "variant": "placeholder", "text": "SCREEN REC: you scrolling a streaming menu (5 s)" },
+  "out": "21-placeholder-netflix-scroll.png"
+}
+```
+
+Start the text with what kind of asset it is (`MEME:`, `CLIP:`, `PHOTO:`, `SCREEN REC:`) and describe it well enough that you could find or record it from that line alone.
+
+**Replace one:** save the real file as the same name **without** `placeholder-`, with any image or video extension:
+
+| Placeholder                             | Your file                                | Where            |
+| --------------------------------------- | ---------------------------------------- | ---------------- |
+| `05-placeholder-meme-asleep.png`        | `05-meme-asleep.jpg` (or `.png`, `.gif`) | `graphics/`      |
+| `21-placeholder-netflix-scroll.png`     | `21-netflix-scroll.mov` (or `.mp4`)      | `footage/broll/` |
+| `62-2-placeholder-netflix-callback.png` | `62-2-netflix-callback.mp4`              | `footage/broll/` |
+
+Then rebuild with `/roughcut`. The rough cut skips any placeholder whose real file exists, so there's nothing to delete. `roughcut/report.md` lists the placeholders still in the video, with their times. The word `placeholder-` can be changed with `[rough_cut].placeholder_tag`.
+
+The script keeps the to-do list: an **Assets you still need to add** section with one line per placeholder and the file name to save.
 
 ## Brand (config)
 

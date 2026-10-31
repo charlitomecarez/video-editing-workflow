@@ -40,7 +40,8 @@
       ["Recap", 0.1, "Summarize the key takeaways."],
       ["CTA / outro", 0.1, "Subscribe prompt, next video suggestion, end screen (last 20 s)."]
     ],
-    "humor_level": 3
+    "humor_level": 3,
+    "graphic_seconds": 6
   },
   "vlog": {
     "name": "Vlog / day-in-the-life",

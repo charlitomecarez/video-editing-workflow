@@ -1,0 +1,29 @@
+{
+  "news-explainer": {
+    "extends": "tech-explainer",
+    "name": "Fast news explainer (faceless, receipts and memes)",
+    "target_seconds": 300,
+    "avg_shot_seconds": 2.8,
+    "words_per_second": 2.7,
+    "graphic_seconds": 0,
+    "visuals": "Something new every 2-3 s: receipts (headline or source card with the key words highlighted), stat cards, cut-out photos of the people with a bold caption, memes held 1-2 s, chapter text cards. Never the presenter's face",
+    "transitions": "Hard cuts, elements pop in over 3-5 frames and stack on top of each other, slightly tilted. A short glitch only between sections",
+    "rough_cut": {
+      "use_video": false,
+      "max_pause": 0.35,
+      "pad": 0.1,
+      "fill_gaps_under": 10
+    },
+    "structure": [
+      ["Cold open", 0.12, "The result first, then the twist. Fast montage, no greeting."],
+      ["The question", 0.06, "The one question this video answers."],
+      [
+        "How it happened",
+        0.5,
+        "Chronological receipts, one per beat, each with a one-line reaction."
+      ],
+      ["So what?", 0.17, "The honest take, both sides, then a clear opinion."],
+      ["Recap + CTA", 0.15, "Three-line recap, then a specific question for the comments."]
+    ]
+  }
+}

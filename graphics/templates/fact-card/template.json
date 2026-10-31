@@ -1,0 +1,14 @@
+{
+  "description": "A 'receipt': a white paper card with a small label, a headline, a line of text with the key words highlighted, and the source. Tilted slightly on the dark background. Write facts in your own words and always name the source.",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "label": "Small colored label on top, e.g. INJURY REPORT",
+    "headline": "Headline (your own words)",
+    "body": "Optional text under it. *words* get a highlighter background",
+    "source": "Where the fact comes from, e.g. Source: ESPN game recap, Oct 30, 2026",
+    "color": "Label color (hex, default brand accent)",
+    "tilt": "Rotation in degrees (default -1.5)"
+  },
+  "defaults": { "headline": "Headline", "tilt": "-1.5" }
+}

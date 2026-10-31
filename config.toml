@@ -217,6 +217,11 @@ deess = false         # tame harsh "s" sounds
 compress = true       # even out loud and quiet parts
 loudness = -16        # LUFS for the voice track (music and mix get leveled at export)
 
+[script_view]
+# tools/script_view.py: script.md -> readable HTML page (<name>_view.html next to the script)
+theme = "auto"       # auto (follows your Mac's light/dark mode), dark (uses [brand] colors) or light
+open = true          # open the page in the browser after writing it
+
 [teleprompter]
 font_size = 56
 speed = 40            # scroll speed in px per second
@@ -261,8 +266,25 @@ adlibs = "keep"
 adlib_min_words = 3
 # How many words ahead to look for each line (raise it if you do lots of retakes)
 search_words = 400
+# Whisper misspells names and non-English words. A transcript word this similar (0-1) to a
+# script word counts as that word when matching. 0 = off.
+fuzzy_words = 0.8
 # Shortest time a graphic stays on screen (seconds)
 min_graphic_seconds = 1.5
+# Move each cut to the quietest moment within this many seconds (never into the next word), so
+# words aren't clipped mid-syllable. Whisper's word times are often 0.1-0.2 s off. 0 = off.
+snap_to_quiet = 0.25
+# Placeholder graphics are named NN-<tag><what>.png. When the real asset NN-<what>.<ext> appears in
+# graphics/ or footage/broll/, the placeholder is skipped. "" = treat placeholders like any graphic.
+placeholder_tag = "placeholder-"
+# Lines are read in order: unmatched speech between two found lines is matched to the missing
+# line(s) between them if it's at least this similar (0-1). Flagged red to check. 0 = off.
+infer_between = 0.4
+# false = faceless: use only the recording's audio, with a black background on V1 instead of the camera.
+use_video = true
+# Longest a graphic stays on screen (seconds). 0 = until the next graphic (faceless videos).
+# A style's "graphic_seconds" overrides this, e.g. talking-head brings the camera back after 6 s.
+max_graphic_seconds = 0
 # Hold a graphic until the next one if the gap is shorter than this (avoids flashing back to camera)
 fill_gaps_under = 1.0
 # Music from audio/music.* on A2: looped to the video length, lowered, faded out

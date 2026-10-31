@@ -1,0 +1,17 @@
+{
+  "description": "Stat card: a title plus big numbers (grid) or a two-column list, with an optional photo on the left. For player lines, team scorers, injuries, standings, recaps, schedules.",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "title": "Main title, e.g. a player name. *word* = accent color",
+    "tag": "Small label above the title, e.g. MIAMI HEAT",
+    "sub": "Line under the title",
+    "rows": "Items separated by ; and each item is value|label. Grid: 31|PTS;18|REB. List: Haliburton|Hamstring, out 2+ weeks",
+    "layout": "grid (default: big numbers) or list (rows of left | right)",
+    "photo": "Optional photo, shown on the left 45% of the frame",
+    "photo_pos": "Which part of the photo to keep, CSS object-position (default center), e.g. 30% 20%",
+    "color": "Team color for the stripe and accents (hex, default brand accent)",
+    "footer": "Optional small line at the bottom, e.g. a source"
+  },
+  "defaults": { "title": "Player Name", "rows": "31|PTS;18|REB;10|AST", "layout": "grid", "photo_pos": "center" }
+}

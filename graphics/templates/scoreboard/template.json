@@ -1,0 +1,18 @@
+{
+  "description": "Final score / matchup card: two teams, big scores in team colors, optional photo background. The winner's score is bright, the loser's dimmed.",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "left_name": "Left team name, e.g. HEAT",
+    "left_score": "Left team score (leave empty for a matchup with no score yet)",
+    "left_color": "Left team color (hex)",
+    "right_name": "Right team name",
+    "right_score": "Right team score",
+    "right_color": "Right team color (hex)",
+    "tag": "Small label on top, e.g. FINAL · NBA CUP",
+    "sub": "Line under the scores, e.g. the date and arena",
+    "bg": "Optional background photo",
+    "dim": "Background darkness 0-1 (default 0.7)"
+  },
+  "defaults": { "left_name": "HOME", "right_name": "AWAY", "left_color": "#98002E", "right_color": "#002D62", "dim": "0.7" }
+}

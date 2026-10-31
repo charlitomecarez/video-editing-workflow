@@ -34,6 +34,18 @@ For `tech-explainer` scripts, go through the **See** column. For each row that n
 - flow or architecture → `diagram` (Mermaid)
 - source or credit → `lower-third`
 
+For other scripts (sports, recaps, reviews), read the Shots / B-roll lines the same way:
+
+- final score or matchup → `scoreboard`
+- a player's or product's numbers, a list (injuries, standings, schedule, recap) → `stat-card` (`layout=grid` or `list`, optional `photo` from the user's files)
+- comparison over time (per quarter, per month) → `bar-chart`
+- distance to a record or goal → `progress-bar`
+- on-screen text with no other graphic → `slate`; a small credit or stat line → `lower-third`
+
+In sections scripts NN is the voiceover row from `tools/script_text.py <script> --json`. Several graphics on one row: `NN-1-*.png`, `NN-2-*.png`, in the order they're spoken. Use only numbers from the script's source.
+
+**Placeholders:** when a row needs something you can't generate (a meme, a reaction GIF, the user's own screen recording, a photo nobody has provided, a real clip), don't skip the row and don't fake it. Add a placeholder job: `text-card` with `variant=placeholder`, text starting with `MEME:` / `CLIP:` / `PHOTO:` / `SCREEN REC:` plus a one-line description, out `NN-placeholder-<what>.png`. Never fetch memes or other people's images from the internet. Add each placeholder to the script's **Assets you still need to add** section with the file name to save (`NN-<what>.<ext>`). Full guide: `docs/graphics.md#placeholders-assets-youll-add-later`.
+
 Save the jobs to `projects/<video>/graphics/jobs.json`, run `tools/graphic --batch ...`, then list which file goes with which script row.
 
 ## New templates

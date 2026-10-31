@@ -1,0 +1,525 @@
+1
+00:00:00,000 --> 00:00:03,320
+Just three weeks ago, it felt
+like nothing could go wrong. As
+
+2
+00:00:03,320 --> 00:00:07,400
+SpaceX was up 7% in a day, every
+tech CEO in America was on stage
+
+3
+00:00:07,400 --> 00:00:10,300
+explaining why they needed
+another $100 billion to decimate
+
+4
+00:00:10,300 --> 00:00:13,620
+farmland and rule America, and
+Jensen Wong was telling anyone
+
+5
+00:00:13,620 --> 00:00:17,220
+who'd listen that demand for AI
+chips wasn't satiable. But since
+
+6
+00:00:17,220 --> 00:00:20,300
+then, the market took a dump.
+Meta created an entirely new
+
+7
+00:00:20,300 --> 00:00:24,060
+class of non-voting stock just
+to pay for GPUs, while Microsoft
+
+8
+00:00:24,060 --> 00:00:27,120
+offered a quarter of its
+employees money to leave so it
+
+9
+00:00:27,120 --> 00:00:30,620
+can afford more of them. Elon
+predicted that 200 neoclouds are
+
+10
+00:00:30,620 --> 00:00:33,920
+about to experience guppy-level
+death, and CoreWeave, a former
+
+11
+00:00:33,920 --> 00:00:36,800
+Ethereum mining operation that
+became the poster boy of
+
+12
+00:00:36,800 --> 00:00:40,520
+reckless AI spending after they
+pivoted into renting Nvidia GPUs
+
+13
+00:00:40,520 --> 00:00:43,240
+back to Nvidia, is now worth a
+third of what it was at the
+
+14
+00:00:43,240 --> 00:00:46,240
+beginning of the month, and then
+on Monday, Anthropic filed to go
+
+15
+00:00:46,240 --> 00:00:49,040
+public, which showed that
+between January and when the
+
+16
+00:00:49,040 --> 00:00:51,940
+government banned Fable back in
+June, they lost more money than
+
+17
+00:00:51,940 --> 00:00:54,880
+the annual GDP of over half the
+countries on Earth. So
+
+18
+00:00:54,880 --> 00:00:57,560
+naturally, the question on
+everyone's mind is, are we
+
+19
+00:00:57,560 --> 00:01:00,180
+finally cooked? In today's
+video, we'll break down the
+
+20
+00:01:00,180 --> 00:01:03,060
+roughest three weeks in the
+history of AI, find out what a
+
+21
+00:01:03,060 --> 00:01:05,960
+neocloud is and why Elon wants
+them dead, and we'll analyze
+
+22
+00:01:05,960 --> 00:01:09,300
+Anthropic's financials in their
+Trust Me Bro S1. It is October
+
+23
+00:01:09,300 --> 00:01:13,080
+28th, 2026, and you're watching
+The Code Report. Before we can
+
+24
+00:01:13,080 --> 00:01:16,020
+talk about the AI bubble, you
+need to understand how a GPU
+
+25
+00:01:16,020 --> 00:01:18,860
+actually gets paid for. And to
+do that, here's me in a bubble
+
+26
+00:01:18,860 --> 00:01:22,500
+bath to explain. First, Nvidia
+makes a GPU that they need to
+
+27
+00:01:22,500 --> 00:01:25,620
+sell. The problem is the GPU is
+expensive and you don't have
+
+28
+00:01:25,620 --> 00:01:28,740
+enough money to buy it. So
+Nvidia says, hey, we have money
+
+29
+00:01:28,740 --> 00:01:31,400
+and we'll give it to you as long
+as you give us a portion of your
+
+30
+00:01:31,400 --> 00:01:34,780
+company and use the money we
+give you to buy our GPUs. But
+
+31
+00:01:34,780 --> 00:01:37,640
+Nvidia's money only covers a
+fraction of what you need, so
+
+32
+00:01:37,640 --> 00:01:40,560
+you go to Wall Street and borrow
+the rest by putting up the GPU
+
+33
+00:01:40,560 --> 00:01:43,560
+you haven't bought yet as
+collateral. Now normally, a bank
+
+34
+00:01:43,560 --> 00:01:46,060
+wouldn't lend to you with a
+depreciating pile of chips as
+
+35
+00:01:46,060 --> 00:01:49,220
+collateral, but Nvidia has
+promised that if nobody rents
+
+36
+00:01:49,220 --> 00:01:52,080
+the GPUs they give you, they'll
+rent them themselves. So
+
+37
+00:01:52,080 --> 00:01:55,800
+Nvidia's money gets used to buy
+Nvidia GPUs that eventually get
+
+38
+00:01:55,800 --> 00:01:58,860
+rented back to Nvidia, which
+makes Nvidia's stock go up,
+
+39
+00:01:58,960 --> 00:02:01,780
+which it uses to invest in more
+companies, which borrow more
+
+40
+00:02:01,780 --> 00:02:05,020
+money to buy more Nvidia GPUs,
+which keeps the good times
+
+41
+00:02:05,020 --> 00:02:07,820
+going. On Wall Street, they call
+this a circular financing
+
+42
+00:02:07,820 --> 00:02:10,480
+arrangement, and back in
+college, we'd call it a s**t.
+
+43
+00:02:10,660 --> 00:02:13,720
+The most popular company eating
+this forbidden fruit is
+
+44
+00:02:13,720 --> 00:02:16,780
+CoreWeave, but Nvidia has done
+it with a few other companies as
+
+45
+00:02:16,780 --> 00:02:19,640
+well. And to be honest, it works
+pretty well as long as the chips
+
+46
+00:02:19,640 --> 00:02:21,900
+rent for more than they
+depreciate. The labs keep
+
+47
+00:02:21,900 --> 00:02:24,360
+buying, and someone keeps
+lending you money to buy more
+
+48
+00:02:24,360 --> 00:02:27,600
+chips. But three weeks ago, the
+third one stopped being true
+
+49
+00:02:27,600 --> 00:02:30,460
+when it was discovered that
+CoreWeave, after it borrowed $52
+
+50
+00:02:30,460 --> 00:02:34,120
+billion to buy chips, was now
+paying 15% interest on that
+
+51
+00:02:34,120 --> 00:02:37,320
+debt. Then on Sunday night, Elon
+chimed in, saying that debt
+
+52
+00:02:37,320 --> 00:02:40,440
+markets have almost entirely
+shut off for any company whose
+
+53
+00:02:40,440 --> 00:02:44,180
+only revenue is AI data centers.
+And that he expects 200 plus of
+
+54
+00:02:44,180 --> 00:02:47,880
+these neocloud-type companies to
+die. But conveniently, SpaceX is
+
+55
+00:02:47,880 --> 00:02:51,000
+fine, because it also happens to
+sell rockets. And right in the
+
+56
+00:02:51,000 --> 00:02:53,980
+middle of all this, Anthropic
+decided to ask the public for
+
+57
+00:02:53,980 --> 00:02:57,500
+$100 billion at a valuation that
+would make it worth more than
+
+58
+00:02:57,500 --> 00:03:02,180
+$492 out of the 500 companies in
+the S&P 500, with four out of
+
+59
+00:03:02,180 --> 00:03:04,460
+those seven remaining companies
+being where they rent their
+
+60
+00:03:04,460 --> 00:03:08,260
+compute from, and happened to
+owe $265 billion to through
+
+61
+00:03:08,260 --> 00:03:13,040
+2045. The S1 itself is 330 pages
+long, with 90 of those being
+
+62
+00:03:13,040 --> 00:03:15,840
+risk factors to the company,
+which is the fun part. In it,
+
+63
+00:03:15,980 --> 00:03:18,500
+Anthropic admits that everything
+we've already covered over the
+
+64
+00:03:18,500 --> 00:03:21,320
+last few months is true,
+including mythos being allergic
+
+65
+00:03:21,320 --> 00:03:24,820
+to its sandbox, a Claude Haiku
+filing a fake homicide tip
+
+66
+00:03:24,820 --> 00:03:27,340
+through the Philadelphia Police
+Department's website, and a
+
+67
+00:03:27,340 --> 00:03:30,340
+Chinese state-sponsored group
+using Claude Code to attack
+
+68
+00:03:30,340 --> 00:03:33,760
+banks and government agencies.
+The filing also says that Claude
+
+69
+00:03:33,760 --> 00:03:36,480
+now uses itself to improve
+itself, and that they might not
+
+70
+00:03:36,480 --> 00:03:39,600
+notice their models getting
+significantly until after it's
+
+71
+00:03:39,600 --> 00:03:41,800
+already happened. Their guiding
+principle, according to the
+
+72
+00:03:41,800 --> 00:03:44,840
+foreword, is to under-promise
+and over-deliver, which is a
+
+73
+00:03:44,840 --> 00:03:47,380
+little worrisome for a company
+whose head of alignment was
+
+74
+00:03:47,380 --> 00:03:50,400
+quoted just last month, saying
+he thinks there's a greater than
+
+75
+00:03:50,400 --> 00:03:53,620
+10% chance that AI kills all
+humans within the next decade.
+
+76
+00:03:53,800 --> 00:03:57,020
+So are we cooked? Well, as
+always, it depends. It's not
+
+77
+00:03:57,020 --> 00:03:58,980
+looking great if your whole
+business model is borrowing
+
+78
+00:03:58,980 --> 00:04:01,880
+money from one company just to
+give it right back to them, but
+
+79
+00:04:01,880 --> 00:04:05,160
+it's hard to call AI a bubble
+the day after OpenAI claims one
+
+80
+00:04:05,160 --> 00:04:08,660
+of its models disproved a 27
+-year-old conjecture that half
+
+81
+00:04:08,660 --> 00:04:11,420
+of complexity theory is built
+on. But thankfully, as
+
+82
+00:04:11,420 --> 00:04:14,420
+developers, things are actually
+looking pretty decent right now,
+
+83
+00:04:14,500 --> 00:04:16,800
+since every one of these
+companies are fighting to sell
+
+84
+00:04:16,800 --> 00:04:20,320
+us subsidized tokens. Kimmy just
+dropped an open model within a
+
+85
+00:04:20,320 --> 00:04:23,060
+point of opus at half the price
+that we talked about yesterday,
+
+86
+00:04:23,340 --> 00:04:26,760
+and the GPU's core we financed
+should be on eBay any week now.
+
+87
+00:04:26,940 --> 00:04:29,060
+And if you'd like to be one of
+the people profiting from the
+
+88
+00:04:29,060 --> 00:04:31,820
+exit liquidity instead of
+providing it, you can put those
+
+89
+00:04:31,820 --> 00:04:35,140
+subsidized tokens to work with
+Hyperagent, the sponsor of
+
+90
+00:04:35,140 --> 00:04:38,320
+today's video. If you're already
+paying for ChatGPT, you can now
+
+91
+00:04:38,320 --> 00:04:41,400
+use that plan to sign into
+Hyperagent and hire a team of
+
+92
+00:04:41,400 --> 00:04:44,540
+agents without setting up yet
+another AI subscription. Right
+
+93
+00:04:44,540 --> 00:04:48,080
+now, I'm using it to work on a
+V4 release of a date library I'm
+
+94
+00:04:48,080 --> 00:04:51,140
+contributing to. So I set up a
+Hyperagent room, which is
+
+95
+00:04:51,140 --> 00:04:54,300
+basically a Slack channel where
+all my agents and human co
+
+96
+00:04:54,300 --> 00:04:57,440
+-maintainers can work together.
+I've got one agent triaging new
+
+97
+00:04:57,440 --> 00:05:00,380
+issues as they come in, another
+one drafting pull requests for
+
+98
+00:05:00,380 --> 00:05:03,460
+new features, and a third one
+writing the changelog. They all
+
+99
+00:05:03,460 --> 00:05:06,480
+work in parallel and hand things
+off to each other, and only
+
+100
+00:05:06,480 --> 00:05:09,180
+peeing a human when something
+needs approval. And anyone on a
+
+101
+00:05:09,180 --> 00:05:12,020
+team can jump in to ask
+questions or make changes
+
+102
+00:05:12,020 --> 00:05:14,420
+whenever they want, instead of
+routing everything through me.
+
+103
+00:05:14,660 --> 00:05:17,940
+Sign in with your existing
+ChatGPT plan to try it out at
+
+104
+00:05:17,940 --> 00:05:20,300
+the link below. This has been
+The Code Report, thanks for
+
+105
+00:05:20,300 --> 00:05:22,140
+watching, and I will see you in
+the next one.
+

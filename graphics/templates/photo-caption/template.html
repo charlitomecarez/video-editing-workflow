@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);position:relative}
+  .full img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .full .shade{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,calc(var(--dim) + .45)));}
+  .card{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .card .frame{background:#fff;padding:16px;border-radius:6px;box-shadow:0 40px 90px rgba(0,0,0,.7);transform:rotate(calc(var(--tilt) * 1deg))}
+  .card{padding-bottom:150px}
+  .card img{display:block;width:1180px;height:664px;object-fit:cover}
+  .cap{position:absolute;left:0;right:0;bottom:70px;text-align:center;padding:0 100px;font-family:var(--font-heading);font-size:96px;line-height:1.05;
+    color:#fff;text-transform:uppercase;-webkit-text-stroke:12px #000;paint-order:stroke fill;text-shadow:0 10px 30px rgba(0,0,0,.6)}
+  .card .cap{bottom:56px}
+</style></head><body class="{{mode}}" style="--tilt:{{tilt}};--dim:{{dim}}">
+<div id="stage"></div>
+{{#caption}}<div class="cap">{{caption}}</div>{{/caption}}
+<template id="img"><img src="{{{photo}}}" style="object-position:{{photo_pos}}"></template>
+<script>
+  const img = document.getElementById("img").innerHTML;
+  const stage = document.getElementById("stage");
+  if (document.body.classList.contains("card")) {
+    stage.className = "card";
+    stage.innerHTML = `<div class="frame">${img}</div>`;
+  } else {
+    document.body.classList.add("full");
+    stage.innerHTML = img + '<div class="shade"></div>';
+  }
+</script>
+</body></html>

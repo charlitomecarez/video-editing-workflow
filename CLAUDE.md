@@ -8,10 +8,10 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Workflow: `workflow/WORKFLOW.md`
 - Styles: `styles/styles.json`, `styles/custom/*.json` (support `extends`), guide in `styles/STYLES.md`
 - Topics: `topics/topic_generator.py`, `topics/niches.json`, `topics/formats.json`, saved to `topics/ideas.md`
-- Scripts: `tools/script_generator.py` → `video-scripts/` or `projects/<video>/script.md`
+- Scripts: `tools/script_generator.py` → `video-scripts/` or `projects/<video>/script.md`; `tools/script_view.py <script.md>` renders it as a readable HTML page (`<name>_view.html`, git-ignored, `[script_view]` in config)
 - References: `references/` (videos to study, git-ignored; reports committed)
 - Projects: `tools/new_project.py` → `projects/<date>-<slug>/`
-- Graphics: `tools/graphic` (templates in `graphics/templates/`, brand in `[brand]`), `tools/cutout.sh` (rembg)
+- Graphics: `tools/graphic` (templates in `graphics/templates/`, brand in `[brand]`), `tools/cutout.sh` (rembg). Assets we can't generate (memes, screen recordings, missing photos) get a placeholder card `graphics/NN-placeholder-<what>.png`; the rough cut swaps in `NN-<what>.<ext>` when it exists (`docs/graphics.md` → Placeholders)
 - Voice: `tools/script_text.py`, `tools/voice-draft.sh` (Piper), `tools/clean-voice.sh`, `tools/teleprompter.py`
 - Animations: `animations/` (Motion Canvas; scenes in `animations/src/scenes/`, brand synced to `src/brand.ts`)
 - Setup: `tools/setup.sh` installs everything; `tools/doctor.sh` checks. Python tools are in `.venv/` (run `.venv/bin/...`), Node in `node_modules/`.

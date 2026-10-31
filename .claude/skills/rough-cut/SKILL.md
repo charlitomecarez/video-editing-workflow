@@ -28,10 +28,23 @@ Tool: `python3 tools/rough_cut.py projects/<video>`. Settings: `[rough_cut]` in 
 2. If `graphics/` is missing graphics the See column asks for, offer to run `/graphics` first so they get placed too (they're already named `NN-*.png`).
 3. Run the tool. The first run transcribes (about as long as the recording), so say so.
 4. Read `roughcut/report.md`. Look at the preview: pull frames at a few guide positions and check the right graphic shows on the right line.
-5. Report (below). If many lines are "not found": wrong script, heavy paraphrasing (try `--threshold 0.6`), or a different language (set `[rough_cut].language`).
+5. Report (below). If many lines are "not found": wrong script, heavy paraphrasing (try `--threshold 0.6`), or a different language (pass `--language tl` for one video, or set `[rough_cut].language`). Use the script's language: a Tagalog/Taglish script needs `--language tl`.
+
+## Faceless videos
+
+Styles with `"rough_cut": {"use_video": false}` (e.g. `news-explainer`) keep only the recording's audio and put a visual on every row. Use the av-table layout with one row per sentence so visuals change every 2-3 s. Rows that the normal match misses but sit between two found rows are filled in by reading order (`infer_between`) and flagged red: tell the user to check them.
+
+A row with several visuals splits its time evenly, unless the See column names the word each one lands on: `` `10-2-19.png` text-card: 19. on "nila nineteen" ``. Cues only apply when all of a row's cues are found and at least `min_graphic_seconds` apart.
+
+To verify sync, transcribe `roughcut/preview.mp4` with Whisper and compare when each line and cue word is heard against `report.md`. Don't trust the tool's own numbers alone.
+
+## Placeholders
+
+`graphics/NN-placeholder-<what>.png` are stand-ins for assets the user still has to add. When `NN-<what>.<any ext>` appears in `graphics/` or `footage/broll/`, the placeholder is skipped automatically on the next build. The report's "Placeholders still in the video" section lists what's left with times. When reporting, list them so the user knows what to add.
 
 ## Rebuilding
 
+- If Kdenlive is running, don't overwrite a file it may have open: build a new version with `--name <new>` instead.
 - The `.kdenlive` file won't be overwritten without `--force`. Before rebuilding, check whether the user has edited it in Kdenlive; if so, back it up (`cp x.kdenlive x.backup-<date>.kdenlive`) or ask.
 - To use an earlier take, the user tells you the row; the report lists every take's raw time. Easiest fix is in Kdenlive (drag the clip's edges in the Clip Monitor); explain it step by step.
 

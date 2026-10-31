@@ -1,0 +1,175 @@
+[
+  {
+    "template": "scoreboard",
+    "set": {
+      "tag": "FINAL · NBA CUP",
+      "left_name": "HEAT",
+      "left_score": "145",
+      "left_color": "#98002E",
+      "right_name": "PACERS",
+      "right_score": "125",
+      "right_color": "#002D62",
+      "sub": "Oct 30, 2026 · Kaseya Center, Miami",
+      "bg": "GettyImages-2302270112-scaled-e1793413265743.webp"
+    },
+    "out": "01-final-score.png"
+  },
+  {
+    "template": "slate",
+    "set": {
+      "text": "*3* players. *4* minutes.",
+      "style": "box",
+      "pos": "bottom"
+    },
+    "out": "02-3-players-4-minutes.png"
+  },
+  {
+    "template": "bar-chart",
+    "set": {
+      "title": "Points per quarter",
+      "sub": "Forty-two... tapos *nineteen*",
+      "labels": "Q1;Q2;Q3;Q4",
+      "a_name": "Pacers",
+      "a_values": "42;19;27;37",
+      "a_color": "#FDBB30",
+      "b_name": "Heat",
+      "b_values": "36;32;35;42",
+      "b_color": "#98002E",
+      "highlight": "a2"
+    },
+    "out": "03-quarters.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "MIAMI HEAT",
+      "title": "Giannis\nAntetokounmpo",
+      "sub": "Triple-double in *31 minutes*",
+      "rows": "31|PTS;18|REB;10|AST",
+      "layout": "grid",
+      "color": "#98002E",
+      "photo": "AP26304041414239-1200x800.jpg",
+      "photo_pos": "62% 30%",
+      "footer": "2nd triple-double this season"
+    },
+    "out": "04-giannis.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "MIAMI HEAT",
+      "title": "Bam Adebayo",
+      "sub": "Three misses. All night.",
+      "rows": "27|PTS;11/14|FG",
+      "layout": "grid",
+      "color": "#98002E",
+      "photo": "01m62ndrmr28wzmztmnw.webp",
+      "photo_pos": "38% 20%"
+    },
+    "out": "05-1-bam.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "MIAMI HEAT",
+      "title": "Klay Thompson",
+      "sub": "Best game since joining Miami",
+      "rows": "25|PTS;7|THREES",
+      "layout": "grid",
+      "color": "#98002E"
+    },
+    "out": "05-2-klay.png"
+  },
+  {
+    "template": "progress-bar",
+    "set": {
+      "title": "Klay vs *Ray Allen*",
+      "sub": "Most 3-pointers in NBA history: 3rd place",
+      "value": "2918",
+      "value_label": "Klay Thompson",
+      "target": "2973",
+      "target_label": "Ray Allen",
+      "start": "2500",
+      "gap_label": "55 to go",
+      "color": "#98002E"
+    },
+    "out": "05-3-ray-allen.png"
+  },
+  {
+    "template": "lower-third",
+    "set": {
+      "title": "Davion Mitchell 15 PTS · 11 AST",
+      "sub": "Pelle Larsson 18 PTS"
+    },
+    "out": "05-4-mitchell-larsson.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "INDIANA PACERS",
+      "title": "Who was *missing*",
+      "sub": "Eleven players available",
+      "rows": "Tyrese Haliburton|Hamstring strain, out 2+ weeks;Obi Toppin|Back, before shootaround;Coach Rick Carlisle|At his father's funeral;Lloyd Pierce|Coached the game",
+      "layout": "list",
+      "color": "#002D62"
+    },
+    "out": "06-1-missing.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "INDIANA PACERS",
+      "title": "Short-handed,\nstill *125*",
+      "rows": "Quenton Jackson|24;Andrew Nembhard|22;Jarace Walker|14;Pascal Siakam|13;Jay Huff|13",
+      "layout": "list",
+      "color": "#002D62",
+      "photo": "250529-pacers-vl-457p-f31984.jpg",
+      "photo_pos": "35% 20%"
+    },
+    "out": "06-2-pacers-scorers.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "STANDINGS",
+      "title": "Parehong *2-4*",
+      "rows": "Miami Heat|2-4 · won 2 straight;Indiana Pacers|2-4 · lost 3 straight",
+      "layout": "list",
+      "color": "#98002E"
+    },
+    "out": "07-1-standings.png"
+  },
+  {
+    "template": "slate",
+    "set": {
+      "text": "*4-0* or *3-1*",
+      "sub": "What every NBA Cup knockout team went in groups",
+      "style": "pill",
+      "pos": "bottom"
+    },
+    "out": "07-2-nba-cup.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "QUICK RECAP",
+      "title": "Heat 145, Pacers 125",
+      "rows": "Giannis|31 · 18 · 10;Bam|27 on 14 shots;Klay|7 threes, 55 from Ray Allen;Pacers|125 without Haliburton, Toppin, coach",
+      "layout": "list",
+      "color": "#98002E"
+    },
+    "out": "08-recap.png"
+  },
+  {
+    "template": "stat-card",
+    "set": {
+      "tag": "NEXT UP",
+      "title": "Score mo?",
+      "sub": "I-comment ang final score ng Heat–Lakers",
+      "rows": "Nets @ Pacers|Sunday;Heat @ Lakers|Monday",
+      "layout": "list",
+      "color": "#98002E"
+    },
+    "out": "09-next-games.png"
+  }
+]
