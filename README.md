@@ -34,6 +34,7 @@ Open Claude Code in this folder:
 
 | Command                         | What it does                                                                                     |
 | ------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `/current`                      | Pulls the video you are working on from the Content Planner and runs its next step               |
 | `/new "idea"`                   | Idea → title → project folder → full script → shot list                                          |
 | `/topics food`                  | Researched, ranked topic ideas saved to `topics/ideas.md`                                        |
 | `/script "title"`               | Full script with hooks, voiceover, B-roll and post captions                                      |

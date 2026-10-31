@@ -1,5 +1,7 @@
-# Personal config
+# Personal config and secrets
 config.local.toml
+.env.local
+.env
 
 # Media (never commit footage or renders)
 *.mp4

@@ -65,6 +65,16 @@ projects = "projects"
 scripts = "video-scripts"
 ideas = "topics/ideas.md"
 
+[planner]
+# Content Planner app (github.com/charlitomecarez/content-planner) in Appwrite Cloud.
+# tools/planner.py reads it so Claude knows which video you're working on.
+# These ids are public. The API key is a secret: put it in .env.local (git-ignored).
+endpoint = "https://fra.cloud.appwrite.io/v1"
+project_id = "6ae5e54c0016e479f467"
+database_id = "planner"
+# Name of the env var (or .env.local line) that holds the API key. Needs rows.read, + rows.write for link/done.
+api_key_env = "APPWRITE_API_KEY"
+
 [project]
 # Subfolders created by tools/new_project.py
 folders = ["footage", "audio", "graphics", "export", "thumbnails", "reel"]

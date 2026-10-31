@@ -9,7 +9,7 @@ description: Use when brainstorming, researching or ranking video topic ideas, c
 
 - `[creator]` in config (audience, niches, platforms, avoid)
 - `topics/niches.json`, `topics/formats.json`
-- `topics/ideas.md` (existing ideas; don't duplicate) and Results tables in past scripts (repeat what performed well)
+- `topics/ideas.md` and the Content Planner inbox (`python3 tools/planner.py ideas`) (existing ideas; don't duplicate) and Results tables in past scripts (repeat what performed well)
 
 ## Process
 

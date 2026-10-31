@@ -9,5 +9,5 @@ Start a new video: $ARGUMENTS
 2. Pick or confirm the style.
 3. Run `python3 tools/new_project.py "<title>" --style <style>`.
 4. Write the script into the project folder using the `video-scriptwriting` skill (`--project <folder>`).
-5. If the idea came from `topics/ideas.md`, tick it off.
+5. If the idea came from `topics/ideas.md`, tick it off. If it is a video in the Content Planner (`python3 tools/planner.py ideas` / `list --all`), link it: `python3 tools/planner.py link "<title or id>" <folder>`.
 6. Show me the shot list so I can start filming.

@@ -15,13 +15,14 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Voice: `tools/script_text.py`, `tools/voice-draft.sh` (Piper), `tools/clean-voice.sh`, `tools/teleprompter.py`
 - Animations: `animations/` (Motion Canvas; scenes in `animations/src/scenes/`, brand synced to `src/brand.ts`)
 - Setup: `tools/setup.sh` installs everything; `tools/doctor.sh` checks. Python tools are in `.venv/` (run `.venv/bin/...`), Node in `node_modules/`.
+- Planner: `tools/planner.py` reads the Content Planner app (Appwrite, `[planner]` in config, key in `.env.local`): `current` = the video being worked on now + next step, `ideas`, `list`, `show`, `link`, `done`. `/current` uses it.
 - Rough cut: `tools/rough_cut.py projects/<video>` matches the raw recording to the script (last full take wins), places `graphics/NN-*` and `footage/broll/NN-*` on V2 by script row, music on A2, and writes `<video>-roughcut.kdenlive` + `roughcut/` (report, srt, preview). `[rough_cut]` in config.
 - Reels: `tools/reel.py` (transcript → reel.json → build) cuts a ≤60 s vertical summary from the long-form export into `projects/<video>/reel/`
 - Footage tools: `tools/prep.sh`, `cut-silence.sh`, `subtitles.sh`, `burn-captions.sh`, `vertical.sh`, `thumbnails.sh`, `doctor.sh`, `analyze_cuts.py` (all take `--help`)
 - Personality: `personality/` (profile, inspirations, recurring bits), `[personality]` in config, `tools/cringe_check.py`
 - Docs: `docs/kdenlive-guide.md`, `docs/platform-specs.md`, `docs/hooks-library.md`, `docs/configuration.md`, `docs/tech-explainer-style.md`, `docs/graphics.md`, `docs/voice-and-recording.md`, `docs/animations.md`
 - Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing, reference-analysis, graphics-thumbnails, motion-graphics, voiceover, personality-voice, rough-cut, reel-cutdown)
-- Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/roughcut`, `/reel`
+- Commands: `/current`, `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/roughcut`, `/reel`
 
 ## Rules
 
@@ -32,4 +33,5 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Back up any `.kdenlive` file before editing it, and make sure it isn't open in Kdenlive.
 - When changing a tool's behavior, add a config key for it instead of a hardcoded value, and document it in `docs/configuration.md`.
 - After rendering any graphic, look at the PNG before saying it's done.
+- When a command needs a video or project and none is given, use `python3 tools/planner.py current`. After finishing a planner step (e.g. `/script` → `script.draft`), tick it with `python3 tools/planner.py done <video> <step>` and say so.
 - The user is a beginner editor, so explain Kdenlive steps plainly, one at a time.
