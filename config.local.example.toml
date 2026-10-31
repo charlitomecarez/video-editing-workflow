@@ -1,0 +1,21 @@
+# Copy to config.local.toml (git-ignored) and change what you like.
+# Only include the keys you want to override. Everything else comes from config.toml.
+
+[creator]
+name = "Charlito"
+channel = "My Channel"
+audience = "Filipino beginners who want practical tips"
+tone = "casual, energetic, a bit funny"
+language = "Taglish"
+niches = ["food", "tech"]
+
+[subtitles]
+language = "tl"
+model = "medium"
+
+[captions]
+font = "Montserrat Black"
+size = 20
+
+[vertical]
+mode = "blur"

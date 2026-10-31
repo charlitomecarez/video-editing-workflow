@@ -1,6 +1,10 @@
+# Personal config
+config.local.toml
+
 # Media (never commit footage or renders)
 *.mp4
 *.mov
+*.MOV
 *.m4v
 *.mkv
 *.avi
@@ -10,12 +14,20 @@
 *.m4a
 *.aac
 *.flac
-*.srt
+*.jpg
+*.jpeg
+*.png
+!docs/**/*.png
+
+# Projects: keep only text files (notes, scripts, Kdenlive projects, subtitles)
 projects/**
-!projects/README.md
+!projects/**/
+!projects/**/*.md
+!projects/**/*.kdenlive
+!projects/**/*.srt
 
 # Kdenlive / OS / Python junk
-*.kdenlive.backup*
+*.kdenlive.bak*
 *_proxy*
 .DS_Store
 __pycache__/

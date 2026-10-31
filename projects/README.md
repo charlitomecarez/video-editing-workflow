@@ -1,4 +1,17 @@
 # Projects
 
-One folder per video, e.g. `2026-11-01-budget-meals/` with `footage/`, `audio/`, `export/` and the `.kdenlive` file.
-Everything in here except this README is git-ignored, so back up footage separately (external drive or cloud).
+One folder per video, created with `python3 tools/new_project.py "Title"`:
+
+```
+projects/2026-11-01-budget-meals/
+  footage/      raw clips (+ _prep / _cut versions)
+  audio/        music, voiceover, sound effects
+  graphics/     logos, overlays, LUTs
+  export/       renders
+  thumbnails/   thumbnail candidates
+  notes.md
+  script.md
+  2026-11-01-budget-meals.kdenlive
+```
+
+Only `.md`, `.kdenlive` and `.srt` files are committed. **Video, audio and images are git-ignored**, so back up footage separately (external drive or cloud).

@@ -1,0 +1,33 @@
+{
+  "_help": "Title formats for topics/topic_generator.py. {t} = topic, {year} = current year. Short-form styles use 'short', everything else uses 'long'. Add your own freely.",
+  "short": [
+    "3 tips for {t} nobody tells you",
+    "Stop doing this when it comes to {t}",
+    "I tried {t} for 7 days. Here's what happened",
+    "Everything about {t} in 30 seconds",
+    "The biggest mistake beginners make with {t}",
+    "{t}: expectation vs reality",
+    "Rating {t} from 1 to 10",
+    "One hack for {t} that changed everything",
+    "POV: you finally figured out {t}",
+    "Watch this before you get into {t}",
+    "{t} myths you still believe",
+    "Cheap vs expensive {t}",
+    "Things I'd never do with {t}",
+    "The trick for {t} pros don't share"
+  ],
+  "long": [
+    "The complete beginner's guide to {t}",
+    "I spent 30 days on {t}. Honest results",
+    "{t}: 10 things I wish I knew sooner",
+    "Every {t} mistake I made (so you don't have to)",
+    "Is {t} worth it in {year}?",
+    "{t} on a budget: what actually works",
+    "How I'd start {t} if I had to begin again",
+    "Testing viral {t} advice",
+    "{t} explained simply",
+    "A full day trying {t}",
+    "Beginner vs pro: {t}",
+    "The truth about {t} nobody talks about"
+  ]
+}

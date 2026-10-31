@@ -1,71 +1,61 @@
 #!/usr/bin/env python3
-"""Generate video topic ideas from niches and proven title formats.
+"""Generate video topic ideas from niches and title formats.
 
 Examples:
-  python3 topics/topic_generator.py                      # 10 ideas, random niches
-  python3 topics/topic_generator.py --niche food -n 5    # 5 food ideas
-  python3 topics/topic_generator.py --style short-form --save
-  python3 topics/topic_generator.py --list               # show niches
+  python3 topics/topic_generator.py                       # uses [topics] + [creator].niches from config
+  python3 topics/topic_generator.py --niche food -n 5     # 5 food ideas
+  python3 topics/topic_generator.py --niche food --niche tech --style talking-head --save
+  python3 topics/topic_generator.py --topic "air fryer"   # ideas for any topic, even one not in niches.json
+  python3 topics/topic_generator.py --list                # show niches
 
-For smarter, trend-aware ideas, run `/topics <niche>` in Claude Code.
+Edit topics/niches.json (niches and sub-topics) and topics/formats.json (title formats)
+to change what it produces. For smarter, trend-aware ideas, run `/topics <niche>` in Claude Code.
 """
 import argparse
 import datetime as dt
 import json
 import random
+import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
+from vwconfig import ROOT, load, load_styles  # noqa: E402
+
 NICHES = json.loads((ROOT / "topics" / "niches.json").read_text())
-
-SHORT_FORMATS = [
-    "3 {t} tips nobody tells you",
-    "Stop doing this with {t}",
-    "I tried {t} for 7 days. Here's what happened",
-    "{t} in 30 seconds",
-    "The biggest mistake beginners make with {t}",
-    "{t}: expectation vs reality",
-    "Rating {t} from 1 to 10",
-    "One {t} hack that changed everything",
-    "POV: you finally figured out {t}",
-    "Watch this before you start {t}",
-]
-
-LONG_FORMATS = [
-    "The complete beginner's guide to {t}",
-    "I spent 30 days on {t}. Honest results",
-    "{t}: 10 things I wish I knew sooner",
-    "Every {t} mistake I made (so you don't have to)",
-    "Is {t} worth it in {year}?",
-    "{t} on a budget: what actually works",
-    "How I'd start {t} if I had to begin again",
-    "Testing viral {t} advice",
-    "{t} explained simply",
-    "A full day of {t}",
-]
+FORMATS = json.loads((ROOT / "topics" / "formats.json").read_text())
 
 
-def generate(niche, count, style, seed=None):
-    rng = random.Random(seed)
-    formats = SHORT_FORMATS if style == "short-form" else LONG_FORMATS
-    pool = [(n, t) for n, ts in NICHES.items() if niche in (None, n) for t in ts]
-    combos = [(n, t, f) for n, t in pool for f in formats]
+def is_short(style):
+    return "9:16" in style.get("aspect", "")
+
+
+def generate(topics, count, short, rng):
+    formats = FORMATS["short" if short else "long"]
+    combos = [(n, t, f) for n, t in topics for f in formats]
     rng.shuffle(combos)
     year = dt.date.today().year
-    ideas = []
-    for n, t, f in combos[:count]:
+    ideas, seen = [], set()
+    for n, t, f in combos:
         title = f.format(t=t, year=year)
-        ideas.append({"niche": n, "topic": t, "title": title[0].upper() + title[1:]})
+        title = title[0].upper() + title[1:]
+        if title not in seen:
+            seen.add(title)
+            ideas.append({"niche": n, "topic": t, "title": title})
+        if len(ideas) >= count:
+            break
     return ideas
 
 
 def main():
+    cfg = load()
+    styles = load_styles()
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--niche", choices=sorted(NICHES), help="limit ideas to one niche")
-    p.add_argument("-n", "--count", type=int, default=10)
-    p.add_argument("--style", default="short-form", help="short-form uses short titles; anything else uses long-form titles")
+    p.add_argument("--niche", action="append", choices=sorted(NICHES), help="repeat for several niches")
+    p.add_argument("--topic", action="append", help="use your own topic(s) instead of niches.json")
+    p.add_argument("-n", "--count", type=int, default=cfg["topics"]["count"])
+    p.add_argument("--style", default=cfg["topics"]["style"], choices=sorted(styles))
     p.add_argument("--seed", type=int, help="repeatable results")
-    p.add_argument("--save", action="store_true", help="append ideas to topics/ideas.md")
+    p.add_argument("--save", action="store_true", help=f"append ideas to {cfg['paths']['ideas']}")
     p.add_argument("--list", action="store_true", help="list niches and exit")
     a = p.parse_args()
 
@@ -74,17 +64,30 @@ def main():
             print(f"{n:10} {', '.join(ts)}")
         return
 
-    ideas = generate(a.niche, a.count, a.style, a.seed)
+    if a.topic:
+        pool = [("custom", t) for t in a.topic]
+    else:
+        niches = a.niche or cfg["creator"]["niches"] or list(NICHES)
+        bad = [n for n in niches if n not in NICHES]
+        if bad:
+            raise SystemExit(f"Unknown niche(s) in config: {bad}. Options: {', '.join(NICHES)}")
+        pool = [(n, t) for n in niches for t in NICHES[n]]
+
+    ideas = generate(pool, a.count, is_short(styles[a.style]), random.Random(a.seed))
     for i, idea in enumerate(ideas, 1):
         print(f"{i:2}. [{idea['niche']}] {idea['title']}")
 
     if a.save:
-        out = ROOT / "topics" / "ideas.md"
+        out = ROOT / cfg["paths"]["ideas"]
+        out.parent.mkdir(parents=True, exist_ok=True)
+        new = not out.exists()
         with out.open("a") as f:
-            f.write(f"\n## {dt.date.today()} ({a.style}{', ' + a.niche if a.niche else ''})\n\n")
-            f.writelines(f"- [ ] [{x['niche']}] {x['title']}\n" for x in ideas)
+            if new:
+                f.write("# Topic ideas\n\nTick an idea off when you make it.\n")
+            f.write(f"\n## {dt.date.today()} ({a.style})\n\n")
+            f.writelines(f"- [ ] [{x['niche']}] {x['title']} ({a.style})\n" for x in ideas)
         print(f"\nSaved to {out.relative_to(ROOT)}")
-    print('\nNext: python3 tools/script_generator.py "<title>" --style ' + a.style)
+    print(f'\nNext: python3 tools/script_generator.py "<title>" --style {a.style}')
 
 
 if __name__ == "__main__":

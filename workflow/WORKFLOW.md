@@ -1,70 +1,70 @@
 # Video Workflow
 
 From idea to posted video, using Kdenlive with Claude Code helping along the way.
+Shortcut: `/new "your idea"` in Claude Code covers steps 1-3.
 
 ## 1. Pick a topic
 
 ```bash
 python3 topics/topic_generator.py --niche food -n 10 --save
 ```
-Or in Claude Code: `/topics food`. Ideas are saved to `topics/ideas.md`. Tick one off when you use it.
+Or `/topics food` in Claude Code for ranked, researched ideas. Ideas are saved to `topics/ideas.md`. Tick one off when you use it.
 
-## 2. Write the script
+## 2. Create the project
 
 ```bash
-python3 tools/script_generator.py "Your chosen title" --style short-form
+python3 tools/new_project.py "Your chosen title" --style short-form --script
 ```
-This creates a timed template in `video-scripts/`. In Claude Code, `/script <title>` writes the full script for you.
-Pick the style from [`styles/STYLES.md`](../styles/STYLES.md).
+This creates `projects/<date>-<title>/` with `footage/ audio/ graphics/ export/ thumbnails/`, a `notes.md` and a `script.md`. Pick a style from [`styles/STYLES.md`](../styles/STYLES.md).
 
-## 3. Film
+## 3. Write the script
 
-- Follow the shot list in the script.
+`/script "Your chosen title"` fills in the hooks, voiceover, B-roll, shot list and post captions.
+Patterns are in [`docs/hooks-library.md`](../docs/hooks-library.md).
+
+## 4. Film
+
+- Follow the shot list, grouped by location.
 - Film each line 2-3 times and keep the best take.
 - Record 10 seconds of room silence (useful for noise reduction).
 - Film extra B-roll. You always need more than you think.
-
-## 4. Organize footage
-
-Make one folder per video under `projects/` (media files are git-ignored):
-
-```
-projects/2026-11-01-budget-meals/
-  footage/    raw clips
-  audio/      music, voiceover
-  export/     renders
-  project.kdenlive
-```
+- Vertical styles: frame inside the safe zones ([`docs/platform-specs.md`](../docs/platform-specs.md)).
 
 ## 5. Prep footage
 
+Copy your clips into `projects/<video>/footage/`, then:
 ```bash
-tools/prep.sh projects/<video>/footage/clip.mov        # edit-friendly H.264 + level audio
-tools/cut-silence.sh projects/<video>/footage/clip_prep.mp4   # removes pauses -> .kdenlive
+tools/prep.sh projects/<video>/footage/*.MOV                    # edit-friendly, levelled audio
+tools/cut-silence.sh projects/<video>/footage/talk_prep.mp4     # pauses removed -> .kdenlive
 ```
+Or run `/edit projects/<video>`.
 
 ## 6. Edit in Kdenlive
 
-1. Open the `_cut.kdenlive` file, or start a new project with the profile from your style.
+Follow [`docs/kdenlive-guide.md`](../docs/kdenlive-guide.md):
+1. Open the `_cut.kdenlive` file, or start a new project with the style's profile.
 2. Review the auto cuts and fix any that are too tight.
-3. Add B-roll, on-screen text, music and transitions per the style's editing notes.
-4. Turn on proxies for smooth playback (Project Settings → Proxy).
+3. Add B-roll, text, music and transitions per the script's editing notes.
+4. Work through the edit checklist in `script.md`.
 
 ## 7. Subtitles
 
 ```bash
-tools/subtitles.sh projects/<video>/export/draft.mp4 small en
+tools/subtitles.sh projects/<video>/export/draft.mp4 --language en
 ```
-Import the `.srt` file in Kdenlive from the Subtitles menu, then fix any wrong words.
+- **Editable:** in Kdenlive, Project → Subtitles → Import Subtitle File.
+- **Burned in (short-form):** `tools/burn-captions.sh projects/<video>/export/final.mp4`
 
 ## 8. Export
 
-- Project → Render → **MP4 – H264/AAC**.
-- Need a vertical version? Run `tools/vertical.sh export/final.mp4 blur`.
+- Project → Render → **MP4-H264/AAC** → save into `export/`.
+- Vertical copy: `tools/vertical.sh export/final.mp4 --mode blur`
 - Watch the full render once before posting.
 
-## 9. Post and review
+## 9. Post
 
-- Fill in the "Post" section of the script file (title, description, tags).
-- Set the script's status to `posted`.
-- After about 7 days, write down views and retention in the script file to learn what works.
+`/publish projects/<video>/export/final.mp4` checks specs, creates thumbnails (`tools/thumbnails.sh`) and writes titles and hashtags for each platform.
+
+## 10. Review
+
+About 7 days later, fill in the Results table in `script.md`. Claude reads these results when suggesting future topics and scripts, so the workflow learns what works for you.

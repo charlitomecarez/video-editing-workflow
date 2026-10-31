@@ -50,3 +50,11 @@ The machine-readable versions live in [`styles.json`](styles.json). The script g
 | Speed ramp | Right-click clip → Time Remap |
 | Clean voice | Audio: Noise suppressor for voice, Compressor, Loudness |
 | Text | Title clip or Subtitles track |
+
+## Custom styles
+Add your own in `styles/custom/*.json`. Use `"extends": "<style>"` to copy a built-in style and change only some fields. `short-form-15s` is an example. Full details are in [docs/configuration.md](../docs/configuration.md#adding-a-style).
+
+```bash
+python3 tools/vwconfig.py styles             # list all styles
+python3 tools/vwconfig.py style short-form-15s   # show one fully resolved
+```

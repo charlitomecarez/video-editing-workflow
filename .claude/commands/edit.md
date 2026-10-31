@@ -1,14 +1,14 @@
 ---
-description: Prep footage for editing in Kdenlive
+description: Prep footage and get it ready to edit in Kdenlive
 argument-hint: <project folder or clip> [what you want]
 ---
 
 Help me prepare this footage for editing: $ARGUMENTS
 
-1. List the clips and check them with `ffprobe` (resolution, fps, duration, audio).
-2. Find the matching script in `video-scripts/` and its style in `styles/styles.json`.
-3. Propose a plan before running anything: which clips to prep (`tools/prep.sh`), cut silences on (`tools/cut-silence.sh`), make vertical (`tools/vertical.sh`) or subtitle (`tools/subtitles.sh`).
-4. After I approve, run the steps and keep the originals untouched.
-5. Tell me which `.kdenlive` file to open and what to check first.
+Use the `footage-prep` skill, then the `kdenlive-editing` skill for the editing steps.
 
-Never edit a `.kdenlive` file while I might have it open in Kdenlive. Ask first, and save a backup copy before editing it.
+1. Inspect the clips with `ffprobe`.
+2. Find the matching script and its style.
+3. Propose a plan (which tools, on which clips, with which settings) and wait for my OK.
+4. Run it, keeping the originals untouched.
+5. Tell me which `.kdenlive` file to open and give me the first 3 editing steps for this style.

@@ -1,0 +1,114 @@
+# Video Editing Workflow config
+#
+# Every tool reads its settings from here. Don't edit this file for personal tweaks:
+# create config.local.toml (git-ignored) and put only the keys you want to change, e.g.
+#
+#   [creator]
+#   name = "Charlito"
+#   [subtitles]
+#   language = "tl"
+#
+# Precedence: command-line flags > config.local.toml > config.toml
+# Check the merged result: python3 tools/vwconfig.py show
+
+[creator]
+name = "Your Name"
+channel = "Your Channel"
+# Who the videos are for. Used by /topics and /script.
+audience = "beginners who want simple, practical tips"
+# Voice of the scripts: casual, energetic, calm, funny, professional...
+tone = "casual and friendly"
+# Script language. "Taglish" works too if you want mixed Tagalog/English.
+language = "English"
+platforms = ["tiktok", "youtube-shorts", "instagram-reels", "youtube"]
+# Niches from topics/niches.json to use when none is given. Empty = all.
+niches = []
+# Words or topics Claude should avoid in scripts.
+avoid = []
+
+[paths]
+projects = "projects"
+scripts = "video-scripts"
+ideas = "topics/ideas.md"
+
+[project]
+# Subfolders created by tools/new_project.py
+folders = ["footage", "audio", "graphics", "export", "thumbnails"]
+date_prefix = true
+
+[topics]
+count = 10
+style = "short-form"
+
+[script]
+default_style = "short-form"
+# Average speaking rate, used to size voiceover per section (2.3-2.8 is typical)
+words_per_second = 2.5
+hook_options = 3
+# Sections to include in generated scripts
+include = ["hooks", "script", "shot_list", "editing_notes", "checklist", "post", "results"]
+checklist = [
+  "Project profile matches the style (resolution and fps)",
+  "Footage prepped (tools/prep.sh) and proxies on",
+  "Silences cut (tools/cut-silence.sh) and reviewed",
+  "B-roll, text and music added",
+  "Subtitles generated (tools/subtitles.sh) and checked",
+  "Audio: voice around -6 dB peak, music under it",
+  "Rendered and watched once fully before posting",
+]
+
+[prep]
+fps = 30
+# Lower CRF = higher quality and bigger file (16-23 is sensible)
+crf = 18
+# ultrafast ... veryslow (slower = smaller file, same quality)
+preset = "medium"
+# Loudness target in LUFS (-14 for YouTube / TikTok, -16 for podcasts)
+loudness = -14
+audio_bitrate = "192k"
+# Set false to keep the original audio untouched
+normalize_audio = true
+
+[silence]
+# Padding kept around speech. Bigger = less choppy.
+margin = "0.2s"
+# Audio level that counts as silence. Raise it if room noise is loud.
+threshold = "4%"
+# Export: kdenlive (review cuts on the timeline) or "default" (a rendered video)
+export = "kdenlive"
+
+[subtitles]
+# tiny, base, small, medium, large, turbo
+model = "small"
+# "" = auto-detect. Examples: en, tl, es
+language = ""
+format = "srt"
+# Max characters per line (short-form looks best with short lines)
+max_line_width = 32
+max_line_count = 2
+
+[captions]
+# Burned-in caption style, used by tools/burn-captions.sh
+font = "Arial Black"
+size = 18
+color = "&H00FFFFFF"        # ASS colors are &HAABBGGRR. This is white.
+outline_color = "&H00000000" # black
+outline = 3
+# Distance from the bottom edge
+margin_v = 60
+bold = true
+
+[vertical]
+# crop = fill frame by cropping, blur = fit over a blurred background
+mode = "crop"
+width = 1080
+height = 1920
+blur_strength = 20
+
+[thumbnails]
+count = 12
+width = 1280
+
+[render]
+crf = 18
+preset = "medium"

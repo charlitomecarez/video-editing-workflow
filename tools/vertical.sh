@@ -1,18 +1,37 @@
 #!/usr/bin/env bash
-# Make a 9:16 (1080x1920) version of a horizontal video.
-# Usage: tools/vertical.sh <input> [mode=crop]
+# Make a vertical (default 1080x1920, 9:16) version of a horizontal video.
+#
+# Usage: tools/vertical.sh <input> [--mode crop|blur] [--size 1080x1920] [--blur 20]
 #   crop = center-crop to fill the frame
 #   blur = fit the whole frame over a blurred background
-# Output: <name>_vertical.mp4 next to the input
-set -euo pipefail
-in="${1:?usage: tools/vertical.sh <input> [crop|blur]}"
-mode="${2:-crop}"
+# Defaults come from [vertical] in config.toml. Output: <name>_vertical.mp4
+. "$(dirname "$0")/_lib.sh"
+need ffmpeg
+
+mode=$(cfg vertical.mode); w=$(cfg vertical.width); h=$(cfg vertical.height)
+blur=$(cfg vertical.blur_strength); crf=$(cfg render.crf); preset=$(cfg render.preset)
+in=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --mode) mode="$2"; shift 2 ;;
+    --size) w="${2%x*}"; h="${2#*x}"; shift 2 ;;
+    --blur) blur="$2"; shift 2 ;;
+    -h|--help) sed -n '2,8p' "$0"; exit 0 ;;
+    *) in="$1"; shift ;;
+  esac
+done
+[[ -n "$in" ]] || { sed -n '2,8p' "$0"; exit 1; }
+need_file "$in"
 out="${in%.*}_vertical.mp4"
-if [[ "$mode" == "blur" ]]; then
-  vf="split[a][b];[a]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=20[bg];[b]scale=1080:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2"
-else
-  vf="scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
-fi
-ffmpeg -hide_banner -i "$in" -filter_complex "$vf" -c:v libx264 -crf 18 -preset medium \
-  -c:a copy -movflags +faststart "$out"
+check_out "$out"
+
+fill="scale=$w:$h:force_original_aspect_ratio=increase,crop=$w:$h"
+case "$mode" in
+  blur) vf="split[a][b];[a]$fill,boxblur=$blur[bg];[b]scale=$w:-2[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2" ;;
+  crop) vf="$fill" ;;
+  *) echo "Unknown mode: $mode (use crop or blur)" >&2; exit 1 ;;
+esac
+echo "Making vertical video (${w}x${h}, mode=$mode)"
+ffmpeg -hide_banner -loglevel warning -stats -y -i "$in" -filter_complex "$vf" \
+  -c:v libx264 -crf "$crf" -preset "$preset" -c:a copy -movflags +faststart "$out"
 echo "Vertical: $out"

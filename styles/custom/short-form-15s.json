@@ -1,0 +1,13 @@
+{
+  "short-form-15s": {
+    "extends": "short-form",
+    "name": "Ultra-short vertical (15 seconds)",
+    "target_seconds": 15,
+    "avg_shot_seconds": 1,
+    "structure": [
+      ["Hook", 0.15, "One line or one striking visual. Get straight to it."],
+      ["Value", 0.70, "One single tip or reveal."],
+      ["Payoff", 0.15, "Punchline that loops back to the hook."]
+    ]
+  }
+}
