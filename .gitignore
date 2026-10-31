@@ -25,6 +25,7 @@ projects/**
 !projects/**/*.md
 !projects/**/*.kdenlive
 !projects/**/*.srt
+!projects/**/*.json
 
 # Kdenlive / OS / Python junk
 *.kdenlive.bak*

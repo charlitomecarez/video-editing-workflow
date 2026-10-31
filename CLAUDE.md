@@ -14,17 +14,18 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Voice: `tools/script_text.py`, `tools/voice-draft.sh` (Piper), `tools/clean-voice.sh`, `tools/teleprompter.py`
 - Animations: `animations/` (Motion Canvas; scenes in `animations/src/scenes/`, brand synced to `src/brand.ts`)
 - Setup: `tools/setup.sh` installs everything; `tools/doctor.sh` checks. Python tools are in `.venv/` (run `.venv/bin/...`), Node in `node_modules/`.
+- Reels: `tools/reel.py` (transcript → reel.json → build) cuts a ≤60 s vertical summary from the long-form export into `projects/<video>/reel/`
 - Footage tools: `tools/prep.sh`, `cut-silence.sh`, `subtitles.sh`, `burn-captions.sh`, `vertical.sh`, `thumbnails.sh`, `doctor.sh`, `analyze_cuts.py` (all take `--help`)
 - Personality: `personality/` (profile, inspirations, recurring bits), `[personality]` in config, `tools/cringe_check.py`
 - Docs: `docs/kdenlive-guide.md`, `docs/platform-specs.md`, `docs/hooks-library.md`, `docs/configuration.md`, `docs/tech-explainer-style.md`, `docs/graphics.md`, `docs/voice-and-recording.md`, `docs/animations.md`
-- Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing, reference-analysis, graphics-thumbnails, motion-graphics, voiceover, personality-voice)
-- Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`
+- Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing, reference-analysis, graphics-thumbnails, motion-graphics, voiceover, personality-voice, reel-cutdown)
+- Commands: `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/reel`
 
 ## Rules
 - Every spoken word follows the personality profile (`personality-voice` skill). Never copy other creators' catchphrases, bits or show names, only techniques.
 - Always respect config. Read `[creator]` before writing anything creative. Never hardcode settings that exist in config.
 - Never modify or delete original footage. Tools write new suffixed files and refuse to overwrite unless `FORCE=1`.
-- Media in `projects/` is git-ignored. Only `.md`, `.kdenlive` and `.srt` files there are committed. Never commit video or audio.
+- Media in `projects/` is git-ignored. Only `.md`, `.kdenlive`, `.srt` and `.json` files there are committed. Never commit video or audio.
 - Back up any `.kdenlive` file before editing it, and make sure it isn't open in Kdenlive.
 - When changing a tool's behavior, add a config key for it instead of a hardcoded value, and document it in `docs/configuration.md`.
 - After rendering any graphic, look at the PNG before saying it's done.

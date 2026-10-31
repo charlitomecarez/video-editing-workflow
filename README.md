@@ -1,6 +1,6 @@
 # Video Editing Workflow
 
-My video workflow: topic ideas → script → film → edit in **Kdenlive** → subtitles → post → review results.
+My video workflow: topic ideas → script → film → edit in **Kdenlive** → subtitles → reel cutdown → post → review results.
 It's built to be used with Claude Code, and almost everything is configurable.
 
 📖 **[Read the Handbook](https://claude.ai/artifact/NySxVJqmBG24KeWFLKfWKn)**: the full guide to setup, the pipeline, commands, styles, personality, graphics, voice, animation and configuration.
@@ -42,9 +42,10 @@ Open Claude Code in this folder:
 | `/graphics projects/<video>` | All slates, code cards and diagrams from the script's See column |
 | `/thumbnail projects/<video>` | 3 thumbnail concepts rendered and reviewed |
 | `/animate "idea"` | A Motion Canvas animation scene |
+| `/reel projects/<video>` | 60-second vertical summary reel cut from the finished long video |
 | `/punchup script.md` | Adds your personality and humor to a script, then removes the cringe |
 
-Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics`, `voiceover` and `personality-voice`.
+Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics`, `voiceover` and `personality-voice` and `reel-cutdown`.
 
 ## Using the tools directly
 
@@ -59,6 +60,8 @@ tools/subtitles.sh projects/<video>/export/final.mp4            # .srt with Whis
 tools/burn-captions.sh projects/<video>/export/final.mp4        # captions burned in
 tools/vertical.sh projects/<video>/export/final.mp4 --mode blur # 9:16 version
 tools/thumbnails.sh projects/<video>/export/final.mp4           # thumbnail candidates
+python3 tools/reel.py transcript projects/<video>/export/final.mp4  # then write reel/reel.json
+python3 tools/reel.py build projects/<video>/reel/reel.json      # 60 s vertical summary reel
 python3 tools/analyze_cuts.py references/video.mp4 --frames     # study a reference video's editing
 
 python3 tools/cringe_check.py projects/<video>/script.md       # flag corny / AI-sounding lines

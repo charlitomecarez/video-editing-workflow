@@ -14,7 +14,7 @@ Almost everything is configurable without touching code.
 | `graphics/templates/*/` | Graphic templates (`template.html` + `template.json`) | Yes |
 | `animations/src/scenes/` | Motion Canvas scenes | Yes |
 | `.claude/skills/*/SKILL.md` | How Claude helps with each part of the workflow | Yes |
-| `.claude/commands/*.md` | Slash commands (`/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`) | Yes |
+| `.claude/commands/*.md` | Slash commands (`/new`, `/topics`, `/script`, `/punchup`, `/record`, `/edit`, `/graphics`, `/animate`, `/thumbnail`, `/reel`, `/publish`, `/analyze`) | Yes |
 
 **Precedence:** command-line flag → `config.local.toml` → `config.toml`
 
@@ -47,6 +47,7 @@ tools/doctor.sh                                   # check that everything is val
 | `[tts]` | Piper voice, speed, sentence pause, voices folder | `tools/voice-draft.sh` |
 | `[clean_voice]` | highpass, denoise strength, de-esser, compressor, loudness | `tools/clean-voice.sh` |
 | `[teleprompter]` | font size, speed, mirror, line width, reading line | `tools/teleprompter.py` |
+| `[reel]` | max/target length, size, blur or crop, clip padding, hook text style and timing, burned captions, transcript language | `tools/reel.py` |
 | `[render]` | quality for re-encoding tools | vertical, burn-captions |
 
 ## Adding a style

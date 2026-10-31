@@ -75,6 +75,15 @@ tools/subtitles.sh projects/<video>/export/draft.mp4 --language en
 
 `/thumbnail projects/<video>` creates 3 concepts with `tools/graphic` (plus `tools/cutout.sh` for cut-out subjects). See [`docs/graphics.md`](../docs/graphics.md).
 
+## 8c. Reel (60-second summary)
+
+`/reel projects/<video>` turns the finished long video into a vertical reel of at most 60 seconds, using only clips from the video itself. It transcribes the export, picks the hook, key points and payoff, then builds `reel/reel.mp4` with hook text, captions and a cover.
+
+```bash
+python3 tools/reel.py transcript projects/<video>/export/final.mp4   # timestamped lines
+python3 tools/reel.py build projects/<video>/reel/reel.json          # cut, 9:16, captions
+```
+
 ## 9. Post
 
 `/publish projects/<video>/export/final.mp4` checks specs, creates thumbnails (`tools/thumbnails.sh`) and writes titles and hashtags for each platform.

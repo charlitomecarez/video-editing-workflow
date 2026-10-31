@@ -67,7 +67,7 @@ ideas = "topics/ideas.md"
 
 [project]
 # Subfolders created by tools/new_project.py
-folders = ["footage", "audio", "graphics", "export", "thumbnails"]
+folders = ["footage", "audio", "graphics", "export", "thumbnails", "reel"]
 date_prefix = true
 
 [topics]
@@ -213,6 +213,29 @@ speed = 40            # scroll speed in px per second
 mirror = false        # true for glass/beam-splitter teleprompters
 line_width = 32       # characters per line
 guide_position = 30   # reading line, % from top of screen
+
+[reel]
+# 60-second summary reel cut from a long-form video (tools/reel.py, /reel)
+max_seconds = 60
+# Aim a bit under the limit so it never gets cut off
+target_seconds = 55
+width = 1080
+height = 1920
+# blur = whole 16:9 frame over a blurred background (good for screens, graphics, code)
+# crop = fill the frame by cropping the center (good for a face talking to camera)
+mode = "blur"
+# Extra seconds kept around each clip so words aren't clipped
+pad = 0.08
+# Hook text shown on screen at the start (rendered with the slate template)
+hook_overlay = true
+hook_seconds = 2.5
+hook_style = "pill"      # pill, box or plain
+hook_position = "top"    # top, center or bottom (kept inside the vertical safe zone)
+# Burn captions into the reel (needs ffmpeg-full; otherwise import reel.srt in Kdenlive)
+burn_captions = true
+caption_margin_v = 70
+# Whisper language for the transcript ("" = use [subtitles].language)
+language = ""
 
 [render]
 crf = 18

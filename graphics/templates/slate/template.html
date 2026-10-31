@@ -10,6 +10,8 @@
   .style-box .text .hl{color:#fff}
   .style-plain .text{-webkit-text-stroke:10px #000;paint-order:stroke fill;text-shadow:0 10px 30px rgba(0,0,0,.6)}
   .sub{font-family:var(--font-body);font-weight:700;font-size:48px;color:var(--fg);background:rgba(0,0,0,.65);padding:10px 28px;border-radius:12px}
+  /* Vertical frames: keep text clear of the app UI (safe zone) */
+  @media (max-aspect-ratio: 3/4){.pos-top{padding-top:300px}.pos-bottom{padding-bottom:420px}.text{font-size:96px}}
 </style></head><body>
 <div class="wrap pos-{{pos}} style-{{style}}">
   {{#icon}}<img class="icon" src="{{{icon}}}">{{/icon}}

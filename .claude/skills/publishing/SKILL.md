@@ -15,6 +15,9 @@ description: Use when preparing a finished video for posting (export settings, t
    - YouTube description: the first 2 lines matter most, then add chapters (`0:00 Intro`) for videos over 3 minutes
 5. Set the script's Status to `posted`.
 
+## Reels
+For short-form platforms, make a 60-second summary reel from the long video with the `reel-cutdown` skill (`/reel`). Post the reel with a "full video on my channel" line.
+
 ## Cross-posting
 - Export once without platform watermarks, then post the same file everywhere.
 - For a 16:9 master, use `tools/vertical.sh --mode blur` (or recut in Kdenlive with a vertical profile for the best result).
