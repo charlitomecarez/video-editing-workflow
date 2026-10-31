@@ -28,6 +28,7 @@ tools/doctor.sh                                   # check that everything is val
 ## Config sections
 | Section | Controls | Used by |
 |---|---|---|
+| `[personality]` | profile file, humor level (0-5), joke density, profanity, dark humor, meme cutaways, joke targets, cringe blocklist, intensifier limits | `/script`, `/punchup`, `tools/cringe_check.py` |
 | `[creator]` | name, audience, tone, language, platforms, default niches, words to avoid | `/topics`, `/script`, topic generator, script Post/Results sections |
 | `[paths]` | where projects, scripts and ideas live | all Python tools |
 | `[project]` | subfolders for new projects, date prefix | `tools/new_project.py` |
@@ -62,7 +63,7 @@ Create `styles/custom/<anything>.json`. Use `extends` to copy an existing style 
 }
 ```
 
-Optional style fields: `words_per_second` (overrides `[script]`), `script_format` (`sections` or `av-table`), `visuals`, `sound_effects`.
+Optional style fields: `humor_level` (overrides `[personality]`), `words_per_second` (overrides `[script]`), `script_format` (`sections` or `av-table`), `visuals`, `sound_effects`.
 
 A style without `extends` needs every field: `name, aspect, resolution, fps, target_seconds, avg_shot_seconds, captions, music, transitions, color, structure`. `structure` is a list of `[section, fraction_of_length, note]`, and the fractions should add up to 1.0.
 

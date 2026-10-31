@@ -40,8 +40,9 @@ Open Claude Code in this folder:
 | `/graphics projects/<video>` | All slates, code cards and diagrams from the script's See column |
 | `/thumbnail projects/<video>` | 3 thumbnail concepts rendered and reviewed |
 | `/animate "idea"` | A Motion Canvas animation scene |
+| `/punchup script.md` | Adds your personality and humor to a script, then removes the cringe |
 
-Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics` and `voiceover`.
+Claude also loads these **skills** automatically when they're relevant: `kdenlive-editing`, `video-scriptwriting`, `footage-prep`, `captions-subtitles`, `topic-research`, `publishing`, `reference-analysis`, `graphics-thumbnails`, `motion-graphics`, `voiceover` and `personality-voice`.
 
 ## Using the tools directly
 
@@ -58,6 +59,7 @@ tools/vertical.sh projects/<video>/export/final.mp4 --mode blur # 9:16 version
 tools/thumbnails.sh projects/<video>/export/final.mp4           # thumbnail candidates
 python3 tools/analyze_cuts.py references/video.mp4 --frames     # study a reference video's editing
 
+python3 tools/cringe_check.py projects/<video>/script.md       # flag corny / AI-sounding lines
 python3 tools/teleprompter.py projects/<video>/script.md        # read while recording
 tools/voice-draft.sh projects/<video>/script.md                 # draft AI voiceover for timing
 tools/clean-voice.sh projects/<video>/audio/voice.wav           # denoise + level a recording
@@ -77,6 +79,7 @@ Every tool takes `--help`. Defaults come from the config, and flags override the
 | `config.toml` | All defaults: creator profile, quality, loudness, silence detection, subtitles, caption style, vertical mode... |
 | `config.local.toml` | Your personal overrides (git-ignored) |
 | `styles/custom/*.json` | Your own editing styles (can `extend` built-in ones) |
+| `personality/` + `[personality]` | Your on-camera voice: humor toolkit, humor level, profanity, anti-cringe blocklist |
 | `[brand]` in config | Colors, fonts, logo and code theme for every graphic and animation |
 | `graphics/templates/` | Thumbnail and graphic templates (HTML, easy to add your own) |
 | `topics/niches.json`, `topics/formats.json` | Topic generator niches and title formats |
@@ -96,6 +99,7 @@ The full reference is in [docs/configuration.md](docs/configuration.md).
 | `graphics/templates/` | Graphic templates (thumbnails, covers, code cards, slates, lower thirds, diagrams) |
 | `animations/` | Motion Canvas project (animated code, diagrams, titles) |
 | `templates/` | Reusable Kdenlive project templates |
+| `personality/` | Your voice profile, inspirations and recurring bits |
 | `references/` | Reference videos to study (media not committed) and their analysis reports |
 | `projects/` | One folder per video (media is not committed, so back it up separately) |
 | `.claude/` | Claude Code skills and slash commands |

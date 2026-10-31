@@ -49,6 +49,8 @@ def build(topic, style_key, s, total, cfg, fmt_override=None):
         f"- **Length:** ~{ts(total)} (~{round(total * wps)} spoken words) | "
         f"**Format:** {s['aspect']}, {s['resolution']} @ {s['fps']} fps",
         f"- **Audience:** {cr['audience']} | **Tone:** {cr['tone']} | **Language:** {cr['language']}",
+        f"- **Personality:** `{cfg.get('personality', {}).get('profile', '-')}` | **Humor level:** "
+        f"{s.get('humor_level', cfg.get('personality', {}).get('humor_level', '-'))}/5",
         f"- **Created:** {dt.date.today()}",
         "- **Status:** draft  <!-- draft / filming / editing / posted -->",
         "",

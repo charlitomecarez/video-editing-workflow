@@ -20,7 +20,7 @@ This creates `projects/<date>-<title>/` with `footage/ audio/ graphics/ export/ 
 ## 3. Write the script
 
 `/script "Your chosen title"` fills in the hooks, voiceover, B-roll, shot list and post captions.
-Patterns are in [`docs/hooks-library.md`](../docs/hooks-library.md).
+Patterns are in [`docs/hooks-library.md`](../docs/hooks-library.md). Your voice and humor come from [`personality/bestfriend.md`](../personality/bestfriend.md). Run `/punchup` to add jokes, and `tools/cringe_check.py` catches corny lines.
 
 ## 3b. Prepare to record
 

@@ -31,7 +31,8 @@
         0.15,
         "Result or punchline, then follow / comment prompt. Loop back to the hook if possible."
       ]
-    ]
+    ],
+    "humor_level": 3
   },
   "talking-head": {
     "name": "Talking-head YouTube",
@@ -70,7 +71,8 @@
         0.1,
         "Subscribe prompt, next video suggestion, end screen (last 20 s)."
       ]
-    ]
+    ],
+    "humor_level": 3
   },
   "vlog": {
     "name": "Vlog / day-in-the-life",
@@ -109,7 +111,8 @@
         0.05,
         "Sign-off and CTA."
       ]
-    ]
+    ],
+    "humor_level": 3
   },
   "tutorial": {
     "name": "Tutorial / screencast",
@@ -148,7 +151,8 @@
         0.07,
         "Recap and where to go next."
       ]
-    ]
+    ],
+    "humor_level": 2
   },
   "cinematic": {
     "name": "Cinematic B-roll / montage",
@@ -182,7 +186,8 @@
         0.15,
         "Slow down, final hero shot, title or logo."
       ]
-    ]
+    ],
+    "humor_level": 0
   },
   "tech-explainer": {
     "name": "Fast tech explainer (faceless, graphics-driven)",
@@ -225,7 +230,8 @@
         0.15,
         "Quick recap, a punchline, and the CTA (subscribe / next video)."
       ]
-    ]
+    ],
+    "humor_level": 4
   },
   "tech-explainer-short": {
     "extends": "tech-explainer",

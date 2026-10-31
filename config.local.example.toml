@@ -9,6 +9,10 @@ tone = "casual, energetic, a bit funny"
 language = "Taglish"
 niches = ["food", "tech"]
 
+[personality]
+humor_level = 4
+profanity = "bleeped"
+
 [subtitles]
 language = "tl"
 model = "medium"

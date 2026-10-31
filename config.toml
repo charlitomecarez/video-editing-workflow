@@ -26,6 +26,40 @@ niches = []
 # Words or topics Claude should avoid in scripts.
 avoid = []
 
+[personality]
+# Your on-camera voice. Claude reads this file before writing or punching up scripts.
+# Make more profiles (e.g. personality/calm-teacher.md) and switch here.
+profile = "personality/bestfriend.md"
+# 0 = no jokes, 1 = light, 2 = friendly, 3 = funny, 4 = very funny, 5 = unhinged.
+# Styles can override this with their own humor_level.
+humor_level = 3
+# Roughly one laugh every N seconds (ignored when humor_level = 0)
+joke_every_seconds = 18
+# none / mild ("damn", "hell") / bleeped (write it, mark it [BLEEP]) / uncensored
+profanity = "mild"
+dark_humor = false
+self_deprecating = true
+# Allow meme / reaction-clip cutaways in the See column
+meme_cutaways = true
+# What the jokes may target. Never people's looks, identity or intelligence.
+punch_at = ["technologies and companies", "hype and marketing", "bad practices", "myself"]
+# Phrases tools/cringe_check.py flags (case-insensitive). Add your own pet peeves.
+blocklist = [
+  "hey guys", "welcome back", "in today's video", "without further ado", "smash that like",
+  "don't forget to subscribe", "let's dive in", "dive into", "deep dive", "buckle up",
+  "game changer", "game-changer", "mind-blowing", "mind blowing", "you won't believe",
+  "no cap", "it's giving", "rizz", "slay", "lol", "haha", "spoiler alert", "plot twist",
+  "delve", "in the ever-evolving", "ever-changing landscape", "unleash", "elevate", "seamless",
+  "robust", "it's worth noting", "in conclusion", "secret sauce", "a testament to",
+  "imagine a world", "ever wondered", "level up your", "look no further", "at the end of the day",
+  "the world of", "navigate the", "harness the power", "revolutionize", "cutting-edge",
+]
+# Words that are fine once but cringe when repeated: max uses per script
+intensifiers = { literally = 2, insane = 1, crazy = 2, super = 2, really = 4, very = 3, actually = 4, honestly = 3, basically = 2 }
+max_sentence_words = 22
+# Max exclamation marks per 100 words
+max_exclamations_per_100 = 1.0
+
 [paths]
 projects = "projects"
 scripts = "video-scripts"

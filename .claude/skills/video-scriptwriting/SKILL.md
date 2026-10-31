@@ -6,6 +6,7 @@ description: Use when writing, rewriting or punching up a video script, hooks, v
 # Video scriptwriting
 
 ## Inputs to read first
+- **The `personality-voice` skill and the profile at `[personality].profile`.** Every spoken word follows it. Write facts first, then voice, then humor, then the cringe check.
 - `config.toml` + `config.local.toml` → `[creator]` (audience, tone, language, platforms, avoid) and `[script]` (words_per_second, hook_options)
 - The style in `styles/styles.json` / `styles/custom/` → structure, timing, pacing
 - `docs/hooks-library.md` for hook patterns
@@ -34,6 +35,9 @@ Follow `docs/tech-explainer-style.md`. Research comes first: verify facts agains
 - Cut anything that doesn't serve the viewer. Ask "so what?" about every line.
 - Write CTAs that are specific ("Comment your budget and I'll suggest a meal"), not generic ("like and subscribe").
 - Never use anything in `[creator].avoid`. Never invent facts, stats or prices. Mark anything to verify with `[CHECK]`.
+
+## Before handing over
+Run `python3 tools/cringe_check.py <script>` and fix everything it flags.
 
 ## Output
 Save the filled script, then show the user the hook options and the total word count vs target.
