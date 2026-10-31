@@ -5,6 +5,8 @@ It's built to be used with Claude Code, and almost everything is configurable.
 
 📖 **[Read the Handbook](https://claude.ai/artifact/NySxVJqmBG24KeWFLKfWKn)**: the full guide to setup, the pipeline, commands, styles, personality, graphics, voice, animation and configuration.
 
+🤝 **[Working Together](https://claude.ai/artifact/FWN141iSxvW7d8TZepLgwW)**: who does what on each video, what to send Claude at each stage, how to hand over images and B-roll, and copy-paste messages.
+
 ## Setup (macOS)
 
 ```bash
