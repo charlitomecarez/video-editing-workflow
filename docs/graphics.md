@@ -12,22 +12,26 @@ Text fields: `*word*` turns a word the accent color, and `\n` starts a new line.
 
 ## Templates
 
-| Template         | Size                  | Use                                                                               |
-| ---------------- | --------------------- | --------------------------------------------------------------------------------- |
-| `thumbnail-bold` | 1280x720              | Classic YouTube thumbnail: photo background, cut-out subject, huge outlined text  |
-| `thumbnail-tech` | 1280x720              | Dark tech thumbnail: big glowing logo, punchy text, optional emoji                |
-| `cover-vertical` | 1080x1920             | Reels / TikTok / Shorts cover, text kept in the safe zone and the 4:5 grid crop   |
-| `code-card`      | transparent           | Syntax-highlighted code in an editor window (Shiki, 200+ languages)               |
-| `slate`          | 1920x1080 transparent | The "thing pops on screen" keyword or label (pill, box or plain style)            |
-| `lower-third`    | 1920x1080 transparent | Name or source label, bottom-left                                                 |
-| `diagram`        | 1920x1080 transparent | Mermaid diagram (flowcharts, sequence diagrams...) in brand colors                |
-| `scoreboard`     | 1920x1080             | Final score or matchup in team colors, optional photo background                  |
-| `stat-card`      | 1920x1080             | Big numbers (grid) or a two-column list, optional photo on the left               |
-| `bar-chart`      | 1920x1080             | Two series side by side (e.g. points per quarter), one bar can be highlighted     |
-| `progress-bar`   | 1920x1080             | Progress toward a number (a record or goal) with the gap called out               |
-| `text-card`      | 1920x1080             | Big punchline or number, chapter title, or a dashed PLACEHOLDER for a meme to add |
-| `photo-caption`  | 1920x1080             | A photo full-frame or as a tilted card, with a bold meme-style caption            |
-| `fact-card`      | 1920x1080             | A "receipt": headline, highlighted words and the source, on a tilted paper card   |
+| Template         | Size                  | Use                                                                                                                                                              |
+| ---------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `thumbnail-bold` | 1280x720              | Classic YouTube thumbnail: photo background, cut-out subject, huge outlined text                                                                                 |
+| `thumbnail-tech` | 1280x720              | Dark tech thumbnail: big glowing logo, punchy text, optional emoji                                                                                               |
+| `cover-vertical` | 1080x1920             | Reels / TikTok / Shorts cover, text kept in the safe zone and the 4:5 grid crop                                                                                  |
+| `code-card`      | transparent           | Syntax-highlighted code in an editor window (Shiki, 200+ languages)                                                                                              |
+| `slate`          | 1920x1080 transparent | The "thing pops on screen" keyword or label (pill, box or plain style)                                                                                           |
+| `lower-third`    | 1920x1080 transparent | Name or source label, bottom-left                                                                                                                                |
+| `diagram`        | 1920x1080 transparent | Mermaid diagram (flowcharts, sequence diagrams...) in brand colors                                                                                               |
+| `scoreboard`     | 1920x1080             | Final score or matchup in team colors, optional photo background                                                                                                 |
+| `stat-card`      | 1920x1080             | Big numbers (grid) or a two-column list, optional photo on the left                                                                                              |
+| `bar-chart`      | 1920x1080             | Two series side by side (e.g. points per quarter), one bar can be highlighted                                                                                    |
+| `progress-bar`   | 1920x1080             | Progress toward a number (a record or goal) with the gap called out                                                                                              |
+| `text-card`      | 1920x1080             | Big punchline or number, chapter title, or a dashed PLACEHOLDER for a meme to add                                                                                |
+| `photo-caption`  | 1920x1080             | A photo full-frame or as a tilted card, with a bold meme-style caption                                                                                           |
+| `fact-card`      | 1920x1080             | A "receipt": headline, highlighted words and the source, on a tilted paper card                                                                                  |
+| `caption`        | 1920x1080             | Kinetic caption: 1-4 big rounded words on charcoal, cut on the spoken word. `[img]` puts a face or logo inside the sentence; `bg` writes it over a meme or photo |
+| `paper-card`     | 1920x1080             | Any picture or existing graphic as a tilted card on crumpled paper, grid paper or cardboard. `under` = the previous card, so cards stack                         |
+
+`caption` is the meme-commentary look (style `meme-commentary`, see `references/commentary-refs_breakdown.md`). `paper-card` can reuse every graphic you already made: `--set img=19-giannis-stats.png --set texture=charcoal`.
 
 Transparent PNGs go straight onto a track above your footage in Kdenlive. The data templates (`scoreboard`, `stat-card`, `bar-chart`, `progress-bar`) are full-frame cards: they cover the footage while they're on screen.
 

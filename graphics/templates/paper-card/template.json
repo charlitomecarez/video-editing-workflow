@@ -1,0 +1,25 @@
+{
+  "description": "A picture or graphic as a slightly tilted card with a shadow on a textured background (crumpled paper, grid paper, cardboard or charcoal). Pass the previous card as 'under' to make cards stack like a pile.",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "img": "The card: any picture or an existing 1920x1080 graphic",
+    "under": "Optional previous card, shown behind this one at a different angle (stacking effect)",
+    "texture": "paper (default, crumpled), grid, cardboard or charcoal",
+    "tilt": "Card rotation in degrees (default -2)",
+    "scale": "Card width as % of the frame (default 74)",
+    "x": "Horizontal nudge in px (default 0)",
+    "y": "Vertical nudge in px (default 0)",
+    "caption": "Optional big outlined caption at the bottom, *word* = highlight",
+    "color": "Highlight color for *words* (hex, default brand accent)",
+    "seed": "Texture variation number (default 3). Change it so repeated backgrounds don't look identical"
+  },
+  "defaults": {
+    "texture": "paper",
+    "tilt": "-2",
+    "scale": "74",
+    "x": "0",
+    "y": "0",
+    "seed": "3"
+  }
+}

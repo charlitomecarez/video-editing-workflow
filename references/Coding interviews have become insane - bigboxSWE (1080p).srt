@@ -1,0 +1,749 @@
+1
+00:00:00,000 --> 00:00:03,200
+Oh boy, just a few years ago,
+you could get a job at Google
+
+2
+00:00:03,200 --> 00:00:07,240
+making 450 big ones, by solving
+two sum and talking about your
+
+3
+00:00:07,240 --> 00:00:10,380
+Python tic-tac toe game. Life
+was good, and then this stupid
+
+4
+00:00:10,380 --> 00:00:13,340
+thing had to release. The state
+of software engineering is like
+
+5
+00:00:13,340 --> 00:00:15,960
+the writing direction of JoJo.
+You have no idea where it's
+
+6
+00:00:15,960 --> 00:00:17,820
+going, and when it goes
+somewhere you're like, why did
+
+7
+00:00:17,820 --> 00:00:20,580
+that even happen? You get
+rejected for not token maxing.
+
+8
+00:00:20,700 --> 00:00:23,240
+You get rejected for using too
+much AI. You get rejected
+
+9
+00:00:23,240 --> 00:00:25,700
+because you're a PSL5
+apparently, with handwriting
+
+10
+00:00:25,700 --> 00:00:28,720
+code seemingly all but dead. Hey
+man, there words, not mine. And
+
+11
+00:00:28,720 --> 00:00:31,320
+now the debate is whether or not
+we should even read the slob. It
+
+12
+00:00:31,320 --> 00:00:33,620
+seems like we've all but lost
+the plot when it comes to actual
+
+13
+00:00:33,620 --> 00:00:36,300
+development. So I wanted to make
+a consolidated effort to
+
+14
+00:00:36,300 --> 00:00:39,220
+understand what's even going on
+with coding interviews. Is leak
+
+15
+00:00:39,220 --> 00:00:42,300
+code dead? Our algorithms, Jovr,
+is a time for leak code over
+
+16
+00:00:42,300 --> 00:00:44,900
+here to pack it up and get a
+job? And yes, before we go on I
+
+17
+00:00:44,900 --> 00:00:47,580
+must acknowledge, ha ha, y'all
+getting interviews, you're so
+
+18
+00:00:47,580 --> 00:00:50,000
+funny aren't you? Where else to
+begin but the companies that
+
+19
+00:00:50,000 --> 00:00:52,660
+have apparently solved coding?
+Believe it or not, these two
+
+20
+00:00:52,660 --> 00:00:55,500
+goobers love hiring software
+engineers. But to get that
+
+21
+00:00:55,500 --> 00:00:58,180
+salary, each round is like
+fighting the ninjas from Spider
+
+22
+00:00:58,180 --> 00:01:00,760
+-Man but instead of Peter
+Parker, your net. Now despite
+
+23
+00:01:00,760 --> 00:01:03,160
+Reddit being the sewage for
+software engineering discourse,
+
+24
+00:01:03,520 --> 00:01:05,820
+I found it to be at least semi
+-reliable when it comes to
+
+25
+00:01:05,820 --> 00:01:08,080
+interviews. Because I went and
+spoke to a few people that
+
+26
+00:01:08,080 --> 00:01:09,940
+actually got a job at these
+companies and the interview
+
+27
+00:01:09,940 --> 00:01:12,680
+process is similar to what's
+been said. The first interview I
+
+28
+00:01:12,680 --> 00:01:14,840
+want to take a look at is for a
+platform engineer role at
+
+29
+00:01:14,840 --> 00:01:17,340
+OpenAI. It's four rounds and it
+kicks off with a take home
+
+30
+00:01:17,340 --> 00:01:19,720
+assignment. Where this editor
+was asked to build a webhook
+
+31
+00:01:19,720 --> 00:01:23,020
+delivery system in under 48
+hours. A webhook delivery system
+
+32
+00:01:23,020 --> 00:01:25,620
+is an automated system that
+sends information to another
+
+33
+00:01:25,620 --> 00:01:28,400
+application when a specific
+event occurs. You can think of
+
+34
+00:01:28,400 --> 00:01:30,220
+it as a snitch that tells a
+teacher whenever you do
+
+35
+00:01:30,220 --> 00:01:32,360
+something wrong. More
+practically speaking, whenever
+
+36
+00:01:32,360 --> 00:01:35,120
+you order something, Stripe uses
+webhooks to coordinate between
+
+37
+00:01:35,120 --> 00:01:37,660
+the bank and the vendor to make
+sure you can purchase your gamer
+
+38
+00:01:37,660 --> 00:01:40,100
+girl Feachuse in time. Now after
+they finished off their homework
+
+39
+00:01:40,100 --> 00:01:42,620
+like a good little boy, OpenAI
+sends one of their thugs to
+
+40
+00:01:42,620 --> 00:01:45,120
+whiplash you through it all.
+Basically a senior engineer from
+
+41
+00:01:45,120 --> 00:01:48,080
+OpenAI grilled them on a line-by
+-line basis on why they wrote
+
+42
+00:01:48,080 --> 00:01:50,660
+the code they did. It's at this
+point if you used AI to
+
+43
+00:01:50,660 --> 00:01:52,880
+interview for an AI company,
+you're cooked. But if you're
+
+44
+00:01:52,880 --> 00:01:55,400
+cracked enough and actually
+implemented it from scratch, you
+
+45
+00:01:55,400 --> 00:01:57,660
+unlock the third interview,
+system design. This was
+
+46
+00:01:57,660 --> 00:02:00,080
+apparently the hardest round and
+I can see why. They were asked
+
+47
+00:02:00,080 --> 00:02:03,320
+to design an in-memory database
+with basic SQL commands. And no
+
+48
+00:02:03,320 --> 00:02:05,880
+bro, the answer isn't pip
+install SQL like. In the end bro
+
+49
+00:02:05,880 --> 00:02:08,580
+didn't get the role for a lack
+of experience. But I commend him
+
+50
+00:02:08,580 --> 00:02:11,000
+for making it through these
+rounds. To me man, just reading
+
+51
+00:02:11,000 --> 00:02:13,500
+that felt brutal. But you have
+to remember OpenAI is a non
+
+52
+00:02:13,500 --> 00:02:16,240
+-profit after all. To have the
+privilege of lining Mr. Darios
+
+53
+00:02:16,240 --> 00:02:19,040
+pockets over here, you have to
+go through a lot more. Otherwise
+
+54
+00:02:19,040 --> 00:02:21,340
+his wife will go look for
+funding again. A few months ago
+
+55
+00:02:21,340 --> 00:02:23,700
+this thread on Reddit was posted
+about the interview process for
+
+56
+00:02:23,700 --> 00:02:26,380
+an infrastructure engineer at
+Anthropic. And oh boy, did they
+
+57
+00:02:26,380 --> 00:02:28,820
+send my bro to the interview
+GooLog? The first interview
+
+58
+00:02:28,820 --> 00:02:31,440
+round was an online assessment
+with two questions. The first
+
+59
+00:02:31,440 --> 00:02:33,800
+was to implement a least
+recently used cash and python,
+
+60
+00:02:33,800 --> 00:02:36,040
+which is a well-known lead code
+medium. If you're unfamiliar
+
+61
+00:02:36,040 --> 00:02:38,920
+with this, it's a way to store a
+limited number of key value
+
+62
+00:02:38,920 --> 00:02:41,600
+pairs in a Victor one that
+hasn't been used the longest. A
+
+63
+00:02:41,600 --> 00:02:44,180
+clean and simple solution is to
+use the order dictionary from
+
+64
+00:02:44,180 --> 00:02:46,500
+the collections module and
+python. But most places will
+
+65
+00:02:46,500 --> 00:02:48,760
+want you to do it the manual
+way, which is to implement a
+
+66
+00:02:48,760 --> 00:02:51,480
+hash map to store the key value
+pairs and use a doubly linked
+
+67
+00:02:51,480 --> 00:02:54,140
+list to pop the values in and
+out. The second question was to
+
+68
+00:02:54,140 --> 00:02:56,380
+implement a task management
+system with priorities,
+
+69
+00:02:56,640 --> 00:02:59,240
+assignment, and dependencies. It
+seems like a lot of manual
+
+70
+00:02:59,240 --> 00:03:01,620
+coding for a company that solved
+coding apparently, but
+
+71
+00:03:01,620 --> 00:03:04,260
+implementing isn't enough. To
+line the pockets of Dario over
+
+72
+00:03:04,260 --> 00:03:06,420
+here, you need to implement
+thread safety, error handling,
+
+73
+00:03:06,620 --> 00:03:09,120
+and provide complexity analysis
+in the comments. And did I
+
+74
+00:03:09,120 --> 00:03:11,760
+mention you only get 90 minutes
+to do all of this? This brings
+
+75
+00:03:11,760 --> 00:03:13,960
+us to the second round, where
+you need to implement a web
+
+76
+00:03:13,960 --> 00:03:16,380
+crawler from scratch, and oh
+boy, is this an implementation?
+
+77
+00:03:16,900 --> 00:03:20,020
+It's an implementation so rough.
+The only code example I found
+
+78
+00:03:20,020 --> 00:03:23,040
+for this online is from a person
+that works at Anthropic. I
+
+79
+00:03:23,040 --> 00:03:24,740
+reached out to them and they
+preferred to be anonymous for
+
+80
+00:03:24,740 --> 00:03:27,400
+this video, but yes, I found the
+exact implementation they used
+
+81
+00:03:27,400 --> 00:03:29,980
+during their interview. I can't
+share my findings, though. From
+
+82
+00:03:29,980 --> 00:03:32,580
+what I analyzed, the entire
+crawler was built by hand. It
+
+83
+00:03:32,580 --> 00:03:35,200
+was full of comments, and the
+variable names used in the way
+
+84
+00:03:35,200 --> 00:03:37,860
+the functions were structured
+all seemed human-made. After
+
+85
+00:03:37,860 --> 00:03:40,760
+this, it's a system design
+round, where the Reddit user was
+
+86
+00:03:40,760 --> 00:03:44,020
+asked to design an inference API
+for serving an LLM model. Sun.
+
+87
+00:03:44,400 --> 00:03:46,480
+After this, there's another
+coding round, where you have to
+
+88
+00:03:46,480 --> 00:03:49,860
+convert stack sampling profiler
+outputs into trace events, which
+
+89
+00:03:49,860 --> 00:03:52,280
+is loosely rebuilding the core
+of Flame Graph from scratch.
+
+90
+00:03:52,700 --> 00:03:55,320
+This wraps up Fortnite's
+Adarios. At the risk of losing
+
+91
+00:03:55,320 --> 00:03:58,440
+all my volunteer credit, I did
+cover my local flock camera, Lee
+
+92
+00:03:58,440 --> 00:04:00,940
+rebooted my ThinkPad running
+Tails OS, and tried to
+
+93
+00:04:00,940 --> 00:04:03,560
+understand how interviews are
+done at Chinese Frontier Labs. I
+
+94
+00:04:03,560 --> 00:04:06,200
+checked out some Chinese tech
+forums, but had no luck. If I'm
+
+95
+00:04:06,200 --> 00:04:08,180
+reaching out to any of my
+viewers from China across the
+
+96
+00:04:08,180 --> 00:04:11,960
+Great Firewall, Xiong-D, Gae-Wol
+-Fa, Yu-Jin-ba. Now, what I find
+
+97
+00:04:11,960 --> 00:04:14,960
+surprising is neither of these
+interviews used any AI, and not
+
+98
+00:04:14,960 --> 00:04:17,600
+only was there a very heavy
+emphasis on algorithm-style
+
+99
+00:04:17,600 --> 00:04:20,020
+interview questions, but there
+was an emphasis on software
+
+100
+00:04:20,020 --> 00:04:22,620
+engineering principles.
+Implementing error-handling and
+
+101
+00:04:22,620 --> 00:04:25,220
+concurrency from scratch isn't
+something your local vibe-coder
+
+102
+00:04:25,220 --> 00:04:27,400
+dude broke with the school
+community is going to be able to
+
+103
+00:04:27,400 --> 00:04:29,900
+do. Now, I want to reiterate
+something. These are not normal
+
+104
+00:04:29,900 --> 00:04:32,200
+software engineering interviews.
+These aren't even hard
+
+105
+00:04:32,200 --> 00:04:34,920
+interviews. This is like
+interviewing in God mode. It's
+
+106
+00:04:34,920 --> 00:04:37,240
+like the episode where Goku was
+cooking up the spirit bomb
+
+107
+00:04:37,240 --> 00:04:40,140
+against Boo, so how does hiring
+look in the normal world? For
+
+108
+00:04:40,140 --> 00:04:42,940
+the folks that don't have access
+to an algorithm hyperbolic time
+
+109
+00:04:42,940 --> 00:04:45,860
+chamber. For fang, sass
+companies, and startups. It
+
+110
+00:04:45,860 --> 00:04:48,660
+seems to be business as usual.
+Leak code and system design. If
+
+111
+00:04:48,660 --> 00:04:50,980
+anything, there's an increase in
+companies that aren't related to
+
+112
+00:04:50,980 --> 00:04:53,440
+tech at all doing these kind of
+interviews. Like look at this
+
+113
+00:04:53,440 --> 00:04:55,980
+interview loop from Reddit. Two
+leak code rounds in one system
+
+114
+00:04:55,980 --> 00:04:58,500
+design. You'd think this was for
+a position at Amazon or Google.
+
+115
+00:04:58,740 --> 00:05:01,540
+It was for Nordstrom. Companies
+like Walmart, Target, even
+
+116
+00:05:01,540 --> 00:05:04,080
+Kellogg's. They're all doing
+leak code now. There's even a
+
+117
+00:05:04,080 --> 00:05:06,880
+rise of in-person coding
+interviews these days. Thanks to
+
+118
+00:05:06,880 --> 00:05:09,600
+all the AI cheating tools. So
+given everything I learned so
+
+119
+00:05:09,600 --> 00:05:12,120
+far, this is how I would prepare
+for interviews in the big two
+
+120
+00:05:12,120 --> 00:05:15,520
+six. Grind leak code and system
+design. Yep. We could have a
+
+121
+00:05:15,520 --> 00:05:18,140
+whole AI revolution, but for
+some reason the data centers
+
+122
+00:05:18,140 --> 00:05:20,720
+can't figure out how to change
+the interview process. So
+
+123
+00:05:20,720 --> 00:05:23,820
+despite what the most obnoxious
+pro data center AI bro wants you
+
+124
+00:05:23,820 --> 00:05:26,940
+to believe, no one is testing
+how well you can prompt, or how
+
+125
+00:05:26,940 --> 00:05:29,700
+well you know vibe coding, or
+how well you can one shot. But
+
+126
+00:05:29,700 --> 00:05:32,100
+if you are looking for places to
+one shot, you should be using
+
+127
+00:05:32,100 --> 00:05:35,240
+cursor the sponsor of today's
+video. And I'm super excited to
+
+128
+00:05:35,240 --> 00:05:38,360
+show off their new cloud coding
+agents. To get started, you can
+
+129
+00:05:38,360 --> 00:05:40,920
+hook it up to any of your Git
+repos. In this case, I want to
+
+130
+00:05:40,920 --> 00:05:44,160
+hook it up to this repo I've got
+for 3JS. The JavaScript library
+
+131
+00:05:44,160 --> 00:05:47,300
+to render 3D graphics. Right off
+the bat, cursor can set up an
+
+132
+00:05:47,300 --> 00:05:50,260
+environment using artifacts from
+my repo. You can set up scripts,
+
+133
+00:05:50,520 --> 00:05:53,080
+manage secrets, and configure
+network access. And then I just
+
+134
+00:05:53,080 --> 00:05:55,440
+asked cursor to spin up a rubber
+duckie for me. And would you
+
+135
+00:05:55,440 --> 00:05:57,800
+look at that? A beautiful rubber
+duckie. But the more important
+
+136
+00:05:57,800 --> 00:06:00,540
+part is cursor's agent actually
+took that video and sent it back
+
+137
+00:06:00,540 --> 00:06:03,900
+to me. On top of that, I can see
+all the diff changes in line. I
+
+138
+00:06:03,900 --> 00:06:06,400
+can see all of the commits made.
+And I can see that it also
+
+139
+00:06:06,400 --> 00:06:09,260
+packaged it into a neat little
+PR for me on GitHub. I can also
+
+140
+00:06:09,260 --> 00:06:12,480
+see and use the desktop the
+agent is working out of. I can
+
+141
+00:06:12,480 --> 00:06:15,660
+also use a terminal from there
+and see my files as well. On top
+
+142
+00:06:15,660 --> 00:06:17,600
+of that, it comes with all your
+favorite coding models,
+
+143
+00:06:17,600 --> 00:06:21,140
+including the latest 4.6 model
+from cursor and grog. And you
+
+144
+00:06:21,140 --> 00:06:23,540
+can fine-tune the specifics
+including context windows,
+
+145
+00:06:23,760 --> 00:06:26,240
+reasoning, and speed. You can
+also use the cursor cloud agents
+
+146
+00:06:26,240 --> 00:06:29,380
+in the desktop app. But you lose
+no functionality using it in the
+
+147
+00:06:29,380 --> 00:06:32,120
+browser, which means you can use
+it on any operating system and
+
+148
+00:06:32,120 --> 00:06:34,780
+Linux distro. Heck, you can even
+use it on your iPhone. Get
+
+149
+00:06:34,780 --> 00:06:37,260
+started with cursor's cloud
+agents today by heading on over
+
+150
+00:06:37,260 --> 00:06:39,300
+to bigboxwee.dev slash cursor.
+

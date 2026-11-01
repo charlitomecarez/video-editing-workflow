@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+  *{margin:0;box-sizing:border-box}
+  body{width:1920px;height:1080px;overflow:hidden;position:relative;background:#e4e3df}
+  svg.tex{position:absolute;inset:0;width:100%;height:100%}
+  .t-grid{background:#f2f0e8}
+  .t-cardboard{background:#c7a273}
+  .t-charcoal{background:#1e1e1e}
+  .stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .card{position:absolute;width:calc(var(--sc) * 1%);transform:translate(calc(var(--x) * 1px),calc(var(--y) * 1px)) rotate(calc(var(--tilt) * 1deg));
+    box-shadow:0 22px 50px rgba(0,0,0,.42),0 4px 10px rgba(0,0,0,.3);display:block;max-height:86%;object-fit:contain}
+  /* On charcoal a dark graphic needs an edge to read as a separate picture */
+  .t-charcoal .card{outline:3px solid rgba(255,255,255,.16);outline-offset:0;
+    box-shadow:0 0 0 1px rgba(255,255,255,.06),0 30px 80px rgba(0,0,0,.65),0 0 120px rgba(255,255,255,.04)}
+  .under{transform:translate(calc(var(--x) * 1px - 70px),calc(var(--y) * 1px - 40px)) rotate(calc(var(--tilt) * -1.6deg + 3deg));filter:brightness(.92)}
+  .cap{position:absolute;left:0;right:0;bottom:64px;text-align:center;padding:0 80px;
+    font-family:"Arial Rounded MT Bold","Arial Black",sans-serif;font-size:104px;line-height:1.05;color:#fff;
+    -webkit-text-stroke:9px #111;paint-order:stroke fill;text-shadow:0 6px 0 #111;transform:rotate(-1.5deg)}
+  .hl{color:var(--hc)}
+</style></head>
+<body class="t-{{texture}}" style="--tilt:{{tilt}};--sc:{{scale}};--x:{{x}};--y:{{y}};--hc:{{color}}">
+<svg class="tex" id="tex" xmlns="http://www.w3.org/2000/svg"></svg>
+<div class="stage">
+  {{#under}}<img class="card under" src="{{{under}}}">{{/under}}
+  <img class="card" src="{{{img}}}">
+</div>
+{{#caption}}<div class="cap">{{caption}}</div>{{/caption}}
+<script>
+  const b = document.body, tex = document.getElementById("tex");
+  if (!getComputedStyle(b).getPropertyValue("--hc").trim()) b.style.setProperty("--hc", "var(--accent)");
+  const kind = b.className.replace("t-", ""), seed = parseInt("{{seed}}") || 3;
+  // Make room for a bottom caption
+  if (document.querySelector(".cap")) b.style.setProperty("--y", (parseFloat(getComputedStyle(b).getPropertyValue("--y")) || 0) - 70);
+  if (kind === "paper") {
+    // Crumpled paper: turbulence lit from the top-left
+    tex.innerHTML = `<filter id="f" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0045 0.006" numOctaves="4" seed="${seed}" result="n"/>
+      <feDiffuseLighting in="n" lighting-color="#f4f3ef" surfaceScale="9" diffuseConstant="1.08">
+        <feDistantLight azimuth="225" elevation="52"/></feDiffuseLighting></filter>
+      <rect width="100%" height="100%" filter="url(#f)"/>`;
+  } else if (kind === "grid") {
+    // Hand-drawn grid paper
+    let p = "", r = (k) => (Math.sin(k * 12.9898 + seed * 78.233) * 43758.5453) % 1 * 3;
+    for (let x = 60, k = 0; x < 1920; x += 132, k++) p += `<path d="M${x + r(k)} -5 Q ${x + r(k + 9) * 2} 540 ${x - r(k + 3)} 1085"/>`;
+    for (let y = 40, k = 50; y < 1080; y += 132, k++) p += `<path d="M-5 ${y + r(k)} Q 960 ${y - r(k + 7) * 2} 1925 ${y + r(k + 2)}"/>`;
+    tex.innerHTML = `<g fill="none" stroke="#6d6a62" stroke-width="3.2" stroke-linecap="round" opacity=".75">${p}</g>`;
+  } else if (kind === "cardboard") {
+    tex.innerHTML = `<filter id="f"><feTurbulence type="fractalNoise" baseFrequency="0.9 0.012" numOctaves="2" seed="${seed}"/>
+      <feColorMatrix values="0 0 0 0 .45  0 0 0 0 .3  0 0 0 0 .15  0 0 0 .55 0"/></filter>
+      <rect width="100%" height="100%" filter="url(#f)"/>
+      <g stroke="#9c7a4f" stroke-width="10" opacity=".35">${[1,2,3,4,5,6,7,8].map(i => `<line x1="0" y1="${i * 128}" x2="1920" y2="${i * 128}"/>`).join("")}</g>`;
+  }
+</script>
+</body></html>

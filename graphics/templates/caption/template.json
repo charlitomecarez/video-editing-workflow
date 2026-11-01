@@ -1,0 +1,21 @@
+{
+  "description": "Kinetic caption for fast commentary edits: 1-4 big rounded words on a flat charcoal background, cut exactly on the spoken word. Put a picture inside the sentence with [img], or write the caption over a meme/photo with bg.",
+  "size": "1920x1080",
+  "transparent": false,
+  "fields": {
+    "text": "1-4 words. *word* = highlight color, \\n = new line, [img] = the img picture inside the sentence",
+    "img": "Picture shown where [img] is in the text (logo, face, emoji image). Square-ish works best",
+    "bg": "Optional full-frame background picture (meme, photo). The caption sits at the top over it, like a meme caption",
+    "position": "center (default) or top. bg captions default to top",
+    "color": "Highlight color for *words* (hex, default brand accent)",
+    "size": "Text size in px (default 150; long text shrinks to fit)",
+    "background": "Background color when there's no bg (default #1e1e1e charcoal)",
+    "tilt": "Rotation in degrees, e.g. -3 (default 0)"
+  },
+  "defaults": {
+    "text": "oh *boy*",
+    "size": "150",
+    "background": "#1e1e1e",
+    "tilt": "0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "meme-commentary": {
+    "extends": "news-explainer",
+    "name": "Meme commentary (faceless, kinetic captions + full-screen graphics)",
+    "avg_shot_seconds": 1.7,
+    "words_per_second": 2.6,
+    "visuals": "Something new every 1-2 s (0.8 s in the cold open). Kinetic captions on charcoal (template caption): 1-4 key words cut exactly on the spoken word, sometimes with a face or logo inside the sentence or written over a photo. Stats, photos and receipts fill the whole screen (full-frame graphics, no floating cards). A 0.5-1 s reaction clip after a joke lands (placeholder until you add it). Never the presenter's face",
+    "transitions": "Hard cuts on the word. No fades, no stacking",
+    "references": "references/commentary-refs_breakdown.md",
+    "rough_cut": {
+      "use_video": false,
+      "max_pause": 0.3,
+      "pad": 0.1,
+      "fill_gaps_under": 10,
+      "min_graphic_seconds": 0.5
+    }
+  }
+}

@@ -45,6 +45,8 @@ To verify sync, transcribe `roughcut/preview.mp4` with Whisper and compare when 
 ## Rebuilding
 
 - If Kdenlive is running, don't overwrite a file it may have open: build a new version with `--name <new>` instead.
+- A second version of the edit (new look, same recording): keep `script.md`'s Hear lines word-for-word in a copy (e.g. `script-v3-commentary.md`) with a new See column, render its graphics into another folder, and build with `--script <copy> --graphics graphics/v3 --name <version>`. Its report, captions and preview go to `roughcut/<version>/`, so earlier versions stay intact.
+- Tagalog/Taglish recordings: if lines are "not found", try `--threshold 0.6`. Check the report's **Removed** list: Whisper mishears words at line edges ("Mayamipa" = "sa Miami pa"). `attach_gap` / `attach_similar_gap` keep those with their line, and `voice_extend` recovers words Whisper skipped entirely (often names) when the line's first/last script word is missing from the match.
 - The `.kdenlive` file won't be overwritten without `--force`. Before rebuilding, check whether the user has edited it in Kdenlive; if so, back it up (`cp x.kdenlive x.backup-<date>.kdenlive`) or ask.
 - To use an earlier take, the user tells you the row; the report lists every take's raw time. Easiest fix is in Kdenlive (drag the clip's edges in the Clip Monitor); explain it step by step.
 

@@ -292,13 +292,26 @@ max_pause = 0.6
 adlibs = "keep"
 # Ad-libs shorter than this (not counting um/uh/okay) are treated as filler and removed
 adlib_min_words = 3
+# A short leftover bit with less than this gap (seconds) before or after a line is kept as part of that
+# line: it's usually the line's first/last word that Whisper misheard ("Mayamipa" = "sa Miami pa"). 0 = off
+attach_gap = 0.3
+# ...and up to this gap when the bit sounds like the end of the line (a pause before a punchline)
+attach_similar_gap = 1.0
+# Whisper sometimes skips words at the edge of a line (often names: "Si Bam Adebayo"). Each line's start
+# and end grow into any voice right next to it, up to this many seconds, stopping at a real pause. 0 = off
+voice_extend = 1.5
+# How loud counts as voice: within this many dB of your normal speaking level (breaths are quieter)
+voice_threshold_db = 20
 # How many words ahead to look for each line (raise it if you do lots of retakes)
 search_words = 400
 # Whisper misspells names and non-English words. A transcript word this similar (0-1) to a
 # script word counts as that word when matching. 0 = off.
 fuzzy_words = 0.8
-# Shortest time a graphic stays on screen (seconds)
+# Shortest time a graphic stays on screen (seconds). Fast meme-commentary styles set ~0.5 in the style
 min_graphic_seconds = 1.5
+# Folder (inside the project) with the NN-* graphics. Use another one for a second version of the
+# edit, e.g. --graphics graphics/v3, so the first version's Kdenlive project keeps its files
+graphics_dir = "graphics"
 # Move each cut to the quietest moment within this many seconds (never into the next word), so
 # words aren't clipped mid-syllable. Whisper's word times are often 0.1-0.2 s off. 0 = off.
 snap_to_quiet = 0.25

@@ -1,0 +1,819 @@
+1
+00:00:00,000 --> 00:00:02,560
+If you still have your code
+editor installed and even worse,
+
+2
+00:00:02,560 --> 00:00:05,420
+if you're still prompting an
+LLM, one request at a time like
+
+3
+00:00:05,420 --> 00:00:08,000
+some kind of caveman, you're
+going to get left behind as a
+
+4
+00:00:08,000 --> 00:00:10,500
+software engineer. What you want
+to be doing is designing loops.
+
+5
+00:00:10,880 --> 00:00:13,480
+So instead of asking the AI to
+build a feature, you write a
+
+6
+00:00:13,480 --> 00:00:16,380
+loop that asks the AI for you.
+And then you take a second AI
+
+7
+00:00:16,380 --> 00:00:19,220
+and you tell it to act as an AI
+supervisor with 10 years of
+
+8
+00:00:19,220 --> 00:00:22,200
+experience. So when the first AI
+writes the code, the supervisor
+
+9
+00:00:22,200 --> 00:00:25,360
+reviews it and tells it what to
+fix and what to do next. And
+
+10
+00:00:25,360 --> 00:00:28,200
+then, ideally, that whole thing
+runs on a schedule overnight
+
+11
+00:00:28,200 --> 00:00:31,060
+while you're asleep. So all you
+need to do is wake up and talk
+
+12
+00:00:31,060 --> 00:00:33,920
+to the manager without ever even
+seeing a line of code. You're
+
+13
+00:00:33,920 --> 00:00:36,660
+not really a programmer at this
+point, you've ascended into a
+
+14
+00:00:36,660 --> 00:00:39,900
+loop engineer. Okay, I'm just
+kidding. If you're watching
+
+15
+00:00:39,900 --> 00:00:42,300
+this, I'm guessing you're not
+running an autonomous code
+
+16
+00:00:42,300 --> 00:00:44,940
+factory while you sleep, you're
+probably someone who actually
+
+17
+00:00:44,940 --> 00:00:47,380
+wants to get good at this. If
+that's you, then using the most
+
+18
+00:00:47,380 --> 00:00:50,520
+abstracted hands-off, 10 AI
+agents form of coding is
+
+19
+00:00:50,520 --> 00:00:52,740
+probably not the best way to
+learn how to code. So I want to
+
+20
+00:00:52,740 --> 00:00:55,080
+talk about how to actually code
+with AI without completely
+
+21
+00:00:55,080 --> 00:00:58,200
+losing your brain. Okay, every
+time you sit down to build
+
+22
+00:00:58,200 --> 00:01:00,840
+something, you're in one of two
+modes. Either you're trying to
+
+23
+00:01:00,840 --> 00:01:03,280
+ship and you just want the thing
+to exist and you don't really
+
+24
+00:01:03,280 --> 00:01:06,220
+care how it gets done, or you're
+trying to learn where the whole
+
+25
+00:01:06,220 --> 00:01:08,540
+point is that you come out the
+other side better than you win
+
+26
+00:01:08,540 --> 00:01:11,020
+it. And both of these are
+completely fine, as long as
+
+27
+00:01:11,020 --> 00:01:13,500
+you're honest about what you're
+actually doing. The issue is
+
+28
+00:01:13,500 --> 00:01:15,740
+when you think you're learning,
+but every time you code, you're
+
+29
+00:01:15,740 --> 00:01:18,460
+using AI to write the entire
+thing and then you skim it,
+
+30
+00:01:18,600 --> 00:01:21,480
+watch it run, and then you feel
+productive when in reality you
+
+31
+00:01:21,480 --> 00:01:23,920
+didn't really learn anything.
+Those are times that you were in
+
+32
+00:01:23,920 --> 00:01:26,500
+ship mode the whole time and
+just telling yourself that you
+
+33
+00:01:26,500 --> 00:01:29,060
+were actually learning. And the
+easy way to catch this is if the
+
+34
+00:01:29,060 --> 00:01:31,640
+AI hands you something and you
+couldn't sit down and build it
+
+35
+00:01:31,640 --> 00:01:34,060
+on your own afterwards, then you
+didn't actually learn it, you
+
+36
+00:01:34,060 --> 00:01:35,940
+just shipped it. So when I
+actually do want to learn
+
+37
+00:01:35,940 --> 00:01:38,980
+something, I found it's best to
+flip how you used the AI. So
+
+38
+00:01:38,980 --> 00:01:41,680
+instead of asking it to write
+the code, you write the code
+
+39
+00:01:41,680 --> 00:01:44,120
+yourself. I know that might
+sound kind of crazy, but you
+
+40
+00:01:44,120 --> 00:01:47,160
+write the code yourself with the
+help of documentation or stack
+
+41
+00:01:47,160 --> 00:01:49,660
+overflow if you still want to
+use that or even YouTube
+
+42
+00:01:49,660 --> 00:01:52,440
+tutorials, whatever works for
+you as long as it's not copying
+
+43
+00:01:52,440 --> 00:01:54,820
+and pasting code. And then once
+you get stuck and you actually
+
+44
+00:01:54,820 --> 00:01:57,600
+wrote something yourself, bring
+it to the AI and ask why I
+
+45
+00:01:57,600 --> 00:02:00,220
+didn't. That's the key phrase. I
+think it's the healthiest way of
+
+46
+00:02:00,220 --> 00:02:03,500
+using AI when you really want to
+learn. It's not asking it to do
+
+47
+00:02:03,500 --> 00:02:08,420
+stuff, but it's asking why your
+approach didn't work. Okay, so
+
+48
+00:02:08,420 --> 00:02:10,920
+now let's say you're not exactly
+in learning mode anymore because
+
+49
+00:02:10,920 --> 00:02:13,540
+you already know the basics of
+what you want to code and you're
+
+50
+00:02:13,540 --> 00:02:16,520
+trying to use AI to accelerate
+what you already know. The issue
+
+51
+00:02:16,520 --> 00:02:19,060
+a lot of people run into is when
+you work with these tools across
+
+52
+00:02:19,060 --> 00:02:21,360
+a bunch of separate
+conversations, your work starts
+
+53
+00:02:21,360 --> 00:02:23,720
+to fragment. You might have
+scattered conversations with
+
+54
+00:02:23,720 --> 00:02:25,760
+Claude and then you might have
+code that you implemented
+
+55
+00:02:25,760 --> 00:02:28,720
+yourself or maybe you're someone
+who uses different models for
+
+56
+00:02:28,720 --> 00:02:31,120
+different things. And as you can
+tell, your project can get
+
+57
+00:02:31,120 --> 00:02:33,260
+pretty scattered nowadays. And
+the thing about a scattered
+
+58
+00:02:33,260 --> 00:02:36,200
+project is if you talk to an AI
+and expect it to know what's
+
+59
+00:02:36,200 --> 00:02:39,040
+going on when it doesn't have
+the context, it won't stop you
+
+60
+00:02:39,040 --> 00:02:41,520
+and ask, it will just fill in
+the blank with whatever seems
+
+61
+00:02:41,520 --> 00:02:44,260
+reasonable and keep going. So it
+might invent a function you
+
+62
+00:02:44,260 --> 00:02:46,860
+already wrote a different
+version of or sometimes I catch
+
+63
+00:02:46,860 --> 00:02:49,660
+it making a ton of duplicated
+logic for no reason without
+
+64
+00:02:49,660 --> 00:02:52,380
+abstracting. And I don't know
+why, but some weird times it'll
+
+65
+00:02:52,380 --> 00:02:55,160
+just delete parts of my code for
+no reason. And if you're not
+
+66
+00:02:55,160 --> 00:02:57,740
+careful, you can miss some of
+this and build on top of that
+
+67
+00:02:57,740 --> 00:03:00,620
+and your project can end up as a
+huge mess. So to fix it, you
+
+68
+00:03:00,620 --> 00:03:03,060
+should keep a brain for your
+code. I like to use Obsidian
+
+69
+00:03:03,060 --> 00:03:05,760
+because I can organize things in
+different folders and I can link
+
+70
+00:03:05,760 --> 00:03:08,520
+things and it has a bunch of
+different extensions as well. I
+
+71
+00:03:08,520 --> 00:03:11,320
+know a lot of people on X like
+to use markdown files so it can
+
+72
+00:03:11,320 --> 00:03:13,880
+live right there in the project.
+Basically, you just want to have
+
+73
+00:03:13,880 --> 00:03:17,080
+the source of truth of what your
+code actually is, like what
+
+74
+00:03:17,080 --> 00:03:20,000
+you're building and why and how
+it's structured. The big
+
+75
+00:03:20,000 --> 00:03:22,840
+decisions that you've made and
+the reasoning behind them and
+
+76
+00:03:22,840 --> 00:03:25,440
+what you're working on right now
+and all that different stuff.
+
+77
+00:03:25,480 --> 00:03:28,100
+And the most important part is
+to keep it updated every time
+
+78
+00:03:28,100 --> 00:03:31,500
+that you make like a real
+architectural call or finish a
+
+79
+00:03:31,500 --> 00:03:34,340
+meaningful chunk, take five
+minutes to write and update the
+
+80
+00:03:34,340 --> 00:03:37,340
+file. And don't let AI do the
+updating for this because it
+
+81
+00:03:37,340 --> 00:03:39,980
+will test whether you actually
+understand your code. And so now
+
+82
+00:03:39,980 --> 00:03:42,660
+whenever you want to use AI to
+help you, you can start a new
+
+83
+00:03:42,660 --> 00:03:46,080
+conversation and give the AI
+your code's brain first. And
+
+84
+00:03:46,080 --> 00:03:48,460
+suddenly, it doesn't have to
+guess anymore because it knows
+
+85
+00:03:48,460 --> 00:03:50,980
+the project. But honestly, the
+bigger takeaway is for you
+
+86
+00:03:50,980 --> 00:03:53,960
+because the document forces you
+to be able to explain your own
+
+87
+00:03:53,960 --> 00:03:56,680
+project clearly. And the moment
+that you can't write down why
+
+88
+00:03:56,680 --> 00:03:59,420
+you made some decision, that's
+usually the moment you realize
+
+89
+00:03:59,420 --> 00:04:01,720
+you didn't actually have a good
+reason for it. Or maybe you
+
+90
+00:04:01,720 --> 00:04:03,820
+don't really know what's going
+on with the code. So having like
+
+91
+00:04:03,820 --> 00:04:06,960
+a second brain keeps the AI
+grounded, but it also keeps you
+
+92
+00:04:06,960 --> 00:04:09,340
+honest with what you're doing.
+So yeah, write everything down.
+
+93
+00:04:09,500 --> 00:04:11,560
+It'll test if you actually
+understand your code. And it'll
+
+94
+00:04:11,560 --> 00:04:14,880
+just help you keep the thinking
+part for yourself. Okay, this
+
+95
+00:04:14,880 --> 00:04:17,220
+last one is the one I actually
+care about the most. And it's
+
+96
+00:04:17,220 --> 00:04:19,600
+the hardest to put in a single
+tip because it's not really a
+
+97
+00:04:19,600 --> 00:04:22,360
+technique. It's kind of like the
+entire game of software
+
+98
+00:04:22,360 --> 00:04:24,900
+engineering. Everything I've
+said so far is about staying the
+
+99
+00:04:24,900 --> 00:04:27,600
+one who's thinking. But
+underneath all of that, and it's
+
+100
+00:04:27,600 --> 00:04:30,440
+kind of the deeper question is
+what are you even bringing to
+
+101
+00:04:30,440 --> 00:04:33,700
+the table when the AI can write
+any function that you describe?
+
+102
+00:04:33,920 --> 00:04:35,780
+And it's what I've been seeing a
+lot of different channels talk
+
+103
+00:04:35,780 --> 00:04:39,180
+about recently. It's taste.
+Being able to realize when code
+
+104
+00:04:39,180 --> 00:04:42,500
+is actually good or not because
+you've seen enough of it that
+
+105
+00:04:42,500 --> 00:04:44,800
+you can just kind of feel when
+something's off. But the thing
+
+106
+00:04:44,800 --> 00:04:47,640
+with taste is you can't get it
+from an AI and you can't get it
+
+107
+00:04:47,640 --> 00:04:51,100
+from watching a video. You can
+only get it just by writing and
+
+108
+00:04:51,100 --> 00:04:53,560
+reading a lot of code,
+especially bad code. Since
+
+109
+00:04:53,560 --> 00:04:56,540
+writing a lot of code will take
+a long time. Thankfully, you can
+
+110
+00:04:56,540 --> 00:04:58,760
+speed it up. And this is where
+I'll actually get a bit
+
+111
+00:04:58,760 --> 00:05:01,980
+specific. Read code that isn't
+yours written by people who are
+
+112
+00:05:01,980 --> 00:05:05,020
+better than you. You can go into
+a strict open-source repo,
+
+113
+00:05:05,140 --> 00:05:08,020
+something like VS Code or
+TypeScript, and learn a ton just
+
+114
+00:05:08,020 --> 00:05:10,860
+from that. Even reading the
+contributing guidelines how they
+
+115
+00:05:10,860 --> 00:05:13,660
+want you to submit code is
+already kind of useful for this.
+
+116
+00:05:13,780 --> 00:05:15,940
+And you can read the pull
+requests, the ones I got merged,
+
+117
+00:05:15,940 --> 00:05:19,620
+and also the ones that even got
+rejected because a rejected pull
+
+118
+00:05:19,620 --> 00:05:22,820
+request is somebody's working
+code that a maintainer said no
+
+119
+00:05:22,820 --> 00:05:26,120
+to and then explained exactly
+why. And so the why in all of
+
+120
+00:05:26,120 --> 00:05:29,060
+this is the taste. There's also
+a bunch of channels on here that
+
+121
+00:05:29,060 --> 00:05:31,680
+will give you a bunch of
+programming resources and things
+
+122
+00:05:31,680 --> 00:05:34,820
+like that. But I think the main
+one is programming books. And
+
+123
+00:05:34,820 --> 00:05:36,780
+I'm not going to sit here and
+pretend that I've read all these
+
+124
+00:05:36,780 --> 00:05:39,380
+books cover to cover. But here
+are two that I recommend. The
+
+125
+00:05:39,380 --> 00:05:41,480
+first is the pragmatic
+programmer, which from
+
+126
+00:05:41,480 --> 00:05:44,420
+everything I know about it is
+less about what to type and more
+
+127
+00:05:44,420 --> 00:05:47,180
+about how to actually think like
+an engineer. The second is a
+
+128
+00:05:47,180 --> 00:05:50,400
+philosophy of software design,
+which is basically entirely
+
+129
+00:05:50,400 --> 00:05:53,060
+about the thing that we're
+talking about. How to manage
+
+130
+00:05:53,060 --> 00:05:56,320
+complexity and what actually
+makes one design deeper and
+
+131
+00:05:56,320 --> 00:05:58,940
+better than another. And when
+you pair this active reading
+
+132
+00:05:58,940 --> 00:06:02,760
+code from people wiser than you
+with also building your own
+
+133
+00:06:02,760 --> 00:06:05,180
+stuff, that's when you really
+start to level up and start
+
+134
+00:06:05,180 --> 00:06:07,920
+developing your own taste by
+catching things in your own
+
+135
+00:06:07,920 --> 00:06:10,240
+code. And the reason that I
+really like this point is
+
+136
+00:06:10,240 --> 00:06:13,500
+because I've been thinking a lot
+lately about how now AI can
+
+137
+00:06:13,500 --> 00:06:15,780
+really build anything you
+describe. But the more
+
+138
+00:06:15,780 --> 00:06:19,440
+interesting question is how can
+you tell if a piece of code is
+
+139
+00:06:19,440 --> 00:06:22,840
+actually good or not? And that
+part is really still up to the
+
+140
+00:06:22,840 --> 00:06:25,780
+developer and like I said,
+there's no shortcut to it. It's
+
+141
+00:06:25,780 --> 00:06:28,420
+just time and writing a lot of
+code. So don't let AI do the
+
+142
+00:06:28,420 --> 00:06:30,880
+thinking for you. It's already
+bad enough for experienced
+
+143
+00:06:30,880 --> 00:06:33,560
+developers. And it's a much
+bigger deal for a student who's
+
+144
+00:06:33,560 --> 00:06:36,520
+still in school right now who
+can get every answer handed to
+
+145
+00:06:36,520 --> 00:06:38,500
+them, which is actually why I
+wanted to show you what today's
+
+146
+00:06:38,500 --> 00:06:40,820
+sponsor Brilliant is doing
+because they built the opposite
+
+147
+00:06:40,820 --> 00:06:43,340
+of that. Brilliant is a learning
+platform for students grade five
+
+148
+00:06:43,340 --> 00:06:46,060
+through college and they just
+released a tutor called Koji.
+
+149
+00:06:46,120 --> 00:06:48,900
+And what I like about it is that
+Koji never just gives away the
+
+150
+00:06:48,900 --> 00:06:51,820
+answer. He asks questions and
+guides you to figure it out
+
+151
+00:06:51,820 --> 00:06:55,820
+yourself. Now let's quickly
+check your understanding. Nicely
+
+152
+00:06:55,820 --> 00:06:58,700
+done. Koji even has the ability
+to write directly on your
+
+153
+00:06:58,700 --> 00:07:01,660
+screen, which really helps out a
+lot to make sure you're going in
+
+154
+00:07:01,660 --> 00:07:04,000
+the right direction. Honestly, I
+wish I could have had this kind
+
+155
+00:07:04,000 --> 00:07:06,080
+of tutor when I was a student.
+So if you're someone who wants
+
+156
+00:07:06,080 --> 00:07:08,580
+to try it out for yourself,
+click the link below or scan the
+
+157
+00:07:08,580 --> 00:07:11,320
+QR code to get started with
+Brilliant's tutor for fort. You
+
+158
+00:07:11,320 --> 00:07:14,120
+can upgrade to premium to unlock
+all courses. And right now,
+
+159
+00:07:14,240 --> 00:07:17,240
+lattice viewers can save 20% off
+an annual subscription at
+
+160
+00:07:17,240 --> 00:07:19,980
+brilliant.org slash lattice. And
+so once again, thank you to
+
+161
+00:07:19,980 --> 00:07:22,240
+Brilliant for sponsoring the
+video. And thank you to everyone
+
+162
+00:07:22,240 --> 00:07:24,620
+for watching. This video took
+forever to edit. So if you like
+
+163
+00:07:24,620 --> 00:07:27,640
+the video, like it, comment,
+subscribe, do all that stuff.
+
+164
+00:07:27,980 --> 00:07:28,640
+Thank you. Bye.
+

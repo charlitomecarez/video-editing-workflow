@@ -350,13 +350,30 @@ def align(beats, words, rc):
             continue
         utts = split_utterances(words, start_w, end_w, 0.45)
         started_retake = False
-        for a, z in utts:
+        attach = rc.get("attach_gap", 0.3)
+        for n, (a, z) in enumerate(utts):
             text = " ".join(w["w"] for w in words[a:z])
             ut = norm_tokens(text)
             refs = [norm_tokens(x["text"]) for x in (prev, nxt) if x]
             is_retake = any(covered(ut, r) >= 0.6 for r in refs)
             content = [t for t in ut if t not in FILLERS]
             item = {"w0": a, "w1": z, "text": text, "s": words[a]["s"], "e": words[z - 1]["e"]}
+            short = len(content) < rc["adlib_min_words"]
+            # A short bit with no pause before/after a line is that line's first or last word(s),
+            # misheard by Whisper (e.g. "Mayamipa" = "sa Miami pa"). Keep it with the line.
+            if attach and short and not is_retake and not started_retake:
+                # A longer pause is fine when the bit sounds like the line's last words (a beat before a punchline)
+                tail = norm_tokens(prev["text"])[-len(ut):] if prev and ut else []
+                sounds_like_tail = tail and ratio(" ".join(ut), " ".join(tail)) >= 0.6
+                gap_prev = words[a]["s"] - words[prev["w1"] - 1]["e"] if prev else 99
+                if prev and n == 0 and (gap_prev <= attach or (sounds_like_tail and gap_prev <= rc.get("attach_similar_gap", 1.0))):
+                    prev["w1"] = z
+                    prev["source"] = (prev["source"][0], words[z - 1]["e"])
+                    continue
+                if nxt and n == len(utts) - 1 and words[nxt["w0"]]["s"] - words[z - 1]["e"] <= attach:
+                    nxt["w0"] = a
+                    nxt["source"] = (words[a]["s"], nxt["source"][1])
+                    continue
             if is_retake:
                 started_retake = True
                 dropped.append({**item, "why": "retake / false start"})
@@ -403,7 +420,46 @@ def quietest(env, lo, hi):
     return min(range(i, j), key=lambda k: env[k]) / 100 if j > i else lo
 
 
-def pieces_for(words, w0, w1, rc, env=None):
+def voice_edge(env, t, limit, direction, rc):
+    """Whisper sometimes skips words (often names) right at the edge of a line, so the line would start
+    after them. From time t, walk outward (direction -1 = earlier, +1 = later) while there's voice in the
+    recording, until a real pause (0.2 s of quiet) or limit. Returns the new edge time."""
+    reach = rc.get("voice_extend", 1.5)
+    if not env or not reach:
+        return t
+    if not hasattr(voice_edge, "thr") or voice_edge.env is not env:
+        speech = sorted(env)[len(env) * 3 // 4]   # typical loudness while talking
+        voice_edge.thr, voice_edge.env = speech - rc.get("voice_threshold_db", 20), env
+    thr, k = voice_edge.thr, int(t * 100)
+    stop = int((max(limit, t - reach) if direction < 0 else min(limit, t + reach)) * 100)
+    quiet, last_voice = 0, k
+    while 0 <= k < len(env) and (k > stop if direction < 0 else k < stop):
+        k += direction
+        if env[k] > thr:
+            quiet, last_voice = 0, k
+        else:
+            quiet += 1
+            if quiet >= 20:
+                break
+    edge = (last_voice + (0 if direction < 0 else 1)) / 100
+    # Only move for real missed speech, not a breath right next to the word
+    return edge if abs(edge - t) >= 0.25 else t
+
+
+def missing_edges(script_text, words, w0, w1):
+    """(head, tail): does the take lack the script line's first / last word? Then Whisper probably
+    skipped it, and the line may grow into the voice next to it (see voice_edge)."""
+    st = norm_tokens(script_text)
+    got = [t for w in words[w0:w1] for t in norm_tokens(w["w"])]
+    if not st or not got:
+        return False, False
+    near = lambda a, b: same_word(a, b) or ratio(a, b) >= 0.6  # noqa: E731
+    head = not any(near(st[0], g) for g in got[:3])
+    tail = not any(near(st[-1], g) for g in got[-3:])
+    return head, tail
+
+
+def pieces_for(words, w0, w1, rc, env=None, grow=(False, False)):
     """Source time ranges for words[w0:w1], with long internal pauses cut out.
     With env, each cut moves to the quietest moment nearby (Whisper word times are often
     0.1-0.2 s off, which cuts words mid-syllable), but never into the neighbouring word."""
@@ -428,6 +484,12 @@ def pieces_for(words, w0, w1, rc, env=None):
             hi = min(e + win, words[z]["s"] if z < len(words) else e + win)
             s = quietest(env, lo, s + 0.03) if lo < s + 0.03 else s
             e = quietest(env, e - 0.03, hi) if hi > e - 0.03 else e
+        if env and a == w0 and grow[0]:
+            s0 = voice_edge(env, words[a]["s"], words[a - 1]["e"] + 0.05 if a > 0 else 0.0, -1, rc)
+            s = min(s, s0 - pad) if s0 < words[a]["s"] else s
+        if env and z == w1 and grow[1]:
+            e0 = voice_edge(env, words[z - 1]["e"], words[z]["s"] - 0.05 if z < len(words) else 1e9, 1, rc)
+            e = max(e, e0 + pad) if e0 > words[z - 1]["e"] else e
         out.append((max(0.0, s), e, a, z))
     return out
 
@@ -438,11 +500,11 @@ ROW_RE = re.compile(r"^(\d{1,3})(?:[-_ .]|$)")
 ANY_RE = re.compile(r"^any(?:[-_ ]|$)", re.I)
 
 
-def scan_materials(proj, places, tag="placeholder-"):
+def scan_materials(proj, places, tag="placeholder-", graphics_dir="graphics"):
     """Row materials. A placeholder (`NN-placeholder-what.png`) is skipped as soon as its
-    replacement (`NN-what.<any ext>`, in graphics/ or footage/broll/) exists."""
+    replacement (`NN-what.<any ext>`, in the graphics folder or footage/broll/) exists."""
     found = []
-    for d, kind in ((proj / "graphics", "graphic"), (proj / "footage" / "broll", "broll")):
+    for d, kind in ((proj / graphics_dir, "graphic"), (proj / "footage" / "broll", "broll")):
         if not d.is_dir():
             continue
         for f in sorted(d.iterdir()):
@@ -772,6 +834,9 @@ def render_preview(melt, kdenlive, out, total, fps, height, size):
     with open(errlog, "w") as err:
         proc = subprocess.Popen([melt, str(kdenlive), f"out={last}", "-consumer", f"avformat:{out}",
                                  f"width={pw}", f"height={height}",
+                                 # Square pixels; otherwise melt falls back to a 16:15 (PAL) shape and pillarboxes
+                                 "sample_aspect_num=1", "sample_aspect_den=1",
+                                 f"display_aspect_num={pw}", f"display_aspect_den={height}",
                                  # Without these melt writes 25 fps and drops frames when it falls behind
                                  f"frame_rate_num={fps_fraction(fps)[0]}", f"frame_rate_den={fps_fraction(fps)[1]}",
                                  "real_time=-1", "vcodec=libx264", "preset=veryfast", "crf=26",
@@ -820,8 +885,11 @@ def main():
                    "(default: [rough_cut].language, then [subtitles].language, then auto)")
     p.add_argument("--graphic-seconds", type=float, help="longest a graphic stays on screen, 0 = until the next "
                    "one (default: the style's graphic_seconds, then [rough_cut].max_graphic_seconds)")
+    p.add_argument("--graphics", help="graphics folder inside the project (default: [rough_cut].graphics_dir, "
+                   "usually graphics). Use another folder for a second version, e.g. graphics/v3")
     p.add_argument("--name", help="output name: <folder>-<name>.kdenlive (default: roughcut). Use a new name "
-                   "to keep an earlier version, e.g. --name faceless")
+                   "to keep an earlier version, e.g. --name faceless. Its report, captions and preview go to "
+                   "roughcut/<name>/")
     p.add_argument("--no-music", action="store_true")
     p.add_argument("--no-preview", action="store_true")
     p.add_argument("--retranscribe", action="store_true", help="ignore the cached transcript")
@@ -834,6 +902,8 @@ def main():
 
     proj = Path(a.project).resolve()
     script = Path(a.script).resolve() if a.script else proj / "script.md"
+    if a.script and not script.exists() and (proj / a.script).exists():
+        script = proj / a.script   # a script name inside the project folder
     if not script.exists():
         raise SystemExit(f"No script at {script}. Pass --script.")
     md = script.read_text(encoding="utf-8")
@@ -866,6 +936,9 @@ def main():
 
     outdir = proj / "roughcut"
     outdir.mkdir(exist_ok=True)
+    # The transcript cache is shared; a named version keeps its own report, captions and preview
+    rdir = outdir / a.name if a.name and a.name != "roughcut" else outdir
+    rdir.mkdir(exist_ok=True)
     kd = proj / f"{proj.name}-{a.name or 'roughcut'}.kdenlive"
     if kd.exists() and not a.force:
         raise SystemExit(f"{kd.relative_to(proj.parent)} exists. Use --force to rebuild it "
@@ -898,7 +971,8 @@ def main():
     clips, pos = [], 0
     for s in segs:
         s["pos0"] = pos
-        for (ts, te, w0, w1) in pieces_for(words, s["w0"], s["w1"], rc, env):
+        grow = missing_edges(s["beat"]["text"], words, s["w0"], s["w1"]) if "beat" in s else (False, False)
+        for (ts, te, w0, w1) in pieces_for(words, s["w0"], s["w1"], rc, env, grow):
             fin, fout = round(ts * fps), min(round(te * fps) - 1, src_frames - 1)
             if fout < fin:
                 continue
@@ -936,7 +1010,10 @@ def main():
             raise SystemExit(f"--place needs FILE=ROW, got {item}")
         f, r = item.rsplit("=", 1)
         places[Path(f).name] = int(r)
-    mats = scan_materials(proj, places, rc.get("placeholder_tag", "placeholder-"))
+    gdir = a.graphics or rc.get("graphics_dir", "graphics")
+    if not (proj / gdir).is_dir():
+        raise SystemExit(f"No graphics folder at {proj / gdir}")
+    mats = scan_materials(proj, places, rc.get("placeholder_tag", "placeholder-"), gdir)
     by_row = {}
     unplaced = []
     for m in mats:
@@ -1017,7 +1094,7 @@ def main():
         cands = sorted(f for f in (proj / "audio").glob("music*") if f.suffix.lower() in AUDIO_EXT) \
             if (proj / "audio").is_dir() else []
         if cands:
-            music = outdir / "music-bed.wav"
+            music = rdir / "music-bed.wav"
             music_bed(cands[0], music, total / fps, rc)
             log(f"Music: {cands[0].name} (looped, {rc['music_level_db']} dB, fade out)")
 
@@ -1050,7 +1127,7 @@ def main():
                   {"Section": cat["section"], "Ad-lib (keep?)": cat["adlib"], "Check this": cat["warning"]})
 
     sub = cfg["subtitles"]
-    write_srt(outdir / "roughcut.srt", words, clips, fps, sub["max_line_width"], sub["max_line_count"])
+    write_srt(rdir / "roughcut.srt", words, clips, fps, sub["max_line_width"], sub["max_line_count"])
 
     # Report
     raw = (pv["duration"] if pv else src_dur)
@@ -1093,13 +1170,13 @@ def main():
           "2. Delete ad-libs you don't want (orange guides), then close the gaps (Timeline → Remove Space).",
           "3. Add Pop In / zoom to graphics on V2, sound effects on a new audio track.",
           "4. Captions: Subtitles menu → Import → `roughcut/roughcut.srt` (re-run subtitles.sh after big edits).", ""]
-    (outdir / "report.md").write_text("\n".join(L), encoding="utf-8")
+    (rdir / "report.md").write_text("\n".join(L), encoding="utf-8")
 
     preview = None
     if rc["preview"] and not a.no_preview:
         melt = find_melt(rc)
         if melt:
-            pv_path = outdir / "preview.mp4"
+            pv_path = rdir / "preview.mp4"
             pv_path.unlink(missing_ok=True)
             if render_preview(melt, kd, pv_path, total, fps, rc["preview_height"], size):
                 preview = pv_path
@@ -1113,8 +1190,8 @@ def main():
     if missing:
         log("Not found in the recording: rows " + ", ".join(f"{b['row']:02}" for b in missing))
     log(f"Open:    {kd}")
-    log(f"Report:  {outdir / 'report.md'}")
-    log(f"Captions:{outdir / 'roughcut.srt'}")
+    log(f"Report:  {rdir / 'report.md'}")
+    log(f"Captions:{rdir / 'roughcut.srt'}")
     if preview:
         log(f"Preview: {preview}")
 

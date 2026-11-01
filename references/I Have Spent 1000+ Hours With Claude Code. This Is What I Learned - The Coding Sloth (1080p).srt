@@ -1,0 +1,2325 @@
+1
+00:00:00,000 --> 00:00:02,880
+I have spent an unhealthy amount
+of time using claw code and I
+
+2
+00:00:02,880 --> 00:00:05,200
+gotta get this out of my chest
+already. Their usage limits
+
+3
+00:00:05,200 --> 00:00:09,100
+suck. Oh my goodness. I say hi
+and boom! There goes my limit
+
+4
+00:00:09,100 --> 00:00:11,700
+and I got away three hours and
+with this new clawed fable
+
+5
+00:00:11,700 --> 00:00:15,200
+model. Ha ha ha. Oh, fuck. I
+recorded a lot of this footage
+
+6
+00:00:15,200 --> 00:00:18,220
+like a month ago. So yes, I
+know. It's not new. Leave me
+
+7
+00:00:18,220 --> 00:00:20,460
+alone. Just laugh at my jokes,
+okay. I've been programming with
+
+8
+00:00:20,460 --> 00:00:23,840
+a $20 plan and I have had
+situations where I prompt once
+
+9
+00:00:23,840 --> 00:00:26,720
+or twice and I hit the limit.
+Like bro, no wonder people are
+
+10
+00:00:26,720 --> 00:00:28,940
+getting better results. They
+don't get enough time to use it
+
+11
+00:00:28,940 --> 00:00:31,060
+properly. I'm glad they're
+making it better but it's
+
+12
+00:00:31,060 --> 00:00:33,220
+painful. So I want to share
+everything that I've learned so
+
+13
+00:00:33,220 --> 00:00:35,840
+you can use it effectively. So
+things like my workflow, my
+
+14
+00:00:35,840 --> 00:00:38,740
+favorite MCPs, my favorite
+skills, and I'll also share some
+
+15
+00:00:38,740 --> 00:00:41,700
+ways you can save on some tokens
+so you can actually use it more.
+
+16
+00:00:41,800 --> 00:00:44,260
+Trust me, I've learned some
+strategies to use as little
+
+17
+00:00:44,260 --> 00:00:47,100
+tokens as possible so I can get
+my money's worth because I am
+
+18
+00:00:47,100 --> 00:00:50,060
+not spending $100 a month for
+this. That's expensive and I'd
+
+19
+00:00:50,060 --> 00:00:52,000
+rather spend that on McDonald's.
+Okay, so what's clawed code?
+
+20
+00:00:52,160 --> 00:00:54,960
+It's clawed but for coding,
+you're welcome. No but really,
+
+21
+00:00:55,120 --> 00:00:57,480
+it's clawed but it's specialized
+for coding and it lives in your
+
+22
+00:00:57,480 --> 00:01:00,200
+terminal. Now do I like the
+terminal? Meh, I prefer the IDE
+
+23
+00:01:00,200 --> 00:01:03,640
+approach. Specifically the IDE
+and agent combo approach. You
+
+24
+00:01:03,640 --> 00:01:06,720
+get the agent interface and an
+actual IDE. Plus there's buttons
+
+25
+00:01:06,720 --> 00:01:09,320
+I can actually click. I'll take
+that over a terminal any day.
+
+26
+00:01:09,500 --> 00:01:11,960
+What can I say I like visuals?
+I'm a toddler. The good news is
+
+27
+00:01:11,960 --> 00:01:14,720
+you can use clawed code in your
+IDE and on the web, pretty cool.
+
+28
+00:01:14,880 --> 00:01:17,080
+Now why have I been using it?
+Well, everyone and their moms
+
+29
+00:01:17,080 --> 00:01:19,580
+are using it, even big tech
+companies, some a little too
+
+30
+00:01:19,580 --> 00:01:22,580
+much. Uber, it also made like a
+billion dollars in six months
+
+31
+00:01:22,580 --> 00:01:25,720
+which is pretty crazy. And that
+made every other AI company copy
+
+32
+00:01:25,720 --> 00:01:28,860
+and paste clawed code and now we
+have this mess. And every
+
+33
+00:01:28,860 --> 00:01:31,240
+company wants you to learn these
+types of tools so you can become
+
+34
+00:01:31,240 --> 00:01:34,100
+an ex-engineer. So they can give
+you more work and that also
+
+35
+00:01:34,100 --> 00:01:36,440
+didn't work because it was too
+expensive. They also gave me
+
+36
+00:01:36,440 --> 00:01:38,700
+some free stickers, which is
+pretty cool. Do I recommend you
+
+37
+00:01:38,700 --> 00:01:41,520
+learn it? Yeah, pretty helpful.
+Until you hit those usage, yeah,
+
+38
+00:01:41,760 --> 00:01:43,700
+it's pretty convenient. Jobs
+want you to learn it. And if it
+
+39
+00:01:43,700 --> 00:01:45,640
+gets you a better chance at a
+job, hey, you gotta do what you
+
+40
+00:01:45,640 --> 00:01:47,940
+gotta do. The good news is a lot
+of these clawed code concepts
+
+41
+00:01:47,940 --> 00:01:50,140
+apply to other coding agents,
+which means I can give you some
+
+42
+00:01:50,140 --> 00:01:52,180
+alternatives to clawed code
+since this video's not
+
+43
+00:01:52,180 --> 00:01:54,740
+sponsored. Okay, so let's go
+over the features of clawed
+
+44
+00:01:54,740 --> 00:01:57,180
+code. I've done my fair share of
+research. I've looked at some
+
+45
+00:01:57,180 --> 00:01:59,700
+Twitter articles. I've watched
+YouTube videos. I've seen clawed
+
+46
+00:01:59,700 --> 00:02:02,260
+tutorials. I've watched videos
+and articles from the guy who
+
+47
+00:02:02,260 --> 00:02:04,540
+freaking filled the thing. As I
+was doing research for this
+
+48
+00:02:04,540 --> 00:02:07,640
+video, I realized that clawed
+code has like 80 plus different
+
+49
+00:02:07,640 --> 00:02:10,540
+commands and features that I
+have never seen in my life. Did
+
+50
+00:02:10,540 --> 00:02:13,120
+you know there's an ultra plan
+mode? I didn't. Nobody else uses
+
+51
+00:02:13,120 --> 00:02:15,920
+this. I don't think I've seen
+the creator use this. Hey,
+
+52
+00:02:16,080 --> 00:02:18,960
+editor Sloth here. I recorded
+that a month ago too. And ultra
+
+53
+00:02:18,960 --> 00:02:22,640
+plan doesn't even exist anymore.
+That's how useless it was. Yeah,
+
+54
+00:02:22,680 --> 00:02:25,140
+so originally I was gonna go
+through every single one. But
+
+55
+00:02:25,140 --> 00:02:27,800
+no, there's way too many. Most
+of them are just configuration
+
+56
+00:02:27,800 --> 00:02:31,180
+or just useless. So now we're
+only gonna cover the essential
+
+57
+00:02:31,180 --> 00:02:33,880
+ones. And even then I'm gonna
+tear rank them from how useful
+
+58
+00:02:33,880 --> 00:02:35,960
+they are. Because in my
+experience, some of these
+
+59
+00:02:35,960 --> 00:02:38,440
+features that people call
+essential, you're never gonna
+
+60
+00:02:38,440 --> 00:02:40,520
+touch. Now if you are serious
+and you do want to learn more
+
+61
+00:02:40,520 --> 00:02:42,840
+about programming an AI, you
+should check out my free
+
+62
+00:02:42,840 --> 00:02:45,820
+newsletter Slothbites. Oh, you
+don't know what Slothbites is.
+
+63
+00:02:46,520 --> 00:02:48,840
+Slothbites is just a newsletter
+I'm working on. It's currently
+
+64
+00:02:48,840 --> 00:02:51,640
+one of the biggest programming
+newsletters in the world. I made
+
+65
+00:02:51,640 --> 00:02:54,780
+that up. I don't know if that's
+true. And it's completely free.
+
+66
+00:02:54,780 --> 00:02:57,820
+Where every week I send you
+programming advice and news so
+
+67
+00:02:57,820 --> 00:03:00,760
+you can stay up to date and not
+get behind. Did I mention it's
+
+68
+00:03:00,760 --> 00:03:04,720
+free? All I need from you is
+your sweet, delectable email.
+
+69
+00:03:06,800 --> 00:03:09,440
+Let's start with the slash in it
+and cloud file. This is the
+
+70
+00:03:09,440 --> 00:03:11,700
+command you're supposed to run
+when you first open up cloud
+
+71
+00:03:11,700 --> 00:03:14,200
+code in a project. So far in my
+experience, it's all right.
+
+72
+00:03:14,360 --> 00:03:16,960
+Essentially, cloud looks at your
+entire code base and it puts it
+
+73
+00:03:16,960 --> 00:03:20,020
+all inside this cloud.md file.
+This file becomes cloud's
+
+74
+00:03:20,020 --> 00:03:22,180
+permanent memory for the
+project. Now I have beef of
+
+75
+00:03:22,180 --> 00:03:24,780
+cloud for this feature because
+other AI agents do the same
+
+76
+00:03:24,780 --> 00:03:28,500
+thing, except they put it into
+an agent.md file. Cloud is the
+
+77
+00:03:28,500 --> 00:03:32,400
+only one that doesn't do this,
+which is very, very annoying.
+
+78
+00:03:32,660 --> 00:03:35,140
+The one nice thing about cloud
+files is you can actually import
+
+79
+00:03:35,140 --> 00:03:38,460
+additional files. So if you are
+using an agent.md file, you can
+
+80
+00:03:38,460 --> 00:03:41,340
+just import it inside the cloud
+.md file, which saves you from
+
+81
+00:03:41,340 --> 00:03:44,020
+having a simlink. But it would
+be nice if you know, cloud just
+
+82
+00:03:44,020 --> 00:03:46,160
+supported it, but it is what it
+is. There's also a new
+
+83
+00:03:46,160 --> 00:03:48,380
+experimental version of this
+command. You just have to turn
+
+84
+00:03:48,380 --> 00:03:50,840
+on this environment flag and
+this one actually has some
+
+85
+00:03:50,840 --> 00:03:53,200
+potential. Instead of analyzing
+the code base and writing the
+
+86
+00:03:53,200 --> 00:03:55,880
+file, it now interviews you,
+which is really good. And it'll
+
+87
+00:03:55,880 --> 00:03:58,660
+now also recommend some skills
+and hooks, which is really nice.
+
+88
+00:03:58,900 --> 00:04:01,100
+We'll get into those in a bit.
+Based on my experience, I'm
+
+89
+00:04:01,100 --> 00:04:04,500
+honestly gonna give this feature
+like a C or even a D. I don't
+
+90
+00:04:04,500 --> 00:04:08,200
+use it very much. Whoa, me from
+a month ago was really stupid.
+
+91
+00:04:08,500 --> 00:04:11,620
+Yeah, after a month, my opinion
+has changed. And it still stays
+
+92
+00:04:11,620 --> 00:04:14,260
+the same. I think it's pretty
+mid, but the cloud file, I'm
+
+93
+00:04:14,260 --> 00:04:16,940
+moving that up. After months of
+dealing with the sloppy code,
+
+94
+00:04:17,100 --> 00:04:20,820
+you definitely start to get an
+idea of these AI models quirks.
+
+95
+00:04:20,820 --> 00:04:24,920
+And their habits really
+disgusting habits. And so for
+
+96
+00:04:24,920 --> 00:04:28,700
+the most part, mycloud.md file
+has information like a quick
+
+97
+00:04:28,700 --> 00:04:31,860
+description of the project,
+current status of it, my coding
+
+98
+00:04:31,860 --> 00:04:34,800
+styles. And I've also been
+testing some interesting things
+
+99
+00:04:34,800 --> 00:04:38,280
+like this work in philosophy. A
+funny rule I have in my file is
+
+100
+00:04:38,280 --> 00:04:42,500
+a user facing capitalization.
+For some reason, when AI models
+
+101
+00:04:42,500 --> 00:04:46,540
+create designs, they really love
+to use all caps. No idea why,
+
+102
+00:04:46,700 --> 00:04:49,220
+but it's ugly. Another thing
+I've been testing and liking a
+
+103
+00:04:49,220 --> 00:04:51,760
+lot is setting the pull request
+language. But this is what I
+
+104
+00:04:51,760 --> 00:04:54,300
+like to use so far. This file
+can change quite a bit, be
+
+105
+00:04:54,300 --> 00:04:57,160
+flexible with it. But this file
+is honestly not a make a break
+
+106
+00:04:57,160 --> 00:05:00,140
+thing. You could easily survive,
+not even having one. So don't
+
+107
+00:05:00,140 --> 00:05:02,280
+freak out too much about it
+because you can honestly just
+
+108
+00:05:02,280 --> 00:05:04,740
+use skills and you can get
+similar or even better results.
+
+109
+00:05:04,980 --> 00:05:08,380
+All right, I have an explain
+skill. A tier, but if you're
+
+110
+00:05:08,380 --> 00:05:11,840
+smart with it, easy S tier. The
+skill is also just a markdown
+
+111
+00:05:11,840 --> 00:05:15,400
+file, specifically a skill.md
+file. It's essentially a guide
+
+112
+00:05:15,400 --> 00:05:18,200
+for something you do over and
+over that the AI can use when it
+
+113
+00:05:18,200 --> 00:05:20,620
+makes sense. Or you can
+explicitly tell it to use it. It
+
+114
+00:05:20,620 --> 00:05:23,240
+would be for things like your
+best practices, your workflow
+
+115
+00:05:23,240 --> 00:05:26,240
+for something, or how you would
+research something, essentially
+
+116
+00:05:26,240 --> 00:05:28,780
+any type of workflow that's
+repeatable. Cloud code has some
+
+117
+00:05:28,780 --> 00:05:31,280
+default skills pre-installed,
+like code review, security
+
+118
+00:05:31,280 --> 00:05:33,580
+review, and some other stuff. I
+will give those skills like a B
+
+119
+00:05:33,580 --> 00:05:36,580
+tier or A tier. I do recommend
+using them if cloud implements a
+
+120
+00:05:36,580 --> 00:05:39,360
+feature. It's just an ice bonus.
+Personally, I freaking love
+
+121
+00:05:39,360 --> 00:05:41,920
+skills. And I love that there's
+a whole community of them now
+
+122
+00:05:41,920 --> 00:05:44,760
+because it's literally companies
+and genius engineers taking
+
+123
+00:05:44,760 --> 00:05:47,280
+their knowledge and best
+practices and putting it all
+
+124
+00:05:47,280 --> 00:05:50,760
+into one file. So not only is it
+useful for the agent, it's
+
+125
+00:05:50,760 --> 00:05:54,300
+useful for me. I've learned so
+much just reading other people's
+
+126
+00:05:54,300 --> 00:05:57,000
+skills. So some of my favorite
+places to find skills has been
+
+127
+00:05:57,000 --> 00:06:00,460
+the website skills.sh. This is
+my go-to place for finding and
+
+128
+00:06:00,460 --> 00:06:02,760
+installing skills, but there's
+also some other GitHub Rebels
+
+129
+00:06:02,760 --> 00:06:05,200
+where you can find skills. My
+favorite type of skills that I
+
+130
+00:06:05,200 --> 00:06:07,860
+like to use are a map POCOC
+skills. He must read a
+
+131
+00:06:07,860 --> 00:06:11,500
+dictionary every day because his
+vocabulary is immaculant. Such a
+
+132
+00:06:11,500 --> 00:06:13,780
+smart and brilliant guy. I
+really like using his grill with
+
+133
+00:06:13,780 --> 00:06:16,800
+dock skill, helps me refine my
+requirements. And I also like
+
+134
+00:06:16,800 --> 00:06:19,340
+using the improved code base
+architecture skill. It's just a
+
+135
+00:06:19,340 --> 00:06:21,900
+nice workflow. I also like that
+it comes with a nice visual. I
+
+136
+00:06:21,900 --> 00:06:24,320
+mean, hey, he won me over. Like
+I said, I'm a toddler. I also
+
+137
+00:06:24,320 --> 00:06:27,900
+like using cursors. I like this
+name. Thermonuclear code quality
+
+138
+00:06:27,900 --> 00:06:31,200
+review skill. Really helpful. It
+really simplifies the code that
+
+139
+00:06:31,200 --> 00:06:34,460
+AI generates, which eliminates a
+lot of the slop. Strongly
+
+140
+00:06:34,460 --> 00:06:37,020
+recommend you use this. And it
+actually combines really good
+
+141
+00:06:37,020 --> 00:06:39,280
+with the improved code base
+architecture skill. I've been
+
+142
+00:06:39,280 --> 00:06:41,480
+using both of them at the same
+time. And I think they're pretty
+
+143
+00:06:41,480 --> 00:06:44,460
+good. One of the recent skills I
+like to use is a Shatsien's
+
+144
+00:06:44,460 --> 00:06:46,860
+improved skill. I've been trying
+it out and I'm loving it. I
+
+145
+00:06:46,860 --> 00:06:49,400
+really love the idea here. It
+audits your code base and it
+
+146
+00:06:49,400 --> 00:06:53,800
+writes the plans for other
+agents. Oh yeah, plan. Easy S
+
+147
+00:06:53,800 --> 00:06:56,620
+tier. If you hit shift and tab
+on cloud code, cloud goes into
+
+148
+00:06:56,620 --> 00:06:59,400
+plan mode. Instead of reading
+and making changes, it reads
+
+149
+00:06:59,400 --> 00:07:02,180
+your code more thoroughly,
+writes up a full plan, and it
+
+150
+00:07:02,180 --> 00:07:04,980
+shows it to you before doing a
+single thing. And then you can
+
+151
+00:07:04,980 --> 00:07:08,240
+either approve it or deny it.
+This feature is a must for cloud
+
+152
+00:07:08,240 --> 00:07:11,180
+models, I think. You get a
+higher quality result since now
+
+153
+00:07:11,180 --> 00:07:13,620
+the model takes the time to
+explore and think about its
+
+154
+00:07:13,620 --> 00:07:16,720
+actions before doing something.
+It's also way easier to catch a
+
+155
+00:07:16,720 --> 00:07:19,820
+mistake in a plan than in like 3
+,000 lines of code and 12
+
+156
+00:07:19,820 --> 00:07:22,820
+different files it modifies. I
+recommend using plan mode for
+
+157
+00:07:22,820 --> 00:07:26,500
+big tasks. Don't use it for
+small tasks like typos, renaming
+
+158
+00:07:26,500 --> 00:07:29,680
+variables or small design
+changes. That's just a waste and
+
+159
+00:07:29,680 --> 00:07:31,820
+you don't get much better
+results. Anyways, back to the
+
+160
+00:07:31,820 --> 00:07:34,720
+improved skill. It's such a good
+idea. It'll probably become the
+
+161
+00:07:34,720 --> 00:07:37,920
+default strategy if it's not
+already. Essentially you would
+
+162
+00:07:37,920 --> 00:07:40,440
+use the smart model to write the
+plan and then you would use a
+
+163
+00:07:40,440 --> 00:07:42,800
+cheaper, faster model to
+implement it. Now keep in mind
+
+164
+00:07:42,800 --> 00:07:46,080
+when I say faster and cheaper,
+that doesn't mean dumb. Some of
+
+165
+00:07:46,080 --> 00:07:49,040
+these faster models are actually
+pretty intelligent now, which is
+
+166
+00:07:49,040 --> 00:07:51,620
+why this workflow works. You
+save way more money and
+
+167
+00:07:51,620 --> 00:07:54,040
+everybody loves money, right?
+For example, if you were on
+
+168
+00:07:54,040 --> 00:07:56,840
+cloud code, you would use the
+fable model. Oh wait, that's
+
+169
+00:07:56,840 --> 00:07:59,540
+gone. Again, that was recorded
+over a month ago. It's not gone,
+
+170
+00:07:59,740 --> 00:08:02,480
+but you do need use its credits.
+So it basically is gone. I guess
+
+171
+00:08:02,480 --> 00:08:05,560
+you would use the opus model for
+the plan and then saw it for the
+
+172
+00:08:05,560 --> 00:08:08,620
+implementation. But if you're
+not using cloud code, cursor,
+
+173
+00:08:08,900 --> 00:08:12,680
+open code codex, then you can
+truly mix models. But overall my
+
+174
+00:08:12,680 --> 00:08:16,800
+best practices for skills do not
+spam skills and do not install a
+
+175
+00:08:16,800 --> 00:08:19,260
+hundred of them. Some of these
+skills are pretty subjective
+
+176
+00:08:19,260 --> 00:08:22,600
+since everyone has an opinion on
+good code. So I would also
+
+177
+00:08:22,600 --> 00:08:25,380
+recommend sticking with one
+specific group of skills or
+
+178
+00:08:25,380 --> 00:08:27,880
+skills that match your coding
+style. Since we're talking about
+
+179
+00:08:27,880 --> 00:08:32,220
+coding styles and doing things
+the right way, let's talk about
+
+180
+00:08:32,220 --> 00:08:35,480
+verification. This isn't exactly
+a feature or a command. It's
+
+181
+00:08:35,480 --> 00:08:38,900
+more so a workflow and best
+practice. And I'm giving this an
+
+182
+00:08:38,900 --> 00:08:42,620
+S tier and if anything, a double
+S or even a triple S. Because
+
+183
+00:08:42,620 --> 00:08:45,360
+this isn't just an AI thing.
+This is just good software
+
+184
+00:08:45,360 --> 00:08:48,260
+engineering fundamentals. AI
+just makes this more important.
+
+185
+00:08:48,520 --> 00:08:51,640
+So what exactly is verification?
+Essentially you're giving cloud
+
+186
+00:08:51,640 --> 00:08:54,560
+a way to check its own work
+before it considers something
+
+187
+00:08:54,560 --> 00:08:57,820
+done. It actually has no idea if
+it's correct. But with
+
+188
+00:08:57,820 --> 00:09:00,740
+verification, it can write the
+code and see if it's actually
+
+189
+00:09:00,740 --> 00:09:03,260
+correct. Not just telling you
+it's done. Now there's multiple
+
+190
+00:09:03,260 --> 00:09:06,460
+ways to verify and the most
+obvious one is test. But make
+
+191
+00:09:06,460 --> 00:09:09,400
+sure you do tests correctly.
+Tell cloud to write the test
+
+192
+00:09:09,400 --> 00:09:12,420
+first and then implement. This
+is important. If you tell it to
+
+193
+00:09:12,420 --> 00:09:15,180
+implement first and then write
+the test, it's just gonna write
+
+194
+00:09:15,180 --> 00:09:18,060
+test that pass its own code. And
+that's not exactly testing.
+
+195
+00:09:18,240 --> 00:09:21,020
+That's cheating. Make sure you
+don't test every single line.
+
+196
+00:09:21,280 --> 00:09:23,520
+Just test the most important
+things. I've noticed that
+
+197
+00:09:23,520 --> 00:09:26,620
+smarter models like to test
+every single thing. When it's
+
+198
+00:09:26,620 --> 00:09:29,340
+really not necessary and it kind
+of just bloats your code base,
+
+199
+00:09:29,540 --> 00:09:32,620
+some other ways to verify are
+type checkers and linters. If
+
+200
+00:09:32,620 --> 00:09:34,820
+your language supports it, tell
+cloud to run it before
+
+201
+00:09:34,820 --> 00:09:37,080
+considering the test done. Two
+other ways you can do
+
+202
+00:09:37,080 --> 00:09:39,460
+verification and this is if
+you're doing front end design
+
+203
+00:09:39,460 --> 00:09:42,340
+work is screenshot testing and
+testing with the browser.
+
+204
+00:09:42,580 --> 00:09:45,520
+Because cloud is literally
+blind, it can't actually see
+
+205
+00:09:45,520 --> 00:09:48,400
+what it's making. With these two
+verification methods, cloud can
+
+206
+00:09:48,400 --> 00:09:51,420
+actually open your app, click
+around, get some screenshots and
+
+207
+00:09:51,420 --> 00:09:54,000
+actually see what's happening.
+It's nice to see that AI models
+
+208
+00:09:54,000 --> 00:09:56,240
+are getting good at using
+computers. You used to have to
+
+209
+00:09:56,240 --> 00:10:00,460
+use MCPs, but now they're just
+built in. Oh right, MCP, B tier.
+
+210
+00:10:00,660 --> 00:10:04,160
+Actually, I'm lying, A tier.
+MCPs give cloud access to other
+
+211
+00:10:04,160 --> 00:10:07,740
+tools. So things like GitHub,
+your database, Slack, checking
+
+212
+00:10:07,740 --> 00:10:10,060
+out your analytics, your
+deployments, and if you do front
+
+213
+00:10:10,060 --> 00:10:12,880
+end work, a browser. Some of the
+ways I like to use MCPs are for
+
+214
+00:10:12,880 --> 00:10:16,300
+fetching design inspirations,
+database seating, so adding fake
+
+215
+00:10:16,300 --> 00:10:19,400
+data to test certain features,
+research and documentation, and
+
+216
+00:10:19,400 --> 00:10:22,140
+of course, browser testing. Now
+in my experience, I think you
+
+217
+00:10:22,140 --> 00:10:25,300
+only need an MCP when cloud has
+to directly interact with
+
+218
+00:10:25,300 --> 00:10:27,700
+something outside your code
+base. There's really no reason
+
+219
+00:10:27,700 --> 00:10:31,180
+to use an MCP for things like
+best practices, patterns, or how
+
+220
+00:10:31,180 --> 00:10:33,520
+to implement something because
+the skill can handle that. The
+
+221
+00:10:33,520 --> 00:10:36,260
+best practices for MCPs are
+basically the same as skills.
+
+222
+00:10:36,460 --> 00:10:39,200
+Don't spam them, don't install a
+bunch of them, only use what's
+
+223
+00:10:39,200 --> 00:10:42,020
+necessary. Honestly, the big
+pattern with AI is only do
+
+224
+00:10:42,020 --> 00:10:46,180
+what's necessary. Let's quickly
+go over some features and
+
+225
+00:10:46,180 --> 00:10:49,000
+commands I feel like not enough
+people talk about. I'll make it
+
+226
+00:10:49,000 --> 00:10:51,580
+quick because they're simple,
+but really convenient, slash
+
+227
+00:10:51,580 --> 00:10:54,160
+voice. B tier, cloud code has a
+voice mode. All you have to do
+
+228
+00:10:54,160 --> 00:10:56,580
+is type slash voice and just
+talk. And with this, whatever
+
+229
+00:10:56,580 --> 00:10:59,100
+you say turns into the prompt, I
+feel like in voice mode, it's
+
+230
+00:10:59,100 --> 00:11:01,720
+easier to be more descriptive
+than typing. It lets you think
+
+231
+00:11:01,720 --> 00:11:04,320
+out loud and understand what you
+want more, and I feel like it's
+
+232
+00:11:04,320 --> 00:11:06,660
+better for maintaining your
+technical knowledge. It's also
+
+233
+00:11:06,660 --> 00:11:11,100
+way faster than typing. If
+you're slow at that. Slash BTW.
+
+234
+00:11:11,220 --> 00:11:13,940
+C tier, probably won't use this
+much, but it's nice to have. It
+
+235
+00:11:13,940 --> 00:11:16,360
+lets you ask a question mid
+-task, and it doesn't interrupt
+
+236
+00:11:16,360 --> 00:11:19,200
+cloud or touch the conversation
+history, so you can ask about
+
+237
+00:11:19,200 --> 00:11:22,280
+stuff cloud has already read or
+implemented. When you run this
+
+238
+00:11:22,280 --> 00:11:25,280
+command, cloud can't read files
+or use any commands. It just
+
+239
+00:11:25,280 --> 00:11:27,940
+uses the conversation history,
+but it's really nice to have if
+
+240
+00:11:27,940 --> 00:11:30,120
+you have a question about
+something and want to know why
+
+241
+00:11:30,120 --> 00:11:33,780
+it's making these decisions. I
+mentioned you can use cloud in
+
+242
+00:11:33,780 --> 00:11:36,340
+different ways. Slash, teleport,
+and remote control lets you move
+
+243
+00:11:36,340 --> 00:11:38,960
+sessions between these apps, so
+you can move between your phone,
+
+244
+00:11:39,220 --> 00:11:42,020
+the web, or the terminal, which
+I appreciate a lot, because
+
+245
+00:11:42,020 --> 00:11:45,640
+sometimes I just get that random
+genius idea or inspiration in
+
+246
+00:11:45,640 --> 00:11:47,800
+the middle of the drive through
+line in McDonald's, and I really
+
+247
+00:11:47,800 --> 00:11:49,980
+got to tell cloud about it. So I
+can start that in the mobile
+
+248
+00:11:49,980 --> 00:11:52,780
+app, and when I get home, I can
+transfer it to my terminal. It's
+
+249
+00:11:52,780 --> 00:11:55,620
+great. If you touch grass a lot,
+I'll give it an A tier, but I
+
+250
+00:11:55,620 --> 00:11:58,040
+don't go out very much, so
+personally, it's kind of like a
+
+251
+00:11:58,040 --> 00:12:02,380
+C tier or D tier, but it is
+convenient. Shell mode, also a C
+
+252
+00:12:02,380 --> 00:12:04,680
+tier, but I do think it's one of
+the more underrated features
+
+253
+00:12:04,680 --> 00:12:08,820
+here. If you type X, oh my god,
+that was terrible. If you start
+
+254
+00:12:08,820 --> 00:12:11,640
+your message with exclamation
+point, you enter shell mode, and
+
+255
+00:12:11,640 --> 00:12:13,760
+this basically goes back to a
+normal terminal, but the
+
+256
+00:12:13,760 --> 00:12:16,820
+difference in this mode is cloud
+also sees the output. It's just
+
+257
+00:12:16,820 --> 00:12:20,820
+a really convenient shortcut.
+Slash radio, empty for
+
+258
+00:12:20,820 --> 00:12:24,260
+productivity, but trouble S tier
+for vibes. This command opens up
+
+259
+00:12:24,260 --> 00:12:27,740
+cloud FM, which is just low-fi
+music you can listen to while
+
+260
+00:12:27,740 --> 00:12:30,040
+you code, and yeah, that's it.
+That's the whole feature. I
+
+261
+00:12:30,040 --> 00:12:32,340
+can't play the music because I
+don't know if it's copyrighted,
+
+262
+00:12:32,400 --> 00:12:36,700
+but it's pretty chill. Let's be
+honest, not everyone here is
+
+263
+00:12:36,700 --> 00:12:39,500
+rich with unlimited tokens. I
+can't just spend a million
+
+264
+00:12:39,500 --> 00:12:42,220
+dollars worth of tokens, and
+neither can big companies. A lot
+
+265
+00:12:42,220 --> 00:12:45,740
+of you are probably on the $20
+plan like me, or maybe your Mr.
+
+266
+00:12:45,980 --> 00:12:49,720
+Big Book's over here with a $100
+or $200 plan. Either way,
+
+267
+00:12:49,900 --> 00:12:52,460
+context management matters for
+all of you. You see, cloud
+
+268
+00:12:52,460 --> 00:12:55,680
+tracks usage based on tokens.
+It's not based on how many
+
+269
+00:12:55,680 --> 00:12:58,400
+prompts you send. Every message
+you send, every file, cloud
+
+270
+00:12:58,400 --> 00:13:01,420
+reads, every response it writes
+generates token. The goal here
+
+271
+00:13:01,420 --> 00:13:04,600
+is to make these tokens
+effective and last long for both
+
+272
+00:13:04,600 --> 00:13:07,700
+your usage limits and cloud's
+performance, because cloud has a
+
+273
+00:13:07,700 --> 00:13:11,000
+context window that also relies
+on these tokens. It's basically
+
+274
+00:13:11,000 --> 00:13:13,420
+cloud's short-term memory. Now,
+the important thing here is
+
+275
+00:13:13,420 --> 00:13:16,740
+cloud has a dumb zone. The more
+context you use, the dumber
+
+276
+00:13:16,740 --> 00:13:19,800
+cloud gets. It starts forgetting
+things, contradicting itself,
+
+277
+00:13:20,120 --> 00:13:22,500
+and making dumb mistakes. Cloud
+has two different context
+
+278
+00:13:22,500 --> 00:13:26,060
+limits. One is at like 300,000
+tokens, and another one's at a
+
+279
+00:13:26,060 --> 00:13:28,460
+million. I think cloud code
+defaults to a million tokens.
+
+280
+00:13:28,460 --> 00:13:31,360
+Now, you would think the
+difference in 300,000 in a
+
+281
+00:13:31,360 --> 00:13:34,180
+million for context would reduce
+the dumb zone, but all it really
+
+282
+00:13:34,180 --> 00:13:37,700
+does is extend the dumb zone. In
+my experience, once you're above
+
+283
+00:13:37,700 --> 00:13:41,420
+like 100,000 or 200,000 tokens,
+that's when the performance
+
+284
+00:13:41,420 --> 00:13:44,640
+starts to dip a bit and those
+usage limits get cooked. You can
+
+285
+00:13:44,640 --> 00:13:47,300
+see cloud's context right now
+with the slash context command.
+
+286
+00:13:47,560 --> 00:13:49,600
+And I'll give this command a
+beat here. I think it's pretty
+
+287
+00:13:49,600 --> 00:13:51,760
+important to use, especially if
+you want to get more advanced
+
+288
+00:13:51,760 --> 00:13:54,580
+with AI. And I suggest running
+this command before you run a
+
+289
+00:13:54,580 --> 00:13:57,600
+big task, but just being able to
+see the context window doesn't
+
+290
+00:13:57,600 --> 00:14:00,380
+really do much. How should you
+use your context? In my
+
+291
+00:14:00,380 --> 00:14:03,420
+experience, to get the most out
+of this context window is number
+
+292
+00:14:03,420 --> 00:14:06,780
+one, for every new task, start a
+new session. Every task after
+
+293
+00:14:06,780 --> 00:14:09,500
+the first one is just gonna be a
+worse quality, because every
+
+294
+00:14:09,500 --> 00:14:12,940
+time I run like a medium or big
+task with cloud code, it uses up
+
+295
+00:14:12,940 --> 00:14:16,500
+a lot of context. It's like
+always minimum 50,000 tokens it
+
+296
+00:14:16,500 --> 00:14:19,280
+uses. And if you tell it to
+research or use a skill or an
+
+297
+00:14:19,280 --> 00:14:22,680
+MCP, it could easily go above
+100,000 tokens. So if you do
+
+298
+00:14:22,680 --> 00:14:25,040
+multiple tasks, and you're just
+gonna go worse output, and
+
+299
+00:14:25,040 --> 00:14:27,540
+you're gonna run out of your
+usage limit, real fast. Number
+
+300
+00:14:27,540 --> 00:14:30,700
+two, do not let cloud go on
+research tangents. If you notice
+
+301
+00:14:30,700 --> 00:14:33,560
+that cloud starts to explore
+files or search topics it
+
+302
+00:14:33,560 --> 00:14:36,220
+doesn't need, tell cloud right
+away not to do that. Because
+
+303
+00:14:36,220 --> 00:14:39,100
+every file in website cloud
+reads is tokens you're spending.
+
+304
+00:14:39,460 --> 00:14:42,100
+If you have specific files and
+sources it should use, tell it
+
+305
+00:14:42,100 --> 00:14:45,440
+to use it, which leads to the
+next tip, be specific in your
+
+306
+00:14:45,440 --> 00:14:48,940
+prompts, stupidly specific. If
+you give cloud vague prompts,
+
+307
+00:14:49,120 --> 00:14:51,740
+it's just gonna read everything
+to figure out what you want. And
+
+308
+00:14:51,740 --> 00:14:54,840
+this tip is very important for
+technical decisions. Now, even
+
+309
+00:14:54,840 --> 00:14:57,780
+with these tips, you'll probably
+end up in a task that actually
+
+310
+00:14:57,780 --> 00:15:00,840
+uses the context limit. And when
+you do reach that limit, cloud
+
+311
+00:15:00,840 --> 00:15:03,740
+is gonna run the slash compact
+command. I'll give this command
+
+312
+00:15:03,740 --> 00:15:06,860
+a C tier when cloud uses it. But
+if you know how to use it, it's
+
+313
+00:15:06,860 --> 00:15:09,100
+probably like a B tier. This
+command summarizes the whole
+
+314
+00:15:09,100 --> 00:15:12,140
+conversation history down into a
+shorter version so that if it's
+
+315
+00:15:12,140 --> 00:15:14,760
+in the context window. If cloud
+runs this command on its own,
+
+316
+00:15:14,980 --> 00:15:17,520
+that's your sign to just start a
+new session. Because when cloud
+
+317
+00:15:17,520 --> 00:15:20,820
+compacts itself, mid task, it
+basically gets dementia. You'll
+
+318
+00:15:20,820 --> 00:15:23,140
+notice right away there's a bit
+of a quality drop. Now, if
+
+319
+00:15:23,140 --> 00:15:25,480
+you're on a task where you're
+positive, it doesn't need a
+
+320
+00:15:25,480 --> 00:15:27,600
+separate conversation. It's
+better to run the command
+
+321
+00:15:27,600 --> 00:15:30,300
+yourself and tell it exactly
+what to keep. Now, if you want
+
+322
+00:15:30,300 --> 00:15:33,160
+to optimize your context even
+more, there are some additional
+
+323
+00:15:33,160 --> 00:15:35,760
+community tools built
+specifically for this. I'll
+
+324
+00:15:35,760 --> 00:15:37,660
+probably just leave them in the
+description so you can check it
+
+325
+00:15:37,660 --> 00:15:42,840
+out. Ah, yes. You see, AI
+enthusiasts and software
+
+326
+00:15:42,840 --> 00:15:46,260
+engineers have collectively
+discovered a revolutionary,
+
+327
+00:15:46,960 --> 00:15:51,140
+innovative solution with AI. The
+for loop. Yeah, I'm not kidding,
+
+328
+00:15:51,320 --> 00:15:53,820
+it's a whole trend right now. I
+can't wait till we move on to
+
+329
+00:15:53,820 --> 00:15:57,220
+object-oriented prompting and
+then functional prompting, and
+
+330
+00:15:57,220 --> 00:15:59,540
+maybe a little bit of system
+prompting. I can't wait for
+
+331
+00:15:59,540 --> 00:16:02,920
+this. But honestly, it's
+incredible. And I blame the
+
+332
+00:16:02,920 --> 00:16:05,860
+people saying, programmers are
+gonna get replaced or the ones
+
+333
+00:16:05,860 --> 00:16:08,780
+saying, why would I ever need to
+learn to code again? This is why
+
+334
+00:16:08,780 --> 00:16:12,040
+right here. People are just
+reinventing the same thing over
+
+335
+00:16:12,040 --> 00:16:14,340
+and over, just in a different
+font. And if you couldn't read
+
+336
+00:16:14,340 --> 00:16:17,120
+code, you would never even
+notice. So please, learn to
+
+337
+00:16:17,120 --> 00:16:20,400
+code. We need more people with
+actual brains. Knowing how to
+
+338
+00:16:20,400 --> 00:16:23,900
+code is the exact reason why all
+these tips work and why I get
+
+339
+00:16:23,900 --> 00:16:26,280
+decent results from AI. I don't
+want you to be the type of
+
+340
+00:16:26,280 --> 00:16:28,820
+programmer where you hit your
+usage limit and suddenly you
+
+341
+00:16:28,820 --> 00:16:31,100
+can't even work on your own
+project because you never
+
+342
+00:16:31,100 --> 00:16:33,780
+learned how any of it works. And
+if that's you, you've already
+
+343
+00:16:33,780 --> 00:16:36,800
+been replaced. I'm sorry. So if
+you are going to lean on AI, you
+
+344
+00:16:36,800 --> 00:16:40,100
+should use it to do the work and
+make you smarter. I mean, it's a
+
+345
+00:16:40,100 --> 00:16:43,780
+win-win. Brain bigger and AI
+does better work because brain
+
+346
+00:16:43,780 --> 00:16:46,920
+big. You could have Claude teach
+you as you go. I would recommend
+
+347
+00:16:46,920 --> 00:16:49,360
+that. Make it explain every
+change instead of blindly
+
+348
+00:16:49,360 --> 00:16:52,360
+smashing except but if you do
+want something more interactive
+
+349
+00:16:52,360 --> 00:16:54,880
+and specialized where a tutor
+will walk your small brain
+
+350
+00:16:54,880 --> 00:16:57,200
+through a step-by-step, you can
+check out today's sponsor,
+
+351
+00:16:57,540 --> 00:17:00,020
+Brilliant. And this isn't the
+brilliant you remember. This is
+
+352
+00:17:00,020 --> 00:17:03,200
+the new Brilliant, a super
+intelligent personal tutor for
+
+353
+00:17:03,200 --> 00:17:05,740
+math and coding. Brilliant
+already had a world-class
+
+354
+00:17:05,740 --> 00:17:08,300
+curriculum. It covers everything
+in math and coding from grade
+
+355
+00:17:08,300 --> 00:17:11,440
+five to college and beyond. It's
+designed by experts from MIT,
+
+356
+00:17:11,800 --> 00:17:14,320
+Harvard, and Stanford. It was
+interactive, so that learning
+
+357
+00:17:14,320 --> 00:17:16,800
+could feel fun. But no matter
+how good a curriculum is,
+
+358
+00:17:16,900 --> 00:17:19,660
+private tutoring will always be
+the single most effective way to
+
+359
+00:17:19,660 --> 00:17:22,800
+learn, obviously not everyone
+can do this. It's expensive and
+
+360
+00:17:22,800 --> 00:17:25,540
+annoying to schedule. So that's
+what the new Brilliant is really
+
+361
+00:17:25,540 --> 00:17:28,560
+about. Taking that personal
+tutor experience and making it
+
+362
+00:17:28,560 --> 00:17:31,160
+something everyone can actually
+use. And that's where their new
+
+363
+00:17:31,160 --> 00:17:33,740
+tutor, Koji, comes in. It sits
+right there on your screen while
+
+364
+00:17:33,740 --> 00:17:36,580
+you work. It sees what you're
+stuck on, it sketches, points,
+
+365
+00:17:36,820 --> 00:17:38,900
+and hits you with the right
+guiding questions instead of
+
+366
+00:17:38,900 --> 00:17:41,100
+just handing over the answer.
+Basically, everything a grade
+
+367
+00:17:41,100 --> 00:17:43,860
+tutor does. It makes each lesson
+feel more like a puzzle than a
+
+368
+00:17:43,860 --> 00:17:46,600
+lecture and now you have someone
+to train you to think like a
+
+369
+00:17:46,600 --> 00:17:49,600
+software engineer by helping you
+focus on logical reasoning and
+
+370
+00:17:49,600 --> 00:17:52,000
+debugging. You can try
+Brilliant's new tutor for free
+
+371
+00:17:52,000 --> 00:17:55,000
+and get 20% off an annual
+subscription by scanning the QR
+
+372
+00:17:55,000 --> 00:17:57,740
+code or clicking the link in the
+description. Go learn and make
+
+373
+00:17:57,740 --> 00:18:01,200
+your brain bigger. All right, so
+what's the deal with this live
+
+374
+00:18:01,200 --> 00:18:03,680
+changing command? I mean, slash
+loop, it's pretty
+
+375
+00:18:03,680 --> 00:18:05,940
+straightforward. You give it a
+time interval, how often it
+
+376
+00:18:05,940 --> 00:18:08,340
+should run this task, and it'll
+keep doing it. It's essentially
+
+377
+00:18:08,340 --> 00:18:11,680
+like an AI cron job. I mean, I'm
+not gonna lie, it is really
+
+378
+00:18:11,680 --> 00:18:14,560
+convenient. I've been enjoying
+loops a lot because you can
+
+379
+00:18:14,560 --> 00:18:17,340
+create automations because I'm
+not working on my personal
+
+380
+00:18:17,340 --> 00:18:20,360
+projects every single day. But
+with loops, I've been setting up
+
+381
+00:18:20,360 --> 00:18:23,220
+these routines or automations
+and it allows me to keep making
+
+382
+00:18:23,220 --> 00:18:25,880
+progress even when I'm not
+actually there. Some of my
+
+383
+00:18:25,880 --> 00:18:28,260
+favorite automations that I've
+been running recently have been
+
+384
+00:18:28,260 --> 00:18:31,460
+implementing a GitHub issue
+where every day it'll pick from
+
+385
+00:18:31,460 --> 00:18:34,340
+the open issues in my project
+and it'll work on it. And so I
+
+386
+00:18:34,340 --> 00:18:36,440
+come back and there's a PR
+waiting for me. Another
+
+387
+00:18:36,440 --> 00:18:39,240
+automation I like using is
+security and bug sweep. It'll
+
+388
+00:18:39,240 --> 00:18:42,320
+scan the code base for any known
+vulnerabilities or if it finds
+
+389
+00:18:42,320 --> 00:18:45,540
+any bugs and it'll flag what it
+finds and puts that into a
+
+390
+00:18:45,540 --> 00:18:47,520
+GitHub issue. And my third
+automation that I've been
+
+391
+00:18:47,520 --> 00:18:49,740
+testing recently feature
+brainstorming where it's gonna
+
+392
+00:18:49,740 --> 00:18:52,480
+look at the code base, the PRs,
+the issues, and it's gonna
+
+393
+00:18:52,480 --> 00:18:55,660
+brainstorm features that would
+actually help the project. You
+
+394
+00:18:55,660 --> 00:18:58,020
+can also run automations when
+certain things happen, but it
+
+395
+00:18:58,020 --> 00:19:00,580
+lets you make some really sick
+automations. I think a lot of
+
+396
+00:19:00,580 --> 00:19:03,000
+companies and open source
+projects are testing this and
+
+397
+00:19:03,000 --> 00:19:05,220
+they are getting some decent
+results. It's honestly worth
+
+398
+00:19:05,220 --> 00:19:10,080
+trying. This command is pretty
+straight forward. You basically
+
+399
+00:19:10,080 --> 00:19:13,300
+give Cloud a goal and it'll keep
+working on it until it completes
+
+400
+00:19:13,300 --> 00:19:15,900
+it or it needs your help. So you
+can do something like make sure
+
+401
+00:19:15,900 --> 00:19:18,620
+every test passed and there's no
+type errors and have that as a
+
+402
+00:19:18,620 --> 00:19:21,440
+goal and Cloud will just keep
+doing it until it meets it. I'll
+
+403
+00:19:21,440 --> 00:19:24,060
+give this command like a B tier
+if you're on one of the lower
+
+404
+00:19:24,060 --> 00:19:26,500
+plans but if you are on one of
+the higher plans or you have
+
+405
+00:19:26,500 --> 00:19:29,180
+unlimited tokens, it's
+definitely more so on the A
+
+406
+00:19:29,180 --> 00:19:33,620
+tier. We have an agent which is
+the main Cloud Chat. This is the
+
+407
+00:19:33,620 --> 00:19:36,360
+one you always talk to. You can
+think of this as the daddy
+
+408
+00:19:36,360 --> 00:19:39,320
+agent, the Chad, the group
+leader, whatever works for you.
+
+409
+00:19:39,440 --> 00:19:43,040
+And a sub agent is just a mini
+-cloud. Your daddy agent starts
+
+410
+00:19:43,040 --> 00:19:46,620
+for one specific job. So this
+sub agent could be a researcher,
+
+411
+00:19:47,000 --> 00:19:49,700
+a reviewer, a debugger, you can
+make as many sub agents as you
+
+412
+00:19:49,700 --> 00:19:53,140
+want and each sub agent gets its
+own context window. It does its
+
+413
+00:19:53,140 --> 00:19:56,300
+thing and when it finishes it
+gives the daddy agent a summary
+
+414
+00:19:56,300 --> 00:19:59,200
+of what it did. There's multiple
+ways to make one but honestly
+
+415
+00:19:59,200 --> 00:20:02,320
+the easiest is just telling
+Cloud to create the sub agent
+
+416
+00:20:02,320 --> 00:20:05,200
+and a description of what it'll
+do. But realistically speaking
+
+417
+00:20:05,200 --> 00:20:08,720
+though, most people can't run
+sub agents all the time because
+
+418
+00:20:08,720 --> 00:20:12,440
+sub agents drain your usage
+limits so fast. Each sub agent
+
+419
+00:20:12,440 --> 00:20:15,060
+is basically its own full
+conversation, running in
+
+420
+00:20:15,060 --> 00:20:18,760
+parallel. And on the $20 plan,
+even a small multi-agent setup
+
+421
+00:20:18,760 --> 00:20:22,220
+can eat your entire limit before
+the task even finishes. But I
+
+422
+00:20:22,220 --> 00:20:25,280
+will say honestly, sub agents
+are still like an A tier and if
+
+423
+00:20:25,280 --> 00:20:28,080
+you do have unlimited tokens or
+you're on a higher plan, it's
+
+424
+00:20:28,080 --> 00:20:30,680
+easily an S tier. It makes the
+quality of the implementation so
+
+425
+00:20:30,680 --> 00:20:34,760
+much better. A tier. Worktrees
+is a feature that allows you to
+
+426
+00:20:34,760 --> 00:20:37,540
+check out into multiple branches
+of the same repository. Every
+
+427
+00:20:37,540 --> 00:20:40,280
+time you create a work tree, it
+essentially copies the project
+
+428
+00:20:40,280 --> 00:20:43,020
+into its own separate folder and
+it's the perfect thing for
+
+429
+00:20:43,020 --> 00:20:46,060
+parallel development with AI.
+The workflow I essentially use
+
+430
+00:20:46,060 --> 00:20:48,820
+is that every chat is a work
+tree. So instead of working on
+
+431
+00:20:48,820 --> 00:20:51,560
+one branch at a time and waiting
+around, you can work on multiple
+
+432
+00:20:51,560 --> 00:20:54,400
+branches at once and they're
+completely isolated so you
+
+433
+00:20:54,400 --> 00:20:56,840
+wouldn't have to worry about
+agents interfering with each
+
+434
+00:20:56,840 --> 00:21:00,860
+other. And Cloud Code does have
+native work tree support. So
+
+435
+00:21:00,860 --> 00:21:02,880
+what if you don't want to use
+Cloud Code? Well that's great
+
+436
+00:21:02,880 --> 00:21:05,660
+because it's not the only
+option. One good alternative is
+
+437
+00:21:05,660 --> 00:21:08,900
+of course Codex, it's OpenAI's
+version and I personally love
+
+438
+00:21:08,900 --> 00:21:11,520
+it. I think that's the one I've
+been using the most. Their usage
+
+439
+00:21:11,520 --> 00:21:15,240
+limits are actually generous.
+Our Lord and Savior T-Bo keeps
+
+440
+00:21:15,240 --> 00:21:18,580
+resetting them so I get to use a
+lot and I've been making tons of
+
+441
+00:21:18,580 --> 00:21:21,580
+progress on my projects. Thanks
+to him, there's Open Code which
+
+442
+00:21:21,580 --> 00:21:24,120
+is essentially the open source
+version of Cloud Code. And if
+
+443
+00:21:24,120 --> 00:21:26,460
+you want to use any model, I do
+recommend you check it out.
+
+444
+00:21:26,600 --> 00:21:29,700
+Another alternative that I've
+seen is a one called Pi. It's
+
+445
+00:21:29,700 --> 00:21:32,100
+basically like a minimalist
+setup. So if you're the type of
+
+446
+00:21:32,100 --> 00:21:34,220
+person that wants to create
+their own workflow from scratch,
+
+447
+00:21:34,220 --> 00:21:37,180
+this is the tool for you. And if
+you're interested in like an IDE
+
+448
+00:21:37,180 --> 00:21:40,320
+and agent combo, there's cursor,
+it's what I like to use if I
+
+449
+00:21:40,320 --> 00:21:42,960
+need to use an IDE. This one
+also lets you pick any type of
+
+450
+00:21:42,960 --> 00:21:45,820
+model. I like their own models.
+I like Grok and Composer.
+
+451
+00:21:46,040 --> 00:21:47,900
+They're so fast and they're
+really cheap. And of course
+
+452
+00:21:47,900 --> 00:21:50,900
+there's VS Code and GitHub Co
+-Pilot, the OG, most of you know
+
+453
+00:21:50,900 --> 00:21:53,560
+what VS Code is. And a recent
+one that's been getting really
+
+454
+00:21:53,560 --> 00:21:56,400
+good is actually T3 Code. I'll
+just read it from their website.
+
+455
+00:21:56,520 --> 00:21:58,700
+It summarizes it pretty good.
+It's an open source control
+
+456
+00:21:58,700 --> 00:22:00,840
+plane for coding agents. So if
+you have a Cloud subscription,
+
+457
+00:22:01,280 --> 00:22:04,380
+you'll probably enjoy the UI of
+T3 Code way more. But if you
+
+458
+00:22:04,380 --> 00:22:07,440
+have multiple subscriptions, so
+if you have Cloud Code, CodeX,
+
+459
+00:22:07,660 --> 00:22:10,140
+OpenCode, cursor subscription,
+if you have all of those, then
+
+460
+00:22:10,140 --> 00:22:12,840
+maybe you should check out T3
+Code since you can basically use
+
+461
+00:22:12,840 --> 00:22:15,400
+all your subscriptions in just
+one application instead of going
+
+462
+00:22:15,400 --> 00:22:18,140
+all over the place. So go pick
+whatever AI tool you want to use
+
+463
+00:22:18,140 --> 00:22:20,780
+if you want to use Cloud Code.
+So be it, enjoy those usage
+
+464
+00:22:20,780 --> 00:22:23,320
+limits. And when you do hit
+those usage limits, go watch
+
+465
+00:22:23,320 --> 00:22:25,460
+more of my videos. I'll see you
+all in the next video.
+
