@@ -7,6 +7,8 @@ It's built to be used with Claude Code, and almost everything is configurable.
 
 🤝 **[Working Together](https://claude.ai/artifact/FWN141iSxvW7d8TZepLgwW)**: who does what on each video, what to send Claude at each stage, how to hand over images and B-roll, and copy-paste messages.
 
+🎙️ **[Your Voice, Cloned](https://claude.ai/artifact/GRZ5nvzStZEtGeESyXPXzP)**: send a few clips of yourself talking and get every script read back in your own voice before you record. How to record samples, tune the delivery and fix single lines.
+
 ## Setup (macOS)
 
 ```bash
@@ -17,13 +19,14 @@ tools/doctor.sh                                  # check everything is installed
 
 What gets installed:
 
-| Area      | Tools                                                                                                       |
-| --------- | ----------------------------------------------------------------------------------------------------------- |
-| Editing   | Kdenlive, FFmpeg, auto-editor                                                                               |
-| Subtitles | Whisper                                                                                                     |
-| Recording | OBS Studio, teleprompter (browser), Piper (draft AI voice)                                                  |
-| Graphics  | Playwright + Chrome (HTML → PNG), Shiki (code highlighting), Mermaid (diagrams), rembg (background removal) |
-| Animation | Motion Canvas                                                                                               |
+| Area                   | Tools                                                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Editing                | Kdenlive, FFmpeg, auto-editor                                                                                  |
+| Subtitles              | Whisper                                                                                                        |
+| Recording              | OBS Studio, teleprompter (browser), Piper (draft AI voice)                                                     |
+| Voice clone (optional) | Chatterbox: draft voiceovers in your own voice. Run `tools/setup.sh --voice-clone` (own `.venv-voice/`, ~5 GB) |
+| Graphics               | Playwright + Chrome (HTML → PNG), Shiki (code highlighting), Mermaid (diagrams), rembg (background removal)    |
+| Animation              | Motion Canvas                                                                                                  |
 
 Python tools live in `.venv/` (Python 3.12 via uv) and Node packages in `node_modules/` and `animations/node_modules/`. Nothing is installed system-wide except the Homebrew packages.
 `ffmpeg-full` (installed alongside the normal FFmpeg) is used to burn captions into videos and reels.
@@ -42,7 +45,7 @@ Open Claude Code in this folder:
 | `/roughcut projects/<video>`    | Raw recording + script → Kdenlive project with the best takes, graphics, B-roll and music placed |
 | `/publish export/final.mp4`     | Captions, thumbnails, titles and hashtags for each platform                                      |
 | `/analyze references/video.mp4` | Breaks down a reference video's cuts, pacing and structure                                       |
-| `/record projects/<video>`      | Length check, draft AI voice, teleprompter, then audio cleanup                                   |
+| `/record projects/<video>`      | Length check, draft voice (yours, if cloned), teleprompter, then audio cleanup                   |
 | `/graphics projects/<video>`    | All slates, code cards and diagrams from the script's See column                                 |
 | `/thumbnail projects/<video>`   | 3 thumbnail concepts rendered and reviewed                                                       |
 | `/animate "idea"`               | A Motion Canvas animation scene                                                                  |
@@ -71,7 +74,9 @@ python3 tools/analyze_cuts.py references/video.mp4 --frames     # study a refere
 
 python3 tools/cringe_check.py projects/<video>/script.md       # flag corny / AI-sounding lines
 python3 tools/teleprompter.py projects/<video>/script.md        # read while recording
-tools/voice-draft.sh projects/<video>/script.md                 # draft AI voiceover for timing
+tools/voice-clone add me ~/Desktop/voice1.m4a voice2.m4a        # learn your voice from 15-60 s of clips (once)
+tools/voice-clone say projects/<video>/script.md                # draft voiceover in YOUR voice + per-row timings
+tools/voice-draft.sh projects/<video>/script.md                 # stock AI voice (Piper) for a quick length check
 tools/clean-voice.sh projects/<video>/audio/voice.wav           # denoise + level a recording
 
 tools/graphic --list                                            # thumbnails, code cards, slates, diagrams...

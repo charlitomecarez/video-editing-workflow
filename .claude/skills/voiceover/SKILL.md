@@ -23,7 +23,9 @@ Guide: `docs/voice-and-recording.md`. Settings: `[tts]`, `[voice_clone]`, `[clea
 
 ## Cloning the user's voice
 
-When the user sends clips of their own voice: `tools/voice-clone add <name> <clips...>` (default name from `[voice_clone].voice`, usually `me`). If `.venv-voice` is missing, run `tools/setup.sh --voice-clone` first. After `add`, tell them how many seconds of speech it found (aim for 15-60 s) and suggest `tools/voice-clone ref <name>` to hear the reference. Then `say` a short `--text` test before a whole script. Generation takes about 1-2 s per second of audio on Apple Silicon, so run long scripts in the background.
+If they need something to read, point them to `docs/voice-sample-script.md` (teleprompter: `python3 tools/teleprompter.py docs/voice-sample-script.md`). Chatterbox doesn't support Tagalog: Tagalog samples still help the voice identity, but Tagalog output may sound English-accented, so test a line and say so honestly.
+
+When the user sends clips of their own voice: `tools/voice-clone add <name> <clips...>` (default name from `[voice_clone].voice`, usually `me`). If `.venv-voice` is missing, run `tools/setup.sh --voice-clone` first. After `add`, tell them how many seconds of speech it found (aim for 15-60 s) and suggest `tools/voice-clone ref <name>` to hear the reference. Then `say` a short `--text` test before a whole script. Generation takes about 9 s per second of audio on Apple Silicon (a 4-minute script is ~40 min), so run long scripts in the background and re-roll only bad rows. Whisper writes numbers as digits, so ignore number-only mismatches when checking a take; names and Tagalog words are the real failure points.
 
 To check a take, transcribe it (`whisper <wav> --model base.en`) and compare with the script. Re-roll bad rows with `--rows N --seed K`. Tuning: `--exaggeration` (energy), `--cfg-weight` (lower = slower), `--speed` (post-processing, keeps pitch). Clone only the user's own voice, or one they clearly have permission to use.
 

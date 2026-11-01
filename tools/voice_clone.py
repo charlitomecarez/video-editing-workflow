@@ -60,7 +60,8 @@ def write_wav(path, audio, filters=None):
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-"]
     if filters:
         cmd += ["-af", filters]
-    cmd += ["-c:a", "pcm_s16le", str(path)]
+    # loudnorm upsamples to 192 kHz internally; keep the output at the model's rate
+    cmd += ["-ar", str(SR), "-c:a", "pcm_s16le", str(path)]
     subprocess.run(cmd, input=audio.astype("float32").tobytes(), check=True)
 
 

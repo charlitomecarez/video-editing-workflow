@@ -45,6 +45,8 @@ tools/setup.sh --voice-clone
 - a quiet room, no music, only you talking
 - a few different clips (it cleans them, removes long pauses and keeps the best stretch)
 
+Not sure what to say? Read [`docs/voice-sample-script.md`](voice-sample-script.md): six short clips in English, Tagalog and Taglish (about 2 minutes). It opens in the teleprompter too.
+
 ```bash
 tools/voice-clone add me ~/Desktop/voice1.m4a ~/Desktop/voice2.m4a
 tools/voice-clone ref me          # listen to the reference it picked
