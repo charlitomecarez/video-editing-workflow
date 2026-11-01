@@ -12,7 +12,7 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - References: `references/` (videos to study, git-ignored; reports committed)
 - Projects: `tools/new_project.py` → `projects/<date>-<slug>/`
 - Graphics: `tools/graphic` (templates in `graphics/templates/`, brand in `[brand]`), `tools/cutout.sh` (rembg). Assets we can't generate (memes, screen recordings, missing photos) get a placeholder card `graphics/NN-placeholder-<what>.png`; the rough cut swaps in `NN-<what>.<ext>` when it exists (`docs/graphics.md` → Placeholders)
-- Voice: `tools/script_text.py`, `tools/voice-draft.sh` (Piper), `tools/clean-voice.sh`, `tools/teleprompter.py`
+- Voice: `tools/script_text.py`, `tools/voice-draft.sh` (Piper, stock voice), `tools/voice-clone` (Chatterbox clone of the user's voice: `add me <clips>` → `say script.md`, own `.venv-voice`, `[voice_clone]`), `tools/clean-voice.sh`, `tools/teleprompter.py`
 - Animations: `animations/` (Motion Canvas; scenes in `animations/src/scenes/`, brand synced to `src/brand.ts`)
 - Setup: `tools/setup.sh` installs everything; `tools/doctor.sh` checks. Python tools are in `.venv/` (run `.venv/bin/...`), Node in `node_modules/`.
 - Planner: `tools/planner.py` reads the Content Planner app (Appwrite, `[planner]` in config, key in `.env.local`): `current` = the video being worked on now + next step, `ideas`, `list`, `show`, `link`, `done`. `/current` uses it.

@@ -5,4 +5,4 @@ argument-hint: <project folder or script.md>
 
 Help me get ready to record: $ARGUMENTS
 
-Use the `voiceover` skill: check the script length per section, flag hard-to-read lines, offer a draft AI voiceover for timing, and open the teleprompter. After I record, I'll come back and you'll clean and tighten the audio.
+Use the `voiceover` skill: check the script length per section, flag hard-to-read lines, offer a draft voiceover for timing (in my cloned voice if I've added one with `tools/voice-clone add`), and open the teleprompter. After I record, I'll come back and you'll clean and tighten the audio.

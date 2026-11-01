@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 # Install everything the workflow needs. Safe to run again any time (skips what's installed).
-# Usage: tools/setup.sh [--no-apps]   (--no-apps skips Kdenlive / OBS)
+# Usage: tools/setup.sh [--no-apps] [--voice-clone]
+#   --no-apps      skip Kdenlive / OBS
+#   --voice-clone  also install voice cloning (Chatterbox, ~2 GB of Python packages + ~3 GB model on first use)
 set -euo pipefail
 cd "$(dirname "$0")/.."
-apps=true; [[ "${1:-}" == "--no-apps" ]] && apps=false
+apps=true; clone=false
+for a in "$@"; do
+  case "$a" in --no-apps) apps=false ;; --voice-clone) clone=true ;; esac
+done
 step() { printf "\n\033[1m==> %s\033[0m\n" "$1"; }
 
 command -v brew >/dev/null || { echo "Install Homebrew first: https://brew.sh"; exit 1; }
@@ -28,6 +33,12 @@ fi
 step "Python tools (.venv: rembg, Piper)"
 [[ -x .venv/bin/python ]] || uv venv --python 3.12 .venv
 uv pip install --python .venv -q -r requirements.txt && echo "  ✓ rembg, piper-tts"
+
+if $clone || [[ -x .venv-voice/bin/python ]]; then
+  step "Voice cloning (.venv-voice: Chatterbox)"
+  [[ -x .venv-voice/bin/python ]] || uv venv --python 3.11 .venv-voice
+  uv pip install --python .venv-voice -q chatterbox-tts "setuptools<81" && echo "  ✓ chatterbox-tts (tools/voice-clone)"
+fi
 
 step "Graphics engine (Playwright, Shiki, Mermaid)"
 npm install --silent && echo "  ✓ node packages"

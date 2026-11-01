@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Draft voiceover in your own voice. Runs tools/voice_clone.py in its own Python env (.venv-voice).
+# Usage: tools/voice-clone add|say|list|ref ...   (tools/voice-clone --help for details)
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+PY="$ROOT/.venv-voice/bin/python"
+[[ -x "$PY" ]] || { echo "Voice cloning isn't installed. Run: tools/setup.sh --voice-clone" >&2; exit 1; }
+# Hide the model's progress bars and library warnings (set VOICE_DEBUG=1 to see them)
+[[ -n "${VOICE_DEBUG:-}" ]] || export TQDM_DISABLE=1 PYTHONWARNINGS=ignore TRANSFORMERS_VERBOSITY=error
+exec "$PY" "$ROOT/tools/voice_clone.py" "$@"

@@ -46,6 +46,7 @@ references/**
 # Dependencies and generated files
 node_modules/
 .venv/
+.venv-voice/
 .voices/
 graphics/out/
 animations/output/
@@ -53,4 +54,6 @@ animations/dist/
 *_teleprompter.html
 *_view.html
 *_draft-vo*.wav
+*_clone-vo*.wav
+*_clone-vo*.json
 animations/src/brand.ts

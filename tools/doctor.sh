@@ -28,6 +28,7 @@ python3 -c 'import sys; sys.exit(sys.version_info < (3, 11))' \
   || fail "Python 3.11+ needed (for tomllib)" "brew install python"
 [[ -x .venv/bin/rembg ]] && pass "rembg (tools/cutout.sh)" || fail "rembg missing" "tools/setup.sh"
 [[ -x .venv/bin/piper ]] && pass "Piper TTS (tools/voice-draft.sh)" || fail "Piper missing" "tools/setup.sh"
+[[ -x .venv-voice/bin/python ]] && pass "Voice cloning (tools/voice-clone)" || opt "voice cloning not installed" "tools/setup.sh --voice-clone"
 
 echo "Node"
 command -v node >/dev/null && pass "node $(node -v)" || fail "node missing" "brew install node"

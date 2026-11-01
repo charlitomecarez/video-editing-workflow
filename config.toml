@@ -209,6 +209,34 @@ speed = 1.1
 sentence_pause = 0.15
 voices_dir = ".voices"
 
+[voice_clone]
+# Draft voiceover in YOUR voice (tools/voice-clone, Chatterbox). Install: tools/setup.sh --voice-clone
+# Default voice name (made with: tools/voice-clone add me <clips>)
+voice = "me"
+voices_dir = ".voices/clone"
+# Seconds of your speech kept in the reference (first 10 s set the delivery, all of it sets the voice)
+ref_seconds = 30
+# Cleanup for your sample clips (ffmpeg filters), and pause squeezing (seconds)
+sample_filters = "highpass=f=70,afftdn=nf=-25,loudnorm=I=-18:TP=-2:LRA=11"
+max_pause = 0.5
+keep_pause = 0.3
+# Delivery: exaggeration 0.25 flat, 0.5 normal, 0.7+ energetic. cfg_weight lower = slower, more deliberate
+exaggeration = 0.5
+cfg_weight = 0.5
+temperature = 0.8
+# Same seed = same take. Change it (or --seed) to re-roll a line you don't like
+seed = 0
+# 1.0 = natural pace. Applied after generation (ffmpeg atempo), so it doesn't change the pitch
+speed = 1.0
+# Silence between sentences in one script row, and between rows (seconds)
+sentence_pause = 0.2
+beat_pause = 0.45
+# Longest piece of text sent to the model at once (longer text drifts or rushes)
+max_chars = 250
+# auto = Apple GPU (mps) when available, else cpu
+device = "auto"
+output_filters = "loudnorm=I=-16:TP=-1.5:LRA=11"
+
 [clean_voice]
 # tools/clean-voice.sh
 highpass = 80         # Hz, cuts rumble and hum
