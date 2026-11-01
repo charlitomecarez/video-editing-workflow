@@ -18,7 +18,7 @@ Tool: `python3 tools/rough_cut.py projects/<video>`. Settings: `[rough_cut]` in 
 ## Inputs it looks for
 
 - **Recording:** the one file in `footage/` (not `broll/`), or `audio/voice.*` for voice-only videos. It prefers `<name>_prep.mp4` for video and `<name>_clean.wav` for audio when they exist. Several recordings → ask which, then pass `--source`.
-- **Materials by script row:** `graphics/NN-*.png|jpg|svg` and `footage/broll/NN-*.mp4|mov`. NN = the `#` column in av-table scripts, or the line number of the voiceover in sections scripts (`tools/script_text.py <script> --json` shows rows). Several files on one row share the row's time in name order.
+- **Materials by script row:** `graphics/NN-*.png|jpg|svg` and `footage/broll/NN-*.mp4|mov`. NN = the `#` column in av-table scripts, or the line number of the voiceover in sections scripts (`tools/script_text.py <script> --json` shows rows). Several files on one row share the row's time in name order. An animated `NN-x.mp4` in the graphics folder replaces the still `NN-x.png` of the same name (same time, same cue).
 - **`any-*` B-roll:** goes to the bin's "Unplaced B-roll" folder. To place it, look at a frame of each (`ffmpeg -ss 1 -i clip.mp4 -frames:v 1 /tmp/x.png`), pick the script row whose See/Hear fits best, and pass `--place any-name.mp4=07`. Explain your picks.
 - **Music:** `audio/music*` (first match), looped, lowered to `music_level_db`, faded out.
 

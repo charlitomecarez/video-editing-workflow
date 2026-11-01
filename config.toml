@@ -192,6 +192,18 @@ browser = "chrome"
 output_dir = "graphics/out"
 # 2 = render at double resolution (sharper, bigger files)
 scale = 1
+# Animated graphics (optional, OFF by default). true = tools/graphic also renders an animated
+# .mp4 next to each PNG whose template has an animate.js (caption, text-card, scoreboard):
+# captions pop in, numbers count up. The rough cut uses the .mp4 instead of the .png.
+# Needs: tools/setup.sh --animated-graphics. Turn on for one run with: tools/graphic ... --animate
+animate = false
+# Seconds of movement HyperFrames renders (render time grows with this)
+animate_seconds = 1.5
+# The last frame is then held so the clip is this long; the rough cut trims it to the slot
+animate_hold_seconds = 10
+animate_fps = 30
+# HyperFrames quality: draft (fast test), looks, delivery
+animate_quality = "looks"
 
 [cutout]
 # Background-removal model for tools/cutout.sh:

@@ -19,14 +19,15 @@ tools/doctor.sh                                  # check everything is installed
 
 What gets installed:
 
-| Area                   | Tools                                                                                                          |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Editing                | Kdenlive, FFmpeg, auto-editor                                                                                  |
-| Subtitles              | Whisper                                                                                                        |
-| Recording              | OBS Studio, teleprompter (browser), Piper (draft AI voice)                                                     |
-| Voice clone (optional) | Chatterbox: draft voiceovers in your own voice. Run `tools/setup.sh --voice-clone` (own `.venv-voice/`, ~5 GB) |
-| Graphics               | Playwright + Chrome (HTML → PNG), Shiki (code highlighting), Mermaid (diagrams), rembg (background removal)    |
-| Animation              | Motion Canvas                                                                                                  |
+| Area                         | Tools                                                                                                                                         |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Editing                      | Kdenlive, FFmpeg, auto-editor                                                                                                                 |
+| Subtitles                    | Whisper                                                                                                                                       |
+| Recording                    | OBS Studio, teleprompter (browser), Piper (draft AI voice)                                                                                    |
+| Voice clone (optional)       | Chatterbox: draft voiceovers in your own voice. Run `tools/setup.sh --voice-clone` (own `.venv-voice/`, ~5 GB)                                |
+| Graphics                     | Playwright + Chrome (HTML → PNG), Shiki (code highlighting), Mermaid (diagrams), rembg (background removal)                                   |
+| Animation                    | Motion Canvas                                                                                                                                 |
+| Animated graphics (optional) | HyperFrames: captions pop in, numbers count up. Run `tools/setup.sh --animated-graphics`, then `tools/graphic ... --animate` (off by default) |
 
 Python tools live in `.venv/` (Python 3.12 via uv) and Node packages in `node_modules/` and `animations/node_modules/`. Nothing is installed system-wide except the Homebrew packages.
 `ffmpeg-full` (installed alongside the normal FFmpeg) is used to burn captions into videos and reels.
@@ -85,6 +86,7 @@ python3 tools/sfx.py build && python3 tools/sfx.py list             # original s
 
 tools/graphic --list                                            # thumbnails, code cards, slates, diagrams...
 tools/graphic thumbnail-tech --set "text=Is it *fast?*" --set icon=logo.png --open
+tools/graphic --batch projects/<video>/graphics/jobs.json --animate   # optional: animated .mp4 next to each PNG
 tools/cutout.sh photo.jpg                                       # remove a photo's background
 cd animations && npm start                                      # Motion Canvas animation editor
 npm run format                                                  # tidy JS/TS/JSON/Markdown with Prettier

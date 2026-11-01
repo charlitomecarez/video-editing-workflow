@@ -607,6 +607,9 @@ def scan_materials(proj, places, tag="placeholder-", graphics_dir="graphics"):
             if row is None and not ANY_RE.match(f.name):
                 continue   # thumbnail photos etc.
             found.append({"path": f, "row": row, "kind": "image" if ext in IMAGE_EXT else "video", "name": f.name})
+    # An animated version (`01-1-x.mp4`) replaces the still with the same name (`01-1-x.png`)
+    moving = {(m["path"].parent, m["path"].stem) for m in found if m["kind"] == "video"}
+    found = [m for m in found if m["kind"] == "video" or (m["path"].parent, m["path"].stem) not in moving]
     if not tag:
         return found
     real = {m["path"].stem for m in found if tag not in m["path"].stem}
@@ -1151,11 +1154,13 @@ def main():
         # that file exactly where the word is spoken.
         starts = [start + n * each for n in range(len(items))]
         if b and b.get("see"):
-            cues = dict(re.findall(r'`([^`]+)`[^`]*?\bon "([^"]+)"', b["see"]))
-            cued = [cue_frame(cues[it["name"]], b) if it["name"] in cues else None for it in items]
+            # Keyed by name without extension, so an animated `01-1-x.mp4` takes the cue of `01-1-x.png`
+            cues = {Path(f).stem: w for f, w in re.findall(r'`([^`]+)`[^`]*?\bon "([^"]+)"', b["see"])}
+            key = lambda it: Path(it["name"]).stem
+            cued = [cue_frame(cues[key(it)], b) if key(it) in cues else None for it in items]
             # Use the cues only when every cued file was found and they stay apart; else split evenly
-            if any(it["name"] in cues for it in items) and all(
-                    f is not None for it, f in zip(items, cued) if it["name"] in cues):
+            if any(key(it) in cues for it in items) and all(
+                    f is not None for it, f in zip(items, cued) if key(it) in cues):
                 trial = [f if f is not None else s0 for f, s0 in zip(cued, starts)]
                 order = sorted(range(len(items)), key=lambda n: trial[n])
                 trial_sorted = [trial[n] for n in order]
@@ -1187,8 +1192,11 @@ def main():
         end = o["pos"] + o["dur"]
         if end > nxt:
             o["dur"] = max(1, nxt - o["pos"])
-        elif nxt - end <= gap_fill and o["kind"] == "image":
-            o["dur"] = nxt - o["pos"]   # hold the graphic instead of flashing back to V1
+        elif nxt - end <= gap_fill and (o["kind"] == "image" or (
+                o["path"].parent == proj / gdir and nxt - o["pos"] <= o["src_frames"])):
+            # Hold the graphic (or let an animated one run on) instead of flashing back to V1.
+            # B-roll footage is left alone so it doesn't cover the speaker longer than planned.
+            o["dur"] = nxt - o["pos"]
         o["dur"] = min(o["dur"], total - o["pos"])
     overlays = [o for o in overlays if o["dur"] > 0]
 

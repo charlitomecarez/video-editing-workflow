@@ -29,6 +29,7 @@ python3 -c 'import sys; sys.exit(sys.version_info < (3, 11))' \
 [[ -x .venv/bin/rembg ]] && pass "rembg (tools/cutout.sh)" || fail "rembg missing" "tools/setup.sh"
 [[ -x .venv/bin/piper ]] && pass "Piper TTS (tools/voice-draft.sh)" || fail "Piper missing" "tools/setup.sh"
 [[ -x .venv-voice/bin/python ]] && pass "Voice cloning (tools/voice-clone)" || opt "voice cloning not installed" "tools/setup.sh --voice-clone"
+[[ -x tools/graphics/animated/node_modules/.bin/hyperframes ]] && pass "Animated graphics (tools/graphic --animate)" || opt "animated graphics not installed" "tools/setup.sh --animated-graphics"
 
 echo "Node"
 command -v node >/dev/null && pass "node $(node -v)" || fail "node missing" "brew install node"

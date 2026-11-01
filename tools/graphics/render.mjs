@@ -7,6 +7,9 @@
 //                 [--size 1280x720] [--transparent | --opaque] [--open]
 //   tools/graphic --batch jobs.json      # many graphics in one go
 //   tools/graphic --list                 # templates and their fields
+//   add --animate (or --no-animate) to also make an animated .mp4 of each graphic whose
+//   template has an animate.js. Off by default ([graphics].animate). Needs:
+//   tools/setup.sh --animated-graphics
 //
 // Values that are paths to image files become embedded images. In text fields,
 // *word* highlights a word in the accent color and \n starts a new line.
@@ -16,6 +19,7 @@ import os from "node:os";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { canAnimate, checkInstalled, renderClip } from "./animate.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const TPL_DIR = path.join(ROOT, "graphics", "templates");
@@ -152,7 +156,7 @@ async function prepare(tpl, raw, baseDir) {
   return vals;
 }
 
-async function render(browser, job, baseDir) {
+async function render(browser, job, baseDir, animate = false) {
   const tpl = loadTemplate(job.template);
   const vals = await prepare(tpl, job.set ?? {}, baseDir);
   const [w, h] = String(job.size ?? tpl.meta.size ?? "1920x1080")
@@ -214,6 +218,29 @@ async function render(browser, job, baseDir) {
     else await page.screenshot(opts);
     const rel = path.relative(process.cwd(), out);
     console.log(`Saved ${rel.startsWith("..") ? out : rel}`);
+    // Optional animated version next to it (off unless --animate or [graphics].animate)
+    const cropped = tpl.meta.selector && vals.frame !== "full";
+    if (
+      animate &&
+      job.animate !== false &&
+      canAnimate(tpl.dir) &&
+      !transparent &&
+      !cropped &&
+      vals.variant !== "placeholder"
+    ) {
+      const clip = out.replace(/\.[^.]+$/, ".mp4");
+      renderClip({
+        html,
+        tplDir: tpl.dir,
+        out: clip,
+        width: w,
+        height: h,
+        brand: BRAND,
+        cfg: GCFG,
+      });
+      const crel = path.relative(process.cwd(), clip);
+      console.log(`Saved ${crel.startsWith("..") ? clip : crel} (animated)`);
+    }
     return out;
   } finally {
     await page.close();
@@ -257,6 +284,8 @@ function parseArgs(argv) {
     else if (x === "--transparent") a.transparent = true;
     else if (x === "--opaque") a.transparent = false;
     else if (x === "--open") a.open = true;
+    else if (x === "--animate") a.animate = true;
+    else if (x === "--no-animate") a.animate = false;
     else if (x === "--list") a.list = true;
     else if (x === "-h" || x === "--help") a.help = true;
     else if (x.startsWith("--") && x.includes("=")) {
@@ -274,7 +303,8 @@ async function main() {
       fs
         .readFileSync(fileURLToPath(import.meta.url), "utf8")
         .split("\n")
-        .slice(1, 14)
+        .slice(1)
+        .filter((l, i, all) => all.slice(0, i + 1).every((x) => x.startsWith("//")))
         .map((l) => l.replace(/^\/\/ ?/, ""))
         .join("\n"),
     );
@@ -309,10 +339,19 @@ async function main() {
       },
     ];
   }
+  const animate = a.animate ?? GCFG.animate === true;
+  if (animate) {
+    try {
+      checkInstalled();
+    } catch (e) {
+      die(e.message);
+    }
+    console.log("Animated clips on: each one takes a few seconds to render.");
+  }
   const browser = await launch();
   const outs = [];
   try {
-    for (const job of jobs) outs.push(await render(browser, job, baseDir));
+    for (const job of jobs) outs.push(await render(browser, job, baseDir, animate));
   } finally {
     await browser.close();
   }

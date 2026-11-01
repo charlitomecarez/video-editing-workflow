@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 # Install everything the workflow needs. Safe to run again any time (skips what's installed).
-# Usage: tools/setup.sh [--no-apps] [--voice-clone]
+# Usage: tools/setup.sh [--no-apps] [--voice-clone] [--animated-graphics]
 #   --no-apps      skip Kdenlive / OBS
 #   --voice-clone  also install voice cloning (Chatterbox, ~2 GB of Python packages + ~3 GB model on first use)
+#   --animated-graphics  also install HyperFrames for animated graphics (tools/graphic --animate, ~150 MB)
 set -euo pipefail
 cd "$(dirname "$0")/.."
-apps=true; clone=false
+apps=true; clone=false; anim=false
 for a in "$@"; do
-  case "$a" in --no-apps) apps=false ;; --voice-clone) clone=true ;; esac
+  case "$a" in --no-apps) apps=false ;; --voice-clone) clone=true ;; --animated-graphics) anim=true ;; esac
 done
 step() { printf "\n\033[1m==> %s\033[0m\n" "$1"; }
 
@@ -43,6 +44,13 @@ fi
 step "Graphics engine (Playwright, Shiki, Mermaid)"
 npm install --silent && echo "  ✓ node packages"
 if ! [[ -d "/Applications/Google Chrome.app" ]]; then npx playwright install chromium; fi
+
+if $anim || [[ -d tools/graphics/animated/node_modules ]]; then
+  step "Animated graphics (HyperFrames, optional)"
+  (cd tools/graphics/animated && npm install --silent \
+    && { HYPERFRAMES_NO_TELEMETRY=1 node_modules/.bin/hyperframes telemetry disable >/dev/null 2>&1 || true; }) \
+    && echo "  ✓ hyperframes (tools/graphic --animate; usage tracking off)"
+fi
 
 step "Animations (Motion Canvas)"
 (cd animations && npm install --silent && node sync-brand.mjs) && echo "  ✓ Motion Canvas"

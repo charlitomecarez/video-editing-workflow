@@ -48,6 +48,8 @@ In sections scripts NN is the voiceover row from `tools/script_text.py <script> 
 
 Save the jobs to `projects/<video>/graphics/jobs.json`, run `tools/graphic --batch ...`, then list which file goes with which script row.
 
+**Animated graphics are opt-in.** Render still PNGs only. Add `--animate` (or set `[graphics].animate`) only when the user asks for animated graphics in this request. Don't offer to turn it on unprompted. If it isn't installed, tell them to run `tools/setup.sh --animated-graphics`. Look at a frame from the start and the end of a few clips (`ffmpeg -ss 0.1 -i clip.mp4 -frames:v 1 x.png`). Guide: `docs/graphics.md#animated-graphics-optional-off-by-default`.
+
 ## New templates
 
 Copy the closest template folder in `graphics/templates/`, edit `template.html` and `template.json` (description, size, fields, defaults, transparent, selector, code, mermaid), and render it with defaults to test. Document new fields in `template.json`.

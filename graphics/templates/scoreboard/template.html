@@ -24,7 +24,7 @@
   {{#sub}}<div class="sub">{{sub}}</div>{{/sub}}
 </div>
 <script>
-  const s = (id) => parseFloat(document.querySelector(`#${id} .score`)?.textContent);
+  const s = (id) => parseFloat(document.getElementById(id)?.querySelector(".score")?.textContent);
   const l = s("L"), r = s("R");
   if (!isNaN(l) && !isNaN(r)) {
     document.getElementById("vs").textContent = "–";

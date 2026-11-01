@@ -163,6 +163,29 @@ Then rebuild with `/roughcut`. The rough cut skips any placeholder whose real fi
 
 The script keeps the to-do list: an **Assets you still need to add** section with one line per placeholder and the file name to save.
 
+## Animated graphics (optional, off by default)
+
+Graphics are still images unless you ask for movement. Turned on, each graphic also gets a short animated clip next to its PNG (`01-1-cap-42.png` → `01-1-cap-42.mp4`), made with [HyperFrames](https://github.com/heygen-com/hyperframes) (open source, Apache 2.0, runs on your Mac):
+
+| Template     | What moves                                                                      |
+| ------------ | ------------------------------------------------------------------------------- |
+| `caption`    | Pops in with a quick bounce, the highlighted word gets a small punch            |
+| `text-card`  | `big`: numbers count up from 0. `chapter`: slides in with a small glitch shake  |
+| `scoreboard` | Teams slide in, scores count up, the loser's score dims, the photo slowly zooms |
+
+Other templates and placeholders stay still. The movement takes about 1.5 s, then the clip holds its last frame.
+
+```bash
+tools/setup.sh --animated-graphics                                   # once (~150 MB)
+tools/graphic --batch projects/my-video/graphics/jobs.json --animate  # this run only
+```
+
+Or set `[graphics].animate = true` to make it the default (`--no-animate` turns it off for one run). Each clip takes about 15–20 s to render, so a video with 120 graphics takes around 35 minutes.
+
+The rough cut uses the `.mp4` instead of the `.png` with the same name, at the same time and with the same script cue. **To go back to stills, delete the `.mp4` files** and rebuild the rough cut.
+
+To animate another template, add an `animate.js` next to its `template.html` (see `tools/graphics/animate.mjs` for the helpers: `tl`, `pop`, `counters`). Settings: `animate_seconds`, `animate_hold_seconds`, `animate_fps`, `animate_quality` in `[graphics]`.
+
 ## Brand (config)
 
 `[brand]` in `config.toml` / `config.local.toml` controls every template and the animations:
