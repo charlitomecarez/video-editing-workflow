@@ -16,6 +16,7 @@ What it does:
        V1  your camera / screen recording
        A1  your voice (uses <name>_clean.wav from clean-voice.sh when it exists)
        A2  audio/music.* (looped, lowered, faded out)
+       A3  sound effects cued in the script's Notes column: sfx:whoosh on "word" (tools/sfx.py)
        Guides: one per script section, plus ad-libs and anything that needs a look.
   5. Writes roughcut/report.md, roughcut/roughcut.srt (captions for the cut) and a
      quick preview video, roughcut/preview.mp4.
@@ -494,6 +495,94 @@ def pieces_for(words, w0, w1, rc, env=None, grow=(False, False)):
     return out
 
 
+# ---------------------------------------------------------------- sound effects
+
+SFX_RE = re.compile(r'sfx:([\w-]+)\s+on\s+"([^"]+)"')
+
+
+def place_sfx(cfg, beats, cue_frame, fps, total, rdir):
+    """Sound-effect cues from the script -> clips on A3, plus notes for the report.
+
+    Each library sound knows its anchor: "start" lands on the cue word (+offset, e.g. a whoosh starts
+    early so it peaks on the word); "end" lands right after the cue words (punchline stingers)."""
+    sc = cfg.get("sfx", {})
+    sdir = Path(sc.get("dir", "sfx"))
+    sdir = sdir if sdir.is_absolute() else Path(__file__).resolve().parent.parent / sdir
+    lib_file = sdir / "library.json"
+    cues = [(b, name, word) for b in beats for name, word in SFX_RE.findall((b.get("notes") or "") + " " + (b.get("see") or ""))]
+    if not cues:
+        return [], []
+    if not lib_file.exists():
+        return [], ["Sound-effect cues found but no library: run `python3 tools/sfx.py build`"]
+    lib = json.loads(lib_file.read_text())
+    out_dir = rdir / "sfx"
+    out_dir.mkdir(exist_ok=True)
+    placed, notes, rendered = [], [], {}
+    for b, name, word in cues:
+        s = lib.get(name)
+        where = f"row {b['row']:02} ({name} on \"{word}\")"
+        if not s:
+            notes.append(f"Unknown sound `{name}` in {where}. See `python3 tools/sfx.py list`.")
+            continue
+        src = sdir / s["file"]
+        if not src.exists():
+            notes.append(f"Missing file for `{name}`: run `python3 tools/sfx.py build`.")
+            continue
+        if s.get("source") != "original" and not sc.get("allow_unknown_rights", True):
+            notes.append(f"Skipped `{name}` in {where}: rights unknown ([sfx].allow_unknown_rights = false).")
+            continue
+        f = cue_frame(word, b, end=s.get("anchor") == "end")
+        if f is None:
+            notes.append(f"Couldn't find \"{word}\" in the recording for {where}. Not placed.")
+            continue
+        pos = max(0, f + round(s.get("offset", 0) * fps))
+        if name not in rendered:
+            dst = out_dir / f"{name}.wav"
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(src), "-af", f"volume={sc.get('level_db', -10)}dB",
+                            "-ar", "48000", "-ac", "2", str(dst)], check=True)
+            rendered[name] = (dst, max(1, round(media_seconds(dst) * fps)))
+        dst, frames = rendered[name]
+        placed.append({"name": name, "row": b["row"], "word": word, "pos": pos, "file": dst, "frames": frames,
+                       "len": min(frames, total - pos), "mood": s.get("mood", ""), "source": s.get("source", "")})
+    placed = [p for p in sorted(placed, key=lambda p: p["pos"]) if p["len"] > 0]
+    for i in range(len(placed) - 1):   # one track: a sound can't run into the next one
+        placed[i]["len"] = max(1, min(placed[i]["len"], placed[i + 1]["pos"] - placed[i]["pos"]))
+    return placed, notes
+
+
+def sfx_report(sfx, notes, cfg, fps, total):
+    """Report lines: every sound, plus the "just right" checks (spacing, rate, comedic stingers)."""
+    sc = cfg.get("sfx", {})
+    if not sfx and not notes:
+        return []
+    L = ["", "## Sound effects on A3", ""]
+    L += [f"- {mmss(p['pos'] / fps)}: `{p['name']}` on \"{p['word']}\" (row {p['row']:02})"
+          + ("  ⚠ rights unknown" if p["source"] not in ("original", "") else "") for p in sfx]
+    minutes = total / fps / 60
+    rate = len(sfx) / minutes if minutes else 0
+    lo, hi = sc.get("min_per_minute", 4), sc.get("max_per_minute", 10)
+    checks = [f"**{len(sfx)} sounds, {rate:.1f} per minute** (aim for {lo}–{hi})"
+              + (": too few, the edit may feel flat" if rate < lo else ": too many, they'll get annoying" if rate > hi else ": good")]
+    gap = sc.get("min_gap_seconds", 2.5) * fps
+    close = [(a, b) for a, b in zip(sfx, sfx[1:]) if b["pos"] - a["pos"] < gap]
+    checks += [f"Too close ({(b['pos'] - a['pos']) / fps:.1f}s): `{a['name']}` row {a['row']:02} → `{b['name']}` row {b['row']:02}"
+               for a, b in close]
+    com = [p for p in sfx if p["mood"] == "comedic"]
+    cgap = sc.get("comedic_min_gap_seconds", 15) * fps
+    checks += [f"Comedic stingers too close: `{a['name']}` row {a['row']:02} and `{b['name']}` row {b['row']:02} "
+               f"({(b['pos'] - a['pos']) / fps:.0f}s apart). Jokes land better when the sound is rare."
+               for a, b in zip(com, com[1:]) if b["pos"] - a["pos"] < cgap]
+    names = [p["name"] for p in sfx]
+    for n in sorted(set(names)):
+        if n in ("rimshot", "sad-trombone") and names.count(n) > 2:
+            checks.append(f"`{n}` used {names.count(n)} times: it stops being funny after twice")
+    unknown = [p for p in sfx if p["source"] not in ("original", "")]
+    if unknown:
+        checks.append(f"{len(unknown)} sound(s) from Myinstants (rights unknown): check they aren't clips from a movie, show, "
+                      "song or creator before monetizing. See `sfx/LICENSES.md`.")
+    return L + ["", "**Checks:**", ""] + [f"- {c}" for c in checks + notes]
+
+
 # ---------------------------------------------------------------- materials
 
 ROW_RE = re.compile(r"^(\d{1,3})(?:[-_ .]|$)")
@@ -567,7 +656,7 @@ class Mlt:
         return xid
 
 
-def build_project(proj, out_path, fps, size, timeline, overlays, music, guides, title, guide_names):
+def build_project(proj, out_path, fps, size, timeline, overlays, music, guides, title, sfx, guide_names):
     w, h = size
     total = timeline["frames"]
     x = Mlt(fps, proj.resolve())
@@ -608,7 +697,8 @@ def build_project(proj, out_path, fps, size, timeline, overlays, music, guides, 
         props["kdenlive:id"] = kid
         return x.element("producer" if kind == "image" else "chain", x.nid("producer" if kind == "image" else "chain"), props)
 
-    folders = {"-1.10": "Recording", "-1.11": "Graphics", "-1.12": "B-roll", "-1.13": "Unplaced B-roll", "-1.14": "Music"}
+    folders = {"-1.10": "Recording", "-1.11": "Graphics", "-1.12": "B-roll", "-1.13": "Unplaced B-roll", "-1.14": "Music",
+               "-1.15": "Sound effects"}
 
     # Black background track
     x.element("producer", "black_track", {"length": total, "eof": "continue", "resource": "black",
@@ -686,15 +776,26 @@ def build_project(proj, out_path, fps, size, timeline, overlays, music, guides, 
         inst = track_instance(music, "audio", total, kid, "audio")
         m_entries.append({"producer": inst, "kid": kid, "pos": 0, "in": 0, "out": total - 1})
 
+    # --- sound effects (A3)
+    s_entries, sfx_kids = [], {}
+    for e in sfx:
+        if e["file"] not in sfx_kids:
+            kid = bin_clip(e["file"], "audio", e["frames"], "15")
+            sfx_kids[e["file"]] = (kid, track_instance(e["file"], "audio", e["frames"], kid, "audio"))
+        kid, inst = sfx_kids[e["file"]]
+        s_entries.append({"producer": inst, "kid": kid, "pos": e["pos"], "in": 0, "out": e["len"] - 1})
+
     # Track order = bottom audio first, then video upward (how Kdenlive saves it)
-    tracks = [track("Music", m_entries, True), track("Voice", a_entries, True),
-              track("Recording", v_entries, False), track("Graphics", o_entries, False)]
+    audio_tracks = ([track("Sound effects", s_entries, True)] if s_entries else []) + \
+        [track("Music", m_entries, True), track("Voice", a_entries, True)]
+    n_audio = len(audio_tracks)
+    tracks = audio_tracks + [track("Recording", v_entries, False), track("Graphics", o_entries, False)]
 
     # Sequence
     seq = "{" + str(uuid.uuid4()) + "}"
     trans = []
     for i, t in enumerate(tracks, start=1):
-        if i <= 2:
+        if i <= n_audio:
             trans.append({"a_track": 0, "b_track": i, "mlt_service": "mix", "kdenlive_id": "mix",
                           "internal_added": 237, "always_active": 1, "accepts_blanks": 1, "sum": 1})
         else:
@@ -703,8 +804,8 @@ def build_project(proj, out_path, fps, size, timeline, overlays, music, guides, 
     groups = []
     for c in timeline["clips"]:
         if rec:
-            groups.append({"children": [{"data": f"1:{c['pos']}", "leaf": "clip", "type": "Leaf"},
-                                        {"data": f"2:{c['pos']}", "leaf": "clip", "type": "Leaf"}],
+            groups.append({"children": [{"data": f"{n_audio - 1}:{c['pos']}", "leaf": "clip", "type": "Leaf"},
+                                        {"data": f"{n_audio}:{c['pos']}", "leaf": "clip", "type": "Leaf"}],
                            "type": "AVSplit" if a_src == rec else "Normal"})
     seq_props = {
         "kdenlive:uuid": seq, "kdenlive:clipname": title, "kdenlive:duration": x.tc(total),
@@ -712,7 +813,7 @@ def build_project(proj, out_path, fps, size, timeline, overlays, music, guides, 
         "kdenlive:sequenceproperties.groups": json.dumps(groups, indent=1),
         "kdenlive:sequenceproperties.guides": json.dumps(guides, ensure_ascii=False, indent=1),
         "kdenlive:sequenceproperties.hasAudio": 1, "kdenlive:sequenceproperties.hasVideo": 1,
-        "kdenlive:sequenceproperties.tracksCount": 4, "kdenlive:sequenceproperties.activeTrack": 2,
+        "kdenlive:sequenceproperties.tracksCount": len(tracks), "kdenlive:sequenceproperties.activeTrack": n_audio,
         "kdenlive:sequenceproperties.zoom": 8, "kdenlive:sequenceproperties.position": 0,
     }
     tr_xml = "\n".join(
@@ -985,8 +1086,8 @@ def main():
             s["adlib"]["t0"] = s["pos0"]
     total = pos
 
-    def cue_frame(cue, b):
-        """Timeline frame where the cue words are spoken inside beat b, or None."""
+    def cue_frame(cue, b, end=False):
+        """Timeline frame where the cue words are spoken inside beat b (end=True: where they finish), or None."""
         want = " ".join(norm_tokens(cue))
         n = max(1, len(want.split()))
         best = (0.0, None)
@@ -998,9 +1099,12 @@ def main():
         if best[0] < 0.6:
             return None
         k = best[1]
+        if end:
+            k = min(k + n - 1, b["w1"] - 1)
+        t = words[k]["e"] if end else words[k]["s"]
         for c in clips:
             if c["w0"] <= k < c["w1"]:
-                return max(c["pos"], c["pos"] + round(words[k]["s"] * fps) - c["in"])
+                return min(c["pos"] + (c["out"] - c["in"]), max(c["pos"], c["pos"] + round(t * fps) - c["in"]))
         return None
 
     # Materials -> V2
@@ -1088,6 +1192,19 @@ def main():
         o["dur"] = min(o["dur"], total - o["pos"])
     overlays = [o for o in overlays if o["dur"] > 0]
 
+    # Sound effects -> A3: `sfx:<name> on "word"` in a row's Notes (or See) column
+    sfx, sfx_notes = place_sfx(cfg, found, cue_frame, fps, total, rdir)
+    # A stinger after the last line needs a moment to play: hold the last graphic and let it finish
+    need = max((p["pos"] + p["frames"] for p in sfx), default=0) - total
+    tail = min(max(0, need), round(rc.get("stinger_tail_max", 3.0) * fps))
+    if tail:
+        total += tail
+        for p in sfx:
+            p["len"] = min(p["frames"], total - p["pos"])
+        if overlays and overlays[-1]["kind"] == "image":
+            overlays[-1]["dur"] = total - overlays[-1]["pos"]
+        sfx_notes.append(f"Added {tail / fps:.1f}s at the end so the last sound effect can finish.")
+
     # Music -> A2 (pre-mixed bed: looped, lowered, faded)
     music = None
     if not a.no_music and rc["music"]:
@@ -1123,7 +1240,7 @@ def main():
     for u in unplaced:
         if u["kind"] == "video":
             u.setdefault("src_frames", max(1, round(probe(u["path"])["duration"] * fps)))
-    build_project(proj, kd, fps, size, timeline, overlays, music, guides, f"{proj.name} rough cut",
+    build_project(proj, kd, fps, size, timeline, overlays, music, guides, f"{proj.name} rough cut", sfx,
                   {"Section": cat["section"], "Ad-lib (keep?)": cat["adlib"], "Check this": cat["warning"]})
 
     sub = cfg["subtitles"]
@@ -1151,6 +1268,7 @@ def main():
     if dropped:
         L += ["", "## Removed", ""]
         L += [f"- raw {mmss(x['s'])}–{mmss(x['e'])} ({x['why']}): \"{x['text'][:90]}\"" for x in dropped]
+    L += sfx_report(sfx, sfx_notes, cfg, fps, total)
     L += ["", "## Graphics & B-roll on V2", ""]
     L += [f"- {mmss(o['pos'] / fps)}–{mmss((o['pos'] + o['dur']) / fps)}: `{o['name']}` (row {o['row']:02})" for o in overlays] \
         or ["- none (name files `05-name.png` / `05-name.mp4` to put them on row 05)"]

@@ -13,6 +13,8 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Projects: `tools/new_project.py` → `projects/<date>-<slug>/`
 - Graphics: `tools/graphic` (templates in `graphics/templates/`, brand in `[brand]`), `tools/cutout.sh` (rembg). Assets we can't generate (memes, screen recordings, missing photos) get a placeholder card `graphics/NN-placeholder-<what>.png`; the rough cut swaps in `NN-<what>.<ext>` when it exists (`docs/graphics.md` → Placeholders)
 - Voice: `tools/script_text.py`, `tools/voice-draft.sh` (Piper, stock voice), `tools/voice-clone` (Chatterbox clone of the user's voice: `add me <clips>` → `say script.md`, own `.venv-voice`, `[voice_clone]`), `tools/clean-voice.sh`, `tools/teleprompter.py`
+- Music: `tools/music.py` (`find`/`get` CC0 or CC BY tracks from Openverse + ccMixter with a license/credit file, `make` original loops you own, `mix` ducks music under a finished video), `[music]` in config, guide `docs/music.md`, `docs/sound-effects.md`. Rough cut puts `audio/music.*` on A2
+- Sound effects: `tools/sfx.py` (`build` an original library in `sfx/`, `list`/`play`; `find`/`get` from Myinstants = rights unknown, logged in `sfx/LICENSES.md`). Cue them in a script's Notes column as `sfx:<name> on "word"`; the rough cut places them on A3 and checks the amount. Rules: `docs/sound-effects.md`, `[sfx]` in config
 - Animations: `animations/` (Motion Canvas; scenes in `animations/src/scenes/`, brand synced to `src/brand.ts`)
 - Setup: `tools/setup.sh` installs everything; `tools/doctor.sh` checks. Python tools are in `.venv/` (run `.venv/bin/...`), Node in `node_modules/`.
 - Planner: `tools/planner.py` reads the Content Planner app (Appwrite, `[planner]` in config, key in `.env.local`): `current` = the video being worked on now + next step, `ideas`, `list`, `show`, `link`, `done`. `/current` uses it.
@@ -20,9 +22,9 @@ This repo holds the workflow, editing styles and tools for making videos with Kd
 - Reels: `tools/reel.py` (transcript → reel.json → build) cuts a ≤60 s vertical summary from the long-form export into `projects/<video>/reel/`
 - Footage tools: `tools/prep.sh`, `cut-silence.sh`, `subtitles.sh`, `burn-captions.sh`, `vertical.sh`, `thumbnails.sh`, `doctor.sh`, `analyze_cuts.py` (all take `--help`)
 - Personality: `personality/` (profile, inspirations, recurring bits), `[personality]` in config, `tools/cringe_check.py`
-- Docs: `docs/kdenlive-guide.md`, `docs/platform-specs.md`, `docs/hooks-library.md`, `docs/configuration.md`, `docs/tech-explainer-style.md`, `docs/graphics.md`, `docs/voice-and-recording.md`, `docs/animations.md`
+- Docs: `docs/kdenlive-guide.md`, `docs/platform-specs.md`, `docs/hooks-library.md`, `docs/configuration.md`, `docs/tech-explainer-style.md`, `docs/graphics.md`, `docs/voice-and-recording.md`, `docs/animations.md`, `docs/music.md`
 - Skills: `.claude/skills/` (kdenlive-editing, video-scriptwriting, footage-prep, captions-subtitles, topic-research, publishing, reference-analysis, graphics-thumbnails, motion-graphics, voiceover, personality-voice, rough-cut, reel-cutdown)
-- Commands: `/current`, `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/roughcut`, `/reel`
+- Commands: `/current`, `/new`, `/topics`, `/script`, `/edit`, `/publish`, `/analyze`, `/record`, `/graphics`, `/thumbnail`, `/animate`, `/punchup`, `/roughcut`, `/reel`, `/music`
 
 ## Rules
 

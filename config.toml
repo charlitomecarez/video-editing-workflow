@@ -237,6 +237,49 @@ max_chars = 250
 device = "auto"
 output_filters = "loudnorm=I=-16:TP=-1.5:LRA=11"
 
+[music]
+# Background music (tools/music.py). Only licenses that allow monetized use: CC0 / public domain,
+# or CC BY (credit the artist; the credit line is saved in audio/music-license.md).
+# Open libraries searched in this order; one being down doesn't stop the search
+sources = ["openverse", "ccmixter"]
+licenses = ["cc0", "by"]
+# ccMixter "ccPlus" artists also sell licenses, so those tracks are likelier to be in Content ID. Off = skip them
+allow_ccplus = false
+# Track length to accept in search results (seconds)
+min_seconds = 60
+max_seconds = 600
+# Seconds to wait for a library before skipping it
+timeout = 15
+# `make` (original music you own): lofi, chill, upbeat or tense. bpm 0 = the mood's tempo
+mood = "lofi"
+bpm = 0
+bars = 16
+loudness = -16
+# `mix` (music under a finished video): level, fade-out, and ducking under your voice
+mix_level_db = -14
+fade_seconds = 2.0
+duck = true
+duck_threshold = 0.03
+duck_ratio = 6
+
+[sfx]
+# Sound effects (tools/sfx.py, placed by the rough cut on A3 from `sfx:<name> on "word"` in the Notes column)
+dir = "sfx"
+# Level of the whole SFX track (dB). Each sound's own balance is set when the library is built
+level_db = -10
+# "Just right" checks in the rough cut report: never closer than this, and an overall rate in this range
+min_gap_seconds = 2.5
+min_per_minute = 4
+max_per_minute = 10
+# Comedic stingers (rimshot, boing, sad-trombone, record-scratch...) at most this often
+comedic_min_gap_seconds = 15
+# Myinstants sounds have no license info. false = the rough cut skips them (listed in the report)
+allow_unknown_rights = true
+# Myinstants allows 10 anonymous requests a minute. A token (email developers@myinstants.com) raises it;
+# put it in .env.local as MYINSTANTS_TOKEN rather than here
+myinstants_gap_seconds = 6.5
+timeout = 20
+
 [clean_voice]
 # tools/clean-voice.sh
 highpass = 80         # Hz, cuts rumble and hum
@@ -328,6 +371,9 @@ use_video = true
 max_graphic_seconds = 0
 # Hold a graphic until the next one if the gap is shorter than this (avoids flashing back to camera)
 fill_gaps_under = 1.0
+# A sound effect after the last line (e.g. a closing sad trombone) gets up to this many seconds of extra
+# ending (last graphic held, music fading) so it can play out
+stinger_tail_max = 3.0
 # Music from audio/music.* on A2: looped to the video length, lowered, faded out
 music = true
 music_level_db = -20

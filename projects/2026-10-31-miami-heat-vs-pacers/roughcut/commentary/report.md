@@ -2,7 +2,7 @@
 
 - **Project:** `2026-10-31-miami-heat-vs-pacers-commentary.kdenlive` (open it in Kdenlive)
 - **Recording:** `footage/2026-10-31 22-10-11_clean.wav`
-- **Length:** 4:20.0 cut from 4:54.5 raw (61/62 script lines, 5 ad-libs kept, 3 bits removed)
+- **Length:** 4:22.2 cut from 4:54.5 raw (61/62 script lines, 5 ad-libs kept, 3 bits removed)
 - **Format:** 1920x1080 @ 30 fps
 
 ## Lines
@@ -85,6 +85,42 @@
 - raw 0:03.5–0:04.8 (retake / false start): "42 points."
 - raw 3:01.6–3:01.9 (retake / false start): "At"
 - raw 4:46.6–4:47.0 (filler): "Jokala."
+
+## Sound effects on A3
+
+- 0:00.2: `impact` on "Forty-two" (row 01)
+- 0:04.8: `record-scratch` on "natalo" (row 02)
+- 0:20.9: `tick` on "Four minutes" (row 07)
+- 0:27.4: `whoosh` on "First quarter" (row 08)
+- 0:35.0: `pop` on "nineteen lang" (row 10)
+- 0:42.9: `whoosh` on "Bumawi ang Miami" (row 12)
+- 0:54.9: `ding` on "Forty-two points" (row 14)
+- 1:00.5: `rimshot` on "Ubos-Pacers na yan" (row 15)
+- 1:04.0: `riser` on "Si Giannis" (row 17)
+- 1:14.4: `ding` on "ten assists" (row 19)
+- 1:27.7: `pop` on "buong box score" (row 22)
+- 1:35.9: `ding` on "eleven of fourteen" (row 25)
+- 1:47.3: `ding` on "seven threes" (row 29)
+- 1:52.7: `riser` on "Fifty-five threes" (row 31)
+- 2:13.5: `record-scratch` on "passive-aggressive" (row 34)
+- 2:21.9: `pop` on "Pelle Larsson" (row 35)
+- 2:24.4: `glitch` on "ang Indiana" (row 36)
+- 2:28.0: `tick` on "Eleven players" (row 37)
+- 3:01.5: `ding` on "naka-one twenty-five" (row 44)
+- 3:05.1: `whoosh` on "may ibig sabihin" (row 45)
+- 3:18.9: `pop` on "four and oh" (row 48)
+- 3:28.4: `whoosh-down` on "hindi naaayos" (row 50)
+- 3:36.4: `impact` on "nakakatakot" (row 52)
+- 3:44.5: `tick` on "Giannis thirty-one" (row 54)
+- 3:48.2: `tick` on "Bam twenty-seven" (row 55)
+- 3:50.7: `tick` on "Klay seven threes" (row 56)
+- 4:00.6: `whoosh` on "Next host" (row 58)
+- 4:20.0: `sad-trombone` on "sa Netflix" (row 62)
+
+**Checks:**
+
+- **28 sounds, 6.4 per minute** (aim for 4–10): good
+- Added 2.2s at the end so the last sound effect can finish.
 
 ## Graphics & B-roll on V2
 
@@ -214,7 +250,7 @@
 - 4:12.1–4:14.1: `60-1-card-pinned.png` (row 60)
 - 4:14.1–4:16.2: `61-1-card-next-breakdown.png` (row 61)
 - 4:16.2–4:18.0: `62-1-cap-31-minutes-nga-pala.png` (row 62)
-- 4:18.0–4:20.0: `62-2-placeholder-netflix-callback.png` (row 62)
+- 4:18.0–4:22.2: `62-2-placeholder-netflix-callback.png` (row 62)
 
 ## Placeholders still in the video
 

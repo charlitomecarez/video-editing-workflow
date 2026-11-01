@@ -56,6 +56,7 @@ def extract(md):
                 cols = {
                     "hear": next((i for i, c in enumerate(low) if c.startswith("hear")), None),
                     "see": next((i for i, c in enumerate(low) if c.startswith("see")), None),
+                    "notes": next((i for i, c in enumerate(low) if c.startswith("note")), None),
                     "num": next((i for i, c in enumerate(low) if c in ("#", "no", "no.", "row")), None),
                 }
                 continue
@@ -67,7 +68,7 @@ def extract(md):
             row = int(num) if num.isdigit() else n
             if cell("hear"):
                 beats.append({"row": row, "section": section, "target": target,
-                              "text": cell("hear").strip('"“” '), "see": cell("see")})
+                              "text": cell("hear").strip('"“” '), "see": cell("see"), "notes": cell("notes")})
             continue
         if s.startswith("**"):
             in_vo = s.lower().startswith("**voiceover")

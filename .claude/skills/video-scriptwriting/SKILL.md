@@ -25,7 +25,7 @@ description: Use when writing, rewriting or punching up a video script, hooks, v
 ## Script formats
 
 - `sections`: voiceover, on-screen text and B-roll per section.
-- `av-table` (3 columns: **See | Hear | Notes**): one row per beat. Change the See column whenever the Hear line names something new, and put asset links, sources and SFX in Notes. If a beat needs an asset the user has to find or record (a meme, a screen recording, a photo), say so in Notes as `PLACEHOLDER: <what>`; `/graphics` turns those into placeholder cards (see `docs/graphics.md`). Used by `tech-explainer` styles (or `--format av-table`).
+- `av-table` (3 columns: **See | Hear | Notes**): one row per beat. Change the See column whenever the Hear line names something new, and put asset links, sources and SFX in Notes. Write SFX as `sfx:<name> on "word from the Hear line"` (names from `python3 tools/sfx.py list`) so the rough cut can place them; follow `docs/sound-effects.md`: about 4-10 a minute, a sound only where the viewer should feel something (turn, reveal, joke), comedic stingers 15 s apart, none on deadpan lines, serious facts, memes with their own audio or the CTA. If a beat needs an asset the user has to find or record (a meme, a screen recording, a photo), say so in Notes as `PLACEHOLDER: <what>`; `/graphics` turns those into placeholder cards (see `docs/graphics.md`). Used by `tech-explainer` styles (or `--format av-table`).
 - The style's `words_per_second` overrides the config value (tech-explainer is ~3.0).
 
 ## Tech explainers

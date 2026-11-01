@@ -78,6 +78,10 @@ tools/voice-clone add me ~/Desktop/voice1.m4a voice2.m4a        # learn your voi
 tools/voice-clone say projects/<video>/script.md                # draft voiceover in YOUR voice + per-row timings
 tools/voice-draft.sh projects/<video>/script.md                 # stock AI voice (Piper) for a quick length check
 tools/clean-voice.sh projects/<video>/audio/voice.wav           # denoise + level a recording
+python3 tools/music.py make --mood lofi --project projects/<video>  # original background music you own
+python3 tools/music.py find "chill piano"                         # CC0 / CC BY tracks you can monetize
+python3 tools/music.py mix projects/<video>/export/final.mp4        # music under the video, ducked under your voice
+python3 tools/sfx.py build && python3 tools/sfx.py list             # original sound effects; cue them in the script: sfx:whoosh on "word"
 
 tools/graphic --list                                            # thumbnails, code cards, slates, diagrams...
 tools/graphic thumbnail-tech --set "text=Is it *fast?*" --set icon=logo.png --open

@@ -48,6 +48,7 @@ node_modules/
 .venv/
 .venv-voice/
 .voices/
+.cache/
 graphics/out/
 animations/output/
 animations/dist/
