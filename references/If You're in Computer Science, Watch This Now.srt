@@ -1,0 +1,330 @@
+1
+00:00:00,000 --> 00:00:02,620
+If you're in computer science,
+watch this now. This isn't the
+
+2
+00:00:02,620 --> 00:00:05,220
+part where I tell you to grind,
+lock in, or become some
+
+3
+00:00:05,220 --> 00:00:08,100
+unrecognizable productivity
+larper before January. Honestly,
+
+4
+00:00:08,400 --> 00:00:10,820
+it's the opposite. I want you to
+use the next couple months to
+
+5
+00:00:10,820 --> 00:00:13,400
+remember why you liked coding in
+the first place, because a lot
+
+6
+00:00:13,400 --> 00:00:15,800
+of you clearly hate it now, and
+that's expected. It's what
+
+7
+00:00:15,800 --> 00:00:18,640
+happens when you find out big
+tech employees are suggested to
+
+8
+00:00:18,640 --> 00:00:21,340
+not manually code anymore. But
+if you keep digging, the
+
+9
+00:00:21,340 --> 00:00:23,760
+opportunity is a lot closer than
+you think. Education gets
+
+10
+00:00:23,760 --> 00:00:26,240
+heavier, everyone's attention
+gets pulled into exams,
+
+11
+00:00:26,680 --> 00:00:29,820
+holidays, finals, and the whole
+industry slowly exhales for a
+
+12
+00:00:29,820 --> 00:00:32,140
+few months. Nobody's demanding
+your best work right now,
+
+13
+00:00:32,360 --> 00:00:35,400
+nothing's due. For once, there's
+no portfolio project with a
+
+14
+00:00:35,400 --> 00:00:38,460
+deadline attached, no interview
+prep schedule, no algorithm to
+
+15
+00:00:38,460 --> 00:00:41,300
+please, recruiting slows down,
+and every LinkedIn thought
+
+16
+00:00:41,300 --> 00:00:43,600
+leader with a ring light is
+about to disappear for the
+
+17
+00:00:43,600 --> 00:00:46,540
+holidays too, which means this
+is honestly the best time to
+
+18
+00:00:46,540 --> 00:00:49,200
+fuck around and find out. Build
+dumb shit. So I'd start an hour
+
+19
+00:00:49,200 --> 00:00:51,940
+or two a day, forget the
+bootcamps, or a 75 hard for
+
+20
+00:00:51,940 --> 00:00:55,120
+nerds, and most definitely
+forget the 5am cold shower leak
+
+21
+00:00:55,120 --> 00:00:58,080
+code. Open your laptop, pick
+something that has zero career
+
+22
+00:00:58,080 --> 00:01:01,120
+justification, and build it
+because it's funny or weird or
+
+23
+00:01:01,120 --> 00:01:03,560
+mildly interesting to you
+specifically. Make a website
+
+24
+00:01:03,560 --> 00:01:06,440
+that only insults you when you
+open it. Build a tiny game
+
+25
+00:01:06,440 --> 00:01:09,440
+nobody else knows how to play.
+Automate a script that texts you
+
+26
+00:01:09,440 --> 00:01:11,680
+when your roommate's leftovers
+have officially become a
+
+27
+00:01:11,680 --> 00:01:14,300
+biohazard. The goal is an
+output, it's remembering that
+
+28
+00:01:14,300 --> 00:01:16,920
+this thing you chose to study is
+allowed to be fun, occasionally,
+
+29
+00:01:17,200 --> 00:01:19,740
+without any LinkedIn posts
+involved. But here's the advice
+
+30
+00:01:19,740 --> 00:01:22,240
+that'll take you two months to
+realize. Enjoying it is the
+
+31
+00:01:22,240 --> 00:01:24,960
+actual unlock. Lead code.
+Burning out. Interviews.
+
+32
+00:01:25,040 --> 00:01:27,820
+LinkedIn posts. Is that really
+what you signed up for? An hour
+
+33
+00:01:27,820 --> 00:01:30,540
+of just curious tinkering beats
+four hours of torture grind.
+
+34
+00:01:30,740 --> 00:01:32,980
+Build whatever you want, build
+what no one wants, that's the
+
+35
+00:01:32,980 --> 00:01:35,480
+secret. You are also allowed to
+relearn things you have
+
+36
+00:01:35,480 --> 00:01:38,120
+understood the first time. Go
+back and get recursion instead
+
+37
+00:01:38,120 --> 00:01:40,380
+of pattern matching your way
+through it until the professor
+
+38
+00:01:40,380 --> 00:01:43,060
+stops asking follow-up
+questions. Read source code from
+
+39
+00:01:43,060 --> 00:01:46,140
+a project you use every day just
+to see how real people structure
+
+40
+00:01:46,140 --> 00:01:48,760
+things when you're not worried
+about grades. Pick a language
+
+41
+00:01:48,760 --> 00:01:51,380
+you've been meaning to learn out
+of curiosity instead of job
+
+42
+00:01:51,380 --> 00:01:54,020
+requirements. None of that needs
+to go on a resume to count as
+
+43
+00:01:54,020 --> 00:01:57,040
+progress. And ironically, it'll
+probably end up on your resume
+
+44
+00:01:57,040 --> 00:02:00,140
+anyway, just without the forced
+energy. Come back in January,
+
+45
+00:02:00,560 --> 00:02:03,080
+having quietly gotten a little
+better at something you actually
+
+46
+00:02:03,080 --> 00:02:06,080
+wanted to poke at because you
+got curious again for the first
+
+47
+00:02:06,080 --> 00:02:09,140
+time in a while. We made fun,
+mean, unproductivity in tech.
+
+48
+00:02:09,460 --> 00:02:11,880
+Everyone's sprinting toward
+burnout after three Red Bulls
+
+49
+00:02:11,880 --> 00:02:14,800
+right now are the ones who are
+actually behind, they just won't
+
+50
+00:02:14,800 --> 00:02:18,080
+notice until March when they're
+great at but hate their career.
+
+51
+00:02:18,400 --> 00:02:20,600
+You need an hour a day of
+fucking around and finding out.
+
+52
+00:02:20,880 --> 00:02:22,900
+Quick heads up, if you're
+actually shipping one of these
+
+53
+00:02:22,900 --> 00:02:25,360
+projects, your domain matters
+more than you think. This
+
+54
+00:02:25,360 --> 00:02:29,760
+video's sponsor, Porkbun, has
+.app and .dev domains for 5.99
+
+55
+00:02:29,760 --> 00:02:33,100
+your first year. And unlike a
+.com, they actually tell people
+
+56
+00:02:33,100 --> 00:02:36,460
+what you built before they even
+click. Every .app and .dev
+
+57
+00:02:36,460 --> 00:02:40,780
+domain ships on the HSTS preload
+list, so HTTPS is forced
+
+58
+00:02:40,780 --> 00:02:43,580
+automatically, no config, no
+forgetting a redirect at
+
+59
+00:02:43,580 --> 00:02:46,800
+bedtime, plus a free SSL
+certificate included from
+
+60
+00:02:46,800 --> 00:02:50,600
+Porkbun, not Upsold. Free Who Is
+Privacy 2, so your name and
+
+61
+00:02:50,600 --> 00:02:52,900
+address aren't just sitting in a
+public database for anyone
+
+62
+00:02:52,900 --> 00:02:55,780
+curious enough to look.
+Checkouts clean, no surprise add
+
+63
+00:02:55,780 --> 00:02:58,520
+-ons trying to sneak into your
+cart, and if you get stuck, real
+
+64
+00:02:58,520 --> 00:03:02,040
+support's actually available. 24
+-7, every day of the year. Grab
+
+65
+00:03:02,040 --> 00:03:06,660
+your .app or .dev domain for $5
+.99 for their first year, link
+
+66
+00:03:06,660 --> 00:03:09,260
+below. Thanks for watching, and
+don't forget to subscribe.
+
