@@ -175,16 +175,17 @@ These rows show a yellow **PLACEHOLDER** card for now. Save the real photo or me
 ## Post
 
 ### youtube
-- **Title / caption:** 12 Classmates na Meron sa Bawat Section sa Pilipinas
-- **Description:** Yung paalala, yung pakopya, yung "hindi ako nag-review"... Sino ka dito? I-comment mo yung number mo.
-- **Hashtags / tags:** #classmates #pinoyschool #highschool #taglish #relatable
+- **Title:** 12 Classmates na Meron sa Bawat Section sa Pilipinas (options in `youtube-upload.md`)
+- **Thumbnail:** `thumbnails/thumb-c.png` ("Ma'am, may assignment po?" over a hand-raise)
+- **Description + chapters:** see `youtube-upload.md`
+- **Hashtags / tags:** #classmates #pinoyschool #highschool #pinoy #relatable
 
 ### tiktok / instagram-reels / facebook-reels / youtube-shorts
 - Cut a ≤60 s reel later with `/reel` (best picks: #1 late, #6 hindi daw nag-review, #9 president na absent, #11 paalala).
 - **Caption:** Sino ka dito? 1-12, comment mo. 📚
 - **Hashtags / tags:** #classmates #pinoy #school #fyp
 
-- **Thumbnail / cover idea:** A classroom armchair with "SINO KA DITO?" in big text and twelve numbered sticky notes.
+- **Thumbnail:** `thumbnails/thumb-c.png` (backup `thumb-a.png`, "SINO KA DITO?")
 
 ## Results (fill in ~7 days after posting)
 

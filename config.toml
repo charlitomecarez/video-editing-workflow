@@ -94,7 +94,7 @@ auto_steps = [
 
 [project]
 # Subfolders created by tools/new_project.py
-folders = ["footage", "audio", "graphics", "export", "thumbnails", "reel"]
+folders = ["footage", "audio", "graphics", "export", "thumbnails", "reel", "final"]
 date_prefix = true
 
 [topics]

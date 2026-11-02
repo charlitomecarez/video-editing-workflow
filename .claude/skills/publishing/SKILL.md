@@ -14,7 +14,8 @@ description: Use when preparing a finished video for posting (export settings, t
    - Title/caption: put the hook first and keep the important words at the start
    - Hashtags: 3-5 specific ones plus 1-2 broad ones. No banned or irrelevant tags.
    - YouTube description: the first 2 lines matter most, then add chapters (`0:00 Intro`) for videos over 3 minutes
-5. Set the script's Status to `posted`.
+5. **Fill `projects/<video>/final/`**, the one folder the user uploads from: `<video>-youtube.mp4` (the export, loudness -14 LUFS), `thumbnail.png` (1280x720, under 2 MB; `thumbnail-backup.png` for the 2nd choice), `title.txt`, `description.txt` (hook lines, chapters, credits, hashtags) and `tags.txt` as plain copy-paste text. No other files.
+6. Set the script's Status to `posted`.
 
 ## Reels
 
