@@ -1235,9 +1235,10 @@ def main():
         if end > nxt:
             o["dur"] = max(1, nxt - o["pos"])
         elif nxt - end <= gap_fill and (o["kind"] == "image" or (
-                o["path"].parent == proj / gdir and nxt - o["pos"] <= o["src_frames"])):
+                (o["path"].parent == proj / gdir or video is None) and nxt - o["pos"] <= o["src_frames"])):
             # Hold the graphic (or let an animated one run on) instead of flashing back to V1.
-            # B-roll footage is left alone so it doesn't cover the speaker longer than planned.
+            # B-roll footage is left alone so it doesn't cover the speaker longer than planned,
+            # except in faceless videos (no V1), where the gap would otherwise be black.
             o["dur"] = nxt - o["pos"]
         o["dur"] = min(o["dur"], total - o["pos"])
     overlays = [o for o in overlays if o["dur"] > 0]
@@ -1251,8 +1252,9 @@ def main():
         total += tail
         for p in sfx:
             p["len"] = min(p["frames"], total - p["pos"])
-        if overlays and overlays[-1]["kind"] == "image":
-            overlays[-1]["dur"] = total - overlays[-1]["pos"]
+        last = overlays[-1] if overlays else None
+        if last and (last["kind"] == "image" or total - last["pos"] <= last.get("src_frames", 0)):
+            last["dur"] = total - last["pos"]   # a clip long enough runs on too, so the end isn't black
         sfx_notes.append(f"Added {tail / fps:.1f}s at the end so the last sound effect can finish.")
 
     # Music -> A2 (pre-mixed bed: looped, lowered, faded)

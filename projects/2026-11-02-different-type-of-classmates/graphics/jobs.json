@@ -1,0 +1,907 @@
+[
+ {
+  "template": "caption",
+  "set": {
+   "text": "*first* day"
+  },
+  "out": "01-1-cap-first-day.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "PHOTO: empty classroom with rows of armchairs",
+   "variant": "placeholder"
+  },
+  "out": "02-1-placeholder-photo-classroom-armchairs.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "bagong *pag-asa*"
+  },
+  "out": "02-2-cap-bagong-pag-asa.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "this year, *iba* na 'ko"
+  },
+  "out": "03-1-cap-this-year-iba-na-ko.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "uupo sa *harap*"
+  },
+  "out": "03-2-cap-uupo-sa-harap.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*week* 2"
+  },
+  "out": "04-1-cap-week-2.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "may *nangongopya*"
+  },
+  "out": "05-1-cap-may-nangongopya.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "may tulog"
+  },
+  "out": "05-2-cap-may-tulog.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "may *nagpaalala*"
+  },
+  "out": "05-3-cap-may-nagpaalala.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*nakalimot* na si Ma'am"
+  },
+  "out": "06-1-cap-nakalimot-na-si-ma-am.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "iisa ang *cast*"
+  },
+  "out": "07-1-cap-iisa-ang-cast.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*sino-sino* sila?"
+  },
+  "out": "08-1-cap-sino-sino-sila.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "12 CLASSMATES",
+   "variant": "big"
+  },
+  "out": "09-1-card-12-classmates.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "umaga → *recognition* day"
+  },
+  "out": "10-1-cap-umaga-recognition-day.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "sino ako dito?"
+  },
+  "out": "11-1-cap-sino-ako-dito.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi ako *top* 1"
+  },
+  "out": "11-2-cap-hindi-ako-top-1.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#1*\nAng late",
+   "variant": "big"
+  },
+  "out": "12-1-card-1-ang-late.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "7:30 klase"
+  },
+  "out": "13-1-cap-7-30-klase.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "7:55 dating"
+  },
+  "out": "13-2-cap-7-55-dating.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi *nagmamadali*"
+  },
+  "out": "14-1-cap-hindi-nagmamadali.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "may *pandesal* pa"
+  },
+  "out": "14-2-cap-may-pandesal-pa.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "\"*traffic* po, Ma'am\""
+  },
+  "out": "15-1-cap-traffic-po-ma-am.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "taga-*kabilang* kanto"
+  },
+  "out": "15-2-cap-taga-kabilang-kanto.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#2*\nAng pahingi ng papel",
+   "variant": "big"
+  },
+  "out": "16-1-card-2-ang-pahingi-ng-papel.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "get 1/4"
+  },
+  "out": "17-1-cap-get-1-4.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*pahingi* 1/4"
+  },
+  "out": "18-1-cap-pahingi-1-4.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "pahingi *ballpen*"
+  },
+  "out": "18-2-cap-pahingi-ballpen.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "ano daw #1?"
+  },
+  "out": "18-3-cap-ano-daw-1.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*walang* dala buong taon"
+  },
+  "out": "19-1-cap-walang-dala-buong-taon.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "minsan pati *bag*"
+  },
+  "out": "19-2-cap-minsan-pati-bag.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#3*\nAng pakopya",
+   "variant": "big"
+  },
+  "out": "20-1-card-3-ang-pakopya.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*nagre-research* lang"
+  },
+  "out": "21-1-cap-nagre-research-lang.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "sa *notebook* mo"
+  },
+  "out": "21-2-cap-sa-notebook-mo.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "binago ang 1 *word*"
+  },
+  "out": "22-1-cap-binago-ang-1-word.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*halata*."
+  },
+  "out": "22-2-cap-halata.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#4*\nAng \"add ko lang po\"",
+   "variant": "big"
+  },
+  "out": "23-1-card-4-ang-add-ko-lang-po.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "tama na. *tapos* na."
+  },
+  "out": "24-1-cap-tama-na-tapos-na.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "\"add ko *lang* po\""
+  },
+  "out": "25-1-cap-add-ko-lang-po.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*inulit* lang"
+  },
+  "out": "26-1-cap-inulit-lang.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "mas *mahaba* lang"
+  },
+  "out": "26-2-cap-mas-mahaba-lang.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "+ *points*"
+  },
+  "out": "26-3-cap-points.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#5*\nAng kasama ba sa exam?",
+   "variant": "big"
+  },
+  "out": "27-1-card-5-ang-kasama-ba-sa-exam.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi interesado sa *lesson*"
+  },
+  "out": "28-1-cap-hindi-interesado-sa-lesson.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "sa *lalabas* lang"
+  },
+  "out": "28-2-cap-sa-lalabas-lang.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi *estudyante*"
+  },
+  "out": "29-1-cap-hindi-estudyante.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*STRATEGIST*"
+  },
+  "out": "29-2-cap-strategist.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*pinaka-matino*"
+  },
+  "out": "30-1-cap-pinaka-matino.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#6*\nAng \"hindi daw\nnag-review\"",
+   "variant": "big"
+  },
+  "out": "31-1-card-6-ang-hindi-daw-nag-review.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "pareho kaming *walang* alam"
+  },
+  "out": "32-1-cap-pareho-kaming-walang-alam.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*50/50*",
+   "variant": "big"
+  },
+  "out": "33-1-card-50-50.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "ikaw: *pasado*. sana."
+  },
+  "out": "33-2-cap-ikaw-pasado-sana.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*sinungaling*"
+  },
+  "out": "34-1-cap-sinungaling.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*matalino*"
+  },
+  "out": "34-2-cap-matalino.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#7*\nAng clown sa exam",
+   "variant": "big"
+  },
+  "out": "35-1-card-7-ang-clown-sa-exam.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "sobrang *tahimik*"
+  },
+  "out": "36-1-cap-sobrang-tahimik.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*hikab na may sound effect*"
+  },
+  "out": "37-1-cap-hikab-na-may-sound-effect.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "MEME: a room full of people trying not to laugh",
+   "variant": "placeholder"
+  },
+  "out": "38-1-placeholder-meme-trying-not-to-laugh.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "si *Ma'am* lang hindi tumawa"
+  },
+  "out": "38-2-cap-si-ma-am-lang-hindi-tumawa.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#8*\nAng group project ghost",
+   "variant": "big"
+  },
+  "out": "39-1-card-8-ang-group-project-ghost.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*seen*"
+  },
+  "out": "40-1-cap-seen.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "may *lakad*"
+  },
+  "out": "40-2-cap-may-lakad.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*pinaka-confident*"
+  },
+  "out": "40-3-cap-pinaka-confident.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "PHOTO: one cheap ballpen alone on a desk",
+   "variant": "placeholder"
+  },
+  "out": "41-1-placeholder-photo-ballpen.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*binawi* rin"
+  },
+  "out": "41-2-cap-binawi-rin.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "peer eval: 10/10"
+  },
+  "out": "42-1-cap-peer-eval-10-10.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "kasi *takot* ka"
+  },
+  "out": "42-2-cap-kasi-takot-ka.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#9*\nAng president na absent",
+   "variant": "big"
+  },
+  "out": "43-1-card-9-ang-president-na-absent.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi *tumakbo*"
+  },
+  "out": "44-1-cap-hindi-tumakbo.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*democracy*."
+  },
+  "out": "44-2-cap-democracy.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "taga-collect ng *ambagan*"
+  },
+  "out": "45-1-cap-taga-collect-ng-ambagan.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "PHOTO: a blackboard with \"NOISY:\" and a list of names",
+   "variant": "placeholder"
+  },
+  "out": "45-2-placeholder-photo-noisy-board.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#10*\nAng may baon",
+   "variant": "big"
+  },
+  "out": "46-1-card-10-ang-may-baon.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "MEME: lots of hands grabbing at one snack",
+   "variant": "placeholder"
+  },
+  "out": "47-1-placeholder-meme-hands-snack.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "ang *tunay* na president"
+  },
+  "out": "48-1-cap-ang-tunay-na-president.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#11*\nAng paalala",
+   "variant": "big"
+  },
+  "out": "49-1-card-11-ang-paalala.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "last 2 *minutes*"
+  },
+  "out": "50-1-cap-last-2-minutes.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "\"Ma'am, may *assignment* po?\""
+  },
+  "out": "51-1-cap-ma-am-may-assignment-po.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "MEME: a whole room slowly turning to stare at one person",
+   "variant": "placeholder"
+  },
+  "out": "52-1-placeholder-meme-room-staring.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "wala siyang pake"
+  },
+  "out": "52-2-cap-wala-siyang-pake.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#12*\nAng tahimik na top 1",
+   "variant": "big"
+  },
+  "out": "53-1-card-12-ang-tahimik-na-top-1.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi nagsasalita *buong* taon"
+  },
+  "out": "54-1-cap-hindi-nagsasalita-buong-taon.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "WITH HIGHEST HONORS",
+   "variant": "big"
+  },
+  "out": "54-2-card-with-highest-honors.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "\"*bakit* hindi ikaw 'yan?\""
+  },
+  "out": "55-1-cap-bakit-hindi-ikaw-yan.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*aaminin* ko na"
+  },
+  "out": "56-1-cap-aaminin-ko-na.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#6*",
+   "variant": "big"
+  },
+  "out": "56-2-card-6.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "yung *totoong* version"
+  },
+  "out": "57-1-cap-yung-totoong-version.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi *talaga*\nnag-review"
+  },
+  "out": "57-2-cap-hindi-talaga-nag-review.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*pasado*"
+  },
+  "out": "58-1-cap-pasado.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "+ *novena*"
+  },
+  "out": "58-2-cap-novena.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*honest* take"
+  },
+  "out": "59-1-cap-honest-take.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "walang paalala = walang *assignment*"
+  },
+  "out": "60-1-cap-walang-paalala-walang-assign.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "...*mali* example ko"
+  },
+  "out": "60-2-cap-mali-example-ko.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*pamasahe*"
+  },
+  "out": "61-1-cap-pamasahe.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*nagpakain* sa'yo"
+  },
+  "out": "62-1-cap-nagpakain-sa-yo.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*tropa* mo pa rin"
+  },
+  "out": "62-2-cap-tropa-mo-pa-rin.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*finals* week"
+  },
+  "out": "63-1-cap-finals-week.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "hindi lang sila characters",
+   "variant": "big"
+  },
+  "out": "64-1-card-hindi-lang-sila-characters.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "lessons: *nakalimutan*"
+  },
+  "out": "65-1-cap-lessons-nakalimutan.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*mukha* ni Ma'am: forever"
+  },
+  "out": "65-2-cap-mukha-ni-ma-am-forever.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*recap*"
+  },
+  "out": "66-1-cap-recap.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*late*"
+  },
+  "out": "67-1-cap-late.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*papel*"
+  },
+  "out": "67-2-cap-papel.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*pakopya*"
+  },
+  "out": "67-3-cap-pakopya.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*add* ko lang po"
+  },
+  "out": "68-1-cap-add-ko-lang-po.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*kasama* sa exam?"
+  },
+  "out": "68-2-cap-kasama-sa-exam.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*hindi* daw nag-review"
+  },
+  "out": "69-1-cap-hindi-daw-nag-review.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*clown*"
+  },
+  "out": "69-2-cap-clown.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*ghost*"
+  },
+  "out": "70-1-cap-ghost.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*president* na absent"
+  },
+  "out": "70-2-cap-president-na-absent.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "may *baon*"
+  },
+  "out": "70-3-cap-may-baon.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*paalala*"
+  },
+  "out": "71-1-cap-paalala.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "tahimik na *top* 1"
+  },
+  "out": "71-2-cap-tahimik-na-top-1.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "12 classmates"
+  },
+  "out": "72-1-cap-12-classmates.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "1 GC na *naka-mute*"
+  },
+  "out": "72-2-cap-1-gc-na-naka-mute.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*sino* ka dito?"
+  },
+  "out": "73-1-cap-sino-ka-dito.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "comment: #"
+  },
+  "out": "73-2-cap-comment.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*part* 2?"
+  },
+  "out": "74-1-cap-part-2.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "tag mo yung #11"
+  },
+  "out": "75-1-cap-tag-mo-yung-11.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "1 *school year*"
+  },
+  "out": "10-2-cap-1-school-year.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*dahan-dahan*"
+  },
+  "out": "17-2-cap-dahan-dahan.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "kasi may *plano*"
+  },
+  "out": "30-2-cap-may-plano.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "pati *electric fan*"
+  },
+  "out": "36-2-cap-electric-fan.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*Tupperware*: bawal mawala"
+  },
+  "out": "48-2-cap-tupperware.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "ang ganda ng *buhay*"
+  },
+  "out": "50-2-cap-ganda-ng-buhay.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "kailangan *silang lahat*"
+  },
+  "out": "59-2-cap-silang-lahat.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "ang saya mag-*kwento*"
+  },
+  "out": "64-2-cap-mag-kwento.png"
+ }
+]

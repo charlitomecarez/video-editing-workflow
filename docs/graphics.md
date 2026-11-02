@@ -191,6 +191,8 @@ To animate another template, add an `animate.js` next to its `template.html` (se
 `[brand]` in `config.toml` / `config.local.toml` controls every template and the animations:
 `bg`, `bg2`, `fg`, `accent`, `accent2`, `font_heading`, `font_body`, `font_code`, `font_css` (web fonts), `code_theme`, `logo`.
 
+`font_heading` is the one brand font: every template uses it, including the kinetic `caption` template and the captions `tools/stock.py --caption` burns onto clips (`photo-caption`, same case and outline as the kinetic captions). Change it once and every graphic follows.
+
 Example with a Google Font:
 
 ```toml

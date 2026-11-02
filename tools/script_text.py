@@ -29,6 +29,15 @@ def split_row(line):
     return cells
 
 
+def unquote(text):
+    """Drop quotes only when they wrap the whole line, so a quote inside a line
+    (Tapos siya, "Ma'am, may assignment po?") keeps both of its marks."""
+    t = text.strip()
+    if len(t) >= 2 and t[0] in '"“' and t[-1] in '"”' and not any(q in t[1:-1] for q in '"“”'):
+        return t[1:-1].strip()
+    return t
+
+
 def extract(md):
     """Beats in order: {row, section, target, text, see}.
 
@@ -68,7 +77,7 @@ def extract(md):
             row = int(num) if num.isdigit() else n
             if cell("hear"):
                 beats.append({"row": row, "section": section, "target": target,
-                              "text": cell("hear").strip('"“” '), "see": cell("see"), "notes": cell("notes")})
+                              "text": unquote(cell("hear")), "see": cell("see"), "notes": cell("notes")})
             continue
         if s.startswith("**"):
             in_vo = s.lower().startswith("**voiceover")
@@ -80,7 +89,7 @@ def extract(md):
         if in_vo and s and not s.startswith("_"):
             n += 1
             beats.append({"row": n, "section": section, "target": target,
-                          "text": s.lstrip("-* ").strip('"“” '), "see": ""})
+                          "text": unquote(s.lstrip("-* ")), "see": ""})
     return beats
 
 
