@@ -12,22 +12,27 @@
   .dim .bar:not(.hot){opacity:.38}
   .bar.hot{box-shadow:0 0 0 8px var(--accent),0 0 60px color-mix(in srgb,var(--accent) 60%,transparent)}
   .bar.hot .v{color:var(--accent);font-size:84px;top:-104px}
+  .ref{position:absolute;left:0;right:0;border-top:6px dashed var(--fg);opacity:.9}
+  .ref span{position:absolute;left:0;top:-62px;font-family:var(--font-heading);font-size:40px;background:var(--bg);padding:0 12px}
+  .legend span:empty{display:none}
   .labels{display:flex;gap:90px;padding:0 40px;margin-top:16px}
   .labels div{flex:1;text-align:center;font-family:var(--font-heading);font-size:44px;opacity:.85}
 </style></head><body>
-<template id="d"><i>{{labels}}</i><i>{{a_values}}</i><i>{{b_values}}</i><i>{{highlight}}</i></template>
+<template id="d"><i>{{labels}}</i><i>{{a_values}}</i><i>{{b_values}}</i><i>{{highlight}}</i><i>{{line}}</i><i>{{line_label}}</i></template>
 <div class="title">{{title}}</div>
 {{#sub}}<div class="sub">{{sub}}</div>{{/sub}}
 <div class="legend"><span style="--c:{{a_color}}">{{a_name}}</span><span style="--c:{{b_color}}">{{b_name}}</span></div>
 <div class="chart" id="chart"></div>
 <div class="labels" id="labels"></div>
 <script>
-  const [labels, av, bv, hi] = [...document.getElementById("d").content.querySelectorAll("i")].map((x) => x.textContent.trim());
+  const [labels, av, bv, hi, line, lineLabel] = [...document.getElementById("d").content.querySelectorAll("i")].map((x) => x.textContent.trim());
   const split = (s) => s.split(";").map((x) => x.trim()).filter((x) => x !== "");
-  const L = split(labels), A = split(av).map(Number), B = split(bv).map(Number);
-  const max = Math.max(...A, ...B) * 1.12;
-  const colors = { a: "{{a_color}}", b: "{{b_color}}" };
   const chart = document.getElementById("chart");
+  const L = split(labels), A = split(av).map(Number), B = split(bv).map(Number);
+  const max = Math.max(...A, ...B, Number(line) || 0) * 1.12;
+  const fmt = (v) => v.toLocaleString("en-US");
+  chart.style.position = "relative";
+  const colors = { a: "{{a_color}}", b: "{{b_color}}" };
   if (hi) chart.classList.add("dim");
   L.forEach((lab, i) => {
     const g = document.createElement("div");
@@ -35,10 +40,15 @@
     [["a", A[i]], ["b", B[i]]].forEach(([k, v]) => {
       if (v == null || isNaN(v)) return;
       const hot = hi === `${k}${i + 1}` ? " hot" : "";
-      g.insertAdjacentHTML("beforeend", `<div class="bar${hot}" style="height:${(v / max) * 100}%;background:${colors[k]}"><div class="v">${v}</div></div>`);
+      g.insertAdjacentHTML("beforeend", `<div class="bar${hot}" style="height:${(v / max) * 100}%;background:${colors[k]}"><div class="v">${fmt(v)}</div></div>`);
     });
     chart.appendChild(g);
     document.getElementById("labels").insertAdjacentHTML("beforeend", `<div>${lab}</div>`);
   });
+  // Optional reference line (a capacity, a limit, a target) across the chart
+  if (Number(line)) chart.insertAdjacentHTML("beforeend",
+    `<div class="ref" style="bottom:${(Number(line) / max) * 100}%"><span>${lineLabel || fmt(Number(line))}</span></div>`);
+  // One series only: hide the legend
+  if (!B.length) document.querySelector(".legend").style.display = "none";
 </script>
 </body></html>

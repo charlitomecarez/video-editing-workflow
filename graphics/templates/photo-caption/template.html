@@ -2,6 +2,8 @@
   *{margin:0;box-sizing:border-box}
   body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);position:relative}
   .full img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  body.overlay{background:transparent}
+  .overlay .shade{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,calc(var(--dim) + .45)));}
   .full .shade{position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,calc(var(--dim) + .45)));}
   .card{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
   .card .frame{background:#fff;padding:16px;border-radius:6px;box-shadow:0 40px 90px rgba(0,0,0,.7);transform:rotate(calc(var(--tilt) * 1deg))}
@@ -17,7 +19,9 @@
 <script>
   const img = document.getElementById("img").innerHTML;
   const stage = document.getElementById("stage");
-  if (document.body.classList.contains("card")) {
+  if (document.body.classList.contains("overlay")) {
+    stage.innerHTML = '<div class="shade"></div>';   // caption + shade only, for laying over a video
+  } else if (document.body.classList.contains("card")) {
     stage.className = "card";
     stage.innerHTML = `<div class="frame">${img}</div>`;
   } else {

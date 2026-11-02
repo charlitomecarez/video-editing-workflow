@@ -352,6 +352,8 @@ def align(beats, words, rc):
         utts = split_utterances(words, start_w, end_w, 0.45)
         started_retake = False
         attach = rc.get("attach_gap", 0.3)
+        if attach:
+            utts = attach_misheard_edges(utts, words, prev, nxt, rc)
         for n, (a, z) in enumerate(utts):
             text = " ".join(w["w"] for w in words[a:z])
             ut = norm_tokens(text)
@@ -389,6 +391,46 @@ def align(beats, words, rc):
             else:
                 dropped.append({**item, "why": "ad-lib (adlibs = drop)"})
     return adlibs, dropped
+
+
+def attach_misheard_edges(utts, words, prev, nxt, rc):
+    """A line whose first or last script words are missing from its match, with speech right
+    next to it that sounds like those missing words, gets that speech back. Whisper often mangles
+    a line's edges ("pasira sa Sakyan" = "pasahero ang nasakay"); without this the edge is kept as
+    an ad-lib or, worse, dropped as a retake because one of its words also appears in the line.
+    Only for missing edges, so a real false start before a full retake is still removed."""
+    near = rc.get("attach_similar_gap", 1.0)
+    need = rc.get("attach_edge_similarity", 0.55)
+    toks = lambda a, z: [t for w in words[a:z] for t in norm_tokens(w["w"])]  # noqa: E731
+    close = lambda x, y: same_word(x, y) or ratio(x, y) >= 0.6  # noqa: E731
+
+    def best(heard, missing, from_end):
+        # Whisper may split or merge words, so try every window length of the missing words
+        h = " ".join(heard)
+        wins = [missing[-m:] if from_end else missing[:m] for m in range(1, len(missing) + 1)]
+        return max((ratio(h, " ".join(w)) for w in wins), default=0)
+
+    while prev and utts and missing_edges(prev["text"], words, prev["w0"], prev["w1"])[1]:
+        a, z = utts[0]
+        st, got = norm_tokens(prev["text"]), toks(prev["w0"], prev["w1"])
+        last = max((i for i in range(len(st)) if got and close(st[i], got[-1])), default=-1)
+        missing = st[last + 1:]
+        if not missing or words[a]["s"] - words[prev["w1"] - 1]["e"] > near or best(toks(a, z), missing, False) < need:
+            break
+        prev["w1"] = z
+        prev["source"] = (prev["source"][0], words[z - 1]["e"])
+        utts = utts[1:]
+    while nxt and utts and missing_edges(nxt["text"], words, nxt["w0"], nxt["w1"])[0]:
+        a, z = utts[-1]
+        st, got = norm_tokens(nxt["text"]), toks(nxt["w0"], nxt["w1"])
+        first = next((i for i in range(len(st)) if got and close(st[i], got[0])), len(st))
+        missing = st[:first]
+        if not missing or words[nxt["w0"]]["s"] - words[z - 1]["e"] > near or best(toks(a, z), missing, True) < need:
+            break
+        nxt["w0"] = a
+        nxt["source"] = (words[a]["s"], nxt["source"][1])
+        utts = utts[:-1]
+    return utts
 
 
 def split_utterances(words, a, z, gap):

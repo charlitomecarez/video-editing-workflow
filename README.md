@@ -82,6 +82,7 @@ tools/clean-voice.sh projects/<video>/audio/voice.wav           # denoise + leve
 python3 tools/music.py make --mood lofi --project projects/<video>  # original background music you own
 python3 tools/music.py find "chill piano"                         # CC0 / CC BY tracks you can monetize
 python3 tools/music.py mix projects/<video>/export/final.mp4        # music under the video, ducked under your voice
+python3 tools/stock.py find "traffic jam"                          # stock video you can monetize (Pexels, Pixabay, Commons); --memes for GIFs
 python3 tools/sfx.py build && python3 tools/sfx.py list             # original sound effects; cue them in the script: sfx:whoosh on "word"
 
 tools/graphic --list                                            # thumbnails, code cards, slates, diagrams...

@@ -274,6 +274,39 @@ duck = true
 duck_threshold = 0.03
 duck_ratio = 6
 
+[stock]
+# Stock video and memes (tools/stock.py). Free keys go in .env.local: PEXELS_API_KEY, PIXABAY_API_KEY, GIPHY_API_KEY
+# Stock video sources, searched in this order. All allow monetized use (Commons: CC0 / public domain / CC BY only)
+sources = ["pexels", "pixabay", "commons"]
+# Meme / reaction GIF sources (rights UNKNOWN: usually clips from movies and TV). Tenor closed its API in June 2026:
+# download from tenor.com by hand and use `tools/stock.py add`
+meme_sources = ["giphy"]
+# false = refuse memes and other files with unknown rights
+allow_unknown_rights = true
+giphy_rating = "pg-13"
+# GIPHY beta keys allow 100 API calls an hour. The tool counts them and stops here (searches are cached 24 h)
+giphy_calls_per_hour = 90
+results = 8
+# Clip length range to accept in search results (seconds)
+min_seconds = 2
+max_seconds = 60
+timeout = 15
+# Where clips go in the project (the rough cut reads footage/broll/NN-* and the graphics folder)
+dir = "footage/broll"
+# Output: size, fps, quality. cover = fill the frame (crop), fit = whole clip with bars in pad_color,
+# blur = whole clip over a blurred copy of itself. meme_fit is used for GIFs (they come in every shape)
+size = "1920x1080"
+fps = 30
+crf = 18
+fit = "cover"
+meme_fit = "blur"
+pad_color = "#1e1e1e"
+# Default length: 0 = whole clip. Memes (GIFs) loop to this many seconds
+default_seconds = 0
+meme_seconds = 2.0
+# --caption: how much the bottom of the clip darkens behind the caption (0-1)
+caption_dim = 0.25
+
 [sfx]
 # Sound effects (tools/sfx.py, placed by the rough cut on A3 from `sfx:<name> on "word"` in the Notes column)
 dir = "sfx"
@@ -352,6 +385,9 @@ adlib_min_words = 3
 attach_gap = 0.3
 # ...and up to this gap when the bit sounds like the end of the line (a pause before a punchline)
 attach_similar_gap = 1.0
+# A line missing its first/last script words gets the speech right next to it back when that
+# speech sounds this much like the missing words (0-1). Whisper mangles line edges a lot in Tagalog.
+attach_edge_similarity = 0.55
 # Whisper sometimes skips words at the edge of a line (often names: "Si Bam Adebayo"). Each line's start
 # and end grow into any voice right next to it, up to this many seconds, stopping at a real pause. 0 = off
 voice_extend = 1.5

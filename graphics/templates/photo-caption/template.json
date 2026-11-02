@@ -5,10 +5,15 @@
   "fields": {
     "photo": "The photo",
     "caption": "Bold outlined caption (keep it short). *word* = accent color",
-    "mode": "full (default: photo fills the frame) or card (photo as a tilted card on the dark background)",
+    "mode": "full (default: photo fills the frame), card (photo as a tilted card on the dark background) or overlay (caption and shade only, transparent: render with --transparent and lay it over a video; tools/stock.py --caption does this)",
     "photo_pos": "Which part of the photo to keep in full mode, CSS object-position (default center)",
     "tilt": "Card rotation in degrees (default -2)",
     "dim": "Darken the photo 0-1 so the caption reads (default 0.15)"
   },
-  "defaults": { "mode": "full", "photo_pos": "center", "tilt": "-2", "dim": "0.15" }
+  "defaults": {
+    "mode": "full",
+    "photo_pos": "center",
+    "tilt": "-2",
+    "dim": "0.15"
+  }
 }

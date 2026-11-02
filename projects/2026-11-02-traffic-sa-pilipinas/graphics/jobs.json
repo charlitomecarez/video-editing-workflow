@@ -1,0 +1,536 @@
+[
+ {
+  "template": "caption",
+  "set": {
+   "text": "*31* minutes"
+  },
+  "out": "01-1-cap-31-minutes.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "31:45",
+   "variant": "big",
+   "sub": "per 10 km · Manila · TomTom 2025"
+  },
+  "out": "02-1-card-31-45.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*ten*. hindi hundred."
+  },
+  "out": "03-1-cap-ten-hindi-hundred.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "pinaka-traffic sa PH?"
+  },
+  "out": "04-1-cap-pinaka-traffic-sa-ph.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi *Manila*"
+  },
+  "out": "04-2-cap-hindi-manila.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*DAVAO*",
+   "variant": "big",
+   "sub": "most congested city sa Pilipinas · TomTom 2025",
+   "color": "#FF3B4E"
+  },
+  "out": "05-1-card-davao.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*#12* sa buong mundo"
+  },
+  "out": "06-1-cap-12-sa-buong-mundo.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "paano tayo *umabot* dito?"
+  },
+  "out": "07-1-cap-paano-tayo-umabot-dito.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "may *pag-asa* pa ba?"
+  },
+  "out": "08-1-cap-may-pag-asa-pa-ba.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "traffic = *personality*"
+  },
+  "out": "08-2-cap-traffic-personality.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "binasa ko *lahat*"
+  },
+  "out": "09-1-cap-binasa-ko-lahat.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "kahit yung *PDF*"
+  },
+  "out": "09-2-cap-kahit-yung-pdf.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*1* GAANO KABAGAL?",
+   "variant": "chapter"
+  },
+  "out": "10-1-card-ch-1-gaano-kabagal.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*15.2* kph",
+   "variant": "big",
+   "sub": "average sa rush hour · Manila · TomTom 2025",
+   "color": "#FF3B4E"
+  },
+  "out": "11-1-card-15-2-kph.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*fifteen*."
+  },
+  "out": "12-1-cap-fifteen.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "kaya 'yan ng *bike*"
+  },
+  "out": "13-1-cap-kaya-yan-ng-bike.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "PHOTO: a plain bicycle with a front basket",
+   "variant": "placeholder"
+  },
+  "out": "13-2-placeholder-photo-bike-basket.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*#1* sa Asia",
+   "variant": "big",
+   "sub": "most congested country · TomTom 2025"
+  },
+  "out": "14-1-card-1-sa-asia.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*congrats* sa'tin"
+  },
+  "out": "15-1-cap-congrats-sa-tin.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "contest na walang *gustong sumali*"
+  },
+  "out": "15-2-cap-contest-na-walang-gustong-su.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*2* EDSA",
+   "variant": "chapter"
+  },
+  "out": "16-1-card-ch-2-edsa.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*250,000*",
+   "variant": "big",
+   "sub": "sasakyan kada araw · kaya ng EDSA · MMDA"
+  },
+  "out": "17-1-card-250-000.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*426,000*",
+   "variant": "big",
+   "sub": "September 2025 · MMDA",
+   "color": "#FF3B4E"
+  },
+  "out": "18-1-card-426-000.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "December: *434,000*"
+  },
+  "out": "19-1-cap-december-434-000.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "pang-*10* na elevator"
+  },
+  "out": "20-1-cap-pang-10-na-elevator.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*15* kayo"
+  },
+  "out": "20-2-cap-15-kayo.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "MEME: someone squeezing a huge box into a packed elevator",
+   "variant": "placeholder"
+  },
+  "out": "20-3-placeholder-meme-elevator-box.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*3.6M*",
+   "variant": "big",
+   "sub": "sasakyan kada araw · Metro Manila · MMDA"
+  },
+  "out": "21-1-card-3-6m.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*3* MAGKANO?",
+   "variant": "chapter"
+  },
+  "out": "22-1-card-ch-3-magkano.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*₱3.5 BILLION*",
+   "variant": "big",
+   "sub": "kada araw · Metro Manila · JICA",
+   "color": "#FF3B4E"
+  },
+  "out": "23-1-card-3-5-billion.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi kada taon."
+  },
+  "out": "24-1-cap-hindi-kada-taon.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*KADA ARAW*"
+  },
+  "out": "24-2-cap-kada-araw.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "gasolina"
+  },
+  "out": "25-1-cap-gasolina.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "oras mo"
+  },
+  "out": "25-2-cap-oras-mo.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "late na *delivery*"
+  },
+  "out": "25-3-cap-late-na-delivery.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*2017* data pa 'yan"
+  },
+  "out": "26-1-cap-2017-data-pa-yan.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*₱5.4B*",
+   "variant": "big",
+   "sub": "kada araw pagdating ng 2035 · kung walang gagawin · JICA",
+   "color": "#FF3B4E"
+  },
+  "out": "27-1-card-5-4b.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "sana naman *may gagawin*"
+  },
+  "out": "28-1-cap-sana-naman-may-gagawin.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*4* MAY GUMAGANA?",
+   "variant": "chapter"
+  },
+  "out": "29-1-card-ch-4-may-gumagana.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "PHOTO: an EDSA Carousel bus in its lane (your own photo)",
+   "variant": "placeholder"
+  },
+  "out": "30-1-placeholder-photo-carousel-bus.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "sa *gitna* ng EDSA"
+  },
+  "out": "30-2-cap-sa-gitna-ng-edsa.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*66.6M*",
+   "variant": "big",
+   "sub": "pasahero noong 2025 · EDSA Carousel"
+  },
+  "out": "31-1-card-66-6m.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "isang bus: *50+* tao"
+  },
+  "out": "32-1-cap-isang-bus-50-tao.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "isang kotse:"
+  },
+  "out": "33-1-cap-isang-kotse.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "1 tao + *playlist*"
+  },
+  "out": "33-2-cap-1-tao-playlist.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*siksikan*"
+  },
+  "out": "34-1-cap-siksikan.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "mahaba ang *pila*"
+  },
+  "out": "34-2-cap-mahaba-ang-pila.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "pero *gumagalaw*"
+  },
+  "out": "35-1-cap-pero-gumagalaw.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*sariling lane*"
+  },
+  "out": "35-2-cap-sariling-lane.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*honest take*"
+  },
+  "out": "36-1-cap-honest-take.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "hindi lang *kulang sa kalsada*"
+  },
+  "out": "37-1-cap-hindi-lang-kulang-sa-kalsada.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "dagdag lane"
+  },
+  "out": "38-1-cap-dagdag-lane.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*mapupuno ulit*"
+  },
+  "out": "38-2-cap-mapupuno-ulit.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "ilipat ang *TAO*,\\nhindi ang kotse",
+   "variant": "big"
+  },
+  "out": "39-1-card-ilipat-ang-tao-hindi-ang-kot.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "bus na may *sariling lane*"
+  },
+  "out": "40-1-cap-bus-na-may-sariling-lane.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "tren na *on time*"
+  },
+  "out": "40-2-cap-tren-na-on-time.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "sidewalk na *hindi parking*"
+  },
+  "out": "40-3-cap-sidewalk-na-hindi-parking.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "madaling sabihin, *alam ko*"
+  },
+  "out": "41-1-cap-madaling-sabihin-alam-ko.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "dagdag kotse, dagdag kalsada"
+  },
+  "out": "42-1-cap-dagdag-kotse-dagdag-kalsada.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*paikot-ikot*"
+  },
+  "out": "42-2-cap-paikot-ikot.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "MEME: a car circling a full mall parking lot at Christmas",
+   "variant": "placeholder"
+  },
+  "out": "43-1-placeholder-meme-mall-parking.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*recap*"
+  },
+  "out": "44-1-cap-recap.png"
+ },
+ {
+  "template": "text-card",
+  "set": {
+   "text": "*31:45*",
+   "variant": "big",
+   "sub": "10 km · Manila"
+  },
+  "out": "45-1-card-31-45.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*Davao* #1 sa PH"
+  },
+  "out": "45-2-cap-davao-1-sa-ph.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "EDSA: *426k* vs 250k"
+  },
+  "out": "46-1-cap-edsa-426k-vs-250k.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "*₱3.5B* kada araw",
+   "color": "#FF3B4E"
+  },
+  "out": "47-1-cap-3-5b-kada-araw.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "ang gumagana: *sariling lane*"
+  },
+  "out": "48-1-cap-ang-gumagana-sariling-lane.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "pinakamatagal mong *biyahe*?"
+  },
+  "out": "49-1-cap-pinakamatagal-mong-biyahe.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "comment: *ruta mo*"
+  },
+  "out": "50-1-cap-comment-ruta-mo.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "o mag-*bike* na lang"
+  },
+  "out": "51-1-cap-o-mag-bike-na-lang.png"
+ },
+ {
+  "template": "caption",
+  "set": {
+   "text": "yung may *basket*"
+  },
+  "out": "51-2-cap-yung-may-basket.png"
+ }
+]

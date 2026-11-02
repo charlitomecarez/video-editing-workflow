@@ -10,9 +10,20 @@
     "a_values": "First series values separated by ;",
     "a_color": "First series color (hex)",
     "b_name": "Second series name",
-    "b_values": "Second series values separated by ;",
+    "b_values": "Second series values separated by ; (set it empty for a single series: the legend hides)",
     "b_color": "Second series color (hex)",
-    "highlight": "Bar to highlight, series + position: a2 = first series, second category. Others are dimmed."
+    "highlight": "Bar to highlight, series + position: a2 = first series, second category. Others are dimmed.",
+    "line": "Optional reference line across the chart at this value, e.g. a capacity or a limit",
+    "line_label": "Text on the reference line (default: the value)"
   },
-  "defaults": { "title": "Points per quarter", "labels": "Q1;Q2;Q3;Q4", "a_name": "A", "a_values": "30;25;28;22", "a_color": "#98002E", "b_name": "B", "b_values": "24;31;26;29", "b_color": "#002D62" }
+  "defaults": {
+    "title": "Points per quarter",
+    "labels": "Q1;Q2;Q3;Q4",
+    "a_name": "A",
+    "a_values": "30;25;28;22",
+    "a_color": "#98002E",
+    "b_name": "B",
+    "b_values": "24;31;26;29",
+    "b_color": "#002D62"
+  }
 }
