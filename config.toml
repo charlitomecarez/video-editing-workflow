@@ -74,6 +74,23 @@ project_id = "6ae5e54c0016e479f467"
 database_id = "planner"
 # Name of the env var (or .env.local line) that holds the API key. Needs rows.read, + rows.write for link/done.
 api_key_env = "APPWRITE_API_KEY"
+# Keep the planner's checklist up to date by itself: after every Claude Code reply
+# (Stop hook), tick steps whose result exists in the linked project folder.
+auto_sync = true
+# Ticking the last step of a stage moves the video to the next stage (same as the app).
+auto_advance = true
+# Steps sync may tick, and what proves each one:
+#   idea.hook (hook filled in)  idea.format (platforms picked)  script.draft (script.md)
+#   record.voice (recording in footage/ or audio/voice*)  record.prep (*_prep / *_clean file)
+#   record.broll (footage/broll/ has files)  edit.graphics (graphics/NN-*)  edit.roughcut (*-roughcut.kdenlive)
+#   polish.kdenlive + polish.export (a video in export/)  polish.thumbnail (thumbnails/ has a non thumb_NN image)
+#   publish.upload (a post link saved in the planner)  publish.reel (a video in reel/)
+# Not detectable, tick them yourself or let Claude do it: script.punchup, script.read, publish.meta
+auto_steps = [
+  "idea.hook", "idea.format", "script.draft", "record.voice", "record.prep", "record.broll",
+  "edit.graphics", "edit.roughcut", "polish.kdenlive", "polish.export", "polish.thumbnail",
+  "publish.upload", "publish.reel",
+]
 
 [project]
 # Subfolders created by tools/new_project.py

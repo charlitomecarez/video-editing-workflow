@@ -11,6 +11,10 @@ live. This tool lets Claude see what you're working on right now.
   python3 tools/planner.py show <id|slug|title words>
   python3 tools/planner.py link <video> <project-folder>   # set projectSlug
   python3 tools/planner.py done <video> <step-id>          # tick a checklist step, e.g. script.draft
+  python3 tools/planner.py sync [video] [--dry-run]        # tick every step whose result is in the project folder
+
+Ticking the last step of a stage moves the video to the next stage, like the app does.
+sync runs by itself after every Claude Code reply (Stop hook in .claude/settings.json).
 
 Add --json to any read command for machine-readable output.
 
@@ -22,6 +26,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -168,6 +173,88 @@ def next_action(v, cfg):
     return {"kind": "advance", "to": nxt, "label": f"Move it to {nxt.title()} in the planner"}
 
 
+def advanced_stage(v, done):
+    """Same rule as the app: once every step of the stage is ticked, move to the next stage.
+    Keeps going while later stages are complete too. Never moves backwards."""
+    stage = v["stage"]
+    while stage != "published":
+        steps = [s[0] for s in steps_for(stage, v["format"])]
+        if not all(s in done for s in steps):
+            break
+        stage = STAGE_IDS[STAGE_IDS.index(stage) + 1]
+    return stage
+
+
+# ---------- sync: tick steps from what's in the project folder ----------
+
+MEDIA_EXT = {".mp4", ".mov", ".m4v", ".mkv", ".webm", ".avi",
+             ".wav", ".mp3", ".m4a", ".aac", ".flac", ".ogg", ".aif", ".aiff"}
+VIDEO_EXT = {".mp4", ".mov", ".m4v", ".mkv", ".webm", ".avi"}
+IMAGE_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
+
+
+def _files(d, exts=None):
+    if not d.is_dir():
+        return []
+    return [f for f in d.iterdir() if f.is_file() and not f.name.startswith(".")
+            and (exts is None or f.suffix.lower() in exts)]
+
+
+def detect_steps(folder, v):
+    """Steps whose result exists on disk (or in the planner row). Only ever adds."""
+    found = set()
+    if v["hook"].strip():
+        found.add("idea.hook")
+    if v["platforms"]:
+        found.add("idea.format")
+    if (folder / "script.md").is_file():
+        found.add("script.draft")
+    recs = [f for f in _files(folder / "footage", MEDIA_EXT)] + \
+           [f for f in _files(folder / "audio", MEDIA_EXT) if f.stem.lower().startswith("voice")]
+    if any(not re.search(r"_(prep|clean|cut)$", f.stem) for f in recs):
+        found.add("record.voice")
+    if any(re.search(r"_(prep|clean)$", f.stem) for f in recs):
+        found.add("record.prep")
+    if _files(folder / "footage" / "broll", MEDIA_EXT | IMAGE_EXT):
+        found.add("record.broll")
+    if any(re.match(r"\d{2}-", f.name) for f in _files(folder / "graphics", IMAGE_EXT | VIDEO_EXT)):
+        found.add("edit.graphics")
+    if any(f.name.endswith("-roughcut.kdenlive") for f in _files(folder, {".kdenlive"})):
+        found.add("edit.roughcut")
+    if _files(folder / "export", VIDEO_EXT):
+        found |= {"polish.kdenlive", "polish.export"}   # an export means the edit is finished
+    # thumbnails.sh writes thumb_NN.jpg candidates; a designed thumbnail has any other name
+    if any(not re.fullmatch(r"thumb_\d+", f.stem) for f in _files(folder / "thumbnails", IMAGE_EXT)):
+        found.add("polish.thumbnail")
+    if v["posts"]:
+        found.add("publish.upload")
+    if _files(folder / "reel", VIDEO_EXT):
+        found.add("publish.reel")
+    return found
+
+
+def sync_video(api, v, cfg, dry=False):
+    """Tick detected steps and advance the stage. Returns a list of change descriptions."""
+    p = cfg.get("planner", {})
+    folder = ROOT / cfg["paths"]["projects"] / v["projectSlug"]
+    allowed = set(p.get("auto_steps", []))
+    new = sorted((detect_steps(folder, v) & allowed) - set(v["doneSteps"]))
+    done = v["doneSteps"] + new
+    stage = advanced_stage(v, set(done)) if p.get("auto_advance", True) else v["stage"]
+    changes = []
+    labels = {sid: label for _, _, steps in STAGES for sid, label, _ in steps}
+    if new:
+        changes.append("ticked " + ", ".join(labels.get(s, s) for s in new))
+    if stage != v["stage"]:
+        changes.append(f"moved {v['stage']} -> {stage}")
+    if changes and not dry:
+        data = {"doneSteps": done}
+        if stage != v["stage"]:
+            data["stage"] = stage
+        api.update("videos", v["id"], data)
+    return changes
+
+
 def enrich(v, cfg, tasks=None):
     v = dict(v)
     v["next"] = next_action(v, cfg)
@@ -251,9 +338,15 @@ def main():
     sp = sub.add_parser("done")
     sp.add_argument("video")
     sp.add_argument("step")
+    sp = sub.add_parser("sync", help="tick steps whose result exists in the project folder, then advance the stage")
+    sp.add_argument("video", nargs="?", help="one video (id, slug, title words or project folder); default: every linked video")
+    sp.add_argument("--dry-run", action="store_true", help="show what would change without saving")
+    sp.add_argument("--hook", action="store_true", help="for the Claude Code Stop hook: silent unless something changed, never fails")
     a = p.parse_args()
 
     cfg = load()
+    if a.cmd == "sync" and a.hook:
+        return hook_sync(cfg)
     api = Planner(cfg)
     videos = [to_video(r) for r in api.rows("videos")]
 
@@ -317,8 +410,54 @@ def main():
         if a.step in v["doneSteps"]:
             print(f"'{a.step}' was already ticked on '{v['title']}'.")
             return
-        api.update("videos", v["id"], {"doneSteps": v["doneSteps"] + [a.step]})
-        print(f"Ticked '{a.step}' on '{v['title']}'.")
+        done = v["doneSteps"] + [a.step]
+        data = {"doneSteps": done}
+        stage = advanced_stage(v, set(done)) if cfg.get("planner", {}).get("auto_advance", True) else v["stage"]
+        if stage != v["stage"]:
+            data["stage"] = stage
+        api.update("videos", v["id"], data)
+        print(f"Ticked '{a.step}' on '{v['title']}'." + (f" Stage done: moved to {stage.title()}." if "stage" in data else ""))
+
+    elif a.cmd == "sync":
+        if a.video:
+            vs = [find(videos, Path(a.video).name if "/" in a.video else a.video)]
+        else:
+            vs = [v for v in videos if v["projectSlug"] and v["stage"] != "published"]
+        projects = ROOT / cfg["paths"]["projects"]
+        any_change = False
+        for v in vs:
+            if not v["projectSlug"] or not (projects / v["projectSlug"]).is_dir():
+                if a.video:
+                    print(f"'{v['title']}' has no project folder here, nothing to check.")
+                continue
+            changes = sync_video(api, v, cfg, dry=a.dry_run)
+            if changes:
+                any_change = True
+                print(f"{'[dry run] ' if a.dry_run else ''}{v['title']}: " + "; ".join(changes))
+        if not any_change:
+            print("Planner is up to date.")
+
+
+def hook_sync(cfg):
+    """Run from the Claude Code Stop hook. Quiet and safe: no project folders = no network call."""
+    if not cfg.get("planner", {}).get("auto_sync", True):
+        return
+    projects = ROOT / cfg["paths"]["projects"]
+    if not projects.is_dir() or not any(d.is_dir() and not d.name.startswith(".") for d in projects.iterdir()):
+        return
+    try:
+        api = Planner(cfg)
+        msgs = []
+        for v in (to_video(r) for r in api.rows("videos")):
+            if v["projectSlug"] and v["stage"] != "published" and (projects / v["projectSlug"]).is_dir():
+                changes = sync_video(api, v, cfg)
+                if changes:
+                    msgs.append(f"{v['title']}: " + "; ".join(changes))
+    except (SystemExit, Exception) as e:   # never break the session over the planner
+        print(json.dumps({"systemMessage": f"Planner sync skipped: {e}"}))
+        return
+    if msgs:
+        print(json.dumps({"systemMessage": "Content Planner updated. " + " | ".join(msgs)}))
 
 
 if __name__ == "__main__":
